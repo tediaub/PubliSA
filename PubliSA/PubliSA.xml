@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PubliSA>
+  <Langue>FRANCAIS</Langue>
+  <MultiUTI>False</MultiUTI>
+  <FirstUti>Teddy</FirstUti>
+  <Teddy>
+    <FichierExt>
+      <FichierDOC>C:\Documents and Settings\aubert_t\Mes documents\rapport d'alternance 2012-2013.doc</FichierDOC>
+      <FichierEXE />
+    </FichierExt>
+    <Mail>
+      <AKKA-Ubik>
+        <Correspondant>corinne.cligny.external@airbus.com</Correspondant>
+        <Objet>Fichiers pour livraison UBIK</Objet>
+        <Message>Bonjour,&#xD;
+&#xD;
+Peux-tu, s'il te plait, me mettre à disposition les fichiers suivants @ :&#xD;
+      -Le fichier .OGC de la MOD#&#xD;
+      -Les fichiers .EXT et .EST de la MOD#&#xD;
+      -Les fichiers .PDF *&#xD;
+&#xD;
+Par avance, merci.</Message>
+      </AKKA-Ubik>
+      <AKKA-Thales>
+        <Correspondant>corinne.cligny.external@airbus.com</Correspondant>
+        <Objet>Fichiers pour livraison THALES</Objet>
+        <Message>Bonjour Corinne,&#xD;
+&#xD;
+Peux-tu, s'il te plait, me mettre à disposition les fichiers suivants @ :&#xD;
+      -Le fichier .OGC de la MOD#&#xD;
+      -Les fichiers .ASC et .SCH *&#xD;
+&#xD;
+Par avance, merci.</Message>
+      </AKKA-Thales>
+      <SOPRA>
+        <Correspondant>support.soprafs@sopragroup.com</Correspondant>
+        <Objet>UBIK Update</Objet>
+        <Message>Hello,&#xD;
+&#xD;
+Please find attached the request for software installation on UBIK of software @.&#xD;
+&#xD;
+Best regards</Message>
+      </SOPRA>
+      <THALES>
+        <Correspondant>Exemple@thales.com</Correspondant>
+        <Objet>THALES</Objet>
+        <Message />
+      </THALES>
+    </Mail>
+    <GestLiv>False</GestLiv>
+    <Lrhytuhrt>
+      <Nom>rhytuhrt</Nom>
+      <Cible>Thales</Cible>
+      <Etape>2</Etape>
+      <DCR>1417</DCR>
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lrhytuhrt>
+    <L1361>
+      <Nom>1361</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>2</Etape>
+      <DCR>1417</DCR>
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC>C:\Documents and Settings\AUBERT_T.AKKA\Bureau\ELAC1417\SERPINTURO_1417.OGC</AdresseOGC>
+    </L1361>
+    <LElac_B_L98C>
+      <Nom>Elac_B_L98C</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>2</Etape>
+      <DCR>1419,1421,1426,1428</DCR>
+      <Calculateur>
+        <Type>SEC</Type>
+        <Standard>BL98CA</Standard>
+      </Calculateur>
+      <AdresseOGC />
+    </LElac_B_L98C>
+    <L45432>
+      <Nom>45432</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>2</Etape>
+      <DCR>1255</DCR>
+      <Calculateur>
+        <Type />
+        <Standard>5</Standard>
+      </Calculateur>
+      <AdresseOGC />
+    </L45432>
+    <Lgcngc>
+      <Nom>gcngc</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lgcngc>
+    <Lxghx>
+      <Nom>xghx</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lxghx>
+    <Lcghgh>
+      <Nom>cghgh</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lcghgh>
+    <Lcghcgh>
+      <Nom>cghcgh</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lcghcgh>
+    <Lcghgch>
+      <Nom>cghgch</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lcghgch>
+    <Ldghhgdg>
+      <Nom>dghhgdg</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Ldghhgdg>
+    <Lfhfrgh>
+      <Nom>fhfrgh</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lfhfrgh>
+    <Lfghgfh>
+      <Nom>fghgfh</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lfghgfh>
+    <Lgfhfjr>
+      <Nom>gfhfjr</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lgfhfjr>
+    <Luykuy>
+      <Nom>uykuy</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Luykuy>
+    <Ldyukduk>
+      <Nom>dyukduk</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Ldyukduk>
+    <Lzkeeèk>
+      <Nom>zkeeèk</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lzkeeèk>
+    <Lzujty>
+      <Nom>zujty</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lzujty>
+    <Ljryhf>
+      <Nom>jryhf</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Ljryhf>
+    <Ljrrjy>
+      <Nom>jrrjy</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Ljrrjy>
+    <LzFGG>
+      <Nom>zFGG</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </LzFGG>
+    <Lhhr>
+      <Nom>hhr</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lhhr>
+    <Lyyy>
+      <Nom>yyy</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lyyy>
+    <Ltryrtyuj>
+      <Nom>tryrtyuj</Nom>
+      <Cible>Ubik</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Ltryrtyuj>
+  </Teddy>
+  <jhhjh>
+    <FichierExt>
+      <FichierDOC />
+      <FichierEXE />
+    </FichierExt>
+    <Mail>
+      <AKKA-Ubik>
+        <Correspondant>corinne.cligny.external@airbus.com</Correspondant>
+        <Objet>Fichiers pour livraison UBIK</Objet>
+        <Message>Bonjour Corinne,&#xD;
+&#xD;
+Peux-tu, s'il te plait, me mettre à disposition les fichiers suivants @ :&#xD;
+      -Le fichier .OGC de la MOD#&#xD;
+      -Les fichiers .EXT et .EST de la MOD#&#xD;
+      -Les fichiers .POS *&#xD;
+&#xD;
+Par avance, merci.</Message>
+      </AKKA-Ubik>
+      <AKKA-Thales>
+        <Correspondant>corinne.cligny.external@airbus.com</Correspondant>
+        <Objet>Fichiers pour livraison THALES</Objet>
+        <Message>Bonjour Corinne,&#xD;
+&#xD;
+Peux-tu, s'il te plait, me mettre à disposition les fichiers suivants @ :&#xD;
+      -Le fichier .OGC de la MOD#&#xD;
+      -Les fichiers .ASC et .SCH *&#xD;
+&#xD;
+Par avance, merci.</Message>
+      </AKKA-Thales>
+      <SOPRA>
+        <Correspondant>support.soprafs@sopragroup.com</Correspondant>
+        <Objet>UBIK Update -</Objet>
+        <Message>Hello,&#xD;
+&#xD;
+Please find attached the request for software installation on UBIK of software @.&#xD;
+&#xD;
+Best regards</Message>
+      </SOPRA>
+      <THALES>
+        <Correspondant>Exemple@thales.com</Correspondant>
+        <Objet>THALES</Objet>
+        <Message />
+      </THALES>
+    </Mail>
+    <GestLiv />
+    <Lccc>
+      <Nom>ccc</Nom>
+      <Cible>Thales</Cible>
+      <Etape>1</Etape>
+      <DCR />
+      <Calculateur>
+        <Type />
+        <Standard />
+      </Calculateur>
+      <AdresseOGC />
+    </Lccc>
+  </jhhjh>
+  <Color>
+    <Color1 Blue="191" Red="99" Green="130" />
+    <Color2 Blue="234" Red="194" Green="215" />
+    <Color3 Blue="0" Red="0" Green="0" />
+  </Color>
+</PubliSA>
+
