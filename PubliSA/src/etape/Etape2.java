@@ -261,6 +261,10 @@ public class Etape2 implements ActionListener {
   		
 		etape2.add(pAffEtape2,"1, 1, fill, fill");
 		etape2.add(pDcr2,"1, 3, 2, 1, fill, fill");
+		etape2.add(pDcr2,"1, 3, 2, 1, fill, fill");
+		etape2.add(pParcourir,"1, 5, 2, 1 fill, fill");
+		etape2.add(pVerification,"1, 7, 2, 1, fill, fill");
+		etape2.add(pOutil,"1, 9, 2, 1, fill, fill");
 		
 		btParcourir.addActionListener(this);	
 	}
