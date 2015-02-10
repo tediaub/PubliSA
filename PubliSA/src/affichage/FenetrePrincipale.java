@@ -9,21 +9,21 @@ import javax.swing.border.LineBorder;
 import jxl.write.WriteException;
 import outils.Lanceur;
 import outils.SupprEntete;
+import sideBarMenu.SideBar;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
 import utilisateur.Livraison;
 import utilisateur.Utilisateur;
 import verification.CreationRapportEtape2;
 import verification.CreationRapportEtape4;
-
 import langue.GestLangue;
 import langue.IHM;
 import myJTree.AffichageTree;
-
 import XML.XML;
 import autre.Langue;
 
 import com.jgoodies.forms.layout.*;
+
 import etape.*;
 
 /**
@@ -51,8 +51,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
     
     //Barre de Menu
 	private Component horizontalStrut_2;
-	
-	private JMenuBar menuBar;
 	
 	private JMenu fichier;
 	public static JMenuItem nouveau;
@@ -123,7 +121,24 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 	
 	public FenetrePrincipale() {
 		
-		setContentPane(new AfficheImage());
+		SideBar sBar = new SideBar(50, 150);
+		
+		JPanel pan = new JPanel();
+		pan.setOpaque(false);
+		FlowLayout flowLayout2 = (FlowLayout) pan.getLayout();
+		flowLayout2.setAlignment(FlowLayout.LEFT);
+		JButton btnExtand = new JButton();
+		btnExtand.setContentAreaFilled(false);
+		btnExtand.setForeground(Color.WHITE);
+		btnExtand.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnExtand.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnExtand.setIcon(new ImageIcon("C:\\Documents and Settings\\AUBERT_T.AKKA\\Bureau\\g4166.png"));
+		
+		pan.add(btnExtand);
+		sBar.getExtand().add(pan, "1, 2");
+		
+		
+		getContentPane().add(sBar);
 		
 		langueFR = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_FR.getLabel()));
 		langueEN = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_EN.getLabel()));
@@ -152,9 +167,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		);
 		
 		//////Affichage principale
-		//Création des objets du menu
-		menuBar = new JMenuBar();
-		menuBar.setOpaque(false);
+		//Création des objets du menu		
 		horizontalStrut_2 = Box.createHorizontalStrut(5);
 		
 		fichier = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.FICHIER.getLabel()));
@@ -191,23 +204,19 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		aPropos = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.ABOUT.getLabel()));
 				
 		//Ajout des objets au menu
-		setJMenuBar(menuBar);
-		menuBar.add(horizontalStrut_2);
 		
-		menuBar.add(fichier);
+		
 		fichier.add(nouveau);		
 		fichier.add(enregistrer);		
 		fichier.add(separator);		
 		fichier.add(quitter);
 		
-		menuBar.add(reglage);	
 		reglage.add(regEmail);		
 		reglage.add(separator_1);
 		reglage.add(gestUti);
 		reglage.add(fichExt);
 		reglage.add(perso);
 		
-		menuBar.add(outils);	
 		outils.add(compteRendu);		
 		outils.add(separator_3);
 		outils.add(supprEntete);
@@ -215,7 +224,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		outils.add(launchFichDOC);
 		outils.add(launchFichEXE);
 		
-		menuBar.add(aide);
 		aide.add(tutoriel);
 		aide.add(langue);
 		langue.add(langueFR);
@@ -270,7 +278,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		//Tutoriel
 		panel = new JPanel();
 		panel.setOpaque(false);
-		menuBar.add(panel);
 		
 		lblTutoriel = new JLabel("Tutoriel : ");
 		lblTutoriel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -295,7 +302,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		flowLayout.setVgap(3);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		
-		menuBar.add(pMenu);
 		pMenu.setBackground(SystemColor.control);
 		
 		lblNom = new JLabel();
@@ -379,7 +385,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
         
         
         //Mise en forme du panel principal
-        getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+        sBar.getContainer().setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
 				
   			new RowSpec[] {
@@ -389,8 +395,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
         pTuto = new TutoPanel(0,0,0,0);
         pTuto.setVisible(false);
         
-        getContentPane().add(pTuto,"1, 1, fill, fill");
-        getContentPane().add(cards, "1, 1, fill, fill");
+        sBar.getContainer().add(pTuto,"1, 1, fill, fill");
+        sBar.getContainer().add(cards, "1, 1, fill, fill");
 		
 		setVisible(true);
 	}

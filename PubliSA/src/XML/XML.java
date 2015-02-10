@@ -11,6 +11,9 @@ import org.jdom.output.XMLOutputter;
 
 
 
+
+import etape.Etape0;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
@@ -22,7 +25,7 @@ public class XML{
 	static org.jdom.Document document;
 	static Element racine;
 	
-	final static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
+	static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
 	  
 	public XML()
 	{
