@@ -29,18 +29,18 @@ public class XML{
 	  
 	public XML()
 	{
-	    //On crée une instance de SAXBuilder
-	    SAXBuilder sxb = new SAXBuilder();
-	    try
-	    {
-	    	//document = sxb.build(getClass().getResource("/PubliSA.xml"));
-	  	   	document = sxb.build(new File(xml));
-	  	   	racine = document.getRootElement();
-	    }
-	    catch(Exception e){
-	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
-			return;
-	    }
+//	    //On crée une instance de SAXBuilder
+//	    SAXBuilder sxb = new SAXBuilder();
+//	    try
+//	    {
+//	    	//document = sxb.build(getClass().getResource("/PubliSA.xml"));
+//	  	   	document = sxb.build(new File(xml));
+//	  	   	racine = document.getRootElement();
+//	    }
+//	    catch(Exception e){
+//	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
+//			return;
+//	    }
 	    
 	    
 	}

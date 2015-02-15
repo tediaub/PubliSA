@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import controller.FrameController;
 import XML.XML;
 import affichage.*;
 
@@ -46,7 +47,9 @@ public class PubliSA {
 				}
 				
 				new XML();
-				FenetrePrincipale.getInstance();
+				
+				FrameController control = new FrameController();
+				control.createFrame();
 			}
 		});
 	}

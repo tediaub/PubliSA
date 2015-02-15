@@ -54,12 +54,12 @@ public class Etape1 implements ActionListener {
 		
 		//////////
 		
-		pAffEtape1 = new FilAriane(1);
+		//pAffEtape1 = new FilAriane(1);
 		
   		//////////
   		pDcr1 = new JPanel();
   		pDcr1.setOpaque(false);
-  		pDcr1.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_DCR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+  		//pDcr1.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_DCR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
   		
   		lblDCR1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.ENTRE_DCR.getLabel()));
   		
@@ -83,7 +83,7 @@ public class Etape1 implements ActionListener {
 
   		//////////
   		pCalculateur = new JPanel();
-  		pCalculateur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_CALCULATEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+  		//pCalculateur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_CALCULATEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
   		pCalculateur.setOpaque(false);
   		
   		ckbSec = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
@@ -143,7 +143,7 @@ public class Etape1 implements ActionListener {
   				FormFactory.DEFAULT_ROWSPEC,
   				FormFactory.GLUE_ROWSPEC,}));
   		
-  		etape1.add(pAffEtape1,"1, 1, fill, fill");
+  		//etape1.add(pAffEtape1,"1, 1, fill, fill");
   		etape1.add(pDcr1,"1, 3, 2, 1, fill, fill");
   		etape1.add(pCalculateur,"1, 5, 2, 1 fill, fill");
   		etape1.add(btCreation,"1, 7, right, center");

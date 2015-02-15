@@ -9,7 +9,6 @@ import javax.swing.border.LineBorder;
 import jxl.write.WriteException;
 import outils.Lanceur;
 import outils.SupprEntete;
-import sideBarMenu.SideBar;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
 import utilisateur.Livraison;
@@ -120,25 +119,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 	 */
 	
 	public FenetrePrincipale() {
-		
-		SideBar sBar = new SideBar(50, 150);
-		
-		JPanel pan = new JPanel();
-		pan.setOpaque(false);
-		FlowLayout flowLayout2 = (FlowLayout) pan.getLayout();
-		flowLayout2.setAlignment(FlowLayout.LEFT);
-		JButton btnExtand = new JButton();
-		btnExtand.setContentAreaFilled(false);
-		btnExtand.setForeground(Color.WHITE);
-		btnExtand.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnExtand.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnExtand.setIcon(new ImageIcon("C:\\Documents and Settings\\AUBERT_T.AKKA\\Bureau\\g4166.png"));
-		
-		pan.add(btnExtand);
-		sBar.getExtand().add(pan, "1, 2");
-		
-		
-		getContentPane().add(sBar);
 		
 		langueFR = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_FR.getLabel()));
 		langueEN = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_EN.getLabel()));
@@ -385,7 +365,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
         
         
         //Mise en forme du panel principal
-        sBar.getContainer().setLayout(new FormLayout(new ColumnSpec[] {
+        this.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
 				
   			new RowSpec[] {
@@ -395,8 +375,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
         pTuto = new TutoPanel(0,0,0,0);
         pTuto.setVisible(false);
         
-        sBar.getContainer().add(pTuto,"1, 1, fill, fill");
-        sBar.getContainer().add(cards, "1, 1, fill, fill");
+        this.getContentPane().add(pTuto,"1, 1, fill, fill");
+        this.getContentPane().add(cards, "1, 1, fill, fill");
 		
 		setVisible(true);
 	}

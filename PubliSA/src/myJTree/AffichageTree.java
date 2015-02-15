@@ -63,7 +63,6 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 		treeModel = new DefaultTreeModel(new DefaultMutableTreeNode(GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel())));
 		setModel(treeModel);
 		addTreeSelectionListener(this);
-		setEnabled(false);
 		setOpaque(false);
 		
 		popUp = new JPopupMenu();
