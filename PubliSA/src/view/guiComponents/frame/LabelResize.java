@@ -1,4 +1,4 @@
-package view.guiComponents;
+package view.guiComponents.frame;
 
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;

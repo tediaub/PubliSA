@@ -1,10 +1,12 @@
-package view.guiComponents;
+package view.guiComponents.tree;
 
 import java.awt.Color;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+
+import view.guiComponents.frame.LabelResize;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;

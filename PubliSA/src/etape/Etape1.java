@@ -1,17 +1,22 @@
 package etape;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import langue.GestLangue;
 import langue.IHM;
-
 import outils.CreationMail;
 import utilisateur.Livraison;
+import view.guiComponents.RadioButtonFlat;
 import affichage.FenetrePrincipale;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -36,9 +41,9 @@ public class Etape1 implements ActionListener {
 	public static JTextField tfDCR1;
 	
 	public static JPanel pCalculateur;
-	private static JRadioButton ckbSec;
-	private static JRadioButton ckbElac;	
-	private static JRadioButton ckbFcdc;
+	private static RadioButtonFlat ckbSec;
+	private static RadioButtonFlat ckbElac;	
+	private static RadioButtonFlat ckbFcdc;
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private JLabel lblStandard;
 	public static JTextField tfStandard;
@@ -64,7 +69,7 @@ public class Etape1 implements ActionListener {
   		lblDCR1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.ENTRE_DCR.getLabel()));
   		
   		tfDCR1 = new JTextField();
-  		tfDCR1.setColumns(10);
+  		//tfDCR1.setColumns(10);
   		
   		pDcr1.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("10mm"),
@@ -86,11 +91,11 @@ public class Etape1 implements ActionListener {
   		//pCalculateur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_CALCULATEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
   		pCalculateur.setOpaque(false);
   		
-  		ckbSec = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
+  		ckbSec = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
   		ckbSec.setOpaque(false);
-  		ckbElac = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
+  		ckbElac = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
   		ckbElac.setOpaque(false);
-  		ckbFcdc = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
+  		ckbFcdc = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
   		ckbFcdc.setOpaque(false);
 		buttonGroup_1.add(ckbSec);
 		buttonGroup_1.add(ckbElac);

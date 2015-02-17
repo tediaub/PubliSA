@@ -21,7 +21,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
-import view.guiComponents.LabelResize;
+import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.PanButtonFrame;
 
 import java.awt.Font;

@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -14,16 +15,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import etape.Etape1;
 import myJTree.DeliveryTree;
-import view.guiComponents.LabelResize;
-import view.guiComponents.PanTree;
+import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.PanFrame;
 import view.guiComponents.sideBar.PanTransparent;
 import view.guiComponents.sideBar.SideBar;
 import view.guiComponents.sideBar.blue.PanCollapse;
 import view.guiComponents.sideBar.blue.PanExtend;
 import view.guiComponents.sideBar.white.PanExtSettings;
+import view.guiComponents.tree.PanTree;
+import view.step.PanelComputer;
+import view.step.PanelDCR;
 
 public class FrameController{
 
@@ -59,9 +61,7 @@ public class FrameController{
 		createHighFrame(sideBarBlue.getContainerPane());
 		createTree(sideBarBlue.getContainerPane());
 		
-		new Etape1();
-		JPanel etape1 = Etape1.getPanel();
-		sideBarBlue.getContainerPane().add(etape1, BorderLayout.CENTER);
+		createStep1(sideBarBlue.getContainerPane());
 		
 		frame.setVisible(true);
 	}
@@ -92,6 +92,19 @@ public class FrameController{
 		pTransBlue = new PanTransparent(this);
 		sideBarBlue = new SideBar(SideBar.LEFTtoRIGHT, 50, 200, pExtBlue, pCollBlue, pTransBlue);
 		container.add(sideBarBlue);
+	}
+	
+	public void createStep1(Container container){
+		JPanel panStep1 = new JPanel();
+		panStep1.setOpaque(false);
+		panStep1.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		PanelDCR pDCR = new PanelDCR();
+		PanelComputer pComputer= new PanelComputer();
+		panStep1.add(pDCR);
+		panStep1.add(pComputer);
+		
+		container.add(panStep1, BorderLayout.CENTER);
 	}
 	
 	public void extSideBarWhite(){

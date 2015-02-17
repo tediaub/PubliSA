@@ -23,6 +23,10 @@ import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.awt.Font;
 
+import javax.swing.JList;
+
+import view.guiComponents.list.ListSelecteable;
+
 @SuppressWarnings("serial")
 public class PanExtend extends JPanel implements ActionListener, MouseMotionListener {
 
@@ -37,6 +41,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 	private JPanel pButtonUp;
 	private JButton btnSave;
 	private JButton btnNew;
+	private ListSelecteable list;
 	
 	/**
 	 * Create the panel.
@@ -94,6 +99,9 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnNew.setContentAreaFilled(false);
 		pButtonUp.add(btnNew);
 		add(btnExtend, "2, 2, default, center");
+		
+		list = new ListSelecteable();
+		add(list, "1, 4, fill, fill");
 		
 		pButtonDown = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pButtonDown.getLayout();
