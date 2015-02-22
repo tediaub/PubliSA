@@ -9,13 +9,10 @@ import javax.swing.border.*;
 
 import langue.GestLangue;
 import langue.IHM;
-
+import model.Delivery;
+import model.User;
 import outils.CreationMail;
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
-
 import XML.XML;
-
 import affichage.DialNouveau;
 import affichage.FenetrePrincipale;
 
@@ -218,23 +215,23 @@ public class Etape3 implements ActionListener {
 	
 	public static void miseAjour(){
 		
-		tfDCR3.setText(Livraison.getDCR());
-		tfStandard.setText(Livraison.getStandard());
+		tfDCR3.setText(Delivery.getDCR());
+		tfStandard.setText(Delivery.getStandard());
 
-		if(Livraison.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()))){
+		if(Delivery.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()))){
 			ckbElac.setSelected(true);
 		}
-		else if(Livraison.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()))){
+		else if(Delivery.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()))){
 			ckbSec.setSelected(true);
 		}
-		else if(Livraison.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()))){
+		else if(Delivery.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()))){
 			ckbFcdc.setSelected(true);
 		}
 		
-		if(Livraison.getCible().contentEquals("Ubik")){
+		if(Delivery.getCible().contentEquals("Ubik")){
 			textInfo.setText(GestLangue.getInstance().getLocalizedText(IHM.A_JOINDRE_UBIK.getLabel()));
 		}
-		else if(Livraison.getCible().contentEquals("Thales")){
+		else if(Delivery.getCible().contentEquals("Thales")){
 			textInfo.setText(GestLangue.getInstance().getLocalizedText(IHM.A_JOINDRE_THALES.getLabel()));
 		}
 		
@@ -246,21 +243,21 @@ public class Etape3 implements ActionListener {
 	
 	public static void enregistre(){
 		
-		Livraison.setDCR(tfDCR3.getText());
+		Delivery.setDCR(tfDCR3.getText());
 		
 		if (ckbSec.isSelected()){
-			Livraison.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
+			Delivery.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
 		}
 		else if (ckbElac.isSelected()){
-			Livraison.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
+			Delivery.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
 		}
 		else if (ckbFcdc.isSelected()){
-			Livraison.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
+			Delivery.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
 		}
 		
-		Livraison.setStandard(tfStandard.getText());
+		Delivery.setStandard(tfStandard.getText());
 		
-	    Livraison.enregistreLiv();
+	    Delivery.enregistreLiv();
 	}
 
 	/**
@@ -272,21 +269,21 @@ public class Etape3 implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btCreation){
 			new CreationMail();
-			if(Livraison.getCible().contentEquals("Ubik")){
+			if(Delivery.getCible().contentEquals("Ubik")){
 				CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 		        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE4);
 	
-		        Livraison.setEtape(4);
+		        Delivery.setEtape(4);
 		        Etape4.miseAjour();
 		        FenetrePrincipale.getInstance().repaint();
 		        Etape3.enregistre();
 			}
-			else if(Livraison.getCible().contentEquals("Thales")){
+			else if(Delivery.getCible().contentEquals("Thales")){
 				
 				Etape3.enregistre();
 				
-				if(Utilisateur.getGestLiv()){
-					XML.supprLiv(Utilisateur.getNom(), "L" + Livraison.getNom());
+				if(User.getGestLiv()){
+					XML.supprLiv(User.getNom(), "L" + Delivery.getNom());
 				}
 				new DialNouveau();
 			}

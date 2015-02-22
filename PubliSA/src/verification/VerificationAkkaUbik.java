@@ -5,13 +5,12 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import model.Delivery;
 import sauvergarde_chargement.ChargementFichier;
 import sauvergarde_chargement.Filtre_OGC;
-import utilisateur.Livraison;
 
 
-import myJTable.TableEtape2;
-
+import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
 import fichierPubliSA.FichierOGC;
 import fichierPubliSA.FichierPDF;
@@ -61,7 +60,7 @@ public class VerificationAkkaUbik {
 			return;
 		}	
 		
-		adresseOGC = new ChargementFichier("Ouvrir").ChargementFich(Livraison.getOGC(), new Filtre_OGC());
+		adresseOGC = new ChargementFichier("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGC());
 		if(adresseOGC == null){return;}
 		OGC = new FichierOGC(adresseOGC);
 		OGC = new FichierOGC(OGC.changeExt());
@@ -76,7 +75,7 @@ public class VerificationAkkaUbik {
 		
 		for(int i=0; i<tabDCR.length;i++){
 			listePlancheOGC.add(tabDCR[i]);
-			listePlancheOGC.addAll(OGC.extractPlancheOGC(tabDCR[i], Livraison.getCible()));
+			listePlancheOGC.addAll(OGC.extractPlancheOGC(tabDCR[i], Delivery.getCible()));
 		}
 		
 		this.verificationPrincipale();

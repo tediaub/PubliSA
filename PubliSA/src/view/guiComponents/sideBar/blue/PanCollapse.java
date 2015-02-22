@@ -8,6 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import org.apache.batik.swing.JSVGCanvas;
+
+import view.guiComponents.svg.DocSVG;
+
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -23,6 +27,8 @@ public class PanCollapse extends JPanel implements ActionListener {
 	private FrameController controller;
 
 	private JButton btnSettings;
+
+	private JSVGCanvas pAriane;
 	/**
 	 * Create the panel.
 	 */
@@ -33,12 +39,18 @@ public class PanCollapse extends JPanel implements ActionListener {
 			new RowSpec[] {
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("25px"),
 				RowSpec.decode("default:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				RowSpec.decode("35px"),}));
 		setBackground(new Color(0, 119, 175));
+		
+		pAriane = new JSVGCanvas();
+		pAriane.setDoubleBufferedRendering(true);
+		pAriane.setDocument(new DocSVG().getDoc());
+		pAriane.setBackground(new Color(0, 119, 175));
+		add(pAriane, "1, 4, fill, fill");
 		
 		btnCollapse = new JButton();
 		btnCollapse.setContentAreaFilled(false);

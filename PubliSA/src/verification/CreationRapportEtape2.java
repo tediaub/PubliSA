@@ -7,13 +7,10 @@ import java.util.Date;
 
 import langue.GestLangue;
 import langue.IHM;
-import myJTable.TableEtape2;
-
 import etape.Etape2;
-
 import sauvergarde_chargement.Filtre_XLS;
 import sauvergarde_chargement.SauvegardeRapport;
-
+import view.guiComponents.table.TableEtape2;
 import jxl.Workbook;
 import jxl.format.Alignment;
 import jxl.format.Border;

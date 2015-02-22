@@ -23,13 +23,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.border.TitledBorder;
 
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
-
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
+import model.User;
 import myJTree.AffichageTree;
-
 import XML.XML;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -196,7 +194,7 @@ public class DialNouveau extends JDialog implements ActionListener {
 			}
 			
 			//Création d'une nouvelle livraison
-			XML.newLivraison(Utilisateur.getNom(), nomLiv);
+			XML.newLivraison(User.getNom(), nomLiv);
 			
 			try {
 				XML.enregistreFichier();
@@ -204,17 +202,17 @@ public class DialNouveau extends JDialog implements ActionListener {
 				e1.printStackTrace();
 			}
 			
-			XML.setEtapeLiv(Utilisateur.getNom(), "L" + nomLiv, "1");
-			XML.setNomLiv(Utilisateur.getNom(), "L" + nomLiv, tfLivraison.getText());
+			XML.setEtapeLiv(User.getNom(), "L" + nomLiv, "1");
+			XML.setNomLiv(User.getNom(), "L" + nomLiv, tfLivraison.getText());
 			
 			if(rbLivThales.isSelected()){
-				XML.setCibleLiv(Utilisateur.getNom(), "L" + nomLiv, "Thales");
+				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Thales");
 			}
 			else if(rbLivUbik.isSelected()){
-				XML.setCibleLiv(Utilisateur.getNom(), "L" + nomLiv, "Ubik");
+				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Ubik");
 			}
 			
-			new Livraison(Utilisateur.getNom(), nomLiv);
+			new Delivery(User.getNom(), nomLiv);
 			
 			try {
 				XML.enregistreFichier();
@@ -223,7 +221,7 @@ public class DialNouveau extends JDialog implements ActionListener {
 			}
 			
 			//Mise à jour de l'interface graphique
-			FenetrePrincipale.lblNom.setText(Utilisateur.getNom() + "  |  " + Livraison.getNom());
+			FenetrePrincipale.lblNom.setText(User.getNom() + "  |  " + Delivery.getNom());
 			
 			CardLayout cl2 = (CardLayout) FenetrePrincipale.getCards().getLayout();
 			cl2.show(FenetrePrincipale.getCards(), FenetrePrincipale.OTHERS);

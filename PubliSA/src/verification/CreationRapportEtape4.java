@@ -5,13 +5,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import myJTable.TableEtape4;
-
 import etape.Etape4;
-
 import sauvergarde_chargement.Filtre_XLS;
 import sauvergarde_chargement.SauvegardeRapport;
-
+import view.guiComponents.table.TableEtape4;
 import jxl.Workbook;
 import jxl.format.Alignment;
 import jxl.format.Border;

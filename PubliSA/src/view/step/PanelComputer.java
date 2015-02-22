@@ -1,21 +1,19 @@
 package view.step;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 import langue.GestLangue;
 import langue.IHM;
 import view.guiComponents.RadioButtonFlat;
+import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -23,15 +21,14 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import javax.swing.JRadioButton;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-
+@SuppressWarnings("serial")
 public class PanelComputer extends JPanel {
+	
 	private RadioButtonFlat ckbSec;
 	private RadioButtonFlat ckbElac;
 	private RadioButtonFlat ckbFcdc;
-	private ButtonGroup buttonGroup_1;
+	
+	private ButtonGroup groupComputer;
 	private TextFieldFlat textField;
 
 	public PanelComputer() {
@@ -40,57 +37,41 @@ public class PanelComputer extends JPanel {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("10dlu"),
 				ColumnSpec.decode("25px"),
-				ColumnSpec.decode("default:grow"),
-				ColumnSpec.decode("default:grow"),
-				ColumnSpec.decode("default:grow"),
+				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("4dlu:grow"),
+				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("4dlu:grow"),
+				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("7dlu:grow"),
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.UNRELATED_GAP_COLSPEC,
+				ColumnSpec.decode("default:grow(3)"),
 				ColumnSpec.decode("25px"),},
 			new RowSpec[] {
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.NARROW_LINE_GAP_ROWSPEC,
 				RowSpec.decode("2px"),
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.UNRELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblNewLabel = new JLabel("DCR");
-		lblNewLabel.setFont(new Font("Sans", Font.PLAIN, 18));
+		JLabel lblNewLabel = new JLabel("Calculateur");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblNewLabel.setForeground(new Color(0, 119, 175));
-		add(lblNewLabel, "2, 2, 2, 1");
+		add(lblNewLabel, "2, 2, 3, 1");
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 119, 175));
-		add(panel, "2, 4, 5, 1, fill, fill");
+		SeparatorFlat separatorB = new SeparatorFlat();
+		add(separatorB, "2, 4, 11, 1, fill, fill");
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 13));
 		add(lblNewLabel_1, "3, 6");
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblNewLabel_2 = new JLabel("Standard :");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.PLAIN, 13));
-		add(lblNewLabel_2, "5, 6");
-		
-		RadioButtonFlat rdbtnNewRadioButton = new RadioButtonFlat("New radio button");
-		add(rdbtnNewRadioButton, "3, 8");
-		
-		JSeparator separator = new JSeparator();
-		separator.setForeground(Color.RED);
-		separator.setOrientation(SwingConstants.VERTICAL);
-		add(separator, "4, 6, 1, 7, center, default");
-		
-		RadioButtonFlat rdbtnNewRadioButton_1 = new RadioButtonFlat("New radio button");
-		add(rdbtnNewRadioButton_1, "3, 10");
-		
-		
-		
-		RadioButtonFlat rdbtnNewRadioButton_2 = new RadioButtonFlat("New radio button");
-		add(rdbtnNewRadioButton_2, "3, 12");
-		
+		add(lblNewLabel_2, "11, 6");		
 		
 		ckbSec = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
   		ckbSec.setOpaque(false);
@@ -98,12 +79,21 @@ public class PanelComputer extends JPanel {
   		ckbElac.setOpaque(false);
   		ckbFcdc = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
   		ckbFcdc.setOpaque(false);
-  		buttonGroup_1 = new ButtonGroup();
-		buttonGroup_1.add(ckbSec);
-		buttonGroup_1.add(ckbElac);
-		buttonGroup_1.add(ckbFcdc);
+  		
+  		groupComputer = new ButtonGroup();
+  		groupComputer.add(ckbSec);
+  		groupComputer.add(ckbElac);
+  		groupComputer.add(ckbFcdc);
+		
+		add(ckbSec, "3, 8");
+		add(ckbElac, "5, 8");
+		add(ckbFcdc, "7, 8");
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		add(separator, "9, 6, 1, 3");
 		
 		textField = new TextFieldFlat();
-		add(textField, "5, 8, 1, 3, fill, center");
+		add(textField, "11, 8, fill, center");
 	}
 }

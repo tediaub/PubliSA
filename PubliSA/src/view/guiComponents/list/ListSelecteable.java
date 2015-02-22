@@ -17,7 +17,7 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 	 */
 	public ListSelecteable() {
 		AbstractListModel<String> abs = new AbstractListModel<String>() {
-			String[] values = new String[] {"jaune", "noir"};
+			String[] values = new String[] {"Step 1", "Step 2", "Step3", "Step 4"};
 			public int getSize() {
 				return values.length;
 			}
@@ -26,13 +26,12 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 			}
 		};
 		
+		setFocusable(false);
+		setFixedCellHeight(50);
+		setSelectionForeground(Color.WHITE);
 		setSelectionBackground(new Color(0, 63, 113));
-		setBounds(10, 6, 84, 254);
 		setBackground(null);
 		setForeground(Color.WHITE);
-		setVerifyInputWhenFocusTarget(false);
-		setFocusTraversalKeysEnabled(false);
-		setFocusable(false);
 		setOpaque(false);
 		setBorder(null);
 		addListSelectionListener(this);

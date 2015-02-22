@@ -1,4 +1,4 @@
-package myJTable;
+package view.guiComponents.table;
 
 import java.awt.Color;
 

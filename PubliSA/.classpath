@@ -9,5 +9,11 @@
 	<classpathentry kind="lib" path="jdom.jar"/>
 	<classpathentry kind="lib" path="jxl.jar"/>
 	<classpathentry kind="lib" path="miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="D:/Travail/PubliSA/V4/code/batik-1.7/batik-1.7/batik.jar"/>
+	<classpathentry kind="lib" path="D:/Travail/PubliSA/V4/code/batik-1.7/batik-1.7/batik-rasterizer.jar"/>
+	<classpathentry kind="lib" path="D:/Travail/PubliSA/V4/code/batik-1.7/batik-1.7/batik-slideshow.jar"/>
+	<classpathentry kind="lib" path="D:/Travail/PubliSA/V4/code/batik-1.7/batik-1.7/batik-squiggle.jar"/>
+	<classpathentry kind="lib" path="D:/Travail/PubliSA/V4/code/batik-1.7/batik-1.7/batik-svgpp.jar"/>
+	<classpathentry kind="lib" path="D:/Travail/PubliSA/V4/code/batik-1.7/batik-1.7/batik-ttf2svg.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

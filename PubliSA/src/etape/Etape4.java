@@ -8,18 +8,16 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import jxl.write.WriteException;
-
 import sauvergarde_chargement.*;
 import utilisateur.*;
 import verification.CreationRapportEtape4;
 import verification.VerificationUbikUbik;
-
+import view.guiComponents.table.TableEtape4;
 import langue.GestLangue;
 import langue.IHM;
-import myJTable.TableEtape4;
-
+import model.Delivery;
+import model.User;
 import XML.XML;
-
 import affichage.DialNouveau;
 import affichage.FenetrePrincipale;
 
@@ -217,7 +215,7 @@ public class Etape4 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btOGC){
-			lblPathOGC.setText(new ChargementFichier("Ouvrir").ChargementFich(Livraison.getOGC(), new Filtre_OGCtxt()));
+			lblPathOGC.setText(new ChargementFichier("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGCtxt()));
 		}
 		if (e.getSource() == btCSV){
 			lblPathCSV.setText(new ChargementFichier("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 
@@ -232,8 +230,8 @@ public class Etape4 implements ActionListener {
 			else return;
 		}
 		if (e.getSource() == btEtape4){ 
-			if(XML.getGestLiv(Utilisateur.getNom())){
-				 XML.supprLiv(Utilisateur.getNom(), "L" + Livraison.getNom());
+			if(XML.getGestLiv(User.getNom())){
+				 XML.supprLiv(User.getNom(), "L" + Delivery.getNom());
 			}
 			try {
 				XML.enregistreFichier();

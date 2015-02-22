@@ -6,13 +6,11 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
-import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import myJTree.DeliveryTree;
@@ -24,8 +22,8 @@ import view.guiComponents.sideBar.blue.PanCollapse;
 import view.guiComponents.sideBar.blue.PanExtend;
 import view.guiComponents.sideBar.white.PanExtSettings;
 import view.guiComponents.tree.PanTree;
-import view.step.PanelComputer;
-import view.step.PanelDCR;
+import view.step.PanelStep1;
+import view.step.PanelStep2;
 
 public class FrameController{
 
@@ -46,7 +44,7 @@ public class FrameController{
 	private PanFrame pFrame;
 
 	public void createFrame(){
-		frame = new JFrame();
+		frame = new JFrame("PubliSA");
 		frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FrameController.class.getResource("/logo/logoPubliSA4.png")));
 		frame.setUndecorated(true);
@@ -61,7 +59,7 @@ public class FrameController{
 		createHighFrame(sideBarBlue.getContainerPane());
 		createTree(sideBarBlue.getContainerPane());
 		
-		createStep1(sideBarBlue.getContainerPane());
+		createStep2(sideBarBlue.getContainerPane());
 		
 		frame.setVisible(true);
 	}
@@ -95,16 +93,15 @@ public class FrameController{
 	}
 	
 	public void createStep1(Container container){
-		JPanel panStep1 = new JPanel();
-		panStep1.setOpaque(false);
-		panStep1.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		PanelDCR pDCR = new PanelDCR();
-		PanelComputer pComputer= new PanelComputer();
-		panStep1.add(pDCR);
-		panStep1.add(pComputer);
-		
+		PanelStep1 panStep1 = new PanelStep1();
+			
 		container.add(panStep1, BorderLayout.CENTER);
+	}
+	
+	public void createStep2(Container container){
+		PanelStep2 panStep2 = new PanelStep2();
+			
+		container.add(panStep2, BorderLayout.CENTER);
 	}
 	
 	public void extSideBarWhite(){

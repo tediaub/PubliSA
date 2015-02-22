@@ -11,12 +11,12 @@ import outils.Lanceur;
 import outils.SupprEntete;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
 import verification.CreationRapportEtape2;
 import verification.CreationRapportEtape4;
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
+import model.User;
 import myJTree.AffichageTree;
 import XML.XML;
 import autre.Langue;
@@ -413,8 +413,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		if (e.getSource() == enregistrer){
 			try {
 				XML.enregistreFichier();
-				Utilisateur.refresh();
-				Livraison.refresh();
+				User.refresh();
+				Delivery.refresh();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -454,14 +454,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		
 		//Menu "Créer Compte rendu"
 		if (e.getSource() == compteRendu){
-			if(Livraison.getEtape() == 2){
+			if(Delivery.getEtape() == 2){
 				try {
 					new CreationRapportEtape2();
 				} catch (WriteException e1) {
 					e1.printStackTrace();
 				}
 			}
-			else if(Livraison.getEtape() == 4){
+			else if(Delivery.getEtape() == 4){
 				try {
 					new CreationRapportEtape4();
 				} catch (WriteException e1) {
@@ -477,12 +477,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		
 		//Menu "Formulaire EYDT"
 		if (e.getSource() == launchFichDOC){
-			new Lanceur(Utilisateur.getDoc());
+			new Lanceur(User.getDoc());
 		}
 		
 		//Menu "EXE FileCheck"
 		if (e.getSource() == launchFichEXE){
-			new Lanceur(Utilisateur.getExe());
+			new Lanceur(User.getExe());
 		}
 		
 		//Menu "Tutoriel"

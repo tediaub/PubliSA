@@ -1,6 +1,9 @@
 package view.guiComponents.sideBar.blue;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -9,6 +12,12 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import org.apache.batik.swing.JSVGCanvas;
+
+import view.guiComponents.list.ListSelecteable;
+import view.guiComponents.svg.DocSVG;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -16,16 +25,6 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.FrameController;
-
-import javax.swing.SwingConstants;
-
-import java.awt.FlowLayout;
-import java.awt.Insets;
-import java.awt.Font;
-
-import javax.swing.JList;
-
-import view.guiComponents.list.ListSelecteable;
 
 @SuppressWarnings("serial")
 public class PanExtend extends JPanel implements ActionListener, MouseMotionListener {
@@ -42,6 +41,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 	private JButton btnSave;
 	private JButton btnNew;
 	private ListSelecteable list;
+	private JSVGCanvas pAriane;
 	
 	/**
 	 * Create the panel.
@@ -57,7 +57,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("25px"),
 				RowSpec.decode("default:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
@@ -102,6 +102,11 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		
 		list = new ListSelecteable();
 		add(list, "1, 4, fill, fill");
+		
+		pAriane = new JSVGCanvas();
+		pAriane.setDocument(new DocSVG().getDoc());
+		pAriane.setBackground(new Color(0, 119, 175));
+		add(pAriane, "2, 4, fill, fill");
 		
 		pButtonDown = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pButtonDown.getLayout();

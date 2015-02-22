@@ -308,7 +308,7 @@ public class XML{
 		return racine.getChild(UTI).getChild(Liv).getChild("AdresseOGC").getText();
 	}
 	
-	public static boolean getGestLiv(String UTI){
+	public static boolean getDeleteDeleveryFinish(String UTI){
 		String texte = racine.getChild(UTI).getChild("GestLiv").getText();
 		return texte.contentEquals("True");
 	}

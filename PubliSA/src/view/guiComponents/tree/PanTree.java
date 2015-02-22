@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 
+import view.guiComponents.ScrollBarFlatUI;
 import view.guiComponents.frame.LabelResize;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -19,7 +20,7 @@ public class PanTree extends JPanel {
 	 * Create the panel.
 	 */
 	public PanTree(JTree tree, LabelResize lblResize) {
-		setBackground(new Color(230, 230, 230));
+		setBackground(new Color(240, 240, 240));
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("20px"),
 				ColumnSpec.decode("180px:grow"),
@@ -30,6 +31,8 @@ public class PanTree extends JPanel {
 				RowSpec.decode("20px"),}));
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarFlatUI());
+		scrollPane.getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setBorder(null);
@@ -37,6 +40,6 @@ public class PanTree extends JPanel {
 		scrollPane.setViewportView(tree);
 		
 		add(scrollPane, "2, 2, fill, fill");
-		add(lblResize, "3, 3");
+		add(lblResize, "3, 1, 1, 3, right, bottom");
 	}
 }
