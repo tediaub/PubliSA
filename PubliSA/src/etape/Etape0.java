@@ -19,18 +19,17 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import org.jdom.Element;
-
-import tutoriel.Tutoriel;
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
 
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
+import model.User;
 import myJTree.AffichageTree;
 
-import XML.XML;
+import org.jdom.Element;
 
+import tutoriel.Tutoriel;
+import XML.XML;
 import affichage.FenetrePrincipale;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -372,14 +371,14 @@ public class Etape0 implements ActionListener {
 				return;
 			}
 			//
-			new Utilisateur(cbUtilisateur.getSelectedItem().toString());
-			new Livraison(Utilisateur.getNom(), cbLivraison.getSelectedItem().toString());
-			FenetrePrincipale.lblNom.setText(Utilisateur.getNom() + "  |  " + Livraison.getNom());
+			new User(cbUtilisateur.getSelectedItem().toString());
+			new Delivery(User.getNom(), cbLivraison.getSelectedItem().toString());
+			FenetrePrincipale.lblNom.setText(User.getNom() + "  |  " + Delivery.getNom());
 			
 			CardLayout cl2 = (CardLayout) FenetrePrincipale.getCards().getLayout();
 			cl2.show(FenetrePrincipale.getCards(), FenetrePrincipale.OTHERS);
 			CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
-			switch (Livraison.getEtape())
+			switch (Delivery.getEtape())
 			{
 			case 1:
 				cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE1);
@@ -468,8 +467,8 @@ public class Etape0 implements ActionListener {
 			}
 			
 			//Gestions utilisateur, livraison et XML
-			new Utilisateur(cbUtilisateur.getSelectedItem().toString());
-			XML.newLivraison(Utilisateur.getNom(), nomLiv);
+			new User(cbUtilisateur.getSelectedItem().toString());
+			XML.newLivraison(User.getNom(), nomLiv);
 			
 			try {
 				XML.enregistreFichier();
@@ -477,18 +476,18 @@ public class Etape0 implements ActionListener {
 				e1.printStackTrace();
 			}
 			
-			XML.setEtapeLiv(Utilisateur.getNom(), "L" + nomLiv, "1");
-			XML.setNomLiv(Utilisateur.getNom(), "L" + nomLiv, tfLivraison.getText());
+			XML.setEtapeLiv(User.getNom(), "L" + nomLiv, "1");
+			XML.setNomLiv(User.getNom(), "L" + nomLiv, tfLivraison.getText());
 			
 			if(rbLivThales.isSelected()){
-				XML.setCibleLiv(Utilisateur.getNom(), "L" + nomLiv, "Thales");
+				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Thales");
 			}
 			else if(rbLivUbik.isSelected()){
-				XML.setCibleLiv(Utilisateur.getNom(), "L" + nomLiv, "Ubik");
+				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Ubik");
 			}
 			
-			new Livraison(Utilisateur.getNom(), nomLiv);
-			FenetrePrincipale.lblNom.setText(Utilisateur.getNom() + "  |  " + Livraison.getNom());
+			new Delivery(User.getNom(), nomLiv);
+			FenetrePrincipale.lblNom.setText(User.getNom() + "  |  " + Delivery.getNom());
 			
 			CardLayout cl2 = (CardLayout) FenetrePrincipale.getCards().getLayout();
 			cl2.show(FenetrePrincipale.getCards(), FenetrePrincipale.OTHERS);

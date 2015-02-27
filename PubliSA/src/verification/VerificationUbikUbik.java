@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import myJTable.TableEtape4;
-
+import view.guiComponents.table.TableEtape4;
 import etape.Etape4;
 import fichierPubliSA.FichierCSV;
 import fichierPubliSA.FichierOGC;

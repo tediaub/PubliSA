@@ -1,10 +1,18 @@
 package outils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 import javax.swing.JOptionPane;
 
-import utilisateur.Livraison;
+import model.Delivery;
 
 
 public class SupprEntete {
@@ -34,7 +42,7 @@ public class SupprEntete {
 		}
 		File f = new File(OGC);
 		JOptionPane.showMessageDialog(null, "Suppression des entêtes terminée.\nLes fichiers modifiés ont été placés dans le dossier :\n" 
-				+ f.getParentFile().getPath() + File.separator + Livraison.getNom() + "."  , "PubliSA", JOptionPane.INFORMATION_MESSAGE);
+				+ f.getParentFile().getPath() + File.separator + Delivery.getNom() + "."  , "PubliSA", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void supprEntete(File fichier, String recherche){
@@ -43,7 +51,7 @@ public class SupprEntete {
 			InputStreamReader ipsr = new InputStreamReader(ips);
 			BufferedReader br = new BufferedReader(ipsr);
 			
-			File repertoire = new File(fichier.getParentFile().getPath() + File.separator + Livraison.getNom());
+			File repertoire = new File(fichier.getParentFile().getPath() + File.separator + Delivery.getNom());
 			
 			if(!repertoire.exists()){repertoire.mkdir();}
 			
@@ -52,7 +60,7 @@ public class SupprEntete {
 			int j = nomFichier.lastIndexOf('.');
 			nomFichier = nomFichier.substring(0, j + 4);
 
-			OutputStream ops = new FileOutputStream(new File(fichier.getParentFile().getPath() + File.separator + Livraison.getNom() + File.separator + nomFichier+ ".txt")); 
+			OutputStream ops = new FileOutputStream(new File(fichier.getParentFile().getPath() + File.separator + Delivery.getNom() + File.separator + nomFichier+ ".txt")); 
 			OutputStreamWriter opsr = new OutputStreamWriter(ops);
 			BufferedWriter bw = new BufferedWriter(opsr);
 			

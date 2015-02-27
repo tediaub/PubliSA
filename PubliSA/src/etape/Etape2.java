@@ -1,29 +1,34 @@
 package etape;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 import jxl.write.WriteException;
-
-import outils.Lanceur;
-import outils.SupprEntete;
-
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
-import verification.CreationRapportEtape2;
-import verification.VerificationAkkaUbik;
-import verification.VerificationAkkaThales;
-
 import langue.GestLangue;
 import langue.IHM;
-import myJTable.TableEtape2;
-
-
+import model.Delivery;
+import model.User;
+import outils.Lanceur;
+import outils.SupprEntete;
+import verification.CreationRapportEtape2;
+import verification.VerificationAkkaThales;
+import verification.VerificationAkkaUbik;
+import view.guiComponents.table.TableEtape2;
 import affichage.FenetrePrincipale;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -293,16 +298,16 @@ public class Etape2 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btDOC_EXE){
-			if(Utilisateur.getExe().isEmpty() && Livraison.getCible().contentEquals("Thales")){
+			if(User.getExe().isEmpty() && Delivery.getCible().contentEquals("Thales")){
 				JOptionPane.showMessageDialog(null, GestLangue.getInstance().getLocalizedText(IHM.MES_DOC.getLabel()), GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()), JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
-			if(Utilisateur.getDoc().isEmpty() && Livraison.getCible().contentEquals("Ubik")){
+			if(User.getDoc().isEmpty() && Delivery.getCible().contentEquals("Ubik")){
 				JOptionPane.showMessageDialog(null, GestLangue.getInstance().getLocalizedText(IHM.MES_DOC.getLabel()), GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()), JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
 			
-			if(Livraison.getCible().contentEquals("Ubik")){
+			if(Delivery.getCible().contentEquals("Ubik")){
 				if(next1){
 					btEtape2.setEnabled(true);
 				}
@@ -311,15 +316,15 @@ public class Etape2 implements ActionListener {
 			else{
 				btEtape2.setEnabled(true);
 			}
-			if(Livraison.getCible().contentEquals("Ubik")){
-				new Lanceur(Utilisateur.getDoc());
+			if(Delivery.getCible().contentEquals("Ubik")){
+				new Lanceur(User.getDoc());
 			}
-			else if(Livraison.getCible().contentEquals("Thales")){
-				new Lanceur(Utilisateur.getExe());
+			else if(Delivery.getCible().contentEquals("Thales")){
+				new Lanceur(User.getExe());
 			}
 		}
 		if (e.getSource() == btsupprEntete){
-			if(Livraison.getCible().contentEquals("Ubik")){
+			if(Delivery.getCible().contentEquals("Ubik")){
 				if(next2){
 					btEtape2.setEnabled(true);
 				}
@@ -340,11 +345,11 @@ public class Etape2 implements ActionListener {
 			miseAjour();
 			String path = null;
 			
-			if(Livraison.getCible().contentEquals("Ubik")){
+			if(Delivery.getCible().contentEquals("Ubik")){
 				new VerificationAkkaUbik();
 				if(VerificationAkkaUbik.isFini()){
 					adresseOGC = VerificationAkkaUbik.adresseOGC;
-					Livraison.enregistreLiv();
+					Delivery.enregistreLiv();
 					
 					FenetrePrincipale.launchFichDOC.setEnabled(true);
 					btDOC_EXE.setEnabled(true);
@@ -356,11 +361,11 @@ public class Etape2 implements ActionListener {
 				}
 				else return;
 			}
-			else if(Livraison.getCible().contentEquals("Thales")){
+			else if(Delivery.getCible().contentEquals("Thales")){
 				new VerificationAkkaThales();
 				
 				if(VerificationAkkaThales.isFini()){
-					Livraison.enregistreLiv();
+					Delivery.enregistreLiv();
 				
 					FenetrePrincipale.launchFichEXE.setEnabled(true);
 					btDOC_EXE.setEnabled(true);
@@ -372,7 +377,7 @@ public class Etape2 implements ActionListener {
 			}
 			try {
 				JOptionPane.showMessageDialog(null, GestLangue.getInstance().getLocalizedText(IHM.MES_VERIF_OK.getLabel()) 
-						+ path + File.separator+ Livraison.getNom() + "."  , GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()), JOptionPane.INFORMATION_MESSAGE);
+						+ path + File.separator+ Delivery.getNom() + "."  , GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()), JOptionPane.INFORMATION_MESSAGE);
 			} catch (HeadlessException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -383,7 +388,7 @@ public class Etape2 implements ActionListener {
 			CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 	        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE3);
 
-	        Livraison.setEtape(3);
+	        Delivery.setEtape(3);
 	        Etape2.enregistre();
 	        Etape3.miseAjour();
 	        FenetrePrincipale.getInstance().repaint();
@@ -395,7 +400,7 @@ public class Etape2 implements ActionListener {
 	 */
 	public static void miseAjour(){
 		
-		tfDCR2.setText(Livraison.getDCR());
+		tfDCR2.setText(Delivery.getDCR());
 		TableEtape2.removeJTable();
 		
 		btEtape2.setEnabled(false);
@@ -405,7 +410,7 @@ public class Etape2 implements ActionListener {
 		next1 = false;
 		next2 = false;
 		
-		if(Livraison.getCible().contentEquals("Thales")){
+		if(Delivery.getCible().contentEquals("Thales")){
 			btsupprEntete.setVisible(false);
 			btDOC_EXE.setText("Exécutable FileCheck MD5");
 			panel.remove(btDOC_EXE);
@@ -414,7 +419,7 @@ public class Etape2 implements ActionListener {
 			lblNombreDeFichiersSom.setText(GestLangue.getInstance().getLocalizedText(IHM.NB_ASC_SCH.getLabel()));
 			lblNombreDeFichiersDos.setText(GestLangue.getInstance().getLocalizedText(IHM.NB_ASC_SCH_SOURCE.getLabel()));
 		}
-		else if(Livraison.getCible().contentEquals("Ubik")){
+		else if(Delivery.getCible().contentEquals("Ubik")){
 			btsupprEntete.setVisible(true);
 			btDOC_EXE.setText("Formulaire EYDT");
 			panel.remove(btDOC_EXE);
@@ -429,9 +434,9 @@ public class Etape2 implements ActionListener {
      * Enregistre les modifications apporté par l'utilisateur à l'etape 2
      */
 	public static void enregistre(){
-		Livraison.setDCR(tfDCR2.getText());
-		Livraison.setOGC(adresseOGC);
-		Livraison.enregistreLiv();
+		Delivery.setDCR(tfDCR2.getText());
+		Delivery.setOGC(adresseOGC);
+		Delivery.enregistreLiv();
 	}
 	
 	/**

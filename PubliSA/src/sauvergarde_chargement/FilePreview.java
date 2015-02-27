@@ -1,13 +1,19 @@
 package sauvergarde_chargement;
 
-import java.io.File; 
-import java.util.*; 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.filechooser.*;
-import java.beans.*;
-import java.text.*;
+import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileSystemView;
 
 @SuppressWarnings("serial")
 public class FilePreview extends JPanel implements PropertyChangeListener{

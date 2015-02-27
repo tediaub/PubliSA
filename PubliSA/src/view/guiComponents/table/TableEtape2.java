@@ -1,9 +1,10 @@
-package myJTable;
+package view.guiComponents.table;
 
 import java.awt.Color;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -30,12 +31,17 @@ public class TableEtape2{
 		table2.setDefaultRenderer(Object.class, new TableCellRenderer());
 		spTable2 = new JScrollPane(table2);
 		spTable2.setBackground(Color.WHITE);
-		
+		spTable2.setBorder(new LineBorder(new Color(211, 211, 211),2));
 		table2.setFillsViewportHeight(true);
 
 		changeSizeColum(table2, 1, 270);
 		changeSizeColum(table2, 2, 270);
 		changeSizeColum(table2, 4, 500);
+		
+		for (int vColIndex = 0; vColIndex < table2.getModel().getColumnCount(); vColIndex++) {
+			TableColumn col = table2.getColumnModel().getColumn(vColIndex);
+			col.setHeaderRenderer(new MyTableHeaderRenderer());
+		}
 	}
 	
 	/**

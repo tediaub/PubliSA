@@ -8,9 +8,8 @@ import java.util.StringTokenizer;
 
 import javax.swing.JOptionPane;
 
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
-
+import model.Delivery;
+import model.User;
 import etape.Etape1;
 import etape.Etape3;
 
@@ -39,7 +38,7 @@ public class CreationMail {
 	 */
 	public CreationMail(){
 		erreur = false;
-		int livraison = Livraison.getEtape();
+		int livraison = Delivery.getEtape();
 		switch(livraison){
 		case 1 : 
 			txDCR = Etape1.getDCR();
@@ -72,29 +71,29 @@ public class CreationMail {
 		
 
 		//récupération des données message
-		switch (Livraison.getEtape()){
+		switch (Delivery.getEtape()){
 		case 1:
-			if(Livraison.getCible().contentEquals("Ubik")){
-				correspondant = Utilisateur.getMesAkkaUbik().get(0);
-				objet = Utilisateur.getMesAkkaUbik().get(1);
-				message = Utilisateur.getMesAkkaUbik().get(2);
+			if(Delivery.getCible().contentEquals("Ubik")){
+				correspondant = User.getMesAkkaUbik().get(0);
+				objet = User.getMesAkkaUbik().get(1);
+				message = User.getMesAkkaUbik().get(2);
 			}
-			else if(Livraison.getCible().contentEquals("Thales")){
-				correspondant = Utilisateur.getMesAkkaThales().get(0);
-				objet = Utilisateur.getMesAkkaThales().get(1);
-				message = Utilisateur.getMesAkkaThales().get(2);
+			else if(Delivery.getCible().contentEquals("Thales")){
+				correspondant = User.getMesAkkaThales().get(0);
+				objet = User.getMesAkkaThales().get(1);
+				message = User.getMesAkkaThales().get(2);
 			}
 			break;
 		case 3:
-			if(Livraison.getCible().contentEquals("Ubik")){
-				correspondant = Utilisateur.getMesSopra().get(0);
-				objet = Utilisateur.getMesSopra().get(1);
-				message = Utilisateur.getMesSopra().get(2);
+			if(Delivery.getCible().contentEquals("Ubik")){
+				correspondant = User.getMesSopra().get(0);
+				objet = User.getMesSopra().get(1);
+				message = User.getMesSopra().get(2);
 			}
-			else if(Livraison.getCible().contentEquals("Thales")){
-				correspondant = Utilisateur.getMesThales().get(0);
-				objet = Utilisateur.getMesThales().get(1);
-				message = Utilisateur.getMesThales().get(2);
+			else if(Delivery.getCible().contentEquals("Thales")){
+				correspondant = User.getMesThales().get(0);
+				objet = User.getMesThales().get(1);
+				message = User.getMesThales().get(2);
 			}
 			break;
 		}

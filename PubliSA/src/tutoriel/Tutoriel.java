@@ -8,9 +8,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import etape.*;
 import affichage.FenReglage;
 import affichage.FenetrePrincipale;
+import etape.Etape0;
+import etape.Etape1;
+import etape.Etape2;
+import etape.Etape3;
+import etape.Etape4;
 
 public class Tutoriel {
 	

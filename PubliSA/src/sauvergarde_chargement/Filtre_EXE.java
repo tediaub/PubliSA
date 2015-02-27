@@ -2,7 +2,6 @@ package sauvergarde_chargement;
 
 import java.io.File;
 
-
 import javax.swing.filechooser.FileFilter;
 
 /**

@@ -1,4 +1,4 @@
-package myJTable;
+package view.guiComponents.table;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -10,8 +10,7 @@ import javax.swing.table.TableModel;
 
 import langue.GestLangue;
 import langue.IHM;
-
-import utilisateur.Livraison;
+import model.Delivery;
 
 	
 @SuppressWarnings("serial")
@@ -22,10 +21,10 @@ public class TableCellRenderer extends DefaultTableCellRenderer {
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column){
 		
-		if(Livraison.getEtape() == 2){
+		if(Delivery.getEtape() == 2){
 			nbCol = 4;
 		}
-		else if(Livraison.getEtape() == 4){
+		else if(Delivery.getEtape() == 4){
 			nbCol = 2;
 		}
 		

@@ -7,18 +7,16 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import XML.XML;
-import affichage.FenetrePrincipale;
-
-import utilisateur.Livraison;
-
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
+import XML.XML;
+import affichage.FenetrePrincipale;
   
 @SuppressWarnings("serial")
 public class FilAriane extends JPanel implements MouseListener{
@@ -69,7 +67,7 @@ public class FilAriane extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g){
 		String cible = "";
 		try{
-			cible = Livraison.getCible();
+			cible = Delivery.getCible();
 		}catch(NullPointerException e){
 			cible = "";
 		}
@@ -194,7 +192,7 @@ public class FilAriane extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		String cible = "";
 		try{
-			cible = Livraison.getCible();
+			cible = Delivery.getCible();
 		}catch(NullPointerException n){
 			cible = "";
 		}
@@ -203,42 +201,42 @@ public class FilAriane extends JPanel implements MouseListener{
 			width = this.getWidth()/4;
 			
 			if(e.getX()> 0 && e.getX()<width-10){
-				if(Livraison.getEtapeMAX() >= 1){
+				if(Delivery.getEtapeMAX() >= 1){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE1);
 			        Etape1.miseAjour();
 					Etape1.getPanel().repaint();
-					Livraison.setEtape(1);
+					Delivery.setEtape(1);
 				}
 			}
 			
 			if(e.getX()> width+15 && e.getX()<2*width-10){
-				if(Livraison.getEtapeMAX() >= 2){
+				if(Delivery.getEtapeMAX() >= 2){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE2);
 			        Etape2.miseAjour();
 					Etape2.getPanel().repaint();
-					Livraison.setEtape(2);
+					Delivery.setEtape(2);
 				}
 			}
 			
 			if(e.getX()> 2*width+15 && e.getX()<3*width-10){
-				if(Livraison.getEtapeMAX() >= 3){
+				if(Delivery.getEtapeMAX() >= 3){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE3);
 			        Etape3.miseAjour();
 					Etape3.getPanel().repaint();
-					Livraison.setEtape(3);
+					Delivery.setEtape(3);
 				}
 			}
 			
 			if(e.getX()> 3*width+15 && e.getX()<4*width){
-				if(Livraison.getEtapeMAX() >= 4){
+				if(Delivery.getEtapeMAX() >= 4){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE4);
 			        Etape4.miseAjour();
 					Etape4.getPanel().repaint();
-					Livraison.setEtape(4);
+					Delivery.setEtape(4);
 				}
 			}
 		}
@@ -246,32 +244,32 @@ public class FilAriane extends JPanel implements MouseListener{
 			width = this.getWidth()/3;
 			
 			if(e.getX()> 0 && e.getX()<width-10){
-				if(Livraison.getEtapeMAX() >= 1){
+				if(Delivery.getEtapeMAX() >= 1){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE1);
 			        Etape1.miseAjour();
 					Etape1.getPanel().repaint();
-					Livraison.setEtape(1);
+					Delivery.setEtape(1);
 				}
 			}
 			
 			if(e.getX()> width+15 && e.getX()<2*width-10){
-				if(Livraison.getEtapeMAX() >= 2){
+				if(Delivery.getEtapeMAX() >= 2){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE2);
 			        Etape2.miseAjour();
 					Etape2.getPanel().repaint();
-					Livraison.setEtape(2);
+					Delivery.setEtape(2);
 				}
 			}
 			
 			if(e.getX()> 2*width+15 && e.getX()<3*width){
-				if(Livraison.getEtapeMAX() >= 3){
+				if(Delivery.getEtapeMAX() >= 3){
 					CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 			        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE3);
 			        Etape3.miseAjour();
 					Etape3.getPanel().repaint();
-					Livraison.setEtape(3);
+					Delivery.setEtape(3);
 				}
 			}
 		}

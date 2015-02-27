@@ -4,8 +4,7 @@ import java.io.File;
 
 import langue.GestLangue;
 import langue.IHM;
-
-import utilisateur.Livraison;
+import model.Delivery;
 
 
 /**
@@ -234,9 +233,9 @@ public class FichierASC extends File{
 	public void isPresent(){
 		isPresent = true;
 		
-		File repertoire = new File(this.getParentFile().getPath() + File.separator + Livraison.getNom());
+		File repertoire = new File(this.getParentFile().getPath() + File.separator + Delivery.getNom());
 		if(!repertoire.exists()){repertoire.mkdir();}
-		renameTo(new File(this.getParentFile().getPath() + File.separator + Livraison.getNom() + File.separator + this.getName()));
+		renameTo(new File(this.getParentFile().getPath() + File.separator + Delivery.getNom() + File.separator + this.getName()));
 	}
 	
 	/**

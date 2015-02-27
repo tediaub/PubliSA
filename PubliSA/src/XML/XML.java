@@ -1,43 +1,39 @@
 package XML;
 
 import java.awt.Color;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import org.jdom.*;
+import org.jdom.Attribute;
+import org.jdom.Element;
 import org.jdom.filter.Filter;
-import org.jdom.input.*;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
-
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
-
-import javax.swing.JOptionPane;
 
 public class XML{
 	   
 	static org.jdom.Document document;
 	static Element racine;
 	
-	final static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
+	static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
 	  
 	public XML()
 	{
-	    //On crée une instance de SAXBuilder
-	    SAXBuilder sxb = new SAXBuilder();
-	    try
-	    {
-	    	//document = sxb.build(getClass().getResource("/PubliSA.xml"));
-	  	   	document = sxb.build(new File(xml));
-	  	   	racine = document.getRootElement();
-	    }
-	    catch(Exception e){
-	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
-			return;
-	    }
+//	    //On crée une instance de SAXBuilder
+//	    SAXBuilder sxb = new SAXBuilder();
+//	    try
+//	    {
+//	    	//document = sxb.build(getClass().getResource("/PubliSA.xml"));
+//	  	   	document = sxb.build(new File(xml));
+//	  	   	racine = document.getRootElement();
+//	    }
+//	    catch(Exception e){
+//	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
+//			return;
+//	    }
 	    
 	    
 	}
@@ -305,7 +301,7 @@ public class XML{
 		return racine.getChild(UTI).getChild(Liv).getChild("AdresseOGC").getText();
 	}
 	
-	public static boolean getGestLiv(String UTI){
+	public static boolean getDeleteDeleveryFinish(String UTI){
 		String texte = racine.getChild(UTI).getChild("GestLiv").getText();
 		return texte.contentEquals("True");
 	}

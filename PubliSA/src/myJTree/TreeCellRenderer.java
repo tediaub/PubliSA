@@ -32,7 +32,11 @@ public class TreeCellRenderer extends DefaultTreeCellRenderer {
 			boolean hasFocus)
 	{
 		final Component ret = super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
-
+		
+		this.setLeafIcon(null);
+		this.setClosedIcon(null);
+		this.setOpenIcon(null);
+		
 	    this.setText(value.toString());
 	    return ret;
 	}

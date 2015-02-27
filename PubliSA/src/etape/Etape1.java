@@ -1,17 +1,22 @@
 package etape;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import langue.GestLangue;
 import langue.IHM;
-
+import model.Delivery;
 import outils.CreationMail;
-import utilisateur.Livraison;
+import view.guiComponents.RadioButtonFlat;
 import affichage.FenetrePrincipale;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -36,9 +41,9 @@ public class Etape1 implements ActionListener {
 	public static JTextField tfDCR1;
 	
 	public static JPanel pCalculateur;
-	private static JRadioButton ckbSec;
-	private static JRadioButton ckbElac;	
-	private static JRadioButton ckbFcdc;
+	private static RadioButtonFlat ckbSec;
+	private static RadioButtonFlat ckbElac;	
+	private static RadioButtonFlat ckbFcdc;
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private JLabel lblStandard;
 	public static JTextField tfStandard;
@@ -54,17 +59,17 @@ public class Etape1 implements ActionListener {
 		
 		//////////
 		
-		pAffEtape1 = new FilAriane(1);
+		//pAffEtape1 = new FilAriane(1);
 		
   		//////////
   		pDcr1 = new JPanel();
   		pDcr1.setOpaque(false);
-  		pDcr1.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_DCR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+  		//pDcr1.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_DCR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
   		
   		lblDCR1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.ENTRE_DCR.getLabel()));
   		
   		tfDCR1 = new JTextField();
-  		tfDCR1.setColumns(10);
+  		//tfDCR1.setColumns(10);
   		
   		pDcr1.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("10mm"),
@@ -83,14 +88,14 @@ public class Etape1 implements ActionListener {
 
   		//////////
   		pCalculateur = new JPanel();
-  		pCalculateur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_CALCULATEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+  		//pCalculateur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.TEXTE_PANEL_CALCULATEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
   		pCalculateur.setOpaque(false);
   		
-  		ckbSec = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
+  		ckbSec = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
   		ckbSec.setOpaque(false);
-  		ckbElac = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
+  		ckbElac = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
   		ckbElac.setOpaque(false);
-  		ckbFcdc = new JRadioButton(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
+  		ckbFcdc = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
   		ckbFcdc.setOpaque(false);
 		buttonGroup_1.add(ckbSec);
 		buttonGroup_1.add(ckbElac);
@@ -143,7 +148,7 @@ public class Etape1 implements ActionListener {
   				FormFactory.DEFAULT_ROWSPEC,
   				FormFactory.GLUE_ROWSPEC,}));
   		
-  		etape1.add(pAffEtape1,"1, 1, fill, fill");
+  		//etape1.add(pAffEtape1,"1, 1, fill, fill");
   		etape1.add(pDcr1,"1, 3, 2, 1, fill, fill");
   		etape1.add(pCalculateur,"1, 5, 2, 1 fill, fill");
   		etape1.add(btCreation,"1, 7, right, center");
@@ -192,16 +197,16 @@ public class Etape1 implements ActionListener {
 	 * Mets à jour l'état des différents composant de l'étape 1
 	 */
 	public static void miseAjour(){
-		tfDCR1.setText(Livraison.getDCR());
-		tfStandard.setText(Livraison.getStandard());
+		tfDCR1.setText(Delivery.getDCR());
+		tfStandard.setText(Delivery.getStandard());
 
-		if(Livraison.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()))){
+		if(Delivery.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()))){
 			ckbElac.setSelected(true);
 		}
-		else if(Livraison.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()))){
+		else if(Delivery.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()))){
 			ckbSec.setSelected(true);
 		}
-		else if(Livraison.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()))){
+		else if(Delivery.getCalculateur().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()))){
 			ckbFcdc.setSelected(true);
 		}
 		else{
@@ -216,21 +221,21 @@ public class Etape1 implements ActionListener {
      */
 	public static void enregistre(){
 		
-		Livraison.setDCR(tfDCR1.getText());
+		Delivery.setDCR(tfDCR1.getText());
 		
 		if (ckbSec.isSelected()){
-			Livraison.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
+			Delivery.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
 		}
 		else if (ckbElac.isSelected()){
-			Livraison.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
+			Delivery.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
 		}
 		else if (ckbFcdc.isSelected()){
-			Livraison.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
+			Delivery.setCalculateur(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
 		}
 		
-		Livraison.setStandard(tfStandard.getText());
+		Delivery.setStandard(tfStandard.getText());
 		
-	    Livraison.enregistreLiv();
+	    Delivery.enregistreLiv();
 	}
 
 	/**
@@ -248,7 +253,7 @@ public class Etape1 implements ActionListener {
 			CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
 	        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE2);
 	        
-	        Livraison.setEtape(2);
+	        Delivery.setEtape(2);
 	        Etape1.enregistre();
 	        Etape2.miseAjour();
 	        FenetrePrincipale.getInstance().repaint();

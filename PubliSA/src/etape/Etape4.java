@@ -1,25 +1,30 @@
 package etape;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 import jxl.write.WriteException;
-
-import sauvergarde_chargement.*;
-import utilisateur.*;
-import verification.CreationRapportEtape4;
-import verification.VerificationUbikUbik;
-
 import langue.GestLangue;
 import langue.IHM;
-import myJTable.TableEtape4;
-
+import model.Delivery;
+import model.User;
+import sauvergarde_chargement.ChargementFichier;
+import sauvergarde_chargement.Filtre_OGCtxt;
+import verification.CreationRapportEtape4;
+import verification.VerificationUbikUbik;
+import view.guiComponents.table.TableEtape4;
 import XML.XML;
-
 import affichage.DialNouveau;
 import affichage.FenetrePrincipale;
 
@@ -217,7 +222,7 @@ public class Etape4 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btOGC){
-			lblPathOGC.setText(new ChargementFichier("Ouvrir").ChargementFich(Livraison.getOGC(), new Filtre_OGCtxt()));
+			lblPathOGC.setText(new ChargementFichier("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGCtxt()));
 		}
 		if (e.getSource() == btCSV){
 			lblPathCSV.setText(new ChargementFichier("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 
@@ -232,8 +237,8 @@ public class Etape4 implements ActionListener {
 			else return;
 		}
 		if (e.getSource() == btEtape4){ 
-			if(XML.getGestLiv(Utilisateur.getNom())){
-				 XML.supprLiv(Utilisateur.getNom(), "L" + Livraison.getNom());
+			if(XML.getGestLiv(User.getNom())){
+				 XML.supprLiv(User.getNom(), "L" + Delivery.getNom());
 			}
 			try {
 				XML.enregistreFichier();

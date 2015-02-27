@@ -19,21 +19,18 @@ import javax.swing.tree.TreePath;
 
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
+import model.User;
 
 import org.jdom.Element;
 
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
-
+import XML.XML;
+import affichage.FenetrePrincipale;
 import etape.Etape0;
 import etape.Etape1;
 import etape.Etape2;
 import etape.Etape3;
 import etape.Etape4;
-
-import affichage.FenetrePrincipale;
-
-import XML.XML;
 
 
 @SuppressWarnings("serial")
@@ -63,7 +60,6 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 		treeModel = new DefaultTreeModel(new DefaultMutableTreeNode(GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel())));
 		setModel(treeModel);
 		addTreeSelectionListener(this);
-		setEnabled(false);
 		setOpaque(false);
 		
 		popUp = new JPopupMenu();
@@ -95,10 +91,10 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 							}
 						}
 						if(!XML.getModeUTI()){
-							nodeUti = new DefaultMutableTreeNode(Utilisateur.getNom());
-							livraison = XML.getLivraison(Utilisateur.getNom());
+							nodeUti = new DefaultMutableTreeNode(User.getNom());
+							livraison = XML.getLivraison(User.getNom());
 							for(int j=0; j<livraison.size();j++){
-								nodeUti.add(new DefaultMutableTreeNode(XML.getNomLiv(Utilisateur.getNom(),livraison.get(j).getName())));
+								nodeUti.add(new DefaultMutableTreeNode(XML.getNomLiv(User.getNom(),livraison.get(j).getName())));
 							}
 							add(nodeUti);
 						}
@@ -113,15 +109,15 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 		
 		if(!clikDroit){
 			try{
-				if(getLastSelectedPathComponent().toString().contentEquals(Livraison.getNom())){
+				if(getLastSelectedPathComponent().toString().contentEquals(Delivery.getNom())){
 					return;
 				}
 				else if(getLastSelectedPathComponent().toString().contentEquals(GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()))){
 					return;
 				}
 				
-				for(int i=0; i<XML.getLivraison(Utilisateur.getNom()).size();i++){
-					if(getLastSelectedPathComponent().toString().contentEquals(XML.getNomLiv(Utilisateur.getNom(),XML.getLivraison(Utilisateur.getNom()).get(i).getName()))){
+				for(int i=0; i<XML.getLivraison(User.getNom()).size();i++){
+					if(getLastSelectedPathComponent().toString().contentEquals(XML.getNomLiv(User.getNom(),XML.getLivraison(User.getNom()).get(i).getName()))){
 						exception = true;
 					}
 				}
@@ -153,17 +149,17 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 				option != JOptionPane.CLOSED_OPTION){
 				
 				if (exception){
-					new Livraison(Utilisateur.getNom(), getLastSelectedPathComponent().toString());
+					new Delivery(User.getNom(), getLastSelectedPathComponent().toString());
 				}
 				else if(!exception){
-					new Utilisateur(getSelectionPath().getPathComponent(1).toString()); 
-					new Livraison(Utilisateur.getNom(), getLastSelectedPathComponent().toString());
+					new User(getSelectionPath().getPathComponent(1).toString()); 
+					new Delivery(User.getNom(), getLastSelectedPathComponent().toString());
 				}
 				
-				FenetrePrincipale.lblNom.setText(Utilisateur.getNom() + "  |  " + Livraison.getNom());
+				FenetrePrincipale.lblNom.setText(User.getNom() + "  |  " + Delivery.getNom());
 				
 				CardLayout cl = (CardLayout) FenetrePrincipale.getCardEtape().getLayout();
-				switch (Livraison.getEtape())
+				switch (Delivery.getEtape())
 				{
 				case 1:
 					cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE1);
@@ -225,8 +221,8 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 					return;
 				}
 				
-				for(int i=0; i<XML.getLivraison(Utilisateur.getNom()).size();i++){
-					if(node.contentEquals(XML.getNomLiv(Utilisateur.getNom(),XML.getLivraison(Utilisateur.getNom()).get(i).getName()))){
+				for(int i=0; i<XML.getLivraison(User.getNom()).size();i++){
+					if(node.contentEquals(XML.getNomLiv(User.getNom(),XML.getLivraison(User.getNom()).get(i).getName()))){
 						excep1 = true;
 					}
 				}
@@ -269,8 +265,8 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 				
 				if(option != JOptionPane.NO_OPTION &&
 						option != JOptionPane.CLOSED_OPTION){
-					XML.supprLiv(Utilisateur.getNom(), "L" + node);
-					if(node.contentEquals(Livraison.getNom())){
+					XML.supprLiv(User.getNom(), "L" + node);
+					if(node.contentEquals(Delivery.getNom())){
 						CardLayout cl = (CardLayout) FenetrePrincipale.getCards().getLayout();
 						cl.show(FenetrePrincipale.getCards(), FenetrePrincipale.ETAPE0);
 						Etape0.miseAjour();
@@ -294,7 +290,7 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 					}
 					XML.supprUti(node);
 					
-					if(node.contentEquals(Utilisateur.getNom())){
+					if(node.contentEquals(User.getNom())){
 						CardLayout cl = (CardLayout) FenetrePrincipale.getCards().getLayout();
 						cl.show(FenetrePrincipale.getCards(), FenetrePrincipale.ETAPE0);
 						Etape0.miseAjour();

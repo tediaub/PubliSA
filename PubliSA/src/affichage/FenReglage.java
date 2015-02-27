@@ -5,58 +5,56 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.DefaultComboBoxModel;
-
-import sauvergarde_chargement.*;
-import tutoriel.TutoPanel;
-import tutoriel.Tutoriel;
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
-
-import javax.swing.JScrollPane;
-import javax.swing.JEditorPane;
+import langue.GestLangue;
+import langue.IHM;
+import model.Delivery;
+import model.User;
+import myJTree.AffichageTree;
 
 import org.jdom.Element;
+
+import sauvergarde_chargement.ChargementFichier;
+import sauvergarde_chargement.Filtre_DOC;
+import sauvergarde_chargement.Filtre_EXE;
+import tutoriel.TutoPanel;
+import tutoriel.Tutoriel;
+import XML.XML;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import langue.GestLangue;
-import langue.IHM;
-import myJTree.AffichageTree;
-
 import etape.Etape0;
-
-import XML.XML;
-
-import java.awt.Font;
-import java.util.ArrayList;
 
 /**
  * 
@@ -148,24 +146,24 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 	public FenReglage(int page) {
 		
 		//Initialisation avec les données de l'utilisateur
-		tfCorrespondantAkkaU.setText(Utilisateur.getMesAkkaUbik().get(0));
-		tfObjetAkkaU.setText(Utilisateur.getMesAkkaUbik().get(1));
-		taAkkaU.setText(Utilisateur.getMesAkkaUbik().get(2));
+		tfCorrespondantAkkaU.setText(User.getMesAkkaUbik().get(0));
+		tfObjetAkkaU.setText(User.getMesAkkaUbik().get(1));
+		taAkkaU.setText(User.getMesAkkaUbik().get(2));
 		
-		tfCorrespondantAkkaT.setText(Utilisateur.getMesAkkaThales().get(0));
-		tfObjetAkkaT.setText(Utilisateur.getMesAkkaThales().get(1));
-		taAkkaT.setText(Utilisateur.getMesAkkaThales().get(2));
+		tfCorrespondantAkkaT.setText(User.getMesAkkaThales().get(0));
+		tfObjetAkkaT.setText(User.getMesAkkaThales().get(1));
+		taAkkaT.setText(User.getMesAkkaThales().get(2));
 		
-		tfCorrespondantSopra.setText(Utilisateur.getMesSopra().get(0));
-		tfObjetSopra.setText(Utilisateur.getMesSopra().get(1));
-		taSopra.setText(Utilisateur.getMesSopra().get(2));
+		tfCorrespondantSopra.setText(User.getMesSopra().get(0));
+		tfObjetSopra.setText(User.getMesSopra().get(1));
+		taSopra.setText(User.getMesSopra().get(2));
 		
-		tfCorrespondantThales.setText(Utilisateur.getMesThales().get(0));
-		tfObjetThales.setText(Utilisateur.getMesThales().get(1));
-		taThales.setText(Utilisateur.getMesThales().get(2));
+		tfCorrespondantThales.setText(User.getMesThales().get(0));
+		tfObjetThales.setText(User.getMesThales().get(1));
+		taThales.setText(User.getMesThales().get(2));
 		
-		adresseExe = Utilisateur.getExe();
-		adresseWord = Utilisateur.getDoc();
+		adresseExe = User.getExe();
+		adresseWord = User.getDoc();
 		
 		//Initialisation de la fenêtre
 		setModal(true);
@@ -299,7 +297,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		pGestUti.add(pLiv);
 		
 		ckbLivraison = new JCheckBox(GestLangue.getInstance().getLocalizedText(IHM.SUPPR_LIV_END.getLabel()));
-		ckbLivraison.setSelected(Utilisateur.getGestLiv());
+		ckbLivraison.setSelected(User.getGestLiv());
 		ckbLivraison.setBackground(Color.WHITE);
 		ckbLivraison.setBounds(37, 32, 295, 24);
 		pLiv.add(ckbLivraison);
@@ -739,9 +737,9 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 					option != JOptionPane.CANCEL_OPTION &&
 					option != JOptionPane.CLOSED_OPTION){
 				
-				ArrayList<Element> livraison = XML.getLivraison(Utilisateur.getNom());
+				ArrayList<Element> livraison = XML.getLivraison(User.getNom());
 				for(int i=0; i<livraison.size(); i++){
-					XML.supprLiv(Utilisateur.getNom(), livraison.get(i).getName());
+					XML.supprLiv(User.getNom(), livraison.get(i).getName());
 				}
 				
 				CardLayout c2 = (CardLayout) FenetrePrincipale.getCards().getLayout();
@@ -755,29 +753,29 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		}
 		
 		if (e.getSource() == okButton){
-			XML.setDOC(Utilisateur.getNom(), lblPathDOC.getText());
-			XML.setEXE(Utilisateur.getNom(), lblPathEXE.getText());
-			XML.setGestLiv(Utilisateur.getNom(), ckbLivraison.isSelected());
+			XML.setDOC(User.getNom(), lblPathDOC.getText());
+			XML.setEXE(User.getNom(), lblPathEXE.getText());
+			XML.setGestLiv(User.getNom(), ckbLivraison.isSelected());
 			XML.setModeUTI(ckbMode.isSelected());
 			XML.setFirtUti(cbFirstUti.getSelectedItem().toString());
 			
 			//Enregistrement données mail
-			XML.setMesAkkaUbik(Utilisateur.getNom(),
+			XML.setMesAkkaUbik(User.getNom(),
 					tfCorrespondantAkkaU.getText(),
 					tfObjetAkkaU.getText(), 
 					taAkkaU.getText());
 			
-			XML.setMesAkkaThales(Utilisateur.getNom(),
+			XML.setMesAkkaThales(User.getNom(),
 					tfCorrespondantAkkaT.getText(),
 					tfObjetAkkaT.getText(), 
 					taAkkaT.getText());
 			
-			XML.setMesSopra(Utilisateur.getNom(),
+			XML.setMesSopra(User.getNom(),
 					tfCorrespondantSopra.getText(),
 					tfObjetSopra.getText(), 
 					taSopra.getText());
 			
-			XML.setMesThales(Utilisateur.getNom(),
+			XML.setMesThales(User.getNom(),
 					tfCorrespondantThales.getText(),
 					tfObjetThales.getText(), 
 					taThales.getText());
@@ -786,8 +784,8 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 			
 			try {
 				XML.enregistreFichier();
-				Utilisateur.refresh();
-				Livraison.refresh();
+				User.refresh();
+				Delivery.refresh();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

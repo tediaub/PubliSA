@@ -1,30 +1,60 @@
 package affichage;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTree;
+import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
 
 import jxl.write.WriteException;
+import langue.GestLangue;
+import langue.IHM;
+import model.Delivery;
+import model.User;
+import myJTree.AffichageTree;
 import outils.Lanceur;
 import outils.SupprEntete;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
-import utilisateur.Livraison;
-import utilisateur.Utilisateur;
 import verification.CreationRapportEtape2;
 import verification.CreationRapportEtape4;
-
-import langue.GestLangue;
-import langue.IHM;
-import myJTree.AffichageTree;
-
 import XML.XML;
 import autre.Langue;
 
-import com.jgoodies.forms.layout.*;
-import etape.*;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+
+import etape.Etape0;
+import etape.Etape1;
+import etape.Etape2;
+import etape.Etape3;
+import etape.Etape4;
 
 /**
  * 
@@ -51,8 +81,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
     
     //Barre de Menu
 	private Component horizontalStrut_2;
-	
-	private JMenuBar menuBar;
 	
 	private JMenu fichier;
 	public static JMenuItem nouveau;
@@ -123,8 +151,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 	
 	public FenetrePrincipale() {
 		
-		setContentPane(new AfficheImage());
-		
 		langueFR = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_FR.getLabel()));
 		langueEN = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_EN.getLabel()));
 		
@@ -152,9 +178,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		);
 		
 		//////Affichage principale
-		//Création des objets du menu
-		menuBar = new JMenuBar();
-		menuBar.setOpaque(false);
+		//Création des objets du menu		
 		horizontalStrut_2 = Box.createHorizontalStrut(5);
 		
 		fichier = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.FICHIER.getLabel()));
@@ -191,23 +215,19 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		aPropos = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.ABOUT.getLabel()));
 				
 		//Ajout des objets au menu
-		setJMenuBar(menuBar);
-		menuBar.add(horizontalStrut_2);
 		
-		menuBar.add(fichier);
+		
 		fichier.add(nouveau);		
 		fichier.add(enregistrer);		
 		fichier.add(separator);		
 		fichier.add(quitter);
 		
-		menuBar.add(reglage);	
 		reglage.add(regEmail);		
 		reglage.add(separator_1);
 		reglage.add(gestUti);
 		reglage.add(fichExt);
 		reglage.add(perso);
 		
-		menuBar.add(outils);	
 		outils.add(compteRendu);		
 		outils.add(separator_3);
 		outils.add(supprEntete);
@@ -215,7 +235,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		outils.add(launchFichDOC);
 		outils.add(launchFichEXE);
 		
-		menuBar.add(aide);
 		aide.add(tutoriel);
 		aide.add(langue);
 		langue.add(langueFR);
@@ -270,7 +289,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		//Tutoriel
 		panel = new JPanel();
 		panel.setOpaque(false);
-		menuBar.add(panel);
 		
 		lblTutoriel = new JLabel("Tutoriel : ");
 		lblTutoriel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -295,7 +313,6 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		flowLayout.setVgap(3);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		
-		menuBar.add(pMenu);
 		pMenu.setBackground(SystemColor.control);
 		
 		lblNom = new JLabel();
@@ -379,7 +396,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
         
         
         //Mise en forme du panel principal
-        getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+        this.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
 				
   			new RowSpec[] {
@@ -389,8 +406,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
         pTuto = new TutoPanel(0,0,0,0);
         pTuto.setVisible(false);
         
-        getContentPane().add(pTuto,"1, 1, fill, fill");
-        getContentPane().add(cards, "1, 1, fill, fill");
+        this.getContentPane().add(pTuto,"1, 1, fill, fill");
+        this.getContentPane().add(cards, "1, 1, fill, fill");
 		
 		setVisible(true);
 	}
@@ -427,8 +444,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		if (e.getSource() == enregistrer){
 			try {
 				XML.enregistreFichier();
-				Utilisateur.refresh();
-				Livraison.refresh();
+				User.refresh();
+				Delivery.refresh();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -468,14 +485,14 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		
 		//Menu "Créer Compte rendu"
 		if (e.getSource() == compteRendu){
-			if(Livraison.getEtape() == 2){
+			if(Delivery.getEtape() == 2){
 				try {
 					new CreationRapportEtape2();
 				} catch (WriteException e1) {
 					e1.printStackTrace();
 				}
 			}
-			else if(Livraison.getEtape() == 4){
+			else if(Delivery.getEtape() == 4){
 				try {
 					new CreationRapportEtape4();
 				} catch (WriteException e1) {
@@ -491,12 +508,12 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		
 		//Menu "Formulaire EYDT"
 		if (e.getSource() == launchFichDOC){
-			new Lanceur(Utilisateur.getDoc());
+			new Lanceur(User.getDoc());
 		}
 		
 		//Menu "EXE FileCheck"
 		if (e.getSource() == launchFichEXE){
-			new Lanceur(Utilisateur.getExe());
+			new Lanceur(User.getExe());
 		}
 		
 		//Menu "Tutoriel"

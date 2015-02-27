@@ -1,13 +1,14 @@
-package Main;
+package main;
 
-import java.awt.*;
+import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import model.Model;
 import XML.XML;
-import affichage.*;
+import controller.openFrame.OpeningController;
 
 /**
  * 
@@ -46,7 +47,12 @@ public class PubliSA {
 				}
 				
 				new XML();
-				FenetrePrincipale.getInstance();
+				
+				
+				Model model = new Model();
+				OpeningController control = new OpeningController(model);
+				control.createOpeningFrame();
+				control.createMainFrame();
 			}
 		});
 	}

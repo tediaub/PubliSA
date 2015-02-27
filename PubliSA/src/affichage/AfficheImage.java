@@ -1,10 +1,10 @@
 package affichage;
 
-import java.awt.Graphics; 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.net.URL;
 
-import javax.swing.JPanel; 
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class AfficheImage extends JPanel 
