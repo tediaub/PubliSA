@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
 import model.Model;
+import model.save.Serialization;
 import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.MainFrame;
 import view.guiComponents.frame.PanFrame;
@@ -159,5 +160,10 @@ public class ControllerFrame implements IFrameController{
 			yF = frame.getY();
 		}
 		frame.setBounds(xF, yF, l, h);
+	}
+
+	public void save(){
+		new Serialization();
+		Serialization.saveModel(model);
 	}
 }

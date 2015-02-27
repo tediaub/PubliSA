@@ -1,6 +1,9 @@
 package model;
 
-public class Delivery{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Delivery implements Serializable{
 	
 	private String name;
 	

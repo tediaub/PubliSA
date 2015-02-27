@@ -78,6 +78,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		
 		btnSave = new JButton("Enregistrer");
 		btnSave.setFont(new Font("Dotum", Font.PLAIN, 11));
+		btnSave.addActionListener(this);
 		btnSave.setMargin(new Insets(2, 2, 2, 2));
 		btnSave.setIconTextGap(1);
 		btnSave.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/save.png")));
@@ -140,6 +141,8 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		}else if(e.getSource() == btnSettings){
 			control.colSideBarBlue();
 			control.extSideBarWhite();
+		}else if(e.getSource() == btnSave){
+			control.save();
 		}
 	}
 

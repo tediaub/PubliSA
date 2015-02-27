@@ -1,12 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Model extends Observable{
+public class Model extends Observable implements Serializable{
 	
 	private User user = null;
-	
+	private String test = "teddy";
 	private Delivery mainDelivery = null;
 	private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 	
