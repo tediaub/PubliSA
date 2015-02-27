@@ -48,7 +48,7 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 		setBackground(new Color(0, 119, 175));
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
-				ColumnSpec.decode("150px"),
+				ColumnSpec.decode("110px"),
 				FormFactory.DEFAULT_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("default:grow"),}));

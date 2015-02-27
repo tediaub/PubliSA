@@ -1,6 +1,7 @@
 package view.guiComponents.sideBar.blue;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 
 import org.apache.batik.swing.JSVGCanvas;
 
+import view.guiComponents.ButtonFlat;
 import view.guiComponents.svg.PanSVG;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -26,7 +28,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 
 	private ControllerFrame controller;
 
-	private JButton btnSettings;
+	private ButtonFlat btnSettings;
 
 	private PanSVG pAriane;
 	/**
@@ -57,10 +59,12 @@ public class PanCollapse extends JPanel implements ActionListener {
 		btnCollapse.addActionListener(this);
 		add(btnCollapse, "1, 2");
 		
-		btnSettings = new JButton();
-		btnSettings.setContentAreaFilled(false);
+		btnSettings = new ButtonFlat();
+		btnSettings.setPreferredSize(new Dimension(90, 60));
 		btnSettings.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/gear.png")));
 		btnSettings.setFocusPainted(false);
+		btnSettings.setRolloverBackground(new Color(0, 63, 113));
+		btnSettings.setOpaque(false);
 		btnSettings.addActionListener(this);
 		add(btnSettings, "1, 6");
 	}

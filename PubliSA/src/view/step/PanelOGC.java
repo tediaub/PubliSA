@@ -15,6 +15,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
+@SuppressWarnings("serial")
 public class PanelOGC extends JPanel {
 
 	public PanelOGC() {
@@ -59,6 +60,8 @@ public class PanelOGC extends JPanel {
 		add(lblNewLabel_3, "3, 10");
 		
 		ButtonFlat btnNewButton = new ButtonFlat("New button");
+		btnNewButton.setBackground(new Color(0, 119, 175));
+		btnNewButton.setRolloverBackground(new Color(0, 63, 113));
 		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/iconeStep2/folder.png")));
 		add(btnNewButton, "4, 10");
 	}

@@ -1,5 +1,7 @@
 package view.step;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -35,6 +37,8 @@ public class PanelStep1 extends JPanel {
 		add(panel_1, "1, 3, 2, 1, fill, fill");
 		
 		ButtonFlat btnNewButton = new ButtonFlat("Créer");
+		btnNewButton.setBackground(new Color(0, 119, 175));
+		btnNewButton.setRolloverBackground(new Color(0, 63, 113));
 		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/iconeStep1/mail.png")));
 		add(btnNewButton, "1, 5, right, center");
 

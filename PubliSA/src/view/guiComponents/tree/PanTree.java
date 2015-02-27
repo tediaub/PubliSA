@@ -23,7 +23,7 @@ public class PanTree extends JPanel {
 		setBackground(new Color(240, 240, 240));
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("20px"),
-				ColumnSpec.decode("180px:grow"),
+				ColumnSpec.decode("140px:grow"),
 				ColumnSpec.decode("20px"),},
 			new RowSpec[] {
 				RowSpec.decode("20px"),

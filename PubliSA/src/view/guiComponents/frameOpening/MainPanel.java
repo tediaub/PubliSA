@@ -51,15 +51,14 @@ public class MainPanel extends PanelTemplate implements ActionListener{
 				RowSpec.decode("47px"),
 				RowSpec.decode("40px"),}));
 		add(panel, BorderLayout.CENTER);
+		lblNewLabel = new JLabel("Choissisez l'action \u00E0 r\u00E9aliser :");
+		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 13));
+		panel.add(lblNewLabel, "2, 1");
 		
 		btnNewDelivery = new ButtonFlat("Nouvelle livraison");
 		btnNewDelivery.setRolloverBackground(new Color(200, 200, 200));
 		btnNewDelivery.setBackground(new Color(240, 240, 240));
 		btnNewDelivery.addActionListener(this);
-		
-		lblNewLabel = new JLabel("Choissisez l'action \u00E0 r\u00E9aliser :");
-		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 13));
-		panel.add(lblNewLabel, "2, 1");
 		btnNewDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/iconeBegining/addDocument.png")));
 		btnNewDelivery.setIconTextGap(20);
 		btnNewDelivery.setHorizontalAlignment(SwingConstants.LEFT);
@@ -74,6 +73,9 @@ public class MainPanel extends PanelTemplate implements ActionListener{
 		btnOpenDelivery.setIconTextGap(20);
 		btnOpenDelivery.setHorizontalAlignment(SwingConstants.LEFT);
 		btnOpenDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/iconeBegining/timer.png")));
+		if(control.getModel().getMainDelivery() == null){
+			btnOpenDelivery.setEnabled(false);
+		}
 		panel.add(btnOpenDelivery, "2, 4, fill, fill");
 		
 		btnOtherDelivery = new ButtonFlat("Toutes les livraisons");
