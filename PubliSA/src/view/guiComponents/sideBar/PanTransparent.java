@@ -6,14 +6,14 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import controller.FrameController;
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
 public class PanTransparent extends JPanel implements MouseListener{
 
-	private FrameController controller;
+	private ControllerFrame controller;
 
-	public PanTransparent(FrameController control) {
+	public PanTransparent(ControllerFrame control) {
 		controller = control;
 		
 		addMouseListener(this);

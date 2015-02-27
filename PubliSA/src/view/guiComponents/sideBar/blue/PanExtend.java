@@ -8,30 +8,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import model.Model;
+import model.svg.DocSVG;
+
 import org.apache.batik.swing.JSVGCanvas;
 
 import view.guiComponents.list.ListSelecteable;
-import view.guiComponents.svg.DocSVG;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.FrameController;
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanExtend extends JPanel implements ActionListener, MouseMotionListener {
+public class PanExtend extends JPanel implements ActionListener, MouseMotionListener, Observer {
 
 	private JButton btnExtend;
 
-	private FrameController controller;
+	private ControllerFrame controller;
 
 	private JPanel pButtonDown;
 	private JButton btnSettings;
@@ -46,7 +50,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 	/**
 	 * Create the panel.
 	 */
-	public PanExtend(FrameController control) {
+	public PanExtend(ControllerFrame control) {
 		controller = control;
 		
 		addMouseMotionListener(this);
@@ -100,11 +104,12 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		pButtonUp.add(btnNew);
 		add(btnExtend, "2, 2, default, center");
 		
-		list = new ListSelecteable();
+		list = new ListSelecteable(control);
+		control.getModel().addObserver(list);
 		add(list, "1, 4, fill, fill");
 		
 		pAriane = new JSVGCanvas();
-		pAriane.setDocument(new DocSVG().getDoc());
+		pAriane.setDocument(new DocSVG(control.getModel().getMainDelivery()).getDoc());
 		pAriane.setBackground(new Color(0, 119, 175));
 		add(pAriane, "2, 4, fill, fill");
 		
@@ -154,6 +159,12 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		Model model = (Model)o;
+		pAriane.setDocument(new DocSVG(model.getMainDelivery()).getDoc());
 	}
 
 }

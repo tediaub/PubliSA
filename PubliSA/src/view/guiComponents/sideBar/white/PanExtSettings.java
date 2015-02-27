@@ -1,41 +1,37 @@
 package view.guiComponents.sideBar.white;
 
-import javax.swing.JPanel;
-
 import java.awt.Color;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
-
-import controller.FrameController;
-
-import javax.swing.JButton;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
-import view.guiComponents.frame.LabelResize;
+import view.guiComponents.TabbedPaneUI;
 import view.guiComponents.frame.PanButtonFrame;
 
-import java.awt.Font;
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
 public class PanExtSettings extends JPanel implements ActionListener, MouseMotionListener {
 	
-	private FrameController control;
+	private ControllerFrame control;
 	
 	private PanButtonFrame panel;
 	private JButton btnBack;
-	private LabelResize lblResize;
+	private JTabbedPane tabbedPane;
 
-	public PanExtSettings(FrameController control) {
+	public PanExtSettings(ControllerFrame control) {
 		this.control = control;
 		
 		addMouseMotionListener(this);
@@ -49,6 +45,7 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 			new RowSpec[] {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
@@ -65,14 +62,26 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 		btnBack.addActionListener(this);
 		add(btnBack, "2, 2");
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setOpaque(false);
-		add(panel_1, "3, 3, 2, 1, fill, fill");
+		tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+		tabbedPane.setBackground(Color.WHITE);
+		tabbedPane.setBorder(null);
+		tabbedPane.setUI(new TabbedPaneUI());
 		
-		lblResize = new LabelResize(control);
-		lblResize.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblResize.setHorizontalAlignment(SwingConstants.RIGHT);
-		add(lblResize, "4, 5, fill, fill");
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBorder(null);
+		tabbedPane.addTab("New tab", null, panel, null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBorder(null);
+		tabbedPane.addTab("New tab", null, panel_1, null);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBorder(null);
+		tabbedPane.addTab("New tab", null, panel_2, null);
+		add(tabbedPane, "2, 4, 3, 1, fill, fill");
 	}
 
 	public void actionPerformed(ActionEvent arg0) {

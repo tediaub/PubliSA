@@ -13,7 +13,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
-import myJTree.DeliveryTree;
+import model.Model;
 import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.PanFrame;
 import view.guiComponents.sideBar.PanTransparent;
@@ -21,11 +21,12 @@ import view.guiComponents.sideBar.SideBar;
 import view.guiComponents.sideBar.blue.PanCollapse;
 import view.guiComponents.sideBar.blue.PanExtend;
 import view.guiComponents.sideBar.white.PanExtSettings;
+import view.guiComponents.tree.DeliveryTree;
 import view.guiComponents.tree.PanTree;
 import view.step.PanelStep1;
 import view.step.PanelStep2;
 
-public class FrameController{
+public class ControllerFrame implements IFrameController{
 
 	private JFrame frame;
 	
@@ -43,10 +44,20 @@ public class FrameController{
 
 	private PanFrame pFrame;
 
+	private Model model;
+	
+	public ControllerFrame(Model model){
+		this.model = model;
+	}
+	
+	public Model getModel(){
+		return model;
+	}
+	
 	public void createFrame(){
 		frame = new JFrame("PubliSA");
 		frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FrameController.class.getResource("/logo/logoPubliSA4.png")));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ControllerFrame.class.getResource("/logo/logoPubliSA4.png")));
 		frame.setUndecorated(true);
 		frame.setBounds(100, 100, 1005, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,16 +76,20 @@ public class FrameController{
 	}
 	
 	public void createTree(Container container){
-		DeliveryTree tree = new DeliveryTree();
+		DeliveryTree tree = new DeliveryTree(this);
 		tree.setOpaque(false);
 		lblResize = new LabelResize(this);
 		pTree = new PanTree(tree, lblResize);
 		container.add(pTree, BorderLayout.EAST);
+		
+		model.addObserver(tree);
 	}
 	
 	public void createHighFrame(Container container){
 		pFrame = new PanFrame(this);
 		container.add(pFrame, BorderLayout.NORTH);
+		
+		model.addObserver(pFrame);
 	}
 	
 	public void createSideBarWhite(Container container){
@@ -90,6 +105,9 @@ public class FrameController{
 		pTransBlue = new PanTransparent(this);
 		sideBarBlue = new SideBar(SideBar.LEFTtoRIGHT, 50, 200, pExtBlue, pCollBlue, pTransBlue);
 		container.add(sideBarBlue);
+		
+		model.addObserver(pExtBlue);
+		model.addObserver(pCollBlue);
 	}
 	
 	public void createStep1(Container container){

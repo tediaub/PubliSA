@@ -7,13 +7,13 @@ public class User {
 	private String pathDocEXE = "";
 	private String pathDocWord = "";
 	
-	private boolean deleteFinishDelivery;
+	private boolean deleteFinishDelivery = false;
 	
 	public User(String name){
 		this.name = name;
 	}
 	
-	public String getname(){
+	public String getName(){
 		return name;
 	}
 	
@@ -29,7 +29,7 @@ public class User {
 		return deleteFinishDelivery;
 	}
 	
-	public void setname(String name){
+	public void setName(String name){
 		this.name = name;
 	}
 	

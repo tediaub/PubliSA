@@ -4,35 +4,32 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import model.Model;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.FrameController;
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanFrame extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
-
-	private JButton btnIconified;
-	private JButton btnMaximized;
-	private JButton btnClose;
+public class PanFrame extends JPanel implements MouseListener, MouseMotionListener, Observer {
 	
 	private PanButtonFrame pBtnFrame;
 	
-	private FrameController control;
+	private ControllerFrame control;
 	
 	private Point pointMouse;
 	private JLabel lblDelivery;
@@ -41,10 +38,10 @@ public class PanFrame extends JPanel implements ActionListener, MouseListener, M
 	/**
 	 * Create the panel.
 	 */
-	public PanFrame(FrameController control) {
-		setPreferredSize(new Dimension(723, 35));
+	public PanFrame(ControllerFrame control) {
 		this.control = control;
 		
+		setPreferredSize(new Dimension(723, 35));
 		addMouseMotionListener(this);
 		addMouseListener(this);
 		
@@ -64,7 +61,7 @@ public class PanFrame extends JPanel implements ActionListener, MouseListener, M
 		pBtnFrame = new PanButtonFrame(control);
 		add(pBtnFrame, "3, 1, fill, fill");
 		
-		lblDelivery = new JLabel("Nom de la livraison");
+		lblDelivery = new JLabel(control.getModel().getMainDelivery().getName());
 		lblDelivery.setFont(new Font("Dotum", Font.BOLD, 14));
 		lblDelivery.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDelivery.setForeground(Color.WHITE);
@@ -104,14 +101,9 @@ public class PanFrame extends JPanel implements ActionListener, MouseListener, M
 		
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btnIconified){
-			control.iconifiedFrame();
-		}else if(e.getSource() == btnMaximized){
-			control.maximizedFrame();
-		}else if(e.getSource() == btnClose){
-			control.closeFrame();
-		}
+	@Override
+	public void update(Observable o, Object arg) {
+		Model model = (Model)o;
+		lblDelivery.setText(model.getMainDelivery().getName());
 	}
-
 }

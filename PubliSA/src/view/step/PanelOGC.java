@@ -3,6 +3,7 @@ package view.step;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -60,8 +61,8 @@ public class PanelOGC extends JPanel {
 		lblNewLabel_3.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblNewLabel_3, "3, 10");
 		
-		ButtonFlat btnNewButton = new ButtonFlat("New button", "/iconeStep2/folder.png");
-		btnNewButton.getButton().setFont(new Font("Dialog", Font.PLAIN, 12));
+		ButtonFlat btnNewButton = new ButtonFlat("New button");
+		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/iconeStep2/folder.png")));
 		add(btnNewButton, "4, 10");
 	}
 }

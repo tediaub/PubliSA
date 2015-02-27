@@ -1,21 +1,14 @@
 package view.step;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
-
-import javax.swing.JButton;
-
 import view.guiComponents.ButtonFlat;
-import javax.swing.ImageIcon;
+
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
 
 @SuppressWarnings("serial")
 public class PanelStep1 extends JPanel {
@@ -41,7 +34,8 @@ public class PanelStep1 extends JPanel {
 		PanelComputer panel_1 = new PanelComputer();
 		add(panel_1, "1, 3, 2, 1, fill, fill");
 		
-		ButtonFlat btnNewButton = new ButtonFlat("Créer", "/iconeStep1/mail.png");
+		ButtonFlat btnNewButton = new ButtonFlat("Créer");
+		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/iconeStep1/mail.png")));
 		add(btnNewButton, "1, 5, right, center");
 
 	}

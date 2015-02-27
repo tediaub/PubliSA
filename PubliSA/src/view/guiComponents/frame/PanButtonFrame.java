@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import controller.FrameController;
+import controller.IFrameController;
 
 @SuppressWarnings("serial")
 public class PanButtonFrame extends JPanel implements ActionListener {
@@ -18,9 +18,9 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 	private JButton btnMaximized;
 	private JButton btnClose;
 	
-	private FrameController control;
+	private IFrameController control;
 
-	public PanButtonFrame(FrameController control) {
+	public PanButtonFrame(IFrameController control) {
 		this.control = control;
 		
 		setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
@@ -62,5 +62,17 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 		}else if(e.getSource() == btnClose){
 			control.closeFrame();
 		}
+	}
+	
+	public void setMaximizedVisible(boolean b){
+		btnMaximized.setVisible(false);
+	}
+	
+	public void setCloseVisible(boolean b){
+		btnClose.setVisible(false);
+	}
+	
+	public void setIconifiedVisible(boolean b){
+		btnIconified.setVisible(false);
 	}
 }

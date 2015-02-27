@@ -7,14 +7,14 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import controller.FrameController;
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
 public class LabelResize extends JLabel implements MouseMotionListener {
 	
-	private FrameController control;
+	private ControllerFrame control;
 	
-	public LabelResize(FrameController control){
+	public LabelResize(ControllerFrame control){
 		super();
 		this.control = control;
 		setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));

@@ -3,28 +3,31 @@ package view.guiComponents.sideBar.blue;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.apache.batik.swing.JSVGCanvas;
+import model.Model;
+import model.svg.DocSVG;
 
-import view.guiComponents.svg.DocSVG;
+import org.apache.batik.swing.JSVGCanvas;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.FrameController;
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanCollapse extends JPanel implements ActionListener {
+public class PanCollapse extends JPanel implements ActionListener, Observer {
 
 	private JButton btnCollapse;
 
-	private FrameController controller;
+	private ControllerFrame controller;
 
 	private JButton btnSettings;
 
@@ -32,7 +35,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 	/**
 	 * Create the panel.
 	 */
-	public PanCollapse(FrameController control) {
+	public PanCollapse(ControllerFrame control) {
 		controller = control;
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("50px"),},
@@ -48,7 +51,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 		
 		pAriane = new JSVGCanvas();
 		pAriane.setDoubleBufferedRendering(true);
-		pAriane.setDocument(new DocSVG().getDoc());
+		pAriane.setDocument(new DocSVG(control.getModel().getMainDelivery()).getDoc());
 		pAriane.setBackground(new Color(0, 119, 175));
 		add(pAriane, "1, 4, fill, fill");
 		
@@ -73,6 +76,12 @@ public class PanCollapse extends JPanel implements ActionListener {
 		}else if(e.getSource() == btnSettings){
 			controller.extSideBarWhite();
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		Model model = (Model)o;
+		pAriane.setDocument(new DocSVG(model.getMainDelivery()).getDoc());
 	}
 
 }

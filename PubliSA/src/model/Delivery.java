@@ -5,8 +5,10 @@ public class Delivery {
 	private String name;
 	
 	private int target;
-	public static final int SOPRA = 0;
+	public static final int UBIK = 0;
 	public static final int THALES = 1;
+	
+	public boolean main = false;
 	
 	private int actualStep = 0;
 	private int highestStep = 0;
@@ -15,14 +17,15 @@ public class Delivery {
 	public static final int STEP3 = 2;
 	public static final int STEP4 = 3;
 	
-	private String dcr;
-	private String computer;
-	private String standard;
+	private String dcr = "";
+	private String computer = "";
+	private String standard = "";
 	
 	private String pathOGC;
 	
-	public Delivery(String name){
+	public Delivery(String name, int target){
 		this.name = name;
+		this.target = target;
 	}
 	
 	public String getName(){
@@ -31,6 +34,14 @@ public class Delivery {
 	
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	public boolean isMain(){
+		return main;
+	}
+	
+	public void setMain(boolean b){
+		main = b;
 	}
 	
 	public int getTarget(){

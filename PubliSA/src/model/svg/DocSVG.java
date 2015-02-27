@@ -1,14 +1,17 @@
-package view.guiComponents.svg;
+package model.svg;
 
 import java.awt.Point;
 
+import model.Delivery;
+
 import org.apache.batik.dom.svg.SVGDOMImplementation;
-import org.apache.batik.parser.PointsParser;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class DocSVG{
+import controller.ControllerFrame;
+
+public class DocSVG {
 
 	private Document doc;
 	
@@ -25,7 +28,7 @@ public class DocSVG{
 	Point pointStep4 = new Point(25, 175);
 
 
-	public DocSVG() {
+	public DocSVG(Delivery delivery) {
 		
 		DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
 		doc = impl.createDocument(svgNS, "svg", null);
@@ -37,15 +40,40 @@ public class DocSVG{
 		svgRoot.setAttributeNS(null, "width", "50");
 		svgRoot.setAttributeNS(null, "height", "200");
 		
-		markerStep1 = new MarkerSVG(pointStep1, null, true);
-		markerStep2 = new MarkerSVG(pointStep2, markerStep1, true);
-		markerStep3 = new MarkerSVG(pointStep3, markerStep2, true);
-		markerStep4 = new MarkerSVG(pointStep4, markerStep3, true);
+		boolean actStep1= false, actStep2 = false, actStep3 = false, actStep4 = false;
+		switch (delivery.getActualStep()) {
+		case Delivery.STEP1:
+			actStep1 = true;
+			break;
+
+		case Delivery.STEP2:
+			actStep2 = true;
+			break;
+			
+		case Delivery.STEP3:
+			actStep3 = true;
+			break;
+			
+		case Delivery.STEP4:
+			actStep4 = true;
+			break;
+		default:
+			break;
+		}
+		
+		markerStep1 = new MarkerSVG(pointStep1, null, actStep1);
+		markerStep2 = new MarkerSVG(pointStep2, markerStep1, actStep2);
+		markerStep3 = new MarkerSVG(pointStep3, markerStep2, actStep3);
 		
 		markerStep1.draw(svgRoot);
 		markerStep2.draw(svgRoot);
 		markerStep3.draw(svgRoot);
-		markerStep4.draw(svgRoot);
+		
+		if(delivery.getTarget() == Delivery.UBIK){
+			markerStep4 = new MarkerSVG(pointStep4, markerStep3, actStep4);
+			
+			markerStep4.draw(svgRoot);
+		}
 	}
 
 	public Document getDoc(){
