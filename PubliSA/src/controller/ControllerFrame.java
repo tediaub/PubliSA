@@ -3,18 +3,17 @@ package controller;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
 import model.Model;
 import view.guiComponents.frame.LabelResize;
+import view.guiComponents.frame.MainFrame;
 import view.guiComponents.frame.PanFrame;
 import view.guiComponents.sideBar.PanTransparent;
 import view.guiComponents.sideBar.SideBar;
@@ -23,12 +22,10 @@ import view.guiComponents.sideBar.blue.PanExtend;
 import view.guiComponents.sideBar.white.PanExtSettings;
 import view.guiComponents.tree.DeliveryTree;
 import view.guiComponents.tree.PanTree;
-import view.step.PanelStep1;
-import view.step.PanelStep2;
 
 public class ControllerFrame implements IFrameController{
 
-	private JFrame frame;
+	private MainFrame frame;
 	
 	private SideBar sideBarWhite;
 	private PanTransparent pTransWhite;
@@ -55,24 +52,12 @@ public class ControllerFrame implements IFrameController{
 	}
 	
 	public void createFrame(){
-		frame = new JFrame("PubliSA");
-		frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ControllerFrame.class.getResource("/logo/logoPubliSA4.png")));
-		frame.setUndecorated(true);
-		frame.setBounds(100, 100, 1005, 650);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setMinimumSize(new Dimension(1005, 150));
-		
-		createSideBarWhite(frame.getContentPane());
-		createSideBarBlue(sideBarWhite.getContainerPane());
-		sideBarBlue.getContainerPane().setLayout(new BorderLayout(0, 0));
-		sideBarBlue.getContainerPane().setBackground(Color.WHITE);
-		createHighFrame(sideBarBlue.getContainerPane());
-		createTree(sideBarBlue.getContainerPane());
-		
-		createStep2(sideBarBlue.getContainerPane());
-		
-		frame.setVisible(true);
+		frame = new MainFrame(this);
+		model.addObserver(frame);
+	}
+	
+	public void setFrameVisible(boolean b){
+		frame.setVisible(b);
 	}
 	
 	public void createTree(Container container){
@@ -92,34 +77,22 @@ public class ControllerFrame implements IFrameController{
 		model.addObserver(pFrame);
 	}
 	
-	public void createSideBarWhite(Container container){
+	public SideBar createSideBarWhite(Container container){
 		pExtWhite = new PanExtSettings(this);
 		pTransWhite = new PanTransparent(this);
 		sideBarWhite = new SideBar(SideBar.RIGHTtoLEFT, 900, pExtWhite, pTransWhite);
 		container.add(sideBarWhite);
+		return sideBarWhite;
 	}
 	
-	public void createSideBarBlue(Container container){
+	public SideBar createSideBarBlue(Container container){
 		pExtBlue = new PanExtend(this);
 		pCollBlue = new PanCollapse(this);
 		pTransBlue = new PanTransparent(this);
 		sideBarBlue = new SideBar(SideBar.LEFTtoRIGHT, 50, 200, pExtBlue, pCollBlue, pTransBlue);
 		container.add(sideBarBlue);
-		
-		model.addObserver(pExtBlue);
-		model.addObserver(pCollBlue);
-	}
-	
-	public void createStep1(Container container){
-		PanelStep1 panStep1 = new PanelStep1();
-			
-		container.add(panStep1, BorderLayout.CENTER);
-	}
-	
-	public void createStep2(Container container){
-		PanelStep2 panStep2 = new PanelStep2();
-			
-		container.add(panStep2, BorderLayout.CENTER);
+
+		return sideBarBlue;
 	}
 	
 	public void extSideBarWhite(){

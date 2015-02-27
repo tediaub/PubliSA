@@ -24,13 +24,13 @@ import model.User;
 
 import org.jdom.Element;
 
+import XML.XML;
+import affichage.FenetrePrincipale;
 import etape.Etape0;
 import etape.Etape1;
 import etape.Etape2;
 import etape.Etape3;
 import etape.Etape4;
-import affichage.FenetrePrincipale;
-import XML.XML;
 
 
 @SuppressWarnings("serial")

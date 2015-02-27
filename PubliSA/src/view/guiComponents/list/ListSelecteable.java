@@ -18,10 +18,12 @@ import controller.ControllerFrame;
 @SuppressWarnings("serial")
 public class ListSelecteable extends JList<String> implements ListSelectionListener, Observer {
 
+	ControllerFrame control;
 	/**
 	 * Create the application.
 	 */
 	public ListSelecteable(ControllerFrame control) {
+		this.control = control;
 		
 		setFocusable(false);
 		setFixedCellHeight(50);
@@ -44,14 +46,37 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 		listModel.addElement("Step2");
 		listModel.addElement("Step3");
 		
-		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
-			listModel.addElement("Step4");
+		if(model.getMainDelivery() != null){
+			if(model.getMainDelivery().getTarget() == Delivery.UBIK){
+				listModel.addElement("Step4");
+			}
 		}
+		
 		setModel(listModel);
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
 		if (e.getValueIsAdjusting() == false) {
+			Delivery d = control.getModel().getMainDelivery();
+			if(d != null){
+				switch (getSelectedIndex()) {
+				case Delivery.STEP1:
+					d.setActualStep(getSelectedIndex());
+					break;
+				case Delivery.STEP2:
+					d.setActualStep(getSelectedIndex());
+					break;
+				case Delivery.STEP3:
+					d.setActualStep(getSelectedIndex());
+					break;
+				case Delivery.STEP4:
+					d.setActualStep(getSelectedIndex());
+					break;	
+				default:
+					break;
+				}
+			}
+			control.colSideBarBlue();
 	    }
 	}
 

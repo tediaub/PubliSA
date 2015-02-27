@@ -1,24 +1,17 @@
 package XML;
 
 import java.awt.Color;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import org.jdom.*;
+import org.jdom.Attribute;
+import org.jdom.Element;
 import org.jdom.filter.Filter;
-import org.jdom.input.*;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
-
-
-
-
-import etape.Etape0;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
-
-import javax.swing.JOptionPane;
 
 public class XML{
 	   

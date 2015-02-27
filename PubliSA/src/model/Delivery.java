@@ -1,6 +1,6 @@
 package model;
 
-public class Delivery {
+public class Delivery{
 	
 	private String name;
 	
@@ -10,8 +10,8 @@ public class Delivery {
 	
 	public boolean main = false;
 	
-	private int actualStep = 0;
-	private int highestStep = 0;
+	private int actualStep;
+	private int highestStep;
 	public static final int STEP1 = 0;
 	public static final int STEP2 = 1;
 	public static final int STEP3 = 2;
@@ -22,10 +22,15 @@ public class Delivery {
 	private String standard = "";
 	
 	private String pathOGC;
+
+	private Model model;
 	
-	public Delivery(String name, int target){
+	public Delivery(String name, int target, Model model){
 		this.name = name;
 		this.target = target;
+		this.model = model;
+		actualStep = Delivery.STEP1;
+		highestStep = Delivery.STEP1;
 	}
 	
 	public String getName(){
@@ -34,6 +39,7 @@ public class Delivery {
 	
 	public void setName(String name){
 		this.name = name;
+		model.notice();
 	}
 	
 	public boolean isMain(){
@@ -42,6 +48,7 @@ public class Delivery {
 	
 	public void setMain(boolean b){
 		main = b;
+		model.notice();
 	}
 	
 	public int getTarget(){
@@ -50,6 +57,7 @@ public class Delivery {
 	
 	public void setTarget(int target){
 		this.target = target;
+		model.notice();
 	}
 	
 	public int getActualStep(){
@@ -61,6 +69,7 @@ public class Delivery {
 			highestStep = actualStep;
 		}
 		this.actualStep = actualStep;
+		model.notice();
 	}
 	
 	public int getHighestStep(){
@@ -73,6 +82,7 @@ public class Delivery {
 	
 	public void setDCR(String DCR) {
 		dcr = DCR;
+		model.notice();
 	}
 	
 	public String getComputer(){
@@ -81,6 +91,7 @@ public class Delivery {
 	
 	public void setComputer(String computer) {
 		this.computer = computer;
+		model.notice();
 	}
 	
 	public String getStandard(){
@@ -89,6 +100,7 @@ public class Delivery {
 	
 	public void setStandard(String standard) {
 		this.standard = standard;
+		model.notice();
 	}
 	
 	public String getPathOGC(){
@@ -97,5 +109,6 @@ public class Delivery {
 	
 	public void setPathOGC(String OGC){
 		pathOGC = OGC;
+		model.notice();
 	}
 }

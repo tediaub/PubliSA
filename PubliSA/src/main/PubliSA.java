@@ -8,7 +8,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import model.Model;
 import XML.XML;
-import controller.ControllerFrame;
 import controller.openFrame.OpeningController;
 
 /**
@@ -53,6 +52,7 @@ public class PubliSA {
 				Model model = new Model();
 				OpeningController control = new OpeningController(model);
 				control.createOpeningFrame();
+				control.createMainFrame();
 			}
 		});
 	}

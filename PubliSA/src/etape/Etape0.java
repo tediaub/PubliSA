@@ -20,14 +20,15 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import org.jdom.Element;
-
-import tutoriel.Tutoriel;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
 import myJTree.AffichageTree;
+
+import org.jdom.Element;
+
+import tutoriel.Tutoriel;
 import XML.XML;
 import affichage.FenetrePrincipale;
 

@@ -1,29 +1,60 @@
 package affichage;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTree;
+import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
 
 import jxl.write.WriteException;
+import langue.GestLangue;
+import langue.IHM;
+import model.Delivery;
+import model.User;
+import myJTree.AffichageTree;
 import outils.Lanceur;
 import outils.SupprEntete;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
 import verification.CreationRapportEtape2;
 import verification.CreationRapportEtape4;
-import langue.GestLangue;
-import langue.IHM;
-import model.Delivery;
-import model.User;
-import myJTree.AffichageTree;
 import XML.XML;
 import autre.Langue;
 
-import com.jgoodies.forms.layout.*;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
 
-import etape.*;
+import etape.Etape0;
+import etape.Etape1;
+import etape.Etape2;
+import etape.Etape3;
+import etape.Etape4;
 
 /**
  * 

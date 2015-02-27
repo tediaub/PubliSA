@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
 @SuppressWarnings("serial")
 public class MyTableHeaderRenderer extends JLabel implements TableCellRenderer {

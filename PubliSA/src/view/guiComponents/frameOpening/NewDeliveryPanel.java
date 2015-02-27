@@ -154,8 +154,6 @@ public class NewDeliveryPanel extends PanelTemplate implements ActionListener {
 			}
 			
 			control.createDelivery(tfDelivery.getText(), target);
-			control.createMainFrame();
-			control.closeFrame();
 		}
 		
 	}

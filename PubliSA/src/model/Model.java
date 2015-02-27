@@ -3,15 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import model.svg.DocSVG;
-
-import org.w3c.dom.Document;
-
 public class Model extends Observable{
 	
 	private User user = null;
-	
-	private Document docArianeSVG = null;
 	
 	private Delivery mainDelivery = null;
 	private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
@@ -21,31 +15,33 @@ public class Model extends Observable{
 	}
 	
 	public void createUser(String name){
-		user = new User(name);
+		user = new User(name, this);
 		notice();
 	}
-	
+
 	public User getUser(){
 		return user;
+	}
+	
+	public void createDelivery(String deliveryName, int target){
+		Delivery delivery = new Delivery(deliveryName, target, this);
+		setMainDelivery(delivery);
+		deliveries.add(delivery);
+		
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void setMainDelivery(Delivery delivery){
 		if(mainDelivery != null){
 			mainDelivery.setMain(false);
 		}
+		delivery.setMain(true);
 		mainDelivery = delivery;
 	}
 	
 	public Delivery getMainDelivery(){
 		return mainDelivery;
-	}
-	
-	public void createDelivery(String deliveryName, int target){
-		Delivery delivery = new Delivery(deliveryName, target);
-		delivery.setActualStep(Delivery.STEP1);
-		setMainDelivery(delivery);
-		deliveries.add(delivery);
-		notice();
 	}
 	
 	public Delivery getDelivery(String deliveryName){
@@ -61,7 +57,7 @@ public class Model extends Observable{
 		return deliveries;
 	}
 	
-	private void notice(){
+	public void notice() {
 		setChanged();
 		notifyObservers();
 	}

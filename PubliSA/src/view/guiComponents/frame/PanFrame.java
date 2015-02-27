@@ -61,11 +61,18 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 		pBtnFrame = new PanButtonFrame(control);
 		add(pBtnFrame, "3, 1, fill, fill");
 		
-		lblDelivery = new JLabel(control.getModel().getMainDelivery().getName());
+		lblDelivery = new JLabel();
+		setDeliveryText(control.getModel());
 		lblDelivery.setFont(new Font("Dotum", Font.BOLD, 14));
 		lblDelivery.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDelivery.setForeground(Color.WHITE);
 		add(lblDelivery, "1, 1");
+	}
+	
+	private void setDeliveryText(Model model){
+		if(control.getModel().getMainDelivery() != null && lblDelivery != null){
+			lblDelivery.setText(model.getMainDelivery().getName());
+		}
 	}
 
 	public void mouseDragged(MouseEvent e) {
@@ -104,6 +111,6 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 	@Override
 	public void update(Observable o, Object arg) {
 		Model model = (Model)o;
-		lblDelivery.setText(model.getMainDelivery().getName());
+		setDeliveryText(model);
 	}
 }

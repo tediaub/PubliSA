@@ -1,26 +1,34 @@
 package etape;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 import jxl.write.WriteException;
+import langue.GestLangue;
+import langue.IHM;
+import model.Delivery;
+import model.User;
 import outils.Lanceur;
 import outils.SupprEntete;
 import verification.CreationRapportEtape2;
-import verification.VerificationAkkaUbik;
 import verification.VerificationAkkaThales;
+import verification.VerificationAkkaUbik;
 import view.guiComponents.table.TableEtape2;
-import langue.GestLangue;
-import langue.IHM;
-
-
-import model.Delivery;
-import model.User;
 import affichage.FenetrePrincipale;
 
 import com.jgoodies.forms.factories.FormFactory;

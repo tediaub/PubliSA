@@ -3,26 +3,24 @@ package affichage;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-
-import autre.ImagePanel;
-import javax.swing.JTabbedPane;
-import javax.swing.border.LineBorder;
 import javax.swing.JEditorPane;
-
-import java.awt.Cursor;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 
 import langue.GestLangue;
 import langue.IHM;
+import autre.ImagePanel;
 
 /**
  * 

@@ -7,12 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 import langue.GestLangue;
 import langue.IHM;
 import view.guiComponents.SeparatorFlat;
-import view.guiComponents.table.TableEtape2;
 import view.guiComponents.table.TableFlat;
 
 import com.jgoodies.forms.factories.FormFactory;

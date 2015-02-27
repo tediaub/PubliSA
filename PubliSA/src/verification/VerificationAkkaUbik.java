@@ -1,6 +1,6 @@
 package verification;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
 import model.Delivery;
 import sauvergarde_chargement.ChargementFichier;
 import sauvergarde_chargement.Filtre_OGC;
-
-
 import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
 import fichierPubliSA.FichierOGC;

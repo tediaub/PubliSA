@@ -21,6 +21,7 @@ public class OpeningController implements IFrameController {
 
 	private Model model;
 	private OpeningFrame frame;
+	private ControllerFrame control;
 	
 	public OpeningController(Model model){
 		this.model = model;
@@ -31,8 +32,12 @@ public class OpeningController implements IFrameController {
 	}
 	
 	public void createMainFrame(){
-		ControllerFrame control = new ControllerFrame(model);
+		control = new ControllerFrame(model);
 		control.createFrame();
+	}
+	
+	public void setMainFrameVisible(boolean b) {
+		control.setFrameVisible(b);
 	}
 	
 	public void createDelivery(String name, int target){
@@ -55,8 +60,10 @@ public class OpeningController implements IFrameController {
 			}
 			
 		}
-			
+		
 		model.createDelivery(name, target);
+		setMainFrameVisible(true);
+		closeFrame();
 	}
 	
 	public void setViewPanel(String panelString){

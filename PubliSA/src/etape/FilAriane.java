@@ -7,16 +7,16 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import XML.XML;
-import affichage.FenetrePrincipale;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
+import XML.XML;
+import affichage.FenetrePrincipale;
   
 @SuppressWarnings("serial")
 public class FilAriane extends JPanel implements MouseListener{

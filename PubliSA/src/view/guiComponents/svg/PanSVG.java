@@ -1,83 +1,108 @@
-package model.svg;
+package view.guiComponents.svg;
 
+import java.awt.Color;
 import java.awt.Point;
+import java.util.Observable;
+import java.util.Observer;
 
 import model.Delivery;
+import model.Model;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import controller.ControllerFrame;
 
-public class DocSVG {
-
+@SuppressWarnings("serial")
+public class PanSVG extends JSVGCanvas implements Observer{
 	private Document doc;
-	
 	String svgNS = SVGDOMImplementation.SVG_NAMESPACE_URI;
 	
-	MarkerSVG markerStep1;
-	MarkerSVG markerStep2;
-	MarkerSVG markerStep3;
-	MarkerSVG markerStep4;
-	
-	Point pointStep1 = new Point(25, 25);
-	Point pointStep2 = new Point(25, 75);
-	Point pointStep3 = new Point(25, 125);
-	Point pointStep4 = new Point(25, 175);
-
-
-	public DocSVG(Delivery delivery) {
-		
-		DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
-		doc = impl.createDocument(svgNS, "svg", null);
-
-		// Get the root element (the 'svg' element).
-		Element svgRoot = doc.getDocumentElement();
-
-		// Set the width and height attributes on the root 'svg' element.
-		svgRoot.setAttributeNS(null, "width", "50");
-		svgRoot.setAttributeNS(null, "height", "200");
-		
-		boolean actStep1= false, actStep2 = false, actStep3 = false, actStep4 = false;
-		switch (delivery.getActualStep()) {
-		case Delivery.STEP1:
-			actStep1 = true;
-			break;
-
-		case Delivery.STEP2:
-			actStep2 = true;
-			break;
-			
-		case Delivery.STEP3:
-			actStep3 = true;
-			break;
-			
-		case Delivery.STEP4:
-			actStep4 = true;
-			break;
-		default:
-			break;
+	public PanSVG(ControllerFrame control){
+		setDoubleBufferedRendering(true);
+		if(control.getModel().getMainDelivery()!= null){
+			DocSVG doc = new DocSVG(control.getModel().getMainDelivery());
+			setDocument(doc.getDoc());
 		}
-		
-		markerStep1 = new MarkerSVG(pointStep1, null, actStep1);
-		markerStep2 = new MarkerSVG(pointStep2, markerStep1, actStep2);
-		markerStep3 = new MarkerSVG(pointStep3, markerStep2, actStep3);
-		
-		markerStep1.draw(svgRoot);
-		markerStep2.draw(svgRoot);
-		markerStep3.draw(svgRoot);
-		
-		if(delivery.getTarget() == Delivery.UBIK){
-			markerStep4 = new MarkerSVG(pointStep4, markerStep3, actStep4);
-			
-			markerStep4.draw(svgRoot);
+		setBackground(new Color(0, 119, 175));
+	}
+	
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		Model model = (Model)arg0;
+		if(model.getMainDelivery()!= null){
+			DocSVG doc = new DocSVG(model.getMainDelivery());
+			setDocument(doc.getDoc());
 		}
 	}
-
-	public Document getDoc(){
-		return doc;
+	
+	private class DocSVG {
+		
+		MarkerSVG markerStep1;
+		MarkerSVG markerStep2;
+		MarkerSVG markerStep3;
+		MarkerSVG markerStep4;
+		
+		Point pointStep1 = new Point(25, 25);
+		Point pointStep2 = new Point(25, 75);
+		Point pointStep3 = new Point(25, 125);
+		Point pointStep4 = new Point(25, 175);
+	
+	
+		public DocSVG(Delivery delivery) {
+			
+			DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+			doc = impl.createDocument(svgNS, "svg", null);
+	
+			// Get the root element (the 'svg' element).
+			Element svgRoot = doc.getDocumentElement();
+	
+			// Set the width and height attributes on the root 'svg' element.
+			svgRoot.setAttributeNS(null, "width", "50");
+			svgRoot.setAttributeNS(null, "height", "200");
+			
+			boolean actStep1= false, actStep2 = false, actStep3 = false, actStep4 = false;
+			switch (delivery.getActualStep()) {
+			case Delivery.STEP1:
+				actStep1 = true;
+				break;
+	
+			case Delivery.STEP2:
+				actStep2 = true;
+				break;
+				
+			case Delivery.STEP3:
+				actStep3 = true;
+				break;
+				
+			case Delivery.STEP4:
+				actStep4 = true;
+				break;
+			default:
+				break;
+			}
+			
+			markerStep1 = new MarkerSVG(pointStep1, null, actStep1);
+			markerStep2 = new MarkerSVG(pointStep2, markerStep1, actStep2);
+			markerStep3 = new MarkerSVG(pointStep3, markerStep2, actStep3);
+			
+			markerStep1.draw(svgRoot);
+			markerStep2.draw(svgRoot);
+			markerStep3.draw(svgRoot);
+			
+			if(delivery.getTarget() == Delivery.UBIK){
+				markerStep4 = new MarkerSVG(pointStep4, markerStep3, actStep4);
+				
+				markerStep4.draw(svgRoot);
+			}
+		}
+	
+		public Document getDoc(){
+			return doc;
+		}
 	}
 	
 	private class MarkerSVG{

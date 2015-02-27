@@ -2,8 +2,8 @@ package view.guiComponents;
 
 import java.awt.Font;
 
-import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
 
 @SuppressWarnings("serial")
 public class RadioButtonFlat extends JRadioButton {

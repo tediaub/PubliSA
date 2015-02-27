@@ -5,10 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import etape.Etape4;
-import sauvergarde_chargement.Filtre_XLS;
-import sauvergarde_chargement.SauvegardeRapport;
-import view.guiComponents.table.TableEtape4;
 import jxl.Workbook;
 import jxl.format.Alignment;
 import jxl.format.Border;
@@ -22,6 +18,10 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
+import sauvergarde_chargement.Filtre_XLS;
+import sauvergarde_chargement.SauvegardeRapport;
+import view.guiComponents.table.TableEtape4;
+import etape.Etape4;
 
 public class CreationRapportEtape4 {
 	

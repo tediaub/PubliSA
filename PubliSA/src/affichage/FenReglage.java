@@ -5,57 +5,56 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.DefaultComboBoxModel;
-
-import sauvergarde_chargement.*;
-import tutoriel.TutoPanel;
-import tutoriel.Tutoriel;
-
-import javax.swing.JScrollPane;
-import javax.swing.JEditorPane;
-
-import org.jdom.Element;
-
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.RowSpec;
 
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
 import myJTree.AffichageTree;
-import etape.Etape0;
+
+import org.jdom.Element;
+
+import sauvergarde_chargement.ChargementFichier;
+import sauvergarde_chargement.Filtre_DOC;
+import sauvergarde_chargement.Filtre_EXE;
+import tutoriel.TutoPanel;
+import tutoriel.Tutoriel;
 import XML.XML;
 
-import java.awt.Font;
-import java.util.ArrayList;
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
+
+import etape.Etape0;
 
 /**
  * 
