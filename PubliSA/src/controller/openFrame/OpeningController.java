@@ -28,6 +28,10 @@ public class OpeningController implements IFrameController {
 		this.model = model;
 	}
 	
+	public Model getModel(){
+		return model;
+	}
+	
 	public void createOpeningFrame(){
 		frame = new OpeningFrame(this);
 	}
