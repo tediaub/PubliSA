@@ -110,9 +110,6 @@ public class OpeningController implements IFrameController {
 		frame.setLocation(x,y);
 	}
 
-	public Model getModel() {
-		return model;
-	}
 
 	public void openDelivery() {
 		setMainFrameVisible(true);
