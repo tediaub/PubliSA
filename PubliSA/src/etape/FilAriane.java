@@ -15,7 +15,7 @@ import javax.swing.border.LineBorder;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
-import XML.XML;
+import model.saveLoad.XmlLoader;
 import affichage.FenetrePrincipale;
   
 @SuppressWarnings("serial")
@@ -61,7 +61,7 @@ public class FilAriane extends JPanel implements MouseListener{
 		//addMouseMotionListener(this);
 		
 		setOpaque(false);
-		setBorder(new LineBorder((XML.getColor())[0], 1, true));
+		setBorder(new LineBorder((XmlLoader.getColor())[0], 1, true));
 	}
 	
 	public void paintComponent(Graphics g){

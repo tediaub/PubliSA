@@ -1,4 +1,4 @@
-package view.step;
+package view.panel;
 
 import java.awt.Color;
 import java.awt.Font;

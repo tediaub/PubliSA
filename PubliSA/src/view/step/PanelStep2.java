@@ -2,6 +2,10 @@ package view.step;
 
 import javax.swing.JPanel;
 
+import view.panel.PanelCheck;
+import view.panel.PanelDCR;
+import view.panel.PanelOGC;
+
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;

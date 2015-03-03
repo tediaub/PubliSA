@@ -25,8 +25,8 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 import myJTree.AffichageTree;
-import XML.XML;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -169,11 +169,11 @@ public class DialNouveau extends JDialog implements ActionListener {
 			}
 			
 			//Vérifie la présence du nom entrer.
-			for(int i = 0; i < XML.getUTI().size();i++){
-				String uti = XML.getUTI().get(i).getName();
-				for(int j = 0; j < XML.getLivraison(uti).size(); j++){
-					String liv = XML.getLivraison(uti).get(j).getName();
-					if(XML.getNomLiv(uti, liv).contentEquals(nomLiv)){
+			for(int i = 0; i < XmlLoader.getUTI().size();i++){
+				String uti = XmlLoader.getUTI().get(i).getName();
+				for(int j = 0; j < XmlLoader.getLivraison(uti).size(); j++){
+					String liv = XmlLoader.getLivraison(uti).get(j).getName();
+					if(XmlLoader.getNomLiv(uti, liv).contentEquals(nomLiv)){
 						JOptionPane.showMessageDialog(null, 
 								GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
 								GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
@@ -192,28 +192,28 @@ public class DialNouveau extends JDialog implements ActionListener {
 			}
 			
 			//Création d'une nouvelle livraison
-			XML.newLivraison(User.getNom(), nomLiv);
+			XmlLoader.newLivraison(User.getNom(), nomLiv);
 			
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 			
-			XML.setEtapeLiv(User.getNom(), "L" + nomLiv, "1");
-			XML.setNomLiv(User.getNom(), "L" + nomLiv, tfLivraison.getText());
+			XmlLoader.setEtapeLiv(User.getNom(), "L" + nomLiv, "1");
+			XmlLoader.setNomLiv(User.getNom(), "L" + nomLiv, tfLivraison.getText());
 			
 			if(rbLivThales.isSelected()){
-				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Thales");
+				XmlLoader.setCibleLiv(User.getNom(), "L" + nomLiv, "Thales");
 			}
 			else if(rbLivUbik.isSelected()){
-				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Ubik");
+				XmlLoader.setCibleLiv(User.getNom(), "L" + nomLiv, "Ubik");
 			}
 			
 			new Delivery(User.getNom(), nomLiv);
 			
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

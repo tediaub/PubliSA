@@ -19,12 +19,12 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 import sauvergarde_chargement.ChargementFichier;
 import sauvergarde_chargement.Filtre_OGCtxt;
 import verification.CreationRapportEtape4;
 import verification.VerificationUbikUbik;
 import view.guiComponents.table.TableEtape4;
-import XML.XML;
 import affichage.DialNouveau;
 import affichage.FenetrePrincipale;
 
@@ -237,11 +237,11 @@ public class Etape4 implements ActionListener {
 			else return;
 		}
 		if (e.getSource() == btEtape4){ 
-			if(XML.getGestLiv(User.getNom())){
-				 XML.supprLiv(User.getNom(), "L" + Delivery.getNom());
+			if(XmlLoader.getGestLiv(User.getNom())){
+				 XmlLoader.supprLiv(User.getNom(), "L" + Delivery.getNom());
 			}
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 			}catch (Exception e1) {
 				e1.printStackTrace();
 			}

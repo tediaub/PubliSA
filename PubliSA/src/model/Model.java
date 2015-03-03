@@ -7,7 +7,7 @@ import java.util.Observable;
 public class Model extends Observable implements Serializable{
 	
 	private User user = null;
-	private String test = "teddy";
+	
 	private Delivery mainDelivery = null;
 	private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 	
@@ -15,22 +15,24 @@ public class Model extends Observable implements Serializable{
 		createUser("Teddy");
 	}
 	
-	public void createUser(String name){
+	public User createUser(String name){
 		user = new User(name, this);
 		notice();
+		return user;
 	}
 
 	public User getUser(){
 		return user;
 	}
 	
-	public void createDelivery(String deliveryName, int target){
+	public Delivery createDelivery(String deliveryName, int target){
 		Delivery delivery = new Delivery(deliveryName, target, this);
 		setMainDelivery(delivery);
 		deliveries.add(delivery);
 		
-		setChanged();
-		notifyObservers();
+		notice();
+		
+		return delivery; 
 	}
 	
 	public void setMainDelivery(Delivery delivery){

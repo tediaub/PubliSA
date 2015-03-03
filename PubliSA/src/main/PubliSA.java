@@ -8,7 +8,8 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import model.Model;
-import model.save.Serialization;
+import model.saveLoad.Serialization;
+import model.saveLoad.XmlLoader;
 import controller.openFrame.OpeningController;
 
 /**
@@ -46,12 +47,12 @@ public class PubliSA {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-				//new XML();
-				
+								
 				Model model = null;
 				if(new File("data").exists()){
 					model = Serialization.loadModel();
+				}else if(new File("PubliSA.xml").exists()){
+					model = XmlLoader.loadModel();
 				}
 				if(model == null){
 					model = new Model();

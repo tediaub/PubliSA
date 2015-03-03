@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 
-import view.guiComponents.ScrollBarFlatUI;
 import view.guiComponents.frame.LabelResize;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -23,7 +23,7 @@ public class PanTree extends JPanel {
 		setBackground(new Color(240, 240, 240));
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("20px"),
-				ColumnSpec.decode("180px:grow"),
+				ColumnSpec.decode("170px:grow"),
 				ColumnSpec.decode("20px"),},
 			new RowSpec[] {
 				RowSpec.decode("20px"),

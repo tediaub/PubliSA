@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
 import model.Model;
-import model.save.Serialization;
+import model.saveLoad.Serialization;
 import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.MainFrame;
 import view.guiComponents.frame.PanFrame;

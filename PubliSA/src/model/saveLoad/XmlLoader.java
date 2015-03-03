@@ -1,4 +1,4 @@
-package XML;
+package model.saveLoad;
 
 import java.awt.Color;
 import java.io.File;
@@ -7,35 +7,90 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import model.Delivery;
+import model.Model;
+
 import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.filter.Filter;
+import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-public class XML{
+public class XmlLoader{
 	   
 	static org.jdom.Document document;
 	static Element racine;
 	
 	static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
-	  
-	public XML()
-	{
-//	    //On crée une instance de SAXBuilder
-//	    SAXBuilder sxb = new SAXBuilder();
-//	    try
-//	    {
-//	    	//document = sxb.build(getClass().getResource("/PubliSA.xml"));
-//	  	   	document = sxb.build(new File(xml));
-//	  	   	racine = document.getRootElement();
-//	    }
-//	    catch(Exception e){
-//	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
-//			return;
-//	    }
-	    
-	    
+	
+	public static Model loadModel(){
+		
+		//On crée une instance de SAXBuilder
+	    SAXBuilder sxb = new SAXBuilder();
+	    try
+	    {
+	  	   	document = sxb.build(new File(xml));
+	  	   	System.out.println("pas");
+	  	   	racine = document.getRootElement();
+	    }
+	    catch(Exception e){
+	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
+			return null;
+	    }
+		
+		Model model = new Model();
+		loadUser(model);
+		loadDelivery(model);
+		return model;
+	}
+	
+	public static void loadUser(Model model){
+		ArrayList<Element> array = getUTI();
+		if(array.size()==1){
+			model.createUser(array.get(0).getText());
+		}
+	}
+	
+	public static void loadDelivery(Model model){
+		ArrayList<Element> array = getLivraison(model.getUser().getName());
+		for (int i = 0; i < array.size(); i++) {
+			String name = array.get(i).getChildText("Nom");
+			String cible = array.get(i).getChildText("Cible");
+			int target;
+			if(cible == "Thales"){
+				target = Delivery.THALES;
+			}else{
+				target = Delivery.UBIK;
+			}
+			
+			Delivery del = model.createDelivery(name, target);
+			
+			//STEP
+			int step = Integer.parseInt(array.get(i).getChildText("Etape"));
+			switch (step) {
+			case Delivery.STEP1:
+				del.setActualStep(Delivery.STEP1);
+				break;
+			case Delivery.STEP2:
+				del.setActualStep(Delivery.STEP2);
+				break;
+			case Delivery.STEP3:
+				del.setActualStep(Delivery.STEP3);
+				break;
+			case Delivery.STEP4:
+				del.setActualStep(Delivery.STEP4);
+				break;
+
+			default:
+				break;
+			}
+			
+			//DCR
+			del.setDCR(array.get(i).getChildText("DCR"));
+		}
 	}
 	
 	public static Color[] getColor(){
@@ -93,7 +148,7 @@ public class XML{
 			couleur[1] = new Color(194, 215, 234);
 			couleur[2] = new Color(r3, v3, b3);
 			
-			XML.setColor(couleur);
+			XmlLoader.setColor(couleur);
 		}
 		
 		Color[] couleur = new Color[3];
@@ -136,7 +191,7 @@ public class XML{
 			Element langue = new Element("Langue");
 			racine.addContent(langue);
 			
-			XML.setLangue("FRANCAIS");
+			XmlLoader.setLangue("FRANCAIS");
 		}
 		
 		return racine.getChild("Langue").getText();
@@ -157,7 +212,7 @@ public class XML{
 	
 	public static ArrayList<Element> getUTI(){
 		ArrayList<Element> UTI = new ArrayList<Element>();
-		
+		System.out.println(racine);
 		Iterator<?> i = racine.getChildren().iterator();
 	    while(i.hasNext())
 	    {
