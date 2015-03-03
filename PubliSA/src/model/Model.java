@@ -6,6 +6,11 @@ import java.util.Observable;
 
 public class Model extends Observable implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private User user = null;
 	
 	private Delivery mainDelivery = null;

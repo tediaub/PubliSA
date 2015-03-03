@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import langue.GestLangue;
 import langue.IHM;
+import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.table.TableFlat;
 
@@ -22,7 +22,7 @@ import com.jgoodies.forms.layout.RowSpec;
 public class PanelCheck extends JPanel {
 	
 	private TableFlat table;
-	private JButton btnOptions;
+	private ButtonFlat btnOptions;
 
 	public PanelCheck() {
 		setOpaque(false);
@@ -60,9 +60,11 @@ public class PanelCheck extends JPanel {
 		lblNombreDeFichiersDos.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblNombreDeFichiersDos, "3, 8");
 		
-		btnOptions = new JButton();
+		btnOptions = new ButtonFlat();
+		btnOptions.setBackground(new Color(255, 255, 255));
+		btnOptions.setRolloverBackground(new Color(240, 240, 240));
+		btnOptions.setForeground(Color.WHITE);
 		btnOptions.setIcon(new ImageIcon(PanelCheck.class.getResource("/iconeStep2/other.png")));
-		btnOptions.setContentAreaFilled(false);
 		add(btnOptions, "4, 6, 1, 3");
 		
 		table = new TableFlat();

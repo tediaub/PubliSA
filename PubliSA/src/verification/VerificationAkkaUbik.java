@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import model.Delivery;
+import model.files.FichierOGC;
+import model.files.FichierPDF;
 import sauvergarde_chargement.ChargementFichier;
 import sauvergarde_chargement.Filtre_OGC;
 import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
-import fichierPubliSA.FichierOGC;
-import fichierPubliSA.FichierPDF;
 
 /**
  */

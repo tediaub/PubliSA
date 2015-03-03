@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import model.Delivery;
+import model.files.FichierASC;
+import model.files.FichierOGC;
+import model.files.FichierSCH;
 import sauvergarde_chargement.ChargementFichier;
 import sauvergarde_chargement.Filtre_OGC;
 import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
-import fichierPubliSA.FichierASC;
-import fichierPubliSA.FichierOGC;
-import fichierPubliSA.FichierSCH;
 
 /**
  */

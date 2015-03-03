@@ -7,6 +7,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import view.guiComponents.firstLaunch.FirstLaunchDialog;
 import model.Model;
 import model.saveLoad.Serialization;
 import model.saveLoad.XmlLoader;
@@ -54,6 +55,7 @@ public class PubliSA {
 				}else if(new File("PubliSA.xml").exists()){
 					model = XmlLoader.loadModel();
 				}
+				
 				if(model == null){
 					model = new Model();
 				}

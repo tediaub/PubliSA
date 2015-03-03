@@ -38,6 +38,7 @@ public class MainPanel extends PanelTemplate implements ActionListener{
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		setContainer(panel);
+		
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.UNRELATED_GAP_COLSPEC,
 				ColumnSpec.decode("378px:grow"),

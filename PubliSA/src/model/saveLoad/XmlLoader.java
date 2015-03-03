@@ -33,7 +33,6 @@ public class XmlLoader{
 	    try
 	    {
 	  	   	document = sxb.build(new File(xml));
-	  	   	System.out.println("pas");
 	  	   	racine = document.getRootElement();
 	    }
 	    catch(Exception e){
@@ -92,6 +91,31 @@ public class XmlLoader{
 			del.setDCR(array.get(i).getChildText("DCR"));
 		}
 	}
+	
+	public static ArrayList<Element> getUTI(){
+		ArrayList<Element> UTI = new ArrayList<Element>();
+		Iterator<?> i = racine.getChildren().iterator();
+	    while(i.hasNext())
+	    {
+	       Element courant = (Element)i.next();
+	       if(!courant.getName().contentEquals("MultiUTI") 
+	    		   && !courant.getName().contentEquals("FirstUti")
+	    		   && !courant.getName().contentEquals("Langue")
+	    		   && !courant.getName().contentEquals("Color")){
+	    	   UTI.add(courant);
+	       }
+		}
+		return UTI;
+	}
+	
+	
+	
+	
+	
+	///////// To delete
+	
+	
+	
 	
 	public static Color[] getColor(){
 		
@@ -210,22 +234,7 @@ public class XmlLoader{
 		return texte.contentEquals("True");
 	}
 	
-	public static ArrayList<Element> getUTI(){
-		ArrayList<Element> UTI = new ArrayList<Element>();
-		System.out.println(racine);
-		Iterator<?> i = racine.getChildren().iterator();
-	    while(i.hasNext())
-	    {
-	       Element courant = (Element)i.next();
-	       if(!courant.getName().contentEquals("MultiUTI") 
-	    		   && !courant.getName().contentEquals("FirstUti")
-	    		   && !courant.getName().contentEquals("Langue")
-	    		   && !courant.getName().contentEquals("Color")){
-	    	   UTI.add(courant);
-	       }
-		}
-		return UTI;
-	}
+	
 	
 	@SuppressWarnings({ "serial", "unchecked" })
 	public static ArrayList<Element> getLivraison(String UTI){

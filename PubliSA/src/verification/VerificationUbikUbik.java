@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import model.files.FichierCSV;
+import model.files.FichierOGC;
 import view.guiComponents.table.TableEtape4;
 import etape.Etape4;
-import fichierPubliSA.FichierCSV;
-import fichierPubliSA.FichierOGC;
 
 /**
  */

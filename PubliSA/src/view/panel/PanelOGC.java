@@ -2,6 +2,7 @@ package view.panel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -58,8 +59,12 @@ public class PanelOGC extends JPanel {
 		lblNewLabel_3.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblNewLabel_3, "3, 10");
 		
-		ButtonFlat btnNewButton = new ButtonFlat("New button");
-		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/iconeStep2/folder.png")));
-		add(btnNewButton, "4, 10");
+		ButtonFlat btnFolder = new ButtonFlat("Parcourir");
+		btnFolder.setBackground(new Color(0, 119, 175));
+		btnFolder.setForeground(Color.WHITE);
+		btnFolder.setMargin(new Insets(2, 4, 2, 4));
+		btnFolder.setIconTextGap(15);
+		btnFolder.setIcon(new ImageIcon(getClass().getResource("/iconeStep2/folder.png")));
+		add(btnFolder, "4, 10");
 	}
 }

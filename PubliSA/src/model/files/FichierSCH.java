@@ -1,4 +1,4 @@
-package fichierPubliSA;
+package model.files;
 
 import java.io.File;
 

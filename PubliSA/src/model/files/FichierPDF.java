@@ -1,4 +1,4 @@
-package fichierPubliSA;
+package model.files;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import model.Delivery;
 /**
  */
 @SuppressWarnings("serial")
-public class FichierASC extends File{
+public class FichierPDF extends File{
 	
 	private String nom;
 	private String adresse;
@@ -36,14 +36,15 @@ public class FichierASC extends File{
 	 * Constructor for FichierPOS.
 	 * @param adresse String
 	 */
-	public FichierASC(String adresse) {
+	public FichierPDF(String adresse) {
 		super(adresse);
-		this.isPresent = false;
+		isPresent = false;
 		this.adresse = adresse;
-		this.nom = super.getName();
-		this.repertoire = super.getParentFile().getPath();
+		nom = super.getName();
+		repertoire = super.getParentFile().getPath();
 		
-		if(nom.substring(nom.indexOf(".")+1, nom.length()).toUpperCase().contains("ASC")){
+		if(nom.substring(nom.indexOf(".")+1, nom.length()).toUpperCase().contains("PDF")){
+
 			livre = new String(nom.substring(1,3));
 			chapitre = new String(nom.substring(4,6));
 			planche = new String(nom.substring(7,10));
@@ -52,44 +53,48 @@ public class FichierASC extends File{
 			nomFin = new String(nom.substring(11, nom.length()));
 			variante = new String(nom.substring(11, nomFin.indexOf("I")+11));
 			issue = new String(nom.substring(nomFin.indexOf("I")+12, nom.indexOf(".")));
+
 			
+		
 	        String message = new String();
 	        char car = ' ';
-	        try{
-        	if (Integer.parseInt(livre)> 9 && Integer.parseInt(livre) < 36){
-	        	car = (char)(55+Integer.parseInt(livre));
-	        	livre = "0" + car; 
-	        	message = "Livre";
-	        	exception = true;
-			}
-			
-			if (Integer.parseInt(chapitre) > 9 && Integer.parseInt(chapitre) < 36){      
-			    if (car != ' '){
-			      message = message + ", ";
-			    }
-				car = (char)(55+Integer.parseInt(chapitre));
-				chapitre = "0" + car;
-				message = message + "Chapitre";
-				exception = true;
-			}
-
-			if (Integer.parseInt(planche) > 9 && Integer.parseInt(planche) < 36){       
-			    if (car != ' '){
-			      message = message + ", ";
+	        try{	        	
+	        	if (Integer.parseInt(livre)> 9 && Integer.parseInt(livre) < 36){
+		        	car = (char)(55+Integer.parseInt(livre));
+		        	livre = "0" + car; 
+		        	message = "Livre";
+		        	exception = true;
 				}
-				car = (char)(55+Integer.parseInt(planche));
-				planche = "00" + car;
-				message = message + "Planche";
-				exception = true;
-			}
+				
+				if (Integer.parseInt(chapitre) > 9 && Integer.parseInt(chapitre) < 36){      
+				    if (car != ' '){
+				      message = message + ", ";
+				    }
+					car = (char)(55+Integer.parseInt(chapitre));
+					chapitre = "0" + car;
+					message = message + "Chapitre";
+					exception = true;
+				}
+	
+				if (Integer.parseInt(planche) > 9 && Integer.parseInt(planche) < 36){       
+				    if (car != ' '){
+				      message = message + ", ";
+					}
+					car = (char)(55+Integer.parseInt(planche));
+					planche = "00" + car;
+					message = message + "Planche";
+					exception = true;
+				}
+				
 	        }catch(NumberFormatException e){
-	        	NomTheorique = "L" + livre + "C" + chapitre + "P" + planche + "V" + variante + "I" + issue + ".ASC";
-	        	messageErrOriginal = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " +GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel())+ " " + NomTheorique;
+	        	NomTheorique = "L" + livre + "C" + chapitre + "P" + planche + "V" + variante + "I" + issue + ".PDF";
+				messageErrOriginal = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + NomTheorique;
 				return;
 	        }
-			NomTheorique = "L" + livre + "C" + chapitre + "P" + planche + "V" + variante + "I" + issue + ".ASC";
-			messageErrOriginal = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " +GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel())+ " " + NomTheorique;
-        }
+			NomTheorique = "L" + livre + "C" + chapitre + "P" + planche + "V" + variante + "I" + issue + ".PDF";
+			messageErrOriginal = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + NomTheorique;
+		
+		}
 	}
 	
 	/**
@@ -104,21 +109,21 @@ public class FichierASC extends File{
 	        adresse = repertoire + File.separator + nom;
 	        changement = true;
 	    }
-		if(nom.substring(nom.indexOf(".")+1, nom.length()).toUpperCase().contains("ASC")){
-			//Vérification des erreurs de nom des planches
-			if(nom.substring(nom.indexOf(".")+1, nom.length()).contentEquals("asc")){
-				nom = nom.substring(0, nom.lastIndexOf(".")) + ".ASC";
+		if(nom.substring(nom.indexOf(".")+1, nom.length()).toUpperCase().contains("PDF")){
+	        //Vérification des erreurs de nom des planches
+			if(nom.substring(nom.indexOf(".")+1, nom.length()).contentEquals("pdf")){
+				nom = nom.substring(0, nom.lastIndexOf(".")) + ".PDF";
 				adresse = repertoire + File.separator + nom;
 				changement = true;
 			}
-			issue = new String(nom.substring(nom.lastIndexOf("I"), nom.lastIndexOf(".")));
+			
+			issue = nom.substring(nom.lastIndexOf("I"), nom.lastIndexOf("."));
 			if (issue.length() == 2){
 				issue = "I0" + issue.charAt(1);
-				nom = nom.substring(0, nom.lastIndexOf("I")) + issue + ".ASC";
+				nom = nom.substring(0, nom.lastIndexOf("I")) + issue + ".PDF";
 				adresse = repertoire + File.separator + nom;
 		        changement = true;
 			}
-			
 		}
 		if(changement){
 			this.renameTo(new File(adresse));
@@ -223,7 +228,7 @@ public class FichierASC extends File{
 	}
 	
 	/**
-	 * Method getPresent.
+	 * Method getPresent
 	 * @return boolean
 	 */
 	public boolean getPresent(){

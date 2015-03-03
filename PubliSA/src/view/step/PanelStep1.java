@@ -30,7 +30,7 @@ public class PanelStep1 extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
+				RowSpec.decode("30px"),
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		PanelDCR panel = new PanelDCR();
