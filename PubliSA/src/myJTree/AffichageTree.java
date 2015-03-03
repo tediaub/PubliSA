@@ -21,10 +21,10 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 
 import org.jdom.Element;
 
-import XML.XML;
 import affichage.FenetrePrincipale;
 import etape.Etape0;
 import etape.Etape1;
@@ -79,22 +79,22 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 						ArrayList<Element> utilisateur = new ArrayList<Element>();
 						ArrayList<Element> livraison = new ArrayList<Element>();
 						
-						if(XML.getModeUTI()){
-							utilisateur = XML.getUTI();
+						if(XmlLoader.getModeUTI()){
+							utilisateur = XmlLoader.getUTI();
 							for(int i=0; i<utilisateur.size();i++){
 								nodeUti = new DefaultMutableTreeNode(utilisateur.get(i).getName());
-								livraison = XML.getLivraison(utilisateur.get(i).getName());
+								livraison = XmlLoader.getLivraison(utilisateur.get(i).getName());
 								for(int j=0; j<livraison.size();j++){
-									nodeUti.add(new DefaultMutableTreeNode(XML.getNomLiv(utilisateur.get(i).getName(),livraison.get(j).getName())));
+									nodeUti.add(new DefaultMutableTreeNode(XmlLoader.getNomLiv(utilisateur.get(i).getName(),livraison.get(j).getName())));
 								}
 								add(nodeUti);
 							}
 						}
-						if(!XML.getModeUTI()){
+						if(!XmlLoader.getModeUTI()){
 							nodeUti = new DefaultMutableTreeNode(User.getNom());
-							livraison = XML.getLivraison(User.getNom());
+							livraison = XmlLoader.getLivraison(User.getNom());
 							for(int j=0; j<livraison.size();j++){
-								nodeUti.add(new DefaultMutableTreeNode(XML.getNomLiv(User.getNom(),livraison.get(j).getName())));
+								nodeUti.add(new DefaultMutableTreeNode(XmlLoader.getNomLiv(User.getNom(),livraison.get(j).getName())));
 							}
 							add(nodeUti);
 						}
@@ -116,14 +116,14 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 					return;
 				}
 				
-				for(int i=0; i<XML.getLivraison(User.getNom()).size();i++){
-					if(getLastSelectedPathComponent().toString().contentEquals(XML.getNomLiv(User.getNom(),XML.getLivraison(User.getNom()).get(i).getName()))){
+				for(int i=0; i<XmlLoader.getLivraison(User.getNom()).size();i++){
+					if(getLastSelectedPathComponent().toString().contentEquals(XmlLoader.getNomLiv(User.getNom(),XmlLoader.getLivraison(User.getNom()).get(i).getName()))){
 						exception = true;
 					}
 				}
 				
-				for(int i=0; i<XML.getUTI().size();i++){
-					if(getLastSelectedPathComponent().toString().contentEquals(XML.getUTI().get(i).getName())){
+				for(int i=0; i<XmlLoader.getUTI().size();i++){
+					if(getLastSelectedPathComponent().toString().contentEquals(XmlLoader.getUTI().get(i).getName())){
 						return;
 					}
 				}
@@ -221,14 +221,14 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 					return;
 				}
 				
-				for(int i=0; i<XML.getLivraison(User.getNom()).size();i++){
-					if(node.contentEquals(XML.getNomLiv(User.getNom(),XML.getLivraison(User.getNom()).get(i).getName()))){
+				for(int i=0; i<XmlLoader.getLivraison(User.getNom()).size();i++){
+					if(node.contentEquals(XmlLoader.getNomLiv(User.getNom(),XmlLoader.getLivraison(User.getNom()).get(i).getName()))){
 						excep1 = true;
 					}
 				}
 				
-				for(int i=0; i<XML.getUTI().size();i++){
-					if(node.contentEquals(XML.getUTI().get(i).getName())){
+				for(int i=0; i<XmlLoader.getUTI().size();i++){
+					if(node.contentEquals(XmlLoader.getUTI().get(i).getName())){
 						excep2 = true;
 					}
 				}			
@@ -265,7 +265,7 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 				
 				if(option != JOptionPane.NO_OPTION &&
 						option != JOptionPane.CLOSED_OPTION){
-					XML.supprLiv(User.getNom(), "L" + node);
+					XmlLoader.supprLiv(User.getNom(), "L" + node);
 					if(node.contentEquals(Delivery.getNom())){
 						CardLayout cl = (CardLayout) FenetrePrincipale.getCards().getLayout();
 						cl.show(FenetrePrincipale.getCards(), FenetrePrincipale.ETAPE0);
@@ -285,10 +285,10 @@ public class AffichageTree extends JTree implements TreeSelectionListener, Mouse
 				if(option != JOptionPane.NO_OPTION &&
 						option != JOptionPane.CLOSED_OPTION){
 					
-					if(node.contentEquals(XML.getFirstUti())){
-						XML.setFirtUti(null);
+					if(node.contentEquals(XmlLoader.getFirstUti())){
+						XmlLoader.setFirtUti(null);
 					}
-					XML.supprUti(node);
+					XmlLoader.supprUti(node);
 					
 					if(node.contentEquals(User.getNom())){
 						CardLayout cl = (CardLayout) FenetrePrincipale.getCards().getLayout();

@@ -1,4 +1,4 @@
-package model.save;
+package model.saveLoad;
 
 import java.io.File;
 import java.io.FileInputStream;

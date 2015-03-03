@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 
-import view.guiComponents.ScrollBarFlatUI;
 import view.guiComponents.frame.LabelResize;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;

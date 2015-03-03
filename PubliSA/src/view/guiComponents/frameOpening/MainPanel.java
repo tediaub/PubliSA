@@ -98,6 +98,8 @@ public class MainPanel extends PanelTemplate implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == btnNewDelivery){
 			control.setViewPanel(OpeningFrame.PANEL_NEW_DELIVERY);
-		}		
+		}else if(ae.getSource() == btnOpenDelivery){
+			control.openDelivery();
+		}
 	}
 }

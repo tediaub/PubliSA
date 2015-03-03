@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import view.guiComponents.ScrollBarFlatUI;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
 
 @SuppressWarnings("serial")
 public class TableFlat extends JScrollPane {

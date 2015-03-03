@@ -38,6 +38,7 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 import myJTree.AffichageTree;
 
 import org.jdom.Element;
@@ -47,7 +48,6 @@ import sauvergarde_chargement.Filtre_DOC;
 import sauvergarde_chargement.Filtre_EXE;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
-import XML.XML;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -268,17 +268,17 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		//Initialisation du ComboBox qui liste tout les utilisateurs
 		cbFirstUti = new JComboBox<String>();
-		cbFirstUti.addItem(XML.getFirstUti());
-		for(int i = 0; i<XML.getUTI().size();i++){
-			if(!XML.getUTI().get(i).getName().contentEquals(XML.getFirstUti())){
-				cbFirstUti.addItem(XML.getUTI().get(i).getName());
+		cbFirstUti.addItem(XmlLoader.getFirstUti());
+		for(int i = 0; i<XmlLoader.getUTI().size();i++){
+			if(!XmlLoader.getUTI().get(i).getName().contentEquals(XmlLoader.getFirstUti())){
+				cbFirstUti.addItem(XmlLoader.getUTI().get(i).getName());
 			}
 		}
 		cbFirstUti.setBounds(248, 73, 258, 25);
 		pUti.add(cbFirstUti);
 		
 		ckbMode = new JCheckBox(GestLangue.getInstance().getLocalizedText(IHM.MODE_MULTI_UTI.getLabel()));
-		ckbMode.setSelected(XML.getModeUTI());
+		ckbMode.setSelected(XmlLoader.getModeUTI());
 		ckbMode.addActionListener(this);
 		ckbMode.setBackground(Color.WHITE);
 		ckbMode.setBounds(37, 39, 199, 24);
@@ -737,9 +737,9 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 					option != JOptionPane.CANCEL_OPTION &&
 					option != JOptionPane.CLOSED_OPTION){
 				
-				ArrayList<Element> livraison = XML.getLivraison(User.getNom());
+				ArrayList<Element> livraison = XmlLoader.getLivraison(User.getNom());
 				for(int i=0; i<livraison.size(); i++){
-					XML.supprLiv(User.getNom(), livraison.get(i).getName());
+					XmlLoader.supprLiv(User.getNom(), livraison.get(i).getName());
 				}
 				
 				CardLayout c2 = (CardLayout) FenetrePrincipale.getCards().getLayout();
@@ -753,37 +753,37 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		}
 		
 		if (e.getSource() == okButton){
-			XML.setDOC(User.getNom(), lblPathDOC.getText());
-			XML.setEXE(User.getNom(), lblPathEXE.getText());
-			XML.setGestLiv(User.getNom(), ckbLivraison.isSelected());
-			XML.setModeUTI(ckbMode.isSelected());
-			XML.setFirtUti(cbFirstUti.getSelectedItem().toString());
+			XmlLoader.setDOC(User.getNom(), lblPathDOC.getText());
+			XmlLoader.setEXE(User.getNom(), lblPathEXE.getText());
+			XmlLoader.setGestLiv(User.getNom(), ckbLivraison.isSelected());
+			XmlLoader.setModeUTI(ckbMode.isSelected());
+			XmlLoader.setFirtUti(cbFirstUti.getSelectedItem().toString());
 			
 			//Enregistrement données mail
-			XML.setMesAkkaUbik(User.getNom(),
+			XmlLoader.setMesAkkaUbik(User.getNom(),
 					tfCorrespondantAkkaU.getText(),
 					tfObjetAkkaU.getText(), 
 					taAkkaU.getText());
 			
-			XML.setMesAkkaThales(User.getNom(),
+			XmlLoader.setMesAkkaThales(User.getNom(),
 					tfCorrespondantAkkaT.getText(),
 					tfObjetAkkaT.getText(), 
 					taAkkaT.getText());
 			
-			XML.setMesSopra(User.getNom(),
+			XmlLoader.setMesSopra(User.getNom(),
 					tfCorrespondantSopra.getText(),
 					tfObjetSopra.getText(), 
 					taSopra.getText());
 			
-			XML.setMesThales(User.getNom(),
+			XmlLoader.setMesThales(User.getNom(),
 					tfCorrespondantThales.getText(),
 					tfObjetThales.getText(), 
 					taThales.getText());
 			
-            XML.setColor(couleur);
+            XmlLoader.setColor(couleur);
 			
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 				User.refresh();
 				Delivery.refresh();
 			} catch (Exception e1) {

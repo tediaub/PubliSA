@@ -36,6 +36,7 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 import myJTree.AffichageTree;
 import outils.Lanceur;
 import outils.SupprEntete;
@@ -43,7 +44,6 @@ import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
 import verification.CreationRapportEtape2;
 import verification.CreationRapportEtape4;
-import XML.XML;
 import autre.Langue;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -154,7 +154,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		langueFR = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_FR.getLabel()));
 		langueEN = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_EN.getLabel()));
 		
-		if(XML.getLangue().contentEquals(Langue.FRANCAIS.toString())){
+		if(XmlLoader.getLangue().contentEquals(Langue.FRANCAIS.toString())){
 			GestLangue.getInstance().setLangue(Langue.FRANCAIS);
 			langueFR.setState(true);
 		}
@@ -324,7 +324,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		pMenu.add(horizontalStrut);
 		
 		lblImageUti = new JLabel();
-		if(XML.getModeUTI()){
+		if(XmlLoader.getModeUTI()){
 			lblImageUti.setIcon(new ImageIcon(FenetrePrincipale.class.getResource("/image/icones/1359326968_user_manage.png")));
 		}
 		else{
@@ -339,7 +339,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setBorder(new LineBorder((XML.getColor())[0], 1, true));
+		scrollPane.setBorder(new LineBorder((XmlLoader.getColor())[0], 1, true));
 		scrollPane.setViewportView(tree);
 		
 		//Etape0
@@ -443,7 +443,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		//Menu "Enregistrer"
 		if (e.getSource() == enregistrer){
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 				User.refresh();
 				Delivery.refresh();
 			} catch (Exception e1) {
@@ -523,7 +523,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		
 		if (e.getSource()==(langueFR)) {
 			if (!GestLangue.getInstance().getCurrentLanguage().equals(Langue.FRANCAIS)) {
-				XML.setLangue(Langue.FRANCAIS.toString());
+				XmlLoader.setLangue(Langue.FRANCAIS.toString());
 				langueFR.setState(true);
 				GestLangue.getInstance().setLangue(Langue.FRANCAIS);
 				int option = JOptionPane.showConfirmDialog(null, 
@@ -537,7 +537,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 			}
 		} else if (e.getSource().equals(langueEN)) {
 			if (!GestLangue.getInstance().getCurrentLanguage().equals(Langue.ANGLAIS)) {
-				XML.setLangue(Langue.ANGLAIS.toString());
+				XmlLoader.setLangue(Langue.ANGLAIS.toString());
 				langueEN.setState(true);
 				GestLangue.getInstance().setLangue(Langue.ANGLAIS);
 				int option = JOptionPane.showConfirmDialog(null, 

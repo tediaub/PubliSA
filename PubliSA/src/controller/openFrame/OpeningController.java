@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
 import model.Model;
 import view.guiComponents.frameOpening.OpeningFrame;
 import controller.ControllerFrame;
@@ -103,5 +104,20 @@ public class OpeningController implements IFrameController {
 	
 	public void setFrameLocation(int x, int y){
 		frame.setLocation(x,y);
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public void openDelivery() {
+		setMainFrameVisible(true);
+		closeFrame();
+	}
+	
+	public void openDelivery(Delivery delivery) {
+		model.setMainDelivery(delivery);
+		setMainFrameVisible(true);
+		closeFrame();
 	}
 }

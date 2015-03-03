@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
-import XML.XML;
+import model.saveLoad.XmlLoader;
 
 @SuppressWarnings("serial")
 public class Detail extends JDialog implements ActionListener {
@@ -50,12 +50,12 @@ public class Detail extends JDialog implements ActionListener {
 		contentPanel.add(lblNom);
 		
 		JLabel lblCible = new JLabel();
-		lblCible.setText("Cible : " + XML.getCibleLiv(Uti, "L" + Liv));
+		lblCible.setText("Cible : " + XmlLoader.getCibleLiv(Uti, "L" + Liv));
 		lblCible.setBounds(6, 68, 243, 16);
 		contentPanel.add(lblCible);
 		
 		JLabel lblDcr = new JLabel();
-		lblDcr.setText("DCR : " + XML.getDCRLiv(Uti, "L" + Liv));
+		lblDcr.setText("DCR : " + XmlLoader.getDCRLiv(Uti, "L" + Liv));
 		lblDcr.setBounds(6, 124, 243, 16);
 		contentPanel.add(lblDcr);
 		
@@ -69,17 +69,17 @@ public class Detail extends JDialog implements ActionListener {
 		contentPanel.add(separator);
 		
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setText("Etape : " + XML.getEtapeLiv(Uti, "L" + Liv));
+		lblNewLabel.setText("Etape : " + XmlLoader.getEtapeLiv(Uti, "L" + Liv));
 		lblNewLabel.setBounds(6, 96, 243, 16);
 		contentPanel.add(lblNewLabel);
 		
 		JLabel lblCalculateur = new JLabel();
-		lblCalculateur.setText("Calculateur : " + XML.getCalculateurLiv(Uti, "L" + Liv));
+		lblCalculateur.setText("Calculateur : " + XmlLoader.getCalculateurLiv(Uti, "L" + Liv));
 		lblCalculateur.setBounds(6, 152, 243, 16);
 		contentPanel.add(lblCalculateur);
 		
 		JLabel lblStandard = new JLabel();
-		lblStandard.setText("Standard : " + XML.getStandardCalLiv(Uti, "L" + Liv));
+		lblStandard.setText("Standard : " + XmlLoader.getStandardCalLiv(Uti, "L" + Liv));
 		lblStandard.setBounds(6, 180, 243, 16);
 		contentPanel.add(lblStandard);
 		{
