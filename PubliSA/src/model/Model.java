@@ -16,10 +16,6 @@ public class Model extends Observable implements Serializable{
 	private Delivery mainDelivery = null;
 	private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 	
-	public Model(){
-		createUser("Teddy");
-	}
-	
 	public User createUser(String name){
 		user = new User(name, this);
 		notice();

@@ -36,6 +36,9 @@ import javax.swing.border.TitledBorder;
 
 import langue.GestLangue;
 import langue.IHM;
+import loading.Filtre_DOC;
+import loading.Filtre_EXE;
+import loading.LoadFile;
 import model.Delivery;
 import model.User;
 import model.saveLoad.XmlLoader;
@@ -43,9 +46,6 @@ import myJTree.AffichageTree;
 
 import org.jdom.Element;
 
-import sauvergarde_chargement.ChargementFichier;
-import sauvergarde_chargement.Filtre_DOC;
-import sauvergarde_chargement.Filtre_EXE;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
 
@@ -715,13 +715,13 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btParcourirEXE){
 			try{
-				adresseExe = new ChargementFichier("Adresse").ChargementFich(adresseExe, new Filtre_EXE());
+				adresseExe = new LoadFile("Adresse").ChargementFich(adresseExe, new Filtre_EXE());
 				if(!adresseExe.equals(null)){lblPathEXE.setText(adresseExe);}
 			}catch(Exception e1){}
 		}
 		if (e.getSource() == btParcourirDOC){
 			try{
-				adresseWord = new ChargementFichier("Adresse").ChargementFich(adresseWord, new Filtre_DOC());
+				adresseWord = new LoadFile("Adresse").ChargementFich(adresseWord, new Filtre_DOC());
 				if(!adresseWord.equals(null)){lblPathDOC.setText(adresseWord);}
 			}catch(Exception e1){}
 		}

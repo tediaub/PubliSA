@@ -1,4 +1,4 @@
-package sauvergarde_chargement;
+package loading;
 
 import java.awt.Toolkit;
 
@@ -8,31 +8,25 @@ import javax.swing.filechooser.FileFilter;
 
 /**
  */
-public class ChargementFichier {
+public class LoadFile{
 
-	public String cheminOGC;
-	private JFileChooser fc;
-	private String dialog;
 	
-	public ChargementFichier(String dialog){
-		this.dialog = dialog;
-	}
 
 	/**
 	 * Method ChargementFich.
 	 * @return String
 	 */
-	public String ChargementFich(String AdresseOrg, FileFilter filtre){
+	public static String loadFrame(String path, String title, FileFilter filter){
 
-		fc = new JFileChooser(AdresseOrg);
+		JFileChooser fc = new JFileChooser(path);
 		
 		/*fenêtre contenant le file chooser*/
 		JFrame fenetre = new JFrame();
-		fenetre.setIconImage(Toolkit.getDefaultToolkit().getImage(ChargementFichier.class.getResource("/image/logo/logo_secondaire.png")));
+		fenetre.setIconImage(Toolkit.getDefaultToolkit().getImage(LoadFile.class.getResource("/image/logo/logo_secondaire.png")));
 		
 		fc.setAcceptAllFileFilterUsed(false);
-		fc.setFileFilter(filtre);
-		fc.setDialogTitle(dialog);
+		fc.setFileFilter(filter);
+		fc.setDialogTitle(title);
 		fc.setFileView(new MonFileView());
 		
 		/* Valeur de la réponse de l'utilisateur au file chooser*/
@@ -42,8 +36,7 @@ public class ChargementFichier {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			
 			//Chemin du fichier
-			cheminOGC = fc.getSelectedFile().getPath();
-			return cheminOGC;
+			return fc.getSelectedFile().getPath();
 		}
 
 		// Utilisateur annule la sauvegarde

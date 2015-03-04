@@ -39,7 +39,6 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		setData(control.getModel());
-		
 	}
 	
 	public void setData(Model model){

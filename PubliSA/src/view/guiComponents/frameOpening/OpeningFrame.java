@@ -13,6 +13,7 @@ import controller.openFrame.OpeningController;
 @SuppressWarnings("serial")
 public class OpeningFrame extends JFrame {
 
+	public static String PANEL_FIRST_LAUNCH = "pFirstLaunch";
 	public static String PANEL_MAIN = "pMain";
 	public static String PANEL_NEW_DELIVERY = "pNewDelivery";
 	
@@ -31,6 +32,9 @@ public class OpeningFrame extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new CardLayout(0, 0));
+		
+		FirstLaunch pFirstLaunch = new FirstLaunch(control);
+		getContentPane().add(pFirstLaunch, PANEL_FIRST_LAUNCH);
 		
 		MainPanel pMain = new MainPanel(control);
 		getContentPane().add(pMain, PANEL_MAIN);

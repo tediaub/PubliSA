@@ -17,11 +17,11 @@ import javax.swing.border.TitledBorder;
 import jxl.write.WriteException;
 import langue.GestLangue;
 import langue.IHM;
+import loading.Filtre_OGCtxt;
+import loading.LoadFile;
 import model.Delivery;
 import model.User;
 import model.saveLoad.XmlLoader;
-import sauvergarde_chargement.ChargementFichier;
-import sauvergarde_chargement.Filtre_OGCtxt;
 import verification.CreationRapportEtape4;
 import verification.VerificationUbikUbik;
 import view.guiComponents.table.TableEtape4;
@@ -222,10 +222,10 @@ public class Etape4 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btOGC){
-			lblPathOGC.setText(new ChargementFichier("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGCtxt()));
+			lblPathOGC.setText(new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGCtxt()));
 		}
 		if (e.getSource() == btCSV){
-			lblPathCSV.setText(new ChargementFichier("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 
+			lblPathCSV.setText(new LoadFile("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 
 		}
 		if (e.getSource() == btVerif){
 			new VerificationUbikUbik();

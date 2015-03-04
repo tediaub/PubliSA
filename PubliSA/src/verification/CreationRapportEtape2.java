@@ -20,8 +20,8 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import langue.GestLangue;
 import langue.IHM;
-import sauvergarde_chargement.Filtre_XLS;
-import sauvergarde_chargement.SauvegardeRapport;
+import loading.Filtre_XLS;
+import loading.SauvegardeRapport;
 import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
 

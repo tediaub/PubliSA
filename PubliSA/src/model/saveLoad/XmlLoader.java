@@ -10,7 +10,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import model.Delivery;
-import model.Model;
 
 import org.jdom.Attribute;
 import org.jdom.Element;
@@ -19,6 +18,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import controller.openFrame.OpeningController;
+
 public class XmlLoader{
 	   
 	static org.jdom.Document document;
@@ -26,35 +27,27 @@ public class XmlLoader{
 	
 	static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
 	
-	public static Model loadModel(){
+	public XmlLoader(String path){
 		
 		//On crée une instance de SAXBuilder
 	    SAXBuilder sxb = new SAXBuilder();
 	    try
 	    {
-	  	   	document = sxb.build(new File(xml));
+	  	   	document = sxb.build(new File(path));
 	  	   	racine = document.getRootElement();
 	    }
 	    catch(Exception e){
 	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
-			return null;
+			return;
 	    }
-		
-		Model model = new Model();
-		loadUser(model);
-		loadDelivery(model);
-		return model;
 	}
 	
-	public static void loadUser(Model model){
-		ArrayList<Element> array = getUTI();
-		if(array.size()==1){
-			model.createUser(array.get(0).getText());
-		}
+	public void loadUser(String user, OpeningController control){
+		control.createUser(user);
 	}
 	
-	public static void loadDelivery(Model model){
-		ArrayList<Element> array = getLivraison(model.getUser().getName());
+	public void loadDelivery(OpeningController control){
+		ArrayList<Element> array = getLivraison(control.getModel().getUser().getName());
 		for (int i = 0; i < array.size(); i++) {
 			String name = array.get(i).getChildText("Nom");
 			String cible = array.get(i).getChildText("Cible");
@@ -65,7 +58,7 @@ public class XmlLoader{
 				target = Delivery.UBIK;
 			}
 			
-			Delivery del = model.createDelivery(name, target);
+			Delivery del = control.getModel().createDelivery(name, target);
 			
 			//STEP
 			int step = Integer.parseInt(array.get(i).getChildText("Etape"));
@@ -92,8 +85,8 @@ public class XmlLoader{
 		}
 	}
 	
-	public static ArrayList<Element> getUTI(){
-		ArrayList<Element> UTI = new ArrayList<Element>();
+	public ArrayList<String> getUsers(){
+		ArrayList<String> UTI = new ArrayList<String>();
 		Iterator<?> i = racine.getChildren().iterator();
 	    while(i.hasNext())
 	    {
@@ -102,7 +95,7 @@ public class XmlLoader{
 	    		   && !courant.getName().contentEquals("FirstUti")
 	    		   && !courant.getName().contentEquals("Langue")
 	    		   && !courant.getName().contentEquals("Color")){
-	    	   UTI.add(courant);
+	    	   UTI.add(courant.getName());
 	       }
 		}
 		return UTI;

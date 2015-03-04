@@ -1,4 +1,4 @@
-package sauvergarde_chargement;
+package loading;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 
-public class Filtre_EXE extends FileFilter {
+public class Filtre_DOC extends FileFilter {
 
 	/** 
 	 * indique les fichiers dont l'extension sera 
@@ -28,8 +28,12 @@ public class Filtre_EXE extends FileFilter {
 	
 		if (i > 0 && i < nomFichier.length() - 1) {
 			String extension = nomFichier.substring(i+1).toLowerCase();
+
+			if(extension.equals("doc")){
+				return true;
+			}
 			
-			if(extension.equals("exe")){
+			if(extension.equals("docx")){
 				return true;
 			}
 		}
@@ -41,7 +45,7 @@ public class Filtre_EXE extends FileFilter {
 	 * méthode servant a décrire le filtre de fichier 
 	 */ 
 	public String getDescription() {
-	return "Exécutable (*.EXE)";
+	return "Document Word (*.DOC, *.DOCX)";
 	}
 
 	

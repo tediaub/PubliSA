@@ -1,4 +1,4 @@
-package sauvergarde_chargement;
+package loading;
 
 import java.awt.Toolkit;
 import java.io.File;

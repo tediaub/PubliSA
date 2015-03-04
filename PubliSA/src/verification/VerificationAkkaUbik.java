@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import loading.Filtre_OGC;
+import loading.LoadFile;
 import model.Delivery;
 import model.files.FichierOGC;
 import model.files.FichierPDF;
-import sauvergarde_chargement.ChargementFichier;
-import sauvergarde_chargement.Filtre_OGC;
 import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
 
@@ -58,7 +58,7 @@ public class VerificationAkkaUbik {
 			return;
 		}	
 		
-		adresseOGC = new ChargementFichier("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGC());
+		adresseOGC = new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGC());
 		if(adresseOGC == null){return;}
 		OGC = new FichierOGC(adresseOGC);
 		OGC = new FichierOGC(OGC.changeExt());

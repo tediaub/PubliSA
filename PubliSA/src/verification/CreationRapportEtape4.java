@@ -18,8 +18,8 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import sauvergarde_chargement.Filtre_XLS;
-import sauvergarde_chargement.SauvegardeRapport;
+import loading.Filtre_XLS;
+import loading.SauvegardeRapport;
 import view.guiComponents.table.TableEtape4;
 import etape.Etape4;
 
