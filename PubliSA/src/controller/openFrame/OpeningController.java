@@ -37,6 +37,7 @@ public class OpeningController implements IFrameController {
 	public void createOpeningFrame(String panel){
 		frame = new OpeningFrame(this);
 		setViewPanel(panel);
+		frame.setVisible(true);
 	}
 	
 	public void createMainFrame(){

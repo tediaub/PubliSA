@@ -48,7 +48,7 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 		setBackground(new Color(0, 119, 175));
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
-				ColumnSpec.decode("110px"),
+				ColumnSpec.decode("140px"),
 				FormFactory.DEFAULT_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("default:grow"),}));
@@ -63,7 +63,7 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 		
 		lblDelivery = new JLabel();
 		setDeliveryText(control.getModel());
-		lblDelivery.setFont(new Font("Dotum", Font.BOLD, 14));
+		lblDelivery.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblDelivery.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDelivery.setForeground(Color.WHITE);
 		add(lblDelivery, "1, 1");
@@ -87,8 +87,9 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getClickCount() == 2){
+			control.maximizedFrame();
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {

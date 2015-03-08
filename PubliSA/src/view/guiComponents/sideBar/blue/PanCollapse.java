@@ -9,10 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.apache.batik.swing.JSVGCanvas;
-
 import view.guiComponents.ButtonFlat;
-import view.guiComponents.svg.PanSVG;
+import view.guiComponents.svg.Ariane;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -30,7 +28,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 
 	private ButtonFlat btnSettings;
 
-	private PanSVG pAriane;
+	private Ariane pAriane;
 	/**
 	 * Create the panel.
 	 */
@@ -48,7 +46,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 				RowSpec.decode("35px"),}));
 		setBackground(new Color(0, 119, 175));
 		
-		pAriane = new PanSVG(control);
+		pAriane = new Ariane(control);
 		control.getModel().addObserver(pAriane);
 		add(pAriane, "1, 4, fill, fill");
 		

@@ -134,7 +134,7 @@ public class ControllerFrame implements IFrameController{
 			frame.getRootPane().setBorder(null);
 			lblResize.setVisible(false);
 		}else{
-			frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
+			frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40)));
 			lblResize.setVisible(true);
 		}
 	}

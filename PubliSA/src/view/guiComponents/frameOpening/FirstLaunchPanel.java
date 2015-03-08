@@ -25,7 +25,12 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import controller.openFrame.OpeningController;
 
-public class FirstLaunch extends PanelTemplate implements ActionListener {
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
+import javax.swing.JTextArea;
+import javax.swing.plaf.basic.BasicTextPaneUI;
+
+public class FirstLaunchPanel extends JPanel implements ActionListener {
 	
 	private boolean isLoaded = false;
 	
@@ -35,53 +40,70 @@ public class FirstLaunch extends PanelTemplate implements ActionListener {
 	private ButtonFlat btnCreate;
 
 	private TextFieldFlat tfNewUser;
+
+	private OpeningController control;
 	
 	private static String COMBO = "combo";
 	private static String TEXTFIELD = "textfield";
+	private JLabel lblNewLabel;
+	private JTextPane txtpnLaNouvelleVersion;
 
-	public FirstLaunch(OpeningController control) {
-		super(control);
+	public FirstLaunchPanel(OpeningController control) {
+		this.control = control;
 		
-		JPanel container = new JPanel();
-		container.setBackground(Color.WHITE);
-		container.setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("10dlu"),
+		setSize(340, 340);
+		setOpaque(false);
+		setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
-				ColumnSpec.decode("21px"),
 				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.UNRELATED_GAP_COLSPEC,},
+				FormFactory.RELATED_GAP_COLSPEC,},
 			new RowSpec[] {
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				RowSpec.decode("30px"),
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				RowSpec.decode("2px"),
-				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("30px"),}));
-		setContainer(container);
+				RowSpec.decode("7dlu:grow"),
+				RowSpec.decode("30px"),
+				FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
 		
 		JLabel lblNewUser = new JLabel("Nouvel Utilisateur");
 		lblNewUser.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewUser.setForeground(Color.WHITE);
-		setMenuComponent(lblNewUser);
 		
-		JLabel lblLoad = new JLabel("Charger un fichier de sauvegarde (Optionnel) :");
-		lblLoad.setFont(new Font("Dialog", Font.PLAIN, 13));
-		container.add(lblLoad, "2, 2, fill, fill");
+		lblNewLabel = new JLabel("Bienvenue");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblNewLabel.setForeground(Color.WHITE);
+		add(lblNewLabel, "2, 1");
+		
+		txtpnLaNouvelleVersion = new JTextPane();
+		txtpnLaNouvelleVersion.setSelectedTextColor(Color.BLACK);
+		txtpnLaNouvelleVersion.setForeground(Color.WHITE);
+		txtpnLaNouvelleVersion.setEditable(false);
+		txtpnLaNouvelleVersion.setFont(new Font("SansSerif", Font.PLAIN, 13));
+		txtpnLaNouvelleVersion.setText("La version 4.0 de PubliSA utilise un nouveau syst\u00E8me\r\nde sauvegarde. Si vous avez utilis\u00E9 une version\r\npr\u00E9cedente de PubliSA, chargez votre fichier \r\nde sauvegarde \"PubliSA.xml\" pour recup\u00E9rer vos \r\ndonn\u00E9es.\r\nSinon, entrez un nouveau nom d'utilisateur...");
+		txtpnLaNouvelleVersion.setOpaque(false);
+		txtpnLaNouvelleVersion.setUI(new BasicTextPaneUI());
+		add(txtpnLaNouvelleVersion, "2, 3, 2, 1, fill, fill");
+		
+		JLabel lblLoad = new JLabel("Charger un fichier de sauvegarde :");
+		lblLoad.setForeground(Color.WHITE);
+		lblLoad.setFont(new Font("Arial", Font.PLAIN, 15));
+		add(lblLoad, "2, 5, fill, fill");
 		
 		btnLoad = new ButtonFlat("Parcourir");
 		btnLoad.addActionListener(this);
-		btnLoad.setBackground(new Color(240,240,240));
+		btnLoad.setBackground(Color.WHITE);
 		btnLoad.setRolloverBackground(new Color(200,200,200));
-		container.add(btnLoad, "4, 2, left, fill");
-		
-		SeparatorFlat separatorFlat = new SeparatorFlat();
-		container.add(separatorFlat, "2, 4, 4, 1");
+		add(btnLoad, "3, 5, left, fill");
 		
 		
 		
 		JPanel textField = new JPanel();
+		textField.setOpaque(false);
 		textField.setBackground(Color.WHITE);
 		textField.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
@@ -91,7 +113,9 @@ public class FirstLaunch extends PanelTemplate implements ActionListener {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblNew = new JLabel("New label");
+		JLabel lblNew = new JLabel("Entrer un nom d'utilisateur :");
+		lblNew.setForeground(Color.WHITE);
+		lblNew.setFont(new Font("Arial", Font.PLAIN, 15));
 		textField.add(lblNew, "1, 2");
 		
 		tfNewUser = new TextFieldFlat();
@@ -99,6 +123,7 @@ public class FirstLaunch extends PanelTemplate implements ActionListener {
 		
 		
 		JPanel combo = new JPanel();
+		combo.setOpaque(false);
 		combo.setBackground(Color.WHITE);
 		combo.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
@@ -114,20 +139,22 @@ public class FirstLaunch extends PanelTemplate implements ActionListener {
 		combo.add(lblSelect, "1, 2");
 		
 		cbSelect = new JComboBox();
+		cbSelect.setBackground(Color.WHITE);
 		cbSelect.setUI(new ComboBoxFlatUI());
 		combo.add(cbSelect, "1, 4, fill, default");
 		
 		cards = new JPanel();
+		cards.setOpaque(false);
 		cards.setLayout(new CardLayout());
 		cards.add(textField, TEXTFIELD);
 		cards.add(combo, COMBO);
-		container.add(cards, "2, 6, 3, 1, fill, fill");
+		add(cards, "2, 7, 2, 1, fill, fill");
 		
 		btnCreate = new ButtonFlat("Créer");
 		btnCreate.addActionListener(this);
-		btnCreate.setForeground(Color.WHITE);
-		btnCreate.setBackground(new Color(0, 119, 175));
-		container.add(btnCreate, "4, 8, fill, fill");
+		btnCreate.setForeground(Color.BLACK);
+		btnCreate.setBackground(Color.WHITE);
+		add(btnCreate, "3, 9, fill, fill");
 	}
 
 	@Override
@@ -156,6 +183,5 @@ public class FirstLaunch extends PanelTemplate implements ActionListener {
 				control.createUser(tfNewUser.getText());
 			}
 		}
-		
 	}
 }

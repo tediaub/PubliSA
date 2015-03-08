@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.list.ListSelecteable;
-import view.guiComponents.svg.PanSVG;
+import view.guiComponents.svg.Ariane;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -42,7 +42,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 
 	private ControllerFrame control;
 
-	private PanSVG pAriane;
+	private Ariane pAriane;
 	
 	/**
 	 * Create the panel.
@@ -109,7 +109,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		control.getModel().addObserver(list);
 		add(list, "1, 4, fill, fill");
 		
-		pAriane = new PanSVG(control);
+		pAriane = new Ariane(control);
 		control.getModel().addObserver(pAriane);
 		add(pAriane, "2, 4, fill, fill");
 		

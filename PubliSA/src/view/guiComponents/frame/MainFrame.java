@@ -32,7 +32,7 @@ public class MainFrame extends JFrame implements Observer{
 				(screenSize.height-this.getHeight())/2);
 		
 		setTitle("PubliSA");
-		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
+		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),1));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ControllerFrame.class.getResource("/logo/logoPubliSA4.png")));
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
