@@ -16,6 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import view.guiComponents.ButtonFlat;
+import view.guiComponents.ButtonFlatPopUp;
+import view.guiComponents.PopUpNewDeliveryPanel;
+import view.guiComponents.SaveProgress;
 import view.guiComponents.list.ListSelecteable;
 import view.guiComponents.svg.Ariane;
 
@@ -36,13 +39,15 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 	private ButtonFlat btnUser;
 	
 	private JPanel pButtonUp;
-	private ButtonFlat btnSave;
-	private ButtonFlat btnNew;
+	private ButtonFlatPopUp btnSave;
+	private ButtonFlatPopUp btnNew;
 	private ListSelecteable list;
 
 	private ControllerFrame control;
 
 	private Ariane pAriane;
+
+	private SaveProgress panSave;
 	
 	/**
 	 * Create the panel.
@@ -78,7 +83,9 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		pButtonUp.setOpaque(false);
 		add(pButtonUp, "1, 2, fill, fill");
 		
-		btnSave = new ButtonFlat("Enregistrer");
+		btnSave = new ButtonFlatPopUp("Enregistrer");
+		panSave = new SaveProgress();
+		btnSave.setPopUpPanel(panSave);
 		btnSave.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnSave.addActionListener(this);
 		btnSave.setMargin(new Insets(2, 2, 2, 2));
@@ -91,7 +98,8 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnSave.setOpaque(false);
 		pButtonUp.add(btnSave);
 		
-		btnNew = new ButtonFlat("Nouveau");
+		btnNew = new ButtonFlatPopUp("Nouveau");
+		btnNew.setPopUpPanel(new PopUpNewDeliveryPanel(control, btnNew.getPopUp()));
 		btnNew.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnNew.setMargin(new Insets(2, 2, 2, 2));
 		btnNew.setIconTextGap(1);
@@ -152,6 +160,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 			control.extSideBarWhite();
 		}else if(e.getSource() == btnSave){
 			control.save();
+			panSave.processEnd();
 		}else if(e.getSource() == btnNew){
 			
 		}

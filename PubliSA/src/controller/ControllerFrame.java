@@ -9,8 +9,11 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
+import langue.GestLangue;
+import langue.IHM;
 import model.Model;
 import model.saveLoad.Serialization;
 import view.guiComponents.frame.LabelResize;
@@ -165,5 +168,29 @@ public class ControllerFrame implements IFrameController{
 	public void save(){
 		new Serialization();
 		Serialization.saveModel(model);
+	}
+
+	public void createDelivery(String name, int target){
+		if(name.isEmpty()){
+			JOptionPane.showMessageDialog(null, 
+					GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+					GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		for (int i = 0; i < model.getDeliveries().size(); i++) {
+			String deliveryName = model.getDeliveries().get(i).getName();
+			if(deliveryName.equals(name)){
+				JOptionPane.showMessageDialog(null, 
+						GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
+						GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+						JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+		}
+		
+		model.createDelivery(name, target);
 	}
 }
