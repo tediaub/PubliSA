@@ -19,6 +19,7 @@ import javax.swing.filechooser.FileSystemView;
 public class FilePreview extends JPanel implements PropertyChangeListener{
 	private JFileChooser chooser;
 	private JLabel nom, taille, date, icone, description;
+	
 	public FilePreview(JFileChooser chooser){
 		super(new GridLayout(0,1));	
 		
@@ -33,6 +34,7 @@ public class FilePreview extends JPanel implements PropertyChangeListener{
 		this.chooser.setFileView(new MonFileView());
 		setBorder(new TitledBorder("Preview"));
 	}
+	
 	public void propertyChange(PropertyChangeEvent e) {
 		String prop = e.getPropertyName();
 		

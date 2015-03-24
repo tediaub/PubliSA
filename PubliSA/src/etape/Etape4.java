@@ -17,7 +17,7 @@ import javax.swing.border.TitledBorder;
 import jxl.write.WriteException;
 import langue.GestLangue;
 import langue.IHM;
-import loading.Filtre_OGCtxt;
+import loading.FilterOGCtxt;
 import loading.LoadFile;
 import model.Delivery;
 import model.User;
@@ -222,7 +222,7 @@ public class Etape4 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btOGC){
-			lblPathOGC.setText(new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGCtxt()));
+			lblPathOGC.setText(new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new FilterOGCtxt()));
 		}
 		if (e.getSource() == btCSV){
 			lblPathCSV.setText(new LoadFile("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 

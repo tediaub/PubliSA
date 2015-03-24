@@ -36,6 +36,12 @@ public class Model extends Observable implements Serializable{
 		return delivery; 
 	}
 	
+	public void changeMainDelivery(Delivery delivery){
+		setMainDelivery(delivery);
+		
+		notice();
+	}
+	
 	public void setMainDelivery(Delivery delivery){
 		if(mainDelivery != null){
 			mainDelivery.setMain(false);

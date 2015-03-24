@@ -1,4 +1,4 @@
-package myJTree;
+package view.guiComponents.tree;
 
 import java.awt.Color;
 import java.awt.Component;

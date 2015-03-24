@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Delivery implements Serializable{
 	
@@ -26,9 +27,14 @@ public class Delivery implements Serializable{
 	
 	private String dcr = "";
 	private String computer = "";
+	public static final String SEC = "sec";
+	public static final String ELAC = "elac";
+	public static final String FCDC = "fcdc";
 	private String standard = "";
 	
-	private String pathOGC;
+	private String pathOGC = null;
+	
+	private ArrayList<String[]> dataStep2 = new ArrayList<String[]>();
 
 	private Model model;
 	
@@ -60,6 +66,18 @@ public class Delivery implements Serializable{
 	
 	public int getTarget(){
 		return target;
+	}
+	
+	public String getTargetString(){
+		
+		switch (target) {
+		case UBIK:
+			return "Ubik";
+		case THALES:
+			return "Thales";
+		default:
+			return "Ubik";
+		}
 	}
 	
 	public void setTarget(int target){
@@ -116,6 +134,15 @@ public class Delivery implements Serializable{
 	
 	public void setPathOGC(String OGC){
 		pathOGC = OGC;
+		model.notice();
+	}
+	
+	public ArrayList<String[]> getDataStep2(){
+		return dataStep2;
+	}
+	
+	public void setDataStep2(ArrayList<String[]> data){
+		dataStep2 = data;
 		model.notice();
 	}
 }

@@ -126,6 +126,7 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 		btnCreate = new ButtonFlat();
 		btnCreate.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCreate.addActionListener(this);
+		btnCreate.setRolloverBackground(new Color(0, 92, 136));
 		btnCreate.setBackground(new Color(0, 119, 175));
 		btnCreate.setForeground(Color.WHITE);
 		btnCreate.setText("Cr\u00E9er");

@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 
-public class Filtre_OGC extends FileFilter {
+public class FilterCSV extends FileFilter {
 
 	/** 
 	 * indique les fichiers dont l'extension sera 
@@ -28,16 +28,9 @@ public class Filtre_OGC extends FileFilter {
 	
 		if (i > 0 && i < nomFichier.length() - 1) {
 			String extension = nomFichier.substring(i+1).toLowerCase();
-			nomFichier = nomFichier.substring(0,i);
 
-			if(extension.equals("ogc")){
+			if(extension.equals("csv")){
 				return true;
-			}
-			
-			if(extension.contains(";")){
-				if(extension.substring(0, extension.indexOf(";")).contentEquals("ogc")){
-					return true;
-				}
 			}
 		}
 		return false;
@@ -48,7 +41,7 @@ public class Filtre_OGC extends FileFilter {
 	 * méthode servant a décrire le filtre de fichier 
 	 */ 
 	public String getDescription() {
-		return "Fichier sommaire des planches (*.OGC, *.OGC;1)";
+	return "Classeur Excel (*.CSV)";
 	}
 
 	

@@ -32,6 +32,5 @@ public class SaveProgress extends JPanel {
 	public void processEnd(){
 		CardLayout cl = (CardLayout)(getLayout());
 	    cl.show(this, "name_4338705196839778");
-	    Toolkit.getDefaultToolkit().beep();
 	}
 }

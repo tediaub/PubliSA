@@ -74,10 +74,12 @@ public class TableEtape2{
 
 	     model.addRow(new String[]{DCR, fichSom, fichPlan, erreur, comment});
 	}
+	
 	public static void removeJTable(){
 		model.setRowCount(0);
 		table2.setModel(model);
 	}
+	
 	/**
 	 * Method getPanel.
 	 * @return JScrollPane

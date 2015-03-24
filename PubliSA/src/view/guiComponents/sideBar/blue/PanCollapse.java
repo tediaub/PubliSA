@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import view.guiComponents.ButtonFlat;
-import view.guiComponents.svg.Ariane;
+import view.guiComponents.ariane.Ariane;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;

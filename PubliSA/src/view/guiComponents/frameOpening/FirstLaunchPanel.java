@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import loading.FilterPubliSaXml;
 import loading.LoadFile;
 import model.saveLoad.XmlLoader;
 import view.guiComponents.ButtonFlat;
@@ -160,7 +161,7 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource() == btnLoad){
-			String path = LoadFile.loadFrame(null, "test", null);
+			String path = LoadFile.loadFrame(null, "Ouvrir PubliSA.xml", new FilterPubliSaXml());
 
 			if(path != null){
 				control.createXml(path);

@@ -25,6 +25,7 @@ import model.saveLoad.XmlLoader;
 
 import org.jdom.Element;
 
+import view.guiComponents.tree.TreeCellRenderer;
 import affichage.FenetrePrincipale;
 import etape.Etape0;
 import etape.Etape1;

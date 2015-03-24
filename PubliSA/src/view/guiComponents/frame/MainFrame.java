@@ -15,7 +15,7 @@ import javax.swing.border.LineBorder;
 import model.Delivery;
 import model.Model;
 import view.guiComponents.sideBar.SideBar;
-import view.step.PanelStep1;
+import view.step.PanelStep1And3;
 import view.step.PanelStep2;
 import controller.ControllerFrame;
 
@@ -47,22 +47,28 @@ public class MainFrame extends JFrame implements Observer{
 		
 		cards = new JPanel(new CardLayout());
 		cards.setOpaque(false);
-		PanelStep1 panStep1 = new PanelStep1();
+		PanelStep1And3 panStep1 = new PanelStep1And3(control);
 		cards.add(panStep1, Integer.toString(Delivery.STEP1));
 		
-		PanelStep2 panStep2 = new PanelStep2();
+		PanelStep2 panStep2 = new PanelStep2(control);
 		cards.add(panStep2, Integer.toString(Delivery.STEP2));
 		
 		sideBarBlue.getContainerPane().add(cards, BorderLayout.CENTER);
+		
+		update(control.getModel());
 	}
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		Model model = (Model) arg0;
+	
+	private void update(Model model){
 		if(model.getMainDelivery() != null){
 			CardLayout cl = (CardLayout)(cards.getLayout());
 		    cl.show(cards, Integer.toString(model.getMainDelivery().getActualStep()));
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg1) {
+		update((Model) o);
+		
 	}
 
 }

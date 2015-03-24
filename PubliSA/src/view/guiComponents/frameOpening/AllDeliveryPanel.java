@@ -1,6 +1,8 @@
 package view.guiComponents.frameOpening;
 
-import java.awt.LayoutManager;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,32 +10,25 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.JPanel;
-
-import controller.openFrame.OpeningController;
-
-import java.awt.Color;
-import java.awt.Dimension;
-
-import view.guiComponents.frame.PanButtonFrame;
-import controller.IFrameController;
-import view.guiComponents.ButtonFlat;
-
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-import java.awt.Font;
-
-import javax.swing.SwingConstants;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
+import model.Delivery;
+import view.guiComponents.ButtonFlat;
+import view.guiComponents.frame.PanButtonFrame;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
+import view.guiComponents.table.TableFlat;
+import controller.openFrame.OpeningController;
 
 public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMotionListener, ActionListener{
 
 	private OpeningController control;
 	private Point pointMouse;
-	private JTable table;
+	private TableFlat table;
 	private ButtonFlat btnBack;
 	private JScrollPane scrollPane;
 	
@@ -67,32 +62,47 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 		add(btnBack);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setCorner(ScrollPaneConstants.UPPER_RIGHT_CORNER, new JPanel());
+		scrollPane.getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.setBounds(30, 74, 642, 301);
 		add(scrollPane);
 		
-		table = new JTable();
+		table = new TableFlat(new DefaultTableModel(new Object[]{"Nom", "DCR", "Destinataire", "Etape"}, 0));
+		
+		for (int i = 0; i < control.getModel().getDeliveries().size(); i++) {
+			String[] s = new String[4];
+			s[0] = control.getModel().getDeliveries().get(i).getName();
+			s[1] = control.getModel().getDeliveries().get(i).getDCR();
+			
+			if(control.getModel().getDeliveries().get(i).getTarget() == Delivery.UBIK){
+				s[2] = "UBIK";
+			}else{
+				s[2] = "THALES";
+			}
+			
+			switch (control.getModel().getDeliveries().get(i).getHighestStep()) {
+			case Delivery.STEP1:
+				s[3] = "Etape1";
+				break;
+			case Delivery.STEP2:
+				s[3] = "Etape2";
+				break;
+			case Delivery.STEP3:
+				s[3] = "Etape3";
+				break;
+			case Delivery.STEP4:
+				s[3] = "Etape4";
+				break;
+
+			default:
+				break;
+			}
+			
+			table.addRow(s);
+		}
+		
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"Nom", "DCR", "Etape"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Object.class, Object.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
 	}
 	
 

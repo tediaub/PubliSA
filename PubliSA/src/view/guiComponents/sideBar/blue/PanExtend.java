@@ -19,8 +19,8 @@ import view.guiComponents.ButtonFlat;
 import view.guiComponents.ButtonFlatPopUp;
 import view.guiComponents.PopUpNewDeliveryPanel;
 import view.guiComponents.SaveProgress;
+import view.guiComponents.ariane.Ariane;
 import view.guiComponents.list.ListSelecteable;
-import view.guiComponents.svg.Ariane;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;

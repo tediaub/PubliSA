@@ -237,10 +237,10 @@ public class FichierPDF extends File{
 	
 	public void isPresent(){
 		isPresent = true;
-		
-		File repertoire = new File(this.getParentFile().getPath() + File.separator + Delivery.getNom());
-		if(!repertoire.exists()){repertoire.mkdir();}
-		renameTo(new File(this.getParentFile().getPath() + File.separator + Delivery.getNom() + File.separator + this.getName()));
+//		
+//		File repertoire = new File(this.getParentFile().getPath() + File.separator + Delivery.getNom());
+//		if(!repertoire.exists()){repertoire.mkdir();}
+//		renameTo(new File(this.getParentFile().getPath() + File.separator + Delivery.getNom() + File.separator + this.getName()));
 	}
 	
 	/**

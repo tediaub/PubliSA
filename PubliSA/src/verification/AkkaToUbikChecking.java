@@ -5,34 +5,34 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import loading.Filtre_OGC;
+import loading.FilterOGC;
 import loading.LoadFile;
 import model.Delivery;
-import model.files.FichierOGC;
+import model.files.FileOGC;
 import model.files.FichierPDF;
 import view.guiComponents.table.TableEtape2;
 import etape.Etape2;
 
 /**
  */
-public class VerificationAkkaUbik {
+public class AkkaToUbikChecking {
 	
-	private static boolean fini;
+	private static boolean finish;
 	private String nomOGC = new String();
 	private String txDCR= new String();
-	private String DCRMax= "0";
+	private String DCRMax = "0";
 	private String[] tabDCR;
 	private ArrayList<String> listePlancheOGC = new ArrayList<String> ();
 	private ArrayList<FichierPDF> listePlanchePDF = new ArrayList<FichierPDF> ();
 	private ArrayList<String> listePlancheErrOGC = new ArrayList<String> ();
 	
 	public static String adresseOGC;
-	public static FichierOGC OGC;
+	public static FileOGC OGC;
 	
-	public VerificationAkkaUbik(){
-		fini = false;
+	public AkkaToUbikChecking(){
+		finish = false;
 		
-		//vérifie la présence de toute les bonne planche pour un livraison à Thales
+		//vérifie la présence de toute les bonne planche pour une livraison à Thales
 		TableEtape2.removeJTable();
 		
 		txDCR = Etape2.getDCR();
@@ -58,12 +58,11 @@ public class VerificationAkkaUbik {
 			return;
 		}	
 		
-		adresseOGC = new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGC());
+		adresseOGC = new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new FilterOGC());
 		if(adresseOGC == null){return;}
-		OGC = new FichierOGC(adresseOGC);
-		OGC = new FichierOGC(OGC.changeExt());
+		OGC = new FileOGC(adresseOGC);
 		 
-		nomOGC = OGC.getNom();
+		nomOGC = OGC.getName();
 		
 		//Message d'erreur
 		if(!nomOGC.endsWith(DCRMax + ".OGC")){
@@ -82,7 +81,7 @@ public class VerificationAkkaUbik {
 		Etape2.lblNombreDeFichiersSom.setText(Etape2.lblNombreDeFichiersSom.getText() + (listePlancheOGC.size()- tabDCR.length));
 		Etape2.lblNombreDeFichiersDos.setText(Etape2.lblNombreDeFichiersDos.getText() + (listePlanchePDF.size()));
 		
-		fini = true;
+		finish = true;
 	}
 	
 	private void verificationPrincipale(){
@@ -93,7 +92,7 @@ public class VerificationAkkaUbik {
 		File[] subfiles = directory.listFiles();
 		FichierPDF PDF;
 		
-		for(int i=0 ; i < subfiles.length; i++){
+		for(int i = 0 ; i < subfiles.length; i++){
 			if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("PDF")){
 				PDF = new FichierPDF(subfiles[i].getPath());
 				PDF = new FichierPDF(PDF.changeAdresse());
@@ -135,6 +134,7 @@ public class VerificationAkkaUbik {
 				}
 			}
 		}
+		
 		//Calcul des fichier présents dans l'OGC
 		for(int i=0 ; i < listePlancheOGC.size(); i++){
 			boolean exclusion = false;
@@ -188,7 +188,7 @@ public class VerificationAkkaUbik {
 		}
 	}
 	
-	public static boolean isFini(){
-		return fini;
+	public static boolean isFinish(){
+		return finish;
 	}
 }

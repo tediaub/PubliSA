@@ -1,59 +1,65 @@
 package view.guiComponents.table;
 
-import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-
-import view.guiComponents.scrollBar.ScrollBarFlatUI;
 
 @SuppressWarnings("serial")
-public class TableFlat extends JScrollPane {
-
-	private JTable table;
-
-	public TableFlat() {
-		intialize(null);
-	}
-
-	public TableFlat(TableModel dm) {
-		intialize(dm);
-	}
+public class TableFlat extends JTable implements MouseListener {
 	
-	public void intialize(TableModel dm){
-		if(dm != null){
-			table = new JTable(dm);
-		}else{
-			table = new JTable();
+	private DefaultTableModel dm = new DefaultTableModel();
+	
+	public TableFlat(DefaultTableModel dm) {
+		super(dm);
+		this.dm = dm;
+		
+		setFillsViewportHeight(true);
+
+		for (int i = 0; i < getColumnCount(); i++) {
+			TableColumn tc = getColumnModel().getColumn(i);
+			tc.setHeaderRenderer(new MyTableHeaderRenderer());
 		}
-		
-		getVerticalScrollBar().setUI(new ScrollBarFlatUI());
-		getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
-		setBackground(Color.WHITE);
-		setBorder(new LineBorder(new Color(211, 211, 211),2));
-		setViewportView(table);
-		
-		table.setDefaultRenderer(Object.class, new TableCellRenderer());
-		table.setFillsViewportHeight(true);
-		
-		for (int vColIndex = 0; vColIndex < table.getModel().getColumnCount(); vColIndex++) {
-			TableColumn col = table.getColumnModel().getColumn(vColIndex);
-			col.setHeaderRenderer(new MyTableHeaderRenderer());
-		}
+		addMouseListener(this);
 	}
 	
 	public void addRow(String[] data) {
-	     ((DefaultTableModel) table.getModel()).addRow(data);
+	     dm.addRow(data);
 	}
 	
 	public void clearTable(){
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
-	    model.setRowCount(0);
-		//table.setModel(model);
+	    dm.setRowCount(0);
 	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getClickCount() == 2){
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

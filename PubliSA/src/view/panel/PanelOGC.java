@@ -3,11 +3,14 @@ package view.panel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
+import langue.GestLangue;
+import langue.IHM;
+import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
 
@@ -16,9 +19,17 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PanelOGC extends JPanel {
+import controller.ControllerFrame;
 
-	public PanelOGC() {
+@SuppressWarnings("serial")
+public class PanelOGC extends PanelObserver implements ActionListener {
+
+	private ButtonFlat btnFolder;
+	private ControllerFrame control;
+
+	public PanelOGC(ControllerFrame control) {
+		this.control = control;
+		
 		setOpaque(false);
 		setBackground(Color.WHITE);
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -35,8 +46,6 @@ public class PanelOGC extends JPanel {
 				FormFactory.UNRELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblNewLabel = new JLabel("Fichier OGC");
@@ -47,24 +56,33 @@ public class PanelOGC extends JPanel {
 		SeparatorFlat separator = new SeparatorFlat();
 		add(separator, "2, 4, 4, 1, fill, fill");
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.FICHIER_DEZIPPER.getLabel()));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		add(lblNewLabel_1, "3, 6");
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setFont(new Font("Dialog", Font.PLAIN, 12));
-		add(lblNewLabel_2, "3, 8");
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.OUVRIR_OGC.getLabel()));
 		lblNewLabel_3.setFont(new Font("Dialog", Font.PLAIN, 12));
-		add(lblNewLabel_3, "3, 10");
+		add(lblNewLabel_3, "3, 8");
 		
-		ButtonFlat btnFolder = new ButtonFlat("Parcourir");
+		btnFolder = new ButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.PARCOURIR_VERIFIER.getLabel()));
+		btnFolder.addActionListener(this);
+		btnFolder.setRolloverBackground(new Color(0, 92, 136));
 		btnFolder.setBackground(new Color(0, 119, 175));
 		btnFolder.setForeground(Color.WHITE);
 		btnFolder.setMargin(new Insets(2, 4, 2, 4));
-		btnFolder.setIconTextGap(15);
-		btnFolder.setIcon(new ImageIcon(getClass().getResource("/iconeStep2/folder.png")));
-		add(btnFolder, "4, 10");
+		add(btnFolder, "4, 8");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource() == btnFolder){
+			control.checkingAkkaToUbik();
+		}
+	}
+
+	@Override
+	protected void update(Model model) {
+		// TODO Auto-generated method stub
+		
 	}
 }

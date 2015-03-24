@@ -11,9 +11,15 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
+import controller.ControllerFrame;
+
 public class PanelStep2 extends JPanel {
 
-	public PanelStep2() {
+	private ControllerFrame control;
+
+	public PanelStep2(ControllerFrame control) {
+		this.control = control;
+		
 		setOpaque(false);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("max(363dlu;default):grow"),
@@ -26,14 +32,13 @@ public class PanelStep2 extends JPanel {
 				RowSpec.decode("default:grow"),
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
 		
-		PanelDCR panel = new PanelDCR();
+		PanelDCR panel = new PanelDCR(control);
 		add(panel, "1, 1, 2, 1, fill, fill");
 		
-		PanelOGC panel_1 = new PanelOGC();
+		PanelOGC panel_1 = new PanelOGC(control);
 		add(panel_1, "1, 3, 2, 1, fill, fill");
 		
-		PanelCheck panel_2 = new PanelCheck();
+		PanelCheck panel_2 = new PanelCheck(control);
 		add(panel_2, "1, 5, 2, 1, fill, fill");
-		
 	}
 }

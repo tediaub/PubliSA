@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 
-public class Filtre_XLS extends FileFilter {
+public class FilterXLS extends FileFilter {
 
 	/** 
 	 * indique les fichiers dont l'extension sera 
