@@ -21,9 +21,11 @@ import model.Delivery;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.frame.PanButtonFrame;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
+import view.guiComponents.table.TableAllDelivery;
 import view.guiComponents.table.TableFlat;
 import controller.openFrame.OpeningController;
 
+@SuppressWarnings("serial")
 public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMotionListener, ActionListener{
 
 	private OpeningController control;
@@ -68,7 +70,7 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 		scrollPane.setBounds(30, 74, 642, 301);
 		add(scrollPane);
 		
-		table = new TableFlat(new DefaultTableModel(new Object[]{"Nom", "DCR", "Destinataire", "Etape"}, 0));
+		table = new TableAllDelivery(new DefaultTableModel(new Object[]{"Nom", "DCR", "Destinataire", "Etape"}, 0), control);
 		
 		for (int i = 0; i < control.getModel().getDeliveries().size(); i++) {
 			String[] s = new String[4];

@@ -13,6 +13,11 @@ public abstract class PanelObserver extends JPanel implements Observer {
 	
 	protected ControllerFrame control;
 	
+	public PanelObserver(ControllerFrame control){
+		this.control = control;
+		control.getModel().addObserver(this);
+	}
+	
 	protected abstract void update(Model model);
 
 	@Override

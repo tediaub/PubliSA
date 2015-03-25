@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
 import model.Delivery;
+import model.Model;
 import model.User;
 import etape.Etape1;
 import etape.Etape3;
@@ -30,27 +31,34 @@ public class CreationMail {
 	private String standard = "";
 	
 	private boolean erreur;
+	private String computer;
 
 	/**
 	 * Constructor for CreationMail.
 	 * @param etape3 
 	 * @param livraison int
 	 */
-	public CreationMail(){
+	public CreationMail(Model model){
 		erreur = false;
-		int livraison = Delivery.getEtape();
-		switch(livraison){
-		case 1 : 
+		
+		switch(model.getMainDelivery().getActualStep()){
+		case Delivery.STEP1 : 
 			txDCR = Etape1.getDCR();
 			standard = Etape1.getCalculateur();
 			tabDCR = txDCR.split(",");
 			break;
-		case 3 :
+		case Delivery.STEP3 :
 			txDCR = Etape3.getDCR();
 			standard = Etape3.getCalculateur();
 			tabDCR = txDCR.split(",");
 			break;
 		}
+		
+		txDCR = model.getMainDelivery().getDCR();
+		standard = model.getMainDelivery().getStandard();
+		computer = model.getMainDelivery().getComputer();
+		
+		tabDCR = txDCR.split(",");
 		
 		if(txDCR.isEmpty()){
 			JOptionPane.showMessageDialog(null, "Erreur DCR.\r\nAucune DCR n'a été rentrée.", "Erreur DCR", JOptionPane.ERROR_MESSAGE);
@@ -71,9 +79,9 @@ public class CreationMail {
 		
 
 		//récupération des données message
-		switch (Delivery.getEtape()){
-		case 1:
-			if(Delivery.getCible().contentEquals("Ubik")){
+		switch (model.getMainDelivery().getActualStep()){
+		case Delivery.STEP1:
+			if(model.getMainDelivery().getTarge == Delivery.UBIK){
 				correspondant = User.getMesAkkaUbik().get(0);
 				objet = User.getMesAkkaUbik().get(1);
 				message = User.getMesAkkaUbik().get(2);
@@ -84,7 +92,7 @@ public class CreationMail {
 				message = User.getMesAkkaThales().get(2);
 			}
 			break;
-		case 3:
+		case Delivery.STEP3:
 			if(Delivery.getCible().contentEquals("Ubik")){
 				correspondant = User.getMesSopra().get(0);
 				objet = User.getMesSopra().get(1);

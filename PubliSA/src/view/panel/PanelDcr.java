@@ -21,14 +21,12 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelDCR extends PanelObserver implements KeyListener{
+public class PanelDcr extends PanelObserver implements KeyListener{
 	
 	private TextFieldFlat textField;
-	private ControllerFrame control;
 
-	public PanelDCR(ControllerFrame control) {
-		this.control = control;
-		control.getModel().addObserver(this);
+	public PanelDcr(ControllerFrame control) {
+		super(control);
 		
 		setOpaque(false);
 		setBackground(Color.WHITE);

@@ -2,12 +2,16 @@ package view.step;
 
 import java.awt.Color;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import outils.CreationMail;
 import view.guiComponents.ButtonFlat;
+import view.panel.PanelAttached;
 import view.panel.PanelComputer;
-import view.panel.PanelDCR;
+import view.panel.PanelDcr;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -17,7 +21,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelStep1And3 extends JPanel{
+public class PanelStep3 extends JPanel implements ActionListener{
 
 	private ButtonFlat btnCreate;
 	private ControllerFrame control;
@@ -26,7 +30,7 @@ public class PanelStep1And3 extends JPanel{
 	 * Create the panel.
 	 * @param control 
 	 */
-	public PanelStep1And3(ControllerFrame control) {
+	public PanelStep3(ControllerFrame control) {
 		this.control = control;
 		
 		setOpaque(false);
@@ -35,23 +39,35 @@ public class PanelStep1And3 extends JPanel{
 				ColumnSpec.decode("25px"),},
 			new RowSpec[] {
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
+				FormFactory.NARROW_LINE_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.NARROW_LINE_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
 				RowSpec.decode("30px"),
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
 		
-		PanelDCR panel = new PanelDCR(control);
+		PanelDcr panel = new PanelDcr(control);
 		add(panel, "1, 1, 2, 1, fill, fill");
 		
 		PanelComputer panel_1 = new PanelComputer(control);
 		add(panel_1, "1, 3, 2, 1, fill, fill");
+
+		PanelAttached panel_2 = new PanelAttached(control);
+		add(panel_2, "1, 5, 2, 1, fill, fill");
 		
 		btnCreate = new ButtonFlat("Créer");
+		btnCreate.addActionListener(this);
 		btnCreate.setRolloverBackground(new Color(0, 92, 136));
 		btnCreate.setBackground(new Color(0, 119, 175));
 		btnCreate.setForeground(Color.WHITE);
 		btnCreate.setMargin(new Insets(2, 4, 2, 4));
 		btnCreate.setIconTextGap(15);
-		add(btnCreate, "1, 5, right, center");
+		add(btnCreate, "1, 7, right, center");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		
 	}
 }

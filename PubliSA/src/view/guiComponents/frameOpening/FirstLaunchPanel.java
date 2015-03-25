@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.plaf.basic.BasicTextPaneUI;
 
 import loading.FilterPubliSaXml;
 import loading.LoadFile;
-import model.saveLoad.XmlLoader;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.ComboBoxFlatUI;
-import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -26,18 +26,13 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import controller.openFrame.OpeningController;
 
-import javax.swing.JTextPane;
-import javax.swing.JEditorPane;
-import javax.swing.JTextArea;
-import javax.swing.plaf.basic.BasicTextPaneUI;
-
 public class FirstLaunchPanel extends JPanel implements ActionListener {
 	
 	private boolean isLoaded = false;
 	
 	private ButtonFlat btnLoad;
 	private JPanel cards;
-	private JComboBox cbSelect;
+	private JComboBox<String> cbSelect;
 	private ButtonFlat btnCreate;
 
 	private TextFieldFlat tfNewUser;
@@ -46,6 +41,7 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 	
 	private static String COMBO = "combo";
 	private static String TEXTFIELD = "textfield";
+	
 	private JLabel lblNewLabel;
 	private JTextPane txtpnLaNouvelleVersion;
 
@@ -125,7 +121,6 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 		
 		JPanel combo = new JPanel();
 		combo.setOpaque(false);
-		combo.setBackground(Color.WHITE);
 		combo.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
 			new RowSpec[] {
@@ -136,10 +131,11 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		JLabel lblSelect = new JLabel("New label");
+		JLabel lblSelect = new JLabel("Sélectionnez un utilisateur :");
+		lblNew.setFont(new Font("Arial", Font.PLAIN, 15));
 		combo.add(lblSelect, "1, 2");
 		
-		cbSelect = new JComboBox();
+		cbSelect = new JComboBox<String>();
 		cbSelect.setBackground(Color.WHITE);
 		cbSelect.setUI(new ComboBoxFlatUI());
 		combo.add(cbSelect, "1, 4, fill, default");

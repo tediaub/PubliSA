@@ -22,13 +22,12 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelOGC extends PanelObserver implements ActionListener {
+public class PanelOgc extends PanelObserver implements ActionListener {
 
 	private ButtonFlat btnFolder;
-	private ControllerFrame control;
 
-	public PanelOGC(ControllerFrame control) {
-		this.control = control;
+	public PanelOgc(ControllerFrame control) {
+		super(control);
 		
 		setOpaque(false);
 		setBackground(Color.WHITE);

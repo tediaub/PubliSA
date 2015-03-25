@@ -15,8 +15,10 @@ import javax.swing.border.LineBorder;
 import model.Delivery;
 import model.Model;
 import view.guiComponents.sideBar.SideBar;
-import view.step.PanelStep1And3;
+import view.step.PanelStep1;
 import view.step.PanelStep2;
+import view.step.PanelStep3;
+import view.step.PanelStep4;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
@@ -47,11 +49,17 @@ public class MainFrame extends JFrame implements Observer{
 		
 		cards = new JPanel(new CardLayout());
 		cards.setOpaque(false);
-		PanelStep1And3 panStep1 = new PanelStep1And3(control);
+		PanelStep1 panStep1 = new PanelStep1(control);
 		cards.add(panStep1, Integer.toString(Delivery.STEP1));
 		
 		PanelStep2 panStep2 = new PanelStep2(control);
 		cards.add(panStep2, Integer.toString(Delivery.STEP2));
+		
+		PanelStep3 panStep3 = new PanelStep3(control);
+		cards.add(panStep3, Integer.toString(Delivery.STEP3));
+		
+		PanelStep4 panStep4 = new PanelStep4(control);
+		cards.add(panStep4, Integer.toString(Delivery.STEP4));
 		
 		sideBarBlue.getContainerPane().add(cards, BorderLayout.CENTER);
 		

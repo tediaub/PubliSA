@@ -134,9 +134,19 @@ public class OpeningController implements IFrameController {
 		closeFrame();
 	}
 	
-	public void openDelivery(Delivery delivery) {
+	public void openDelivery(String deliveryName) {
+		Delivery delivery = getDelivery(deliveryName);
 		model.setMainDelivery(delivery);
 		openDelivery();
+	}
+	
+	public Delivery getDelivery(String deliveryName){
+		for (int i = 0; i < model.getDeliveries().size(); i++) {
+			if(model.getDeliveries().get(i).getName().contentEquals(deliveryName)){
+				return model.getDeliveries().get(i);
+			}
+		}
+		return null;
 	}
 	
 	public void createXml(String path){

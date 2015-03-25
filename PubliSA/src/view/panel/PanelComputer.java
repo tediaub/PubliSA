@@ -36,11 +36,9 @@ public class PanelComputer extends PanelObserver implements KeyListener, ActionL
 	
 	private ButtonGroup groupComputer;
 	private TextFieldFlat textField;
-	private ControllerFrame control;
 
 	public PanelComputer(ControllerFrame control) {
-		this.control = control;
-		control.getModel().addObserver(this);
+		super(control);
 		
 		setOpaque(false);
 		setBackground(Color.WHITE);
