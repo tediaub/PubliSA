@@ -27,7 +27,7 @@ import outils.Lanceur;
 import outils.SupprEntete;
 import verification.CreationRapportEtape2;
 import verification.VerificationAkkaThales;
-import verification.VerificationAkkaUbik;
+import verification.AkkaToUbikChecking;
 import view.guiComponents.table.TableEtape2;
 import affichage.FenetrePrincipale;
 
@@ -346,9 +346,9 @@ public class Etape2 implements ActionListener {
 			String path = null;
 			
 			if(Delivery.getCible().contentEquals("Ubik")){
-				new VerificationAkkaUbik();
-				if(VerificationAkkaUbik.isFini()){
-					adresseOGC = VerificationAkkaUbik.adresseOGC;
+				new AkkaToUbikChecking();
+				if(AkkaToUbikChecking.isFini()){
+					adresseOGC = AkkaToUbikChecking.adresseOGC;
 					Delivery.enregistreLiv();
 					
 					FenetrePrincipale.launchFichDOC.setEnabled(true);
@@ -357,7 +357,7 @@ public class Etape2 implements ActionListener {
 					btCompteRendu.setEnabled(true);
 					FenetrePrincipale.supprEntete.setEnabled(true);
 					btsupprEntete.setEnabled(true);
-					path = VerificationAkkaUbik.OGC.getParentFile().getPath();
+					path = AkkaToUbikChecking.OGC.getParentFile().getPath();
 				}
 				else return;
 			}

@@ -20,8 +20,8 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 import outils.CreationMail;
-import XML.XML;
 import affichage.DialNouveau;
 import affichage.FenetrePrincipale;
 
@@ -292,7 +292,7 @@ public class Etape3 implements ActionListener {
 				Etape3.enregistre();
 				
 				if(User.getGestLiv()){
-					XML.supprLiv(User.getNom(), "L" + Delivery.getNom());
+					XmlLoader.supprLiv(User.getNom(), "L" + Delivery.getNom());
 				}
 				new DialNouveau();
 			}

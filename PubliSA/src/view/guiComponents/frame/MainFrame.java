@@ -17,6 +17,8 @@ import model.Model;
 import view.guiComponents.sideBar.SideBar;
 import view.step.PanelStep1;
 import view.step.PanelStep2;
+import view.step.PanelStep3;
+import view.step.PanelStep4;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
@@ -32,7 +34,7 @@ public class MainFrame extends JFrame implements Observer{
 				(screenSize.height-this.getHeight())/2);
 		
 		setTitle("PubliSA");
-		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
+		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),1));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ControllerFrame.class.getResource("/logo/logoPubliSA4.png")));
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,22 +49,34 @@ public class MainFrame extends JFrame implements Observer{
 		
 		cards = new JPanel(new CardLayout());
 		cards.setOpaque(false);
-		PanelStep1 panStep1 = new PanelStep1();
+		PanelStep1 panStep1 = new PanelStep1(control);
 		cards.add(panStep1, Integer.toString(Delivery.STEP1));
 		
-		PanelStep2 panStep2 = new PanelStep2();
+		PanelStep2 panStep2 = new PanelStep2(control);
 		cards.add(panStep2, Integer.toString(Delivery.STEP2));
 		
+		PanelStep3 panStep3 = new PanelStep3(control);
+		cards.add(panStep3, Integer.toString(Delivery.STEP3));
+		
+		PanelStep4 panStep4 = new PanelStep4(control);
+		cards.add(panStep4, Integer.toString(Delivery.STEP4));
+		
 		sideBarBlue.getContainerPane().add(cards, BorderLayout.CENTER);
+		
+		update(control.getModel());
 	}
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		Model model = (Model) arg0;
+	
+	private void update(Model model){
 		if(model.getMainDelivery() != null){
 			CardLayout cl = (CardLayout)(cards.getLayout());
 		    cl.show(cards, Integer.toString(model.getMainDelivery().getActualStep()));
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg1) {
+		update((Model) o);
+		
 	}
 
 }

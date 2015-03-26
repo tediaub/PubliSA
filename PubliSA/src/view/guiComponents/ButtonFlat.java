@@ -52,7 +52,7 @@ public class ButtonFlat extends JButton {
 		return pressedBackground;
 	}
 	
-	private class FlatButtonUI extends SynthButtonUI{
+	class FlatButtonUI extends SynthButtonUI{
 
 		public void update(Graphics g, JComponent c) {
 	        if (c.isOpaque()) {

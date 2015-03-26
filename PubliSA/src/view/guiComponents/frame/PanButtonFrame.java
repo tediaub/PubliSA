@@ -75,4 +75,16 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 	public void setIconifiedVisible(boolean b){
 		btnIconified.setVisible(false);
 	}
+	
+	public boolean getMaximizedVisible(){
+		return btnMaximized.isVisible();
+	}
+	
+	public boolean getCloseVisible(){
+		return btnClose.isVisible();
+	}
+	
+	public boolean getIconifiedVisible(){
+		return btnIconified.isVisible();
+	}
 }

@@ -18,8 +18,8 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import sauvergarde_chargement.Filtre_XLS;
-import sauvergarde_chargement.SauvegardeRapport;
+import loading.FilterXLS;
+import loading.SauvegardeRapport;
 import view.guiComponents.table.TableEtape4;
 import etape.Etape4;
 
@@ -47,7 +47,7 @@ public class CreationRapportEtape4 {
 	
 	public CreationRapportEtape4() throws WriteException{
 		SauvegardeRapport sr = new SauvegardeRapport();
-		File fichier = sr.SauvegardeRap(new Filtre_XLS());
+		File fichier = sr.SauvegardeRap(new FilterXLS());
 		if (fichier.equals(null)){
 			return;
 		}

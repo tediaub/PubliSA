@@ -1,35 +1,45 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Model extends Observable{
+public class Model extends Observable implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private User user = null;
 	
 	private Delivery mainDelivery = null;
 	private ArrayList<Delivery> deliveries = new ArrayList<Delivery>();
 	
-	public Model(){
-		createUser("Teddy");
-	}
-	
-	public void createUser(String name){
+	public User createUser(String name){
 		user = new User(name, this);
 		notice();
+		return user;
 	}
 
 	public User getUser(){
 		return user;
 	}
 	
-	public void createDelivery(String deliveryName, int target){
+	public Delivery createDelivery(String deliveryName, int target){
 		Delivery delivery = new Delivery(deliveryName, target, this);
 		setMainDelivery(delivery);
 		deliveries.add(delivery);
 		
-		setChanged();
-		notifyObservers();
+		notice();
+		
+		return delivery; 
+	}
+	
+	public void changeMainDelivery(Delivery delivery){
+		setMainDelivery(delivery);
+		
+		notice();
 	}
 	
 	public void setMainDelivery(Delivery delivery){

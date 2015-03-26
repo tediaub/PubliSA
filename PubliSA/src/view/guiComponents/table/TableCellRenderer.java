@@ -11,26 +11,32 @@ import javax.swing.table.TableModel;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
+import controller.ControllerFrame;
 
 	
 @SuppressWarnings("serial")
 public class TableCellRenderer extends DefaultTableCellRenderer {
 
 	private int nbCol;
+	private ControllerFrame control;
+	
+	public TableCellRenderer(ControllerFrame control){
+		this.control = control;
+	}
 	
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column){
 		
-		if(Delivery.getEtape() == 2){
+		if(control.getModel().getMainDelivery().getActualStep() == Delivery.STEP2){
 			nbCol = 4;
 		}
-		else if(Delivery.getEtape() == 4){
+		else if(control.getModel().getMainDelivery().getActualStep() == Delivery.STEP4){
 			nbCol = 2;
 		}
 		
 		Component cell = super.getTableCellRendererComponent(table, value,
 				isSelected, hasFocus, row, column);
-
+		
 		TableModel model = table.getModel();
 		if(model.getValueAt(row, nbCol).toString().contains(GestLangue.getInstance().getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
 			cell.setForeground(new Color(255, 153, 0));

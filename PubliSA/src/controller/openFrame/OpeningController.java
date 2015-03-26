@@ -12,7 +12,9 @@ import javax.swing.border.LineBorder;
 
 import langue.GestLangue;
 import langue.IHM;
+import model.Delivery;
 import model.Model;
+import model.saveLoad.XmlLoader;
 import view.guiComponents.frameOpening.OpeningFrame;
 import controller.ControllerFrame;
 import controller.IFrameController;
@@ -22,13 +24,20 @@ public class OpeningController implements IFrameController {
 	private Model model;
 	private OpeningFrame frame;
 	private ControllerFrame control;
+	private XmlLoader xml;
 	
 	public OpeningController(Model model){
 		this.model = model;
 	}
 	
-	public void createOpeningFrame(){
+	public Model getModel(){
+		return model;
+	}
+	
+	public void createOpeningFrame(String panel){
 		frame = new OpeningFrame(this);
+		setViewPanel(panel);
+		frame.setVisible(true);
 	}
 	
 	public void createMainFrame(){
@@ -38,6 +47,19 @@ public class OpeningController implements IFrameController {
 	
 	public void setMainFrameVisible(boolean b) {
 		control.setFrameVisible(b);
+	}
+	
+	public void createUser(String name){
+		if(name.isEmpty()){
+			JOptionPane.showMessageDialog(null, 
+					GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+					GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		model.createUser(name);
+		setViewPanel(OpeningFrame.PANEL_MAIN);
 	}
 	
 	public void createDelivery(String name, int target){
@@ -62,7 +84,7 @@ public class OpeningController implements IFrameController {
 		}
 		
 		model.createDelivery(name, target);
-		setMainFrameVisible(true);
+		openDelivery();
 		closeFrame();
 	}
 	
@@ -103,5 +125,35 @@ public class OpeningController implements IFrameController {
 	
 	public void setFrameLocation(int x, int y){
 		frame.setLocation(x,y);
+	}
+
+
+	public void openDelivery() {
+		createMainFrame();
+		setMainFrameVisible(true);
+		closeFrame();
+	}
+	
+	public void openDelivery(String deliveryName) {
+		Delivery delivery = getDelivery(deliveryName);
+		model.setMainDelivery(delivery);
+		openDelivery();
+	}
+	
+	public Delivery getDelivery(String deliveryName){
+		for (int i = 0; i < model.getDeliveries().size(); i++) {
+			if(model.getDeliveries().get(i).getName().contentEquals(deliveryName)){
+				return model.getDeliveries().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public void createXml(String path){
+		xml = new XmlLoader(path);
+	}
+	
+	public XmlLoader getXml(){
+		return xml;
 	}
 }

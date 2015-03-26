@@ -25,9 +25,11 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.openFrame.OpeningController;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 @SuppressWarnings("serial")
-public class NewDeliveryPanel extends PanelTemplate implements ActionListener {
+public class NewDeliveryPanel extends JPanel implements ActionListener {
 
 	private ButtonFlat btnBack;
 	private RadioButtonFlat rdbtnThales;
@@ -35,32 +37,34 @@ public class NewDeliveryPanel extends PanelTemplate implements ActionListener {
 	private ButtonFlat btnCreate;
 	private TextFieldFlat tfDelivery;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	private OpeningController control;
 
 	/**
-	 * Create the panel.
+	 * Create the 
 	 */
 	public NewDeliveryPanel(OpeningController control) {
-		super(control);
+		this.control = control;
 		
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		panel.setBackground(Color.WHITE);
-		setContainer(panel);
-		panel.setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("10dlu"),
-				ColumnSpec.decode("25px"),
+		setOpaque(false);
+		
+		setSize(340,340);
+		
+		setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("default:grow"),
-				FormFactory.DEFAULT_COLSPEC,
-				ColumnSpec.decode("25px"),},
+				FormFactory.RELATED_GAP_COLSPEC,},
 			new RowSpec[] {
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.NARROW_LINE_GAP_ROWSPEC,
 				RowSpec.decode("fill:2px"),
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.UNRELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
@@ -68,66 +72,79 @@ public class NewDeliveryPanel extends PanelTemplate implements ActionListener {
 				RowSpec.decode("2px"),
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.UNRELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,
+				RowSpec.decode("9dlu:grow"),
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblNewLabel = new JLabel("Nom");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setForeground(new Color(0, 119, 175));
-		panel.add(lblNewLabel, "2, 2, 2, 1");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel.setForeground(Color.WHITE);
+		add(lblNewLabel, "2, 3, 2, 1");
 		
-		SeparatorFlat separatorFlat = new SeparatorFlat();
-		panel.add(separatorFlat, "2, 4, 5, 1");
+		SeparatorFlat separatorFlat = new SeparatorFlat(Color.WHITE);
+		add(separatorFlat, "2, 5, 3, 1");
 		
 		JLabel lblEntreLeNom = new JLabel("Entr\u00E9e le nom de la nouvelle livraison :");
-		lblEntreLeNom.setFont(new Font("Dialog", Font.PLAIN, 13));
-		panel.add(lblEntreLeNom, "3, 6, 2, 1");
+		lblEntreLeNom.setForeground(Color.WHITE);
+		lblEntreLeNom.setFont(new Font("Arial", Font.PLAIN, 15));
+		add(lblEntreLeNom, "3, 7, 2, 1");
 		
 		tfDelivery = new TextFieldFlat();
-		panel.add(tfDelivery, "3, 8, 3, 1, fill, default");
+		add(tfDelivery, "3, 9, 2, 1, fill, default");
 		
 		JLabel lblDestination = new JLabel("Destination");
-		lblDestination.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblDestination.setForeground(new Color(0, 119, 175));
-		panel.add(lblDestination, "2, 10, 2, 1");
+		lblDestination.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblDestination.setForeground(Color.WHITE);
+		add(lblDestination, "2, 11, 2, 1");
 		
-		SeparatorFlat separatorFlat_1 = new SeparatorFlat();
-		panel.add(separatorFlat_1, "2, 12, 5, 1");
+		SeparatorFlat separatorFlat_1 = new SeparatorFlat(Color.WHITE);
+		add(separatorFlat_1, "2, 13, 3, 1");
 		
 		JLabel lblNewLabel_1 = new JLabel("Selectionner le destinataire de la livraison");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 13));
-		panel.add(lblNewLabel_1, "3, 14, 2, 1");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		add(lblNewLabel_1, "3, 15, 2, 1");
 		
-		rdbtnUbik = new RadioButtonFlat((String) null);
+		rdbtnUbik = new RadioButtonFlat("UBIK");
+		rdbtnUbik.setSelectedIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonValidateOpen.png")));
+		rdbtnUbik.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormalOpen.png")));
+		rdbtnUbik.setRolloverIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
+		rdbtnUbik.setFont(new Font("Arial", Font.PLAIN, 15));
+		rdbtnUbik.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnUbik.setForeground(Color.WHITE);
 		buttonGroup.add(rdbtnUbik);
-		rdbtnUbik.setText("UBIK");
-		panel.add(rdbtnUbik, "3, 16");
+		add(rdbtnUbik, "3, 17");
 		
-		rdbtnThales = new RadioButtonFlat((String) null);
+		rdbtnThales = new RadioButtonFlat("THALES");
+		rdbtnThales.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormalOpen.png")));
+		rdbtnThales.setRolloverIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
+		rdbtnThales.setSelectedIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonValidateOpen.png")));
+		rdbtnThales.setFont(new Font("Arial", Font.PLAIN, 15));
+		rdbtnThales.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnThales.setForeground(Color.WHITE);
 		buttonGroup.add(rdbtnThales);
-		rdbtnThales.setText("THALES");
-		panel.add(rdbtnThales, "4, 16, 2, 1");
+		add(rdbtnThales, "4, 17");
 		
 		btnCreate = new ButtonFlat();
+		btnCreate.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCreate.addActionListener(this);
-		btnCreate.setBackground(new Color(0, 119, 175));
-		btnCreate.setForeground(Color.WHITE);
+		btnCreate.setBackground(Color.WHITE);
+		btnCreate.setForeground(Color.BLACK);
 		btnCreate.setText("Cr\u00E9er");
-		panel.add(btnCreate, "5, 18");
+		add(btnCreate, "4, 19, right, default");
 		
 		btnBack = new ButtonFlat("Nouvelle livraison");
 		btnBack.addActionListener(this);
 		btnBack.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeSideBarBlue/back.png")));
 		btnBack.setRolloverBackground(new Color(0, 63, 113));
 		btnBack.setOpaque(false);
-		btnBack.setIconTextGap(20);
-		btnBack.setFont(new Font("Dialog", Font.BOLD, 20));
+		btnBack.setIconTextGap(10);
+		btnBack.setFont(new Font("Arial", Font.PLAIN, 27));
 		btnBack.setForeground(Color.white);
-		setMenuComponent(btnBack);
+		add(btnBack, "2, 1, 3, 1, left, fill");
 	}
 
 	@Override

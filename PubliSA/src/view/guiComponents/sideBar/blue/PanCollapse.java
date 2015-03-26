@@ -1,6 +1,7 @@
 package view.guiComponents.sideBar.blue;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,9 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.apache.batik.swing.JSVGCanvas;
-
-import view.guiComponents.svg.PanSVG;
+import view.guiComponents.ButtonFlat;
+import view.guiComponents.ariane.Ariane;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -26,9 +26,9 @@ public class PanCollapse extends JPanel implements ActionListener {
 
 	private ControllerFrame controller;
 
-	private JButton btnSettings;
+	private ButtonFlat btnSettings;
 
-	private PanSVG pAriane;
+	private Ariane pAriane;
 	/**
 	 * Create the panel.
 	 */
@@ -46,7 +46,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 				RowSpec.decode("35px"),}));
 		setBackground(new Color(0, 119, 175));
 		
-		pAriane = new PanSVG(control);
+		pAriane = new Ariane(control);
 		control.getModel().addObserver(pAriane);
 		add(pAriane, "1, 4, fill, fill");
 		
@@ -57,10 +57,12 @@ public class PanCollapse extends JPanel implements ActionListener {
 		btnCollapse.addActionListener(this);
 		add(btnCollapse, "1, 2");
 		
-		btnSettings = new JButton();
-		btnSettings.setContentAreaFilled(false);
+		btnSettings = new ButtonFlat();
+		btnSettings.setPreferredSize(new Dimension(90, 60));
 		btnSettings.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/gear.png")));
 		btnSettings.setFocusPainted(false);
+		btnSettings.setRolloverBackground(new Color(0, 63, 113));
+		btnSettings.setOpaque(false);
 		btnSettings.addActionListener(this);
 		add(btnSettings, "1, 6");
 	}

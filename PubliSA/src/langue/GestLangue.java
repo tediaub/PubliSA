@@ -58,7 +58,7 @@ public class GestLangue  {
 		currentLanguage=langue;
 		
 		// Ressource locale
-		messages=ResourceBundle.getBundle(DICTIONNAIRES,currentLanguage.getLocale());
+		messages = ResourceBundle.getBundle(DICTIONNAIRES,currentLanguage.getLocale());
 	}
 	
 	/**

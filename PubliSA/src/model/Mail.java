@@ -1,6 +1,8 @@
 package model;
 
-public class Mail {
+import java.io.Serializable;
+
+public class Mail implements Serializable {
 
 	private String recipient;
 	private String object;

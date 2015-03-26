@@ -24,12 +24,12 @@ import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
 import model.User;
+import model.saveLoad.XmlLoader;
 import myJTree.AffichageTree;
 
 import org.jdom.Element;
 
 import tutoriel.Tutoriel;
-import XML.XML;
 import affichage.FenetrePrincipale;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -69,7 +69,7 @@ public class Etape0 implements ActionListener {
 	 */
 	public Etape0(){
 		
-		couleur = XML.getColor();
+		couleur = XmlLoader.getColor();
 		
 		etape0 = new JPanel();
 		etape0.setOpaque(false);
@@ -125,10 +125,10 @@ public class Etape0 implements ActionListener {
 		cbLivraison.setEditable(false);
 		cbLivraison.removeAllItems();
 		try{
-			if(!XML.getModeUTI()){
-				ArrayList<Element> livraison = XML.getLivraison(cbUtilisateur.getSelectedItem().toString());
+			if(!XmlLoader.getModeUTI()){
+				ArrayList<Element> livraison = XmlLoader.getLivraison(cbUtilisateur.getSelectedItem().toString());
 				for(int i = 0; i<livraison.size();i++){
-					cbLivraison.addItem(XML.getNomLiv(cbUtilisateur.getSelectedItem().toString(),livraison.get(i).getName()));
+					cbLivraison.addItem(XmlLoader.getNomLiv(cbUtilisateur.getSelectedItem().toString(),livraison.get(i).getName()));
 				}
 			}
 		}catch(Exception e){}
@@ -263,9 +263,9 @@ public class Etape0 implements ActionListener {
 		cbLivraison.removeAllItems();
 		try{
 			if(!cbUtilisateur.getSelectedItem().toString().isEmpty()){
-				ArrayList<Element> livraison = XML.getLivraison(cbUtilisateur.getSelectedItem().toString());
+				ArrayList<Element> livraison = XmlLoader.getLivraison(cbUtilisateur.getSelectedItem().toString());
 				for(int i = 0; i<livraison.size();i++){
-					cbLivraison.addItem(XML.getNomLiv(cbUtilisateur.getSelectedItem().toString(),livraison.get(i).getName()));
+					cbLivraison.addItem(XmlLoader.getNomLiv(cbUtilisateur.getSelectedItem().toString(),livraison.get(i).getName()));
 				}
 			}
 		}catch(Exception e){return;}
@@ -277,16 +277,16 @@ public class Etape0 implements ActionListener {
 	public static void refreshUtilisateur() {
 		cbLivraison.addItem("");
 		cbUtilisateur.removeAllItems();
-		if(XML.getModeUTI()){
+		if(XmlLoader.getModeUTI()){
 			cbUtilisateur.addItem("");
 		}
-		if(!XML.getFirstUti().isEmpty()){
-			cbUtilisateur.addItem(XML.getFirstUti());
+		if(!XmlLoader.getFirstUti().isEmpty()){
+			cbUtilisateur.addItem(XmlLoader.getFirstUti());
 		}
 		
-		for(int i = 0; i<XML.getUTI().size();i++){
-			if(!XML.getUTI().get(i).getName().contentEquals(XML.getFirstUti())){
-				cbUtilisateur.addItem(XML.getUTI().get(i).getName());
+		for(int i = 0; i<XmlLoader.getUTI().size();i++){
+			if(!XmlLoader.getUTI().get(i).getName().contentEquals(XmlLoader.getFirstUti())){
+				cbUtilisateur.addItem(XmlLoader.getUTI().get(i).getName());
 			}
 		}		
 	}
@@ -324,23 +324,23 @@ public class Etape0 implements ActionListener {
 					return;
 				}
 				if (!nomNouveauUti.isEmpty()){
-					XML.newUTI(nomNouveauUti);
-					XML.setMesAkkaUbik(nomNouveauUti, 
+					XmlLoader.newUTI(nomNouveauUti);
+					XmlLoader.setMesAkkaUbik(nomNouveauUti, 
 							"corinne.cligny.external@airbus.com", 
 							"Fichiers pour livraison UBIK",
 							"Bonjour Corinne,\r\n\r\nPeux-tu, s'il te plait, me mettre \u00E0 disposition les fichiers suivants @ :\r\n      -Le fichier .OGC de la MOD#\r\n      -Les fichiers .EXT et .EST de la MOD#\r\n      -Les fichiers .POS *\r\n\r\nPar avance, merci.\r\n");
-					XML.setMesAkkaThales(nomNouveauUti, 
+					XmlLoader.setMesAkkaThales(nomNouveauUti, 
 							"corinne.cligny.external@airbus.com", 
 							"Fichiers pour livraison THALES", 
 							"Bonjour Corinne,\r\n\r\nPeux-tu, s'il te plait, me mettre \u00E0 disposition les fichiers suivants @ :\r\n      -Le fichier .OGC de la MOD#\r\n      -Les fichiers .ASC et .SCH *\r\n\r\nPar avance, merci.\r\n\r\n");
-					XML.setMesSopra(nomNouveauUti, 
+					XmlLoader.setMesSopra(nomNouveauUti, 
 							"support.soprafs@sopragroup.com", 
 							"UBIK Update -",
 							"Hello,\r\n\r\nPlease find attached the request for software installation on UBIK of software @.\r\n\r\nBest regards\r\n\r\n\r\n");
-					XML.setMesThales(nomNouveauUti, 
+					XmlLoader.setMesThales(nomNouveauUti, 
 							"Exemple@thales.com", "THALES", "");
 							
-					XML.enregistreFichier();
+					XmlLoader.enregistreFichier();
 					
 					cbUtilisateur.addItem(nomNouveauUti);
 					cbUtilisateur.setSelectedItem(nomNouveauUti);
@@ -452,11 +452,11 @@ public class Etape0 implements ActionListener {
 			}
 			
 			//Vérifie la présence du nom entrer.
-			for(int i = 0; i < XML.getUTI().size();i++){
-				String uti = XML.getUTI().get(i).getName();
-				for(int j = 0; j < XML.getLivraison(uti).size(); j++){
-					String liv = XML.getLivraison(uti).get(j).getName();
-					if(XML.getNomLiv(uti, liv).contentEquals(nomLiv)){
+			for(int i = 0; i < XmlLoader.getUTI().size();i++){
+				String uti = XmlLoader.getUTI().get(i).getName();
+				for(int j = 0; j < XmlLoader.getLivraison(uti).size(); j++){
+					String liv = XmlLoader.getLivraison(uti).get(j).getName();
+					if(XmlLoader.getNomLiv(uti, liv).contentEquals(nomLiv)){
 						JOptionPane.showMessageDialog(null, 
 								GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
 								GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
@@ -468,22 +468,22 @@ public class Etape0 implements ActionListener {
 			
 			//Gestions utilisateur, livraison et XML
 			new User(cbUtilisateur.getSelectedItem().toString());
-			XML.newLivraison(User.getNom(), nomLiv);
+			XmlLoader.newLivraison(User.getNom(), nomLiv);
 			
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 			
-			XML.setEtapeLiv(User.getNom(), "L" + nomLiv, "1");
-			XML.setNomLiv(User.getNom(), "L" + nomLiv, tfLivraison.getText());
+			XmlLoader.setEtapeLiv(User.getNom(), "L" + nomLiv, "1");
+			XmlLoader.setNomLiv(User.getNom(), "L" + nomLiv, tfLivraison.getText());
 			
 			if(rbLivThales.isSelected()){
-				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Thales");
+				XmlLoader.setCibleLiv(User.getNom(), "L" + nomLiv, "Thales");
 			}
 			else if(rbLivUbik.isSelected()){
-				XML.setCibleLiv(User.getNom(), "L" + nomLiv, "Ubik");
+				XmlLoader.setCibleLiv(User.getNom(), "L" + nomLiv, "Ubik");
 			}
 			
 			new Delivery(User.getNom(), nomLiv);
@@ -495,7 +495,7 @@ public class Etape0 implements ActionListener {
 	        cl.show(FenetrePrincipale.getCardEtape(), FenetrePrincipale.ETAPE1);
 	        
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

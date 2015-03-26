@@ -17,14 +17,14 @@ import javax.swing.border.TitledBorder;
 import jxl.write.WriteException;
 import langue.GestLangue;
 import langue.IHM;
+import loading.FilterOGCtxt;
+import loading.LoadFile;
 import model.Delivery;
 import model.User;
-import sauvergarde_chargement.ChargementFichier;
-import sauvergarde_chargement.Filtre_OGCtxt;
+import model.saveLoad.XmlLoader;
 import verification.CreationRapportEtape4;
 import verification.VerificationUbikUbik;
 import view.guiComponents.table.TableEtape4;
-import XML.XML;
 import affichage.DialNouveau;
 import affichage.FenetrePrincipale;
 
@@ -222,10 +222,10 @@ public class Etape4 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btOGC){
-			lblPathOGC.setText(new ChargementFichier("Ouvrir").ChargementFich(Delivery.getOGC(), new Filtre_OGCtxt()));
+			lblPathOGC.setText(new LoadFile("Ouvrir").ChargementFich(Delivery.getOGC(), new FilterOGCtxt()));
 		}
 		if (e.getSource() == btCSV){
-			lblPathCSV.setText(new ChargementFichier("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 
+			lblPathCSV.setText(new LoadFile("Ouvrir").ChargementFich("P:\\A320\\UBIK_SA", null));				 
 		}
 		if (e.getSource() == btVerif){
 			new VerificationUbikUbik();
@@ -237,11 +237,11 @@ public class Etape4 implements ActionListener {
 			else return;
 		}
 		if (e.getSource() == btEtape4){ 
-			if(XML.getGestLiv(User.getNom())){
-				 XML.supprLiv(User.getNom(), "L" + Delivery.getNom());
+			if(XmlLoader.getGestLiv(User.getNom())){
+				 XmlLoader.supprLiv(User.getNom(), "L" + Delivery.getNom());
 			}
 			try {
-				XML.enregistreFichier();
+				XmlLoader.enregistreFichier();
 			}catch (Exception e1) {
 				e1.printStackTrace();
 			}

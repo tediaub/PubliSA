@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import model.files.FichierCSV;
+import model.files.FileOGC;
 import view.guiComponents.table.TableEtape4;
 import etape.Etape4;
-import fichierPubliSA.FichierCSV;
-import fichierPubliSA.FichierOGC;
 
 /**
  */
@@ -41,7 +41,7 @@ public class VerificationUbikUbik {
 		FichierCSV CSV = new FichierCSV(adresseCSV);
 		hCSV.addAll(CSV.extractPlancheCSV());
 		
-		FichierOGC OGC = new FichierOGC(adresseOGC);
+		FileOGC OGC = new FileOGC(adresseOGC);
 		hOGC.addAll(OGC.extractPlancheOGC());
 		
 		System.out.println(hCSV);

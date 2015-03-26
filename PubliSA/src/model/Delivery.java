@@ -1,7 +1,15 @@
 package model;
 
-public class Delivery{
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Delivery implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String name;
 	
 	private int target;
@@ -19,10 +27,17 @@ public class Delivery{
 	
 	private String dcr = "";
 	private String computer = "";
+	public static final String SEC = "SEC";
+	public static final String ELAC = "ELAC";
+	public static final String FCDC = "FCDC";
 	private String standard = "";
 	
-	private String pathOGC;
-
+	private String pathOGC = null;
+	private String pathCSV = null;
+	
+	private ArrayList<String[]> dataStep2 = new ArrayList<String[]>();
+	private ArrayList<String[]> dataStep4 = new ArrayList<String[]>();
+	
 	private Model model;
 	
 	public Delivery(String name, int target, Model model){
@@ -53,6 +68,17 @@ public class Delivery{
 	
 	public int getTarget(){
 		return target;
+	}
+	
+	public String getTargetString(){
+		switch (target) {
+		case UBIK:
+			return "Ubik";
+		case THALES:
+			return "Thales";
+		default:
+			return "";
+		}
 	}
 	
 	public void setTarget(int target){
@@ -109,6 +135,33 @@ public class Delivery{
 	
 	public void setPathOGC(String OGC){
 		pathOGC = OGC;
+		model.notice();
+	}
+	
+	public String getPathCSV(){
+		return pathCSV;
+	}
+	
+	public void setPathCSV(String CSV){
+		pathCSV = CSV;
+		model.notice();
+	}
+	
+	public ArrayList<String[]> getDataStep2(){
+		return dataStep2;
+	}
+	
+	public void setDataStep2(ArrayList<String[]> data){
+		dataStep2 = data;
+		model.notice();
+	}
+	
+	public ArrayList<String[]> getDataStep4(){
+		return dataStep4;
+	}
+	
+	public void setDataStep4(ArrayList<String[]> data){
+		dataStep4 = data;
 		model.notice();
 	}
 }

@@ -1,6 +1,7 @@
 package view.guiComponents.sideBar.blue;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Insets;
@@ -14,8 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import view.guiComponents.ButtonFlat;
+import view.guiComponents.ButtonFlatPopUp;
+import view.guiComponents.PopUpNewDeliveryPanel;
+import view.guiComponents.SaveProgress;
+import view.guiComponents.ariane.Ariane;
 import view.guiComponents.list.ListSelecteable;
-import view.guiComponents.svg.PanSVG;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -30,17 +35,19 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 	private JButton btnExtend;
 
 	private JPanel pButtonDown;
-	private JButton btnSettings;
-	private JButton btnUser;
+	private ButtonFlat btnSettings;
+	private ButtonFlat btnUser;
 	
 	private JPanel pButtonUp;
-	private JButton btnSave;
-	private JButton btnNew;
+	private ButtonFlatPopUp btnSave;
+	private ButtonFlatPopUp btnNew;
 	private ListSelecteable list;
 
 	private ControllerFrame control;
 
-	private PanSVG pAriane;
+	private Ariane pAriane;
+
+	private SaveProgress panSave;
 	
 	/**
 	 * Create the panel.
@@ -76,18 +83,23 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		pButtonUp.setOpaque(false);
 		add(pButtonUp, "1, 2, fill, fill");
 		
-		btnSave = new JButton("Enregistrer");
+		btnSave = new ButtonFlatPopUp("Enregistrer");
+		panSave = new SaveProgress();
+		btnSave.setPopUpPanel(panSave);
 		btnSave.setFont(new Font("Dotum", Font.PLAIN, 11));
+		btnSave.addActionListener(this);
 		btnSave.setMargin(new Insets(2, 2, 2, 2));
 		btnSave.setIconTextGap(1);
 		btnSave.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/save.png")));
 		btnSave.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnSave.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSave.setForeground(Color.WHITE);
-		btnSave.setContentAreaFilled(false);
+		btnSave.setRolloverBackground(new Color(0, 63, 113));
+		btnSave.setOpaque(false);
 		pButtonUp.add(btnSave);
 		
-		btnNew = new JButton("Nouveau");
+		btnNew = new ButtonFlatPopUp("Nouveau");
+		btnNew.setPopUpPanel(new PopUpNewDeliveryPanel(control, btnNew.getPopUp()));
 		btnNew.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnNew.setMargin(new Insets(2, 2, 2, 2));
 		btnNew.setIconTextGap(1);
@@ -95,7 +107,9 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnNew.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnNew.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnNew.setForeground(Color.WHITE);
-		btnNew.setContentAreaFilled(false);
+		btnNew.setRolloverBackground(new Color(0, 63, 113));
+		btnNew.setOpaque(false);
+		btnNew.addActionListener(this);
 		pButtonUp.add(btnNew);
 		add(btnExtend, "2, 2, default, center");
 		
@@ -103,7 +117,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		control.getModel().addObserver(list);
 		add(list, "1, 4, fill, fill");
 		
-		pAriane = new PanSVG(control);
+		pAriane = new Ariane(control);
 		control.getModel().addObserver(pAriane);
 		add(pAriane, "2, 4, fill, fill");
 		
@@ -113,23 +127,27 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		pButtonDown.setOpaque(false);
 		add(pButtonDown, "1, 6, 2, 1, fill, fill");
 		
-		btnUser = new JButton("Profil");
+		btnUser = new ButtonFlat("Profil");
+		btnUser.setPreferredSize(new Dimension(90, 60));
 		btnUser.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnUser.setForeground(Color.WHITE);
 		btnUser.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnUser.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnUser.setContentAreaFilled(false);
 		btnUser.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/user.png")));
+		btnUser.setRolloverBackground(new Color(0, 63, 113));
+		btnUser.setOpaque(false);
 		btnUser.addActionListener(this);
 		pButtonDown.add(btnUser);
 		
-		btnSettings = new JButton("Réglages");
+		btnSettings = new ButtonFlat("Réglages");
+		btnSettings.setPreferredSize(new Dimension(90, 60));
 		btnSettings.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnSettings.setForeground(Color.WHITE);
 		btnSettings.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSettings.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnSettings.setContentAreaFilled(false);
 		btnSettings.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/gear.png")));
+		btnSettings.setRolloverBackground(new Color(0, 63, 113));
+		btnSettings.setOpaque(false);
 		btnSettings.addActionListener(this);
 		pButtonDown.add(btnSettings);
 	}
@@ -140,6 +158,11 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		}else if(e.getSource() == btnSettings){
 			control.colSideBarBlue();
 			control.extSideBarWhite();
+		}else if(e.getSource() == btnSave){
+			control.save();
+			panSave.processEnd();
+		}else if(e.getSource() == btnNew){
+			
 		}
 	}
 
