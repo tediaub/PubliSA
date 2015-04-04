@@ -27,9 +27,9 @@ public class PanelCheckStep4 extends PanelObserver {
 
 	private TableFlat table;
 
-	private static String[] columns = {GestLangue.getInstance().getLocalizedText(IHM.COL_FICHIER_SOMMAIRE.getLabel()), 
-		GestLangue.getInstance().getLocalizedText(IHM.COL_FICHIER_CSV.getLabel()),
-		GestLangue.getInstance().getLocalizedText(IHM.COMMENTAIRES.getLabel())};
+	private static String[] columns = {GestLangue.getLocalizedText(IHM.COL_FICHIER_SOMMAIRE.getLabel()), 
+		GestLangue.getLocalizedText(IHM.COL_FICHIER_CSV.getLabel()),
+		GestLangue.getLocalizedText(IHM.COMMENTAIRES.getLabel())};
 	/**
 	 * Create the panel.
 	 */
@@ -50,7 +50,7 @@ public class PanelCheckStep4 extends PanelObserver {
 				FormFactory.UNRELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		JLabel lblName = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.RESULTAT_VERIF.getLabel()));
+		JLabel lblName = new JLabel(GestLangue.getLocalizedText(IHM.RESULTAT_VERIF.getLabel()));
 		lblName.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblName.setForeground(new Color(0, 119, 175));
 		add(lblName, "2, 2, 2, 1");

@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable{
 	
@@ -18,11 +19,22 @@ public class User implements Serializable{
 
 	private Model model;
 	
+	private ArrayList<Mail> mails = new ArrayList<Mail>();
+	
 	public User(String name, Model model){
 		this.name = name;
 		this.model = model;
+		
+		//createBasicMail();
 	}
 	
+//	private void createBasicMail() {
+//		mails.add(new Mail(, object, message));
+//		mails.add(new Mail(adressee, object, message));
+//		mails.add(new Mail(adressee, object, message));
+//		mails.add(new Mail(adressee, object, message));
+//	}
+
 	public String getName(){
 		return name;
 	}

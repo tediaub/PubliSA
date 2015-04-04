@@ -46,7 +46,7 @@ public class PanelAttached extends PanelObserver {
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("7mm")}));
 		
-		JLabel lblAprsLaCration = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.APRES_MAIL.getLabel()));
+		JLabel lblAprsLaCration = new JLabel(GestLangue.getLocalizedText(IHM.APRES_MAIL.getLabel()));
 		textInfo = new JLabel();
 		
 		add(lblAprsLaCration, "2, 4, 2, 1");
@@ -59,10 +59,10 @@ public class PanelAttached extends PanelObserver {
 	@Override
 	protected void update(Model model) {
 		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
-			textInfo.setText(GestLangue.getInstance().getLocalizedText(IHM.A_JOINDRE_UBIK.getLabel()));
+			textInfo.setText(GestLangue.getLocalizedText(IHM.A_JOINDRE_UBIK.getLabel()));
 		}
 		else if(model.getMainDelivery().getTarget() == Delivery.THALES){
-			textInfo.setText(GestLangue.getInstance().getLocalizedText(IHM.A_JOINDRE_THALES.getLabel()));
+			textInfo.setText(GestLangue.getLocalizedText(IHM.A_JOINDRE_THALES.getLabel()));
 		}
 	}
 

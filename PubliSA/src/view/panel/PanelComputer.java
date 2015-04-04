@@ -65,7 +65,7 @@ public class PanelComputer extends PanelObserver implements KeyListener, ActionL
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblNewLabel = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.COMPUTER.getLabel()));
+		JLabel lblNewLabel = new JLabel(GestLangue.getLocalizedText(IHM.COMPUTER.getLabel()));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblNewLabel.setForeground(new Color(0, 119, 175));
 		add(lblNewLabel, "2, 2, 3, 1");
@@ -73,21 +73,21 @@ public class PanelComputer extends PanelObserver implements KeyListener, ActionL
 		SeparatorFlat separatorB = new SeparatorFlat();
 		add(separatorB, "2, 4, 11, 1, fill, fill");
 		
-		JLabel lblNewLabel_1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.COMPUTER_TYPE.getLabel()));
+		JLabel lblNewLabel_1 = new JLabel(GestLangue.getLocalizedText(IHM.COMPUTER_TYPE.getLabel()));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 13));
 		add(lblNewLabel_1, "3, 6, 5, 1");
 		
-		JLabel lblNewLabel_2 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.STANDARD.getLabel()));
+		JLabel lblNewLabel_2 = new JLabel(GestLangue.getLocalizedText(IHM.STANDARD.getLabel()));
 		lblNewLabel_2.setFont(new Font("Dialog", Font.PLAIN, 13));
 		add(lblNewLabel_2, "11, 6");		
 		
-		ckbSec = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.SEC.getLabel()));
+		ckbSec = new RadioButtonFlat(GestLangue.getLocalizedText(IHM.SEC.getLabel()));
   		ckbSec.addActionListener(this);
 		ckbSec.setOpaque(false);
-  		ckbElac = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.ELAC.getLabel()));
+  		ckbElac = new RadioButtonFlat(GestLangue.getLocalizedText(IHM.ELAC.getLabel()));
   		ckbElac.addActionListener(this);
   		ckbElac.setOpaque(false);
-  		ckbFcdc = new RadioButtonFlat(GestLangue.getInstance().getLocalizedText(IHM.FCDC.getLabel()));
+  		ckbFcdc = new RadioButtonFlat(GestLangue.getLocalizedText(IHM.FCDC.getLabel()));
   		ckbFcdc.addActionListener(this);
   		ckbFcdc.setOpaque(false);
   		

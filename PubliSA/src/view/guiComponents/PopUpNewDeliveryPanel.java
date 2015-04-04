@@ -139,8 +139,8 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 			
 			if(!rdbtnThales.isSelected() && !rdbtnUbik.isSelected()){
 				JOptionPane.showMessageDialog(null, 
-						GestLangue.getInstance().getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
-						GestLangue.getInstance().getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
+						GestLangue.getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
+						GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}

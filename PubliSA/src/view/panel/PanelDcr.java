@@ -45,7 +45,7 @@ public class PanelDcr extends PanelObserver implements KeyListener{
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblNewLabel = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.DCR.getLabel()));
+		JLabel lblNewLabel = new JLabel(GestLangue.getLocalizedText(IHM.DCR.getLabel()));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblNewLabel.setForeground(new Color(0, 119, 175));
 		add(lblNewLabel, "2, 2, 2, 1");
@@ -53,7 +53,7 @@ public class PanelDcr extends PanelObserver implements KeyListener{
 		SeparatorFlat separator = new SeparatorFlat();
 		add(separator, "2, 4, 3, 1, fill, fill");
 		
-		JLabel lblNewLabel_1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.ENTRE_DCR.getLabel()));
+		JLabel lblNewLabel_1 = new JLabel(GestLangue.getLocalizedText(IHM.ENTRE_DCR.getLabel()));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 13));
 		add(lblNewLabel_1, "3, 6");
 		

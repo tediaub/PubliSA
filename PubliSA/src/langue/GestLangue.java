@@ -20,31 +20,13 @@ public class GestLangue  {
 
 	// Ressource locale
 	private static ResourceBundle messages = ResourceBundle.getBundle(
-			DICTIONNAIRES,currentLanguage.getLocale());
-	
-	private static final GestLangue instance = new GestLangue();
-	
-	/**
-	 * Constructeur
-	 */
-	public GestLangue(){
-	}
-	
-	 /**
-	 * Retourne l'instance unique de I18n.
-	 *
-	 * @return L'instance unique de I18n.
-	 */
-	 public static GestLangue getInstance() {
-		 return instance;
-	 }
-	 
+			DICTIONNAIRES,currentLanguage.getLocale());	 
 	
 	/**
 	 * Renvoi le texte correspond dans la langue choisi
 	 * @param text texte que l'on veut
 	 **/
-	public String getLocalizedText(String text)
+	public static String getLocalizedText(String text)
 	{
 		return messages.getString(text);
 	}
@@ -53,7 +35,7 @@ public class GestLangue  {
 	 * Cette fonction sert à changer de langue
 	 * @param Langue la nouvelle langue
 	 **/
-	public void setLangue(Langue langue)
+	public static void setLangue(Langue langue)
 	{
 		currentLanguage=langue;
 		
@@ -65,7 +47,7 @@ public class GestLangue  {
 	 *Retourne la langue actuelle
 	 *@return la langue actuelle
 	 **/
-	public Langue getCurrentLanguage()
+	public static Langue getCurrentLanguage()
 	{
 		return currentLanguage;
 	}

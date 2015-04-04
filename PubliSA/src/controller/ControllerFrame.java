@@ -180,8 +180,8 @@ public class ControllerFrame implements IFrameController{
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
 			JOptionPane.showMessageDialog(null, 
-					GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+					GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -190,8 +190,8 @@ public class ControllerFrame implements IFrameController{
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
 				JOptionPane.showMessageDialog(null, 
-						GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
-						GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
+						GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -215,8 +215,8 @@ public class ControllerFrame implements IFrameController{
 		int option = JOptionPane.NO_OPTION;
 
 		if(d != null && d!= model.getMainDelivery()){
-			option = JOptionPane.showConfirmDialog(null, GestLangue.getInstance().getLocalizedText(IHM.CHANGE_LIV.getLabel()),
-					GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()),
+			option = JOptionPane.showConfirmDialog(null, GestLangue.getLocalizedText(IHM.CHANGE_LIV.getLabel()),
+					GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel()),
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 			

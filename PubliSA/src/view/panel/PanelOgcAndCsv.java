@@ -68,7 +68,7 @@ public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
 		SeparatorFlat separatorFlat = new SeparatorFlat();
 		add(separatorFlat, "2, 4, 5, 1");
 		
-		JLabel lblOGC = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.OUVRIR_OGC_ETAPE4.getLabel()));
+		JLabel lblOGC = new JLabel(GestLangue.getLocalizedText(IHM.OUVRIR_OGC_ETAPE4.getLabel()));
   		lblOGC.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblOGC, "3, 6");
 		
@@ -83,7 +83,7 @@ public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
 		btnOGC.setBackground(new Color(240, 240, 240));
 		add(btnOGC, "5, 6, 1, 3, default, center");
 		
-		JLabel lblCSV = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.OUVRIR_CSV.getLabel()));
+		JLabel lblCSV = new JLabel(GestLangue.getLocalizedText(IHM.OUVRIR_CSV.getLabel()));
 		lblCSV.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblCSV, "3, 10");
 		

@@ -38,7 +38,7 @@ public class TableCellRenderer extends DefaultTableCellRenderer {
 				isSelected, hasFocus, row, column);
 		
 		TableModel model = table.getModel();
-		if(model.getValueAt(row, nbCol).toString().contains(GestLangue.getInstance().getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
+		if(model.getValueAt(row, nbCol).toString().contains(GestLangue.getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
 			cell.setForeground(new Color(255, 153, 0));
 			cell.setFont(new Font("SansSerif", Font.BOLD, 12));
 		}

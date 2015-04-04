@@ -52,8 +52,8 @@ public class OpeningController implements IFrameController {
 	public void createUser(String name){
 		if(name.isEmpty()){
 			JOptionPane.showMessageDialog(null, 
-					GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+					GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -65,8 +65,8 @@ public class OpeningController implements IFrameController {
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
 			JOptionPane.showMessageDialog(null, 
-					GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+					GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -75,8 +75,8 @@ public class OpeningController implements IFrameController {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
 				JOptionPane.showMessageDialog(null, 
-						GestLangue.getInstance().getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
-						GestLangue.getInstance().getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
+						GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}

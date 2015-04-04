@@ -4,18 +4,23 @@ import java.io.Serializable;
 
 public class Mail implements Serializable {
 
-	private String recipient;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String adressee;
 	private String object;
 	private String message;
 	
-	public Mail(String recipient, String object, String message) {
-		this.recipient = recipient;
+	public Mail(String adressee, String object, String message) {
+		this.adressee = adressee;
 		this.object = object;
 		this.message = message;
 	}
 	
 	public String getRecipient(){
-		return recipient;
+		return adressee;
 	}
 	
 	public String getObject(){
@@ -26,8 +31,8 @@ public class Mail implements Serializable {
 		return message;
 	}
 	
-	public void setRecipient(String recipient){
-		this.recipient = recipient;
+	public void setRecipient(String adressee){
+		this.adressee = adressee;
 	}
 	
 	public void setObject(String object){

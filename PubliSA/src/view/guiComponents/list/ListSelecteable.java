@@ -46,15 +46,15 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 		
 		if(model.getMainDelivery() != null){
 			if(model.getMainDelivery().getTarget() == Delivery.UBIK){
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE1_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE2_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE3_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE4_UBIK.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE1_UBIK.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE2_UBIK.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE3_UBIK.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE4_UBIK.getLabel()));
 			}
 			else{
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE1_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE2_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getInstance().getLocalizedText(IHM.TEXT_FLECHE3_THALES.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE1_UBIK.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE2_UBIK.getLabel()));
+				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE3_THALES.getLabel()));
 			}
 		}
 		

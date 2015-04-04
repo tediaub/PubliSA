@@ -29,11 +29,11 @@ public class PanelCheckStep2 extends PanelObserver {
 	private TableFlat table;
 	private ButtonFlat btnOptions;
 	
-	private static String[] columns = {GestLangue.getInstance().getLocalizedText(IHM.DCR.getLabel()),
-		GestLangue.getInstance().getLocalizedText(IHM.COL_NOM_PLANCHE.getLabel()),
-		GestLangue.getInstance().getLocalizedText(IHM.COL_NOM_SOMMAIRE.getLabel()),
-		GestLangue.getInstance().getLocalizedText(IHM.OK_KO.getLabel()),
-		GestLangue.getInstance().getLocalizedText(IHM.COMMENTAIRES.getLabel())};
+	private static String[] columns = {GestLangue.getLocalizedText(IHM.DCR.getLabel()),
+		GestLangue.getLocalizedText(IHM.COL_NOM_PLANCHE.getLabel()),
+		GestLangue.getLocalizedText(IHM.COL_NOM_SOMMAIRE.getLabel()),
+		GestLangue.getLocalizedText(IHM.OK_KO.getLabel()),
+		GestLangue.getLocalizedText(IHM.COMMENTAIRES.getLabel())};
 
 	public PanelCheckStep2(ControllerFrame control) {
 		super(control);
@@ -55,7 +55,7 @@ public class PanelCheckStep2 extends PanelObserver {
 				FormFactory.UNRELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		JLabel lblName = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.RESULTAT_VERIF.getLabel()));
+		JLabel lblName = new JLabel(GestLangue.getLocalizedText(IHM.RESULTAT_VERIF.getLabel()));
 		lblName.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblName.setForeground(new Color(0, 119, 175));
 		add(lblName, "2, 2, 2, 1");
