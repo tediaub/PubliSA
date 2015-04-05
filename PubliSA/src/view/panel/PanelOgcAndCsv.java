@@ -125,7 +125,7 @@ public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
 			if(path == null){return;}
 			control.getModel().getMainDelivery().setPathOGC(path);
 		}else if(e.getSource() == btnChecking){
-			
+			control.checkingOnUbik();
 		}
 	}
 }

@@ -72,6 +72,9 @@ public class PanelCheckStep2 extends PanelObserver {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		table = new TableFlat(new DefaultTableModel(columns, 0));
+		table.setWidth(1, 270);
+		table.setWidth(2, 270);
+		table.setWidth(4, 500);
 		table.setDefaultRenderer(Object.class, new TableCellRenderer(control));
 		scrollPane.setViewportView(table);
 		add(scrollPane, "2, 8, 3, 1, fill, fill");

@@ -87,6 +87,10 @@ public class Ariane extends JPanel implements MouseListener, Observer {
 			this.markerTop = markerTop;
 		}
 		
+		public boolean getSelectable(){
+			return isSelectable;
+		}
+		
 		public void setSelectable(boolean b){
 			isSelectable = b;
 		}
@@ -169,25 +173,30 @@ public class Ariane extends JPanel implements MouseListener, Observer {
 	public void mouseClicked(MouseEvent e) {
 		Delivery d = control.getModel().getMainDelivery();
 		if(d!= null){
-			if(markerStep1.getRectangle().contains(e.getPoint())){
+			if(markerStep1.getRectangle().contains(e.getPoint())
+					&& markerStep1.getSelectable()){
 				d.setActualStep(Delivery.STEP1);
 				control.colSideBarBlue();
 			}
-			if(markerStep2.getRectangle().contains(e.getPoint())){
+			else if(markerStep2.getRectangle().contains(e.getPoint())
+					&& markerStep2.getSelectable()){
 				d.setActualStep(Delivery.STEP2);
 				control.colSideBarBlue();
 			}
-			if(markerStep3.getRectangle().contains(e.getPoint())){
+			else if(markerStep3.getRectangle().contains(e.getPoint())
+					&& markerStep3.getSelectable()){
 				d.setActualStep(Delivery.STEP3);
 				control.colSideBarBlue();
 			}
-			if(markerStep4.getRectangle().contains(e.getPoint())){
+			else if(markerStep4.getRectangle().contains(e.getPoint())
+					&& markerStep4.getSelectable()){
 				d.setActualStep(Delivery.STEP4);
 				control.colSideBarBlue();
 			}
 		}
 		
 	}
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub

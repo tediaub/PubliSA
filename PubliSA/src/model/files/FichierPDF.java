@@ -4,7 +4,6 @@ import java.io.File;
 
 import langue.GestLangue;
 import langue.IHM;
-import model.Delivery;
 
 
 /**
@@ -12,19 +11,19 @@ import model.Delivery;
 @SuppressWarnings("serial")
 public class FichierPDF extends File{
 	
-	private String nom;
-	private String adresse;
-	private String repertoire;
+	private String name;
+	private String path;
+	private String folder;
 	
-	private String livre;
-	private String chapitre;
-	private String planche;
-	private String variante;
+	private String book;
+	private String chapter;
+	private String plank;
+	private String variant;
 	private String issue;
 	
-	private String NomTheorique;
-	private String messageErreur = "";
-	private String messageErrOriginal;
+	private String theoreticalName;
+	private String errorMessage = "";
+	private String originalErrorMessage;
 	private String DCR;
 
 	
@@ -34,149 +33,149 @@ public class FichierPDF extends File{
 	
 	/**
 	 * Constructor for FichierPOS.
-	 * @param adresse String
+	 * @param path String
 	 */
-	public FichierPDF(String adresse) {
-		super(adresse);
+	public FichierPDF(String path) {
+		super(path);
 		isPresent = false;
-		this.adresse = adresse;
-		nom = super.getName();
-		repertoire = super.getParentFile().getPath();
+		this.path = path;
+		name = super.getName();
+		folder = super.getParentFile().getPath();
 		
-		if(nom.substring(nom.indexOf(".")+1, nom.length()).toUpperCase().contains("PDF")){
+		if(name.substring(name.indexOf(".")+1, name.length()).toUpperCase().contains("PDF")){
 
-			livre = new String(nom.substring(1,3));
-			chapitre = new String(nom.substring(4,6));
-			planche = new String(nom.substring(7,10));
+			book = new String(name.substring(1,3));
+			chapter = new String(name.substring(4,6));
+			plank = new String(name.substring(7,10));
 			
-			String nomFin;
-			nomFin = new String(nom.substring(11, nom.length()));
-			variante = new String(nom.substring(11, nomFin.indexOf("I")+11));
-			issue = new String(nom.substring(nomFin.indexOf("I")+12, nom.indexOf(".")));
+			String nameFin;
+			nameFin = new String(name.substring(11, name.length()));
+			variant = new String(name.substring(11, nameFin.indexOf("I")+11));
+			issue = new String(name.substring(nameFin.indexOf("I")+12, name.indexOf(".")));
 
 			
 		
 	        String message = new String();
 	        char car = ' ';
 	        try{	        	
-	        	if (Integer.parseInt(livre)> 9 && Integer.parseInt(livre) < 36){
-		        	car = (char)(55+Integer.parseInt(livre));
-		        	livre = "0" + car; 
-		        	message = "Livre";
+	        	if (Integer.parseInt(book)> 9 && Integer.parseInt(book) < 36){
+		        	car = (char)(55+Integer.parseInt(book));
+		        	book = "0" + car; 
+		        	message = "book";
 		        	exception = true;
 				}
 				
-				if (Integer.parseInt(chapitre) > 9 && Integer.parseInt(chapitre) < 36){      
+				if (Integer.parseInt(chapter) > 9 && Integer.parseInt(chapter) < 36){      
 				    if (car != ' '){
 				      message = message + ", ";
 				    }
-					car = (char)(55+Integer.parseInt(chapitre));
-					chapitre = "0" + car;
-					message = message + "Chapitre";
+					car = (char)(55+Integer.parseInt(chapter));
+					chapter = "0" + car;
+					message = message + "chapter";
 					exception = true;
 				}
 	
-				if (Integer.parseInt(planche) > 9 && Integer.parseInt(planche) < 36){       
+				if (Integer.parseInt(plank) > 9 && Integer.parseInt(plank) < 36){       
 				    if (car != ' '){
 				      message = message + ", ";
 					}
-					car = (char)(55+Integer.parseInt(planche));
-					planche = "00" + car;
-					message = message + "Planche";
+					car = (char)(55+Integer.parseInt(plank));
+					plank = "00" + car;
+					message = message + "plank";
 					exception = true;
 				}
 				
 	        }catch(NumberFormatException e){
-	        	NomTheorique = "L" + livre + "C" + chapitre + "P" + planche + "V" + variante + "I" + issue + ".PDF";
-				messageErrOriginal = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + NomTheorique;
+	        	theoreticalName = "L" + book + "C" + chapter + "P" + plank + "V" + variant + "I" + issue + ".PDF";
+				originalErrorMessage = GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + theoreticalName;
 				return;
 	        }
-			NomTheorique = "L" + livre + "C" + chapitre + "P" + planche + "V" + variante + "I" + issue + ".PDF";
-			messageErrOriginal = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getInstance().getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + NomTheorique;
+			theoreticalName = "L" + book + "C" + chapter + "P" + plank + "V" + variant + "I" + issue + ".PDF";
+			originalErrorMessage = GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + theoreticalName;
 		
 		}
 	}
 	
 	/**
-	 * Method changeAdresse.
+	 * Method changepath.
 	 * @return String
 	 */
-	public String changeAdresse(){
+	public String changepath(){
 		boolean changement = false;
 		
-		if (nom.substring(nom.indexOf(".")+1, nom.length()).contains(";")){
-	        nom = nom.substring(0, nom.indexOf(";"));
-	        adresse = repertoire + File.separator + nom;
+		if (name.substring(name.indexOf(".")+1, name.length()).contains(";")){
+	        name = name.substring(0, name.indexOf(";"));
+	        path = folder + File.separator + name;
 	        changement = true;
 	    }
-		if(nom.substring(nom.indexOf(".")+1, nom.length()).toUpperCase().contains("PDF")){
-	        //Vérification des erreurs de nom des planches
-			if(nom.substring(nom.indexOf(".")+1, nom.length()).contentEquals("pdf")){
-				nom = nom.substring(0, nom.lastIndexOf(".")) + ".PDF";
-				adresse = repertoire + File.separator + nom;
+		if(name.substring(name.indexOf(".")+1, name.length()).toUpperCase().contains("PDF")){
+	        //Vérification des erreurs de name des planks
+			if(name.substring(name.indexOf(".")+1, name.length()).contentEquals("pdf")){
+				name = name.substring(0, name.lastIndexOf(".")) + ".PDF";
+				path = folder + File.separator + name;
 				changement = true;
 			}
 			
-			issue = nom.substring(nom.lastIndexOf("I"), nom.lastIndexOf("."));
+			issue = name.substring(name.lastIndexOf("I"), name.lastIndexOf("."));
 			if (issue.length() == 2){
 				issue = "I0" + issue.charAt(1);
-				nom = nom.substring(0, nom.lastIndexOf("I")) + issue + ".PDF";
-				adresse = repertoire + File.separator + nom;
+				name = name.substring(0, name.lastIndexOf("I")) + issue + ".PDF";
+				path = folder + File.separator + name;
 		        changement = true;
 			}
 		}
 		if(changement){
-			this.renameTo(new File(adresse));
+			this.renameTo(new File(path));
 		}
-		return adresse;
+		return path;
 	}
 	
 	/**
-	 * Method getNom.
+	 * Method getname.
 	 * @return String
 	 */
-	public String getNom(){
-		return this.nom;
+	public String getName(){
+		return this.name;
 	}
 	
 	/**
-	 * Method getRepertoire.
+	 * Method getfolder.
 	 * @return String
 	 */
-	public String getRepertoire(){
-		return this.repertoire;
+	public String getFolder(){
+		return this.folder;
 	}
 	
 	/**
-	 * Method getLivre.
+	 * Method getbook.
 	 * @return String
 	 */
-	public String getLivre(){
-		return this.livre;
+	public String getBook(){
+		return this.book;
 	}
 	
 	/**
-	 * Method getChapitre.
+	 * Method getchapter.
 	 * @return String
 	 */
-	public String getChapitre(){
-		return this.chapitre;
+	public String getChapter(){
+		return this.chapter;
 	}
 	
 	/**
-	 * Method getPlanche.
+	 * Method getplank.
 	 * @return String
 	 */
-	public String getPlanche(){
-		return this.planche;
+	public String getPlank(){
+		return this.plank;
 	}
 	
 	/**
-	 * Method getVariante.
+	 * Method getvariant.
 	 * @return String
 	 */
-	public String getVariante(){
-		return this.variante;
+	public String getVariant(){
+		return this.variant;
 	}
 	
 	/**
@@ -192,7 +191,7 @@ public class FichierPDF extends File{
 	 * @return String
 	 */
 	public String getMessage(){
-		return this.messageErreur;
+		return this.errorMessage;
 	}
 	
 	/**
@@ -201,22 +200,22 @@ public class FichierPDF extends File{
 	 */
 	public void setMessage(int indice){
 		if (indice == 0){
-			messageErreur = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR0.getLabel());
+			errorMessage = GestLangue.getLocalizedText(IHM.MES_ERR0.getLabel());
 		}
 		if (indice == 1){
-			messageErreur = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR1.getLabel()) + messageErrOriginal;
+			errorMessage = GestLangue.getLocalizedText(IHM.MES_ERR1.getLabel()) + originalErrorMessage;
 		}
 		if (indice == 2){
-			messageErreur = GestLangue.getInstance().getLocalizedText(IHM.MES_ERR2.getLabel());
+			errorMessage = GestLangue.getLocalizedText(IHM.MES_ERR2.getLabel());
 		}
 	}
 	
 	/**
-	 * Method getNomTheorique.
+	 * Method gettheoreticalName.
 	 * @return String
 	 */
-	public String getNomTheorique(){
-		return this.NomTheorique;
+	public String getTheoreticalName(){
+		return this.theoreticalName;
 	}
 	
 	/**
@@ -238,9 +237,9 @@ public class FichierPDF extends File{
 	public void isPresent(){
 		isPresent = true;
 //		
-//		File repertoire = new File(this.getParentFile().getPath() + File.separator + Delivery.getNom());
-//		if(!repertoire.exists()){repertoire.mkdir();}
-//		renameTo(new File(this.getParentFile().getPath() + File.separator + Delivery.getNom() + File.separator + this.getName()));
+//		File folder = new File(this.getParentFile().getPath() + File.separator + Delivery.getname());
+//		if(!folder.exists()){folder.mkdir();}
+//		renameTo(new File(this.getParentFile().getPath() + File.separator + Delivery.getname() + File.separator + this.getName()));
 	}
 	
 	/**

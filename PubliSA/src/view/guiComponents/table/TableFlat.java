@@ -34,4 +34,10 @@ public class TableFlat extends JTable {
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
+	
+	public void setWidth(int column, int width){
+		TableColumn col;
+		col = getColumnModel().getColumn(column);
+		col.setPreferredWidth(width);
+	}
 }

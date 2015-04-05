@@ -24,7 +24,6 @@ public class VerificationUbikUbik {
 
 	public VerificationUbikUbik(){
 		fini = false;
-		TableEtape4.removeJTable();
 		
 		adresseOGC = Etape4.getAdresseOGC();
 		adresseCSV = Etape4.getAdresseCSV();

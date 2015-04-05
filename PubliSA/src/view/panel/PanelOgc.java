@@ -75,7 +75,7 @@ public class PanelOgc extends PanelObserver implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == btnFolder){
-			control.checkingAkkaToUbik();
+			control.checkingFromAkka();
 		}
 	}
 

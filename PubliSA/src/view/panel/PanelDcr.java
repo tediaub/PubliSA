@@ -6,12 +6,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
+import javax.swing.JLayer;
+import javax.swing.JTextField;
+import javax.swing.plaf.LayerUI;
 
 import langue.GestLangue;
 import langue.IHM;
 import model.Model;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
+import view.guiComponents.layer.DcrLayerUI;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -53,14 +57,15 @@ public class PanelDcr extends PanelObserver implements KeyListener{
 		SeparatorFlat separator = new SeparatorFlat();
 		add(separator, "2, 4, 3, 1, fill, fill");
 		
-		JLabel lblNewLabel_1 = new JLabel(GestLangue.getLocalizedText(IHM.ENTRE_DCR.getLabel()));
+		JLabel lblNewLabel_1 = new JLabel(GestLangue.getLocalizedText(IHM.TEXTE_DCR.getLabel()));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 13));
 		add(lblNewLabel_1, "3, 6");
 		
+		LayerUI<JTextField> layerUI = new DcrLayerUI();
 		textField = new TextFieldFlat();
 		textField.addKeyListener(this);
 		textField.setFont(new Font("Dialog", Font.PLAIN, 12));
-		add(textField, "3, 8, fill, default");
+		add(new JLayer<JTextField>(textField, layerUI), "3, 8, fill, default");
 		
 		update(control.getModel());
 	}

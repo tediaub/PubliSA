@@ -42,7 +42,6 @@ public class AkkaToUbikChecking {
 			JOptionPane.showMessageDialog(null, "Aucune DCR n'a été rentrée.", "Erreur DCR", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
 		try{
 			for (int i =0; i<tabDCR.length;i++){
 				if(Integer.parseInt(DCRMax)<Integer.parseInt(tabDCR[i])){

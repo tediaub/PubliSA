@@ -64,6 +64,7 @@ public class PanelCheckStep4 extends PanelObserver {
 		scrollPane.setViewportView(table);
 		add(scrollPane, "2, 6, 2, 1, fill, fill");
 	}
+	
 	@Override
 	protected void update(Model model) {
 		table.clearTable();
