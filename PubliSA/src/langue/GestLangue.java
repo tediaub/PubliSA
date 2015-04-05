@@ -2,8 +2,6 @@ package langue;
 
 import java.util.ResourceBundle;
 
-import autre.Langue;
-
 /**
  * Classe gérant l'internationnalisation
  * @author ZEGGWAGH_L

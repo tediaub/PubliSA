@@ -34,6 +34,7 @@ import javax.swing.border.LineBorder;
 import jxl.write.WriteException;
 import langue.GestLangue;
 import langue.IHM;
+import langue.Langue;
 import model.Delivery;
 import model.User;
 import model.saveLoad.XmlLoader;
@@ -44,7 +45,6 @@ import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
 import verification.CreationRapportEtape2;
 import verification.CreationRapportEtape4;
-import autre.Langue;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
