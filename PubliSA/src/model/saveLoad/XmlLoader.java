@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import model.Delivery;
 
 import org.jdom.Attribute;
@@ -18,6 +16,7 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import test.DialogTest;
 import controller.openFrame.OpeningController;
 
 public class XmlLoader{
@@ -37,8 +36,11 @@ public class XmlLoader{
 	  	   	racine = document.getRootElement();
 	    }
 	    catch(Exception e){
-	    	JOptionPane.showMessageDialog(null, "Impossible de lancer PubliSA.\r\nVeuillez placer le fichier PubliSA.xml dans le même répertoire que PubliSA.exe","Erreur XML",JOptionPane.ERROR_MESSAGE);
-			return;
+	    	new DialogTest().showDialog("Fichier XML",
+					"Erreur fichier XML",
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
+	    	return;
 	    }
 	}
 	

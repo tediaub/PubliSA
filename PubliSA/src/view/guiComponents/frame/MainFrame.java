@@ -26,7 +26,7 @@ public class MainFrame extends JFrame implements Observer{
 	
 	private JPanel cards;
 	
-	public MainFrame(ControllerFrame control) {
+	public MainFrame(ControllerFrame control) {		
 		setSize(1005, 650);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(
@@ -76,7 +76,5 @@ public class MainFrame extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg1) {
 		update((Model) o);
-		
 	}
-
 }

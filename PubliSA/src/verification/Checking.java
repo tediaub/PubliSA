@@ -3,14 +3,13 @@ package verification;
 import java.io.File;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import loading.FilterOGC;
 import loading.LoadFile;
 import model.Delivery;
 import model.files.FichierCSV;
 import model.files.FileOGC;
 import model.files.FileToCheck;
+import test.DialogTest;
 import controller.ControllerFrame;
 
 public class Checking {
@@ -85,7 +84,10 @@ public class Checking {
 	
 	private void getOgc(){
 		if(control.getModel().getMainDelivery().getDCR().isEmpty()){
-			JOptionPane.showMessageDialog(null, "Aucune DCR n'a été rentrée.", "Erreur DCR", JOptionPane.ERROR_MESSAGE);
+			new DialogTest().showDialog("Erreur DCR",
+					"Aucune DCR n'a été rentrée.",
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return;
 		}
 		
@@ -102,7 +104,10 @@ public class Checking {
 				}
 			}
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, "Vérifier que : \r\n- la/les DCR sont des nombres\r\n- elle(s) comporte(nt) quatre chiffres\r\n- il n'y a pas d'espace\r\n- le séparateur est bien une virgule(,)", "Erreur DCR", JOptionPane.ERROR_MESSAGE);
+			new DialogTest().showDialog("Erreur DCR",
+					"<html>Vérifier que :<br>- la/les DCR sont des nombres<br>- elle(s) comporte(nt) quatre chiffres<br>- il n'y a pas d'espace<br>- le séparateur est bien une virgule(,)</html",
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return;
 		}	
 		
@@ -115,7 +120,10 @@ public class Checking {
 	private void getListOgc(FileOGC OGC){
 		//Message d'erreur
 		if(!OGC.getName().endsWith(DCRMax + ".OGC")){
-			JOptionPane.showMessageDialog(null, "La DCR la plus grande ne correspond pas avec la DCR du fichier OGC.", "Erreur de fichier OGC", JOptionPane.ERROR_MESSAGE);
+			new DialogTest().showDialog("Erreur de fichier OGC",
+					"La DCR la plus grande ne correspond pas avec la DCR du fichier OGC.",
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return;
 		}
 		
@@ -204,11 +212,17 @@ public class Checking {
 		pathCSV = control.getModel().getMainDelivery().getPathCSV();
 		
 		if(pathOGC==null || pathCSV == null){
-			JOptionPane.showMessageDialog(null, "Veuillez entrer un fichier OGC et CSV", "Erreur chargement fichier", JOptionPane.ERROR_MESSAGE);
+			new DialogTest().showDialog("Erreur chargement fichier",
+					"Veuillez entrer un fichier OGC et CSV",
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return null;
 		}
 		if(pathOGC.isEmpty() || pathCSV.isEmpty()){
-			JOptionPane.showMessageDialog(null, "Veuillez entrer un fichier OGC et CSV", "Erreur chargement fichier", JOptionPane.ERROR_MESSAGE);
+			new DialogTest().showDialog("Erreur chargement fichier",
+					"Veuillez entrer un fichier OGC et CSV",
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return null;
 		}
 		
@@ -233,7 +247,10 @@ public class Checking {
 
 		
 		if(hCSV.size() == 0 && hOGC.size() == 0){
-			JOptionPane.showMessageDialog(null, "Aucune erreur", "Vérification terminée", JOptionPane.INFORMATION_MESSAGE);
+			new DialogTest().showDialog( "Vérification terminée",
+					"Aucune erreur",
+					DialogTest.INFORMATION_OPERATION,
+					DialogTest.INFORMATION_ICON);
 			return null;
 		}
 		

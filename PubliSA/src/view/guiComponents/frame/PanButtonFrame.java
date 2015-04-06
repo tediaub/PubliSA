@@ -9,6 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import langue.GestLangue;
+import langue.IHM;
+import test.DialogTest;
 import controller.IFrameController;
 
 @SuppressWarnings("serial")
@@ -60,7 +63,20 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 		}else if(e.getSource() == btnMaximized){
 			control.maximizedFrame();
 		}else if(e.getSource() == btnClose){
-			control.closeFrame();
+			int option = new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.QUITTER.getLabel()),
+					GestLangue.getLocalizedText(IHM.MES_QUITTER.getLabel()),
+					DialogTest.CLOSE_OPERATION,
+					DialogTest.INFORMATION_ICON);
+
+			switch (option) {
+			case DialogTest.SAVE_AND_CLOSE:
+				control.save();
+			case DialogTest.VALIDATE:
+				control.closeFrame();
+				break;
+			default:
+				break;
+			}
 		}
 	}
 	

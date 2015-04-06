@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,14 +23,11 @@ import javax.swing.border.LineBorder;
 
 import langue.GestLangue;
 import langue.IHM;
-import loading.FilterOGC;
-import loading.LoadFile;
 import model.Delivery;
 import model.Model;
-import model.files.FichierPDF;
 import model.files.FileOGC;
-import model.files.FileToCheck;
 import model.saveLoad.Serialization;
+import test.DialogTest;
 import verification.Checking;
 import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.MainFrame;
@@ -189,20 +185,20 @@ public class ControllerFrame implements IFrameController{
 
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
-			JOptionPane.showMessageDialog(null, 
+			new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-					JOptionPane.ERROR_MESSAGE);
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return;
 		}
 
 		for (int i = 0; i < model.getDeliveries().size(); i++) {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
-				JOptionPane.showMessageDialog(null, 
+				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
-						GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-						JOptionPane.ERROR_MESSAGE);
+						DialogTest.ERROR_OPERATION,
+						DialogTest.ERROR_ICON);
 				return;
 			}
 			
@@ -225,14 +221,12 @@ public class ControllerFrame implements IFrameController{
 		int option = JOptionPane.NO_OPTION;
 
 		if(d != null && d!= model.getMainDelivery()){
-			option = JOptionPane.showConfirmDialog(null, GestLangue.getLocalizedText(IHM.CHANGE_LIV.getLabel()),
-					GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel()),
-					JOptionPane.YES_NO_OPTION,
-					JOptionPane.QUESTION_MESSAGE);
+			option = new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel()),
+					GestLangue.getLocalizedText(IHM.CHANGE_LIV.getLabel()),
+					DialogTest.ASK_OPERATION,
+					DialogTest.INFORMATION_ICON);
 			
-			if(option != JOptionPane.NO_OPTION &&
-					option != JOptionPane.CANCEL_OPTION &&
-					option != JOptionPane.CLOSED_OPTION){
+			if(option == DialogTest.VALIDATE){
 				model.changeMainDelivery(getDelivery(name));
 			}
 		}
@@ -247,137 +241,7 @@ public class ControllerFrame implements IFrameController{
 	}	
 	
 	public void checkingFromAkka(){
-		
 		model.getMainDelivery().setDataStep2(new Checking(this).checkingFromAkka());
-		
-//		if(model.getMainDelivery().getDCR().isEmpty()){
-//			JOptionPane.showMessageDialog(null, "Aucune DCR n'a été rentrée.", "Erreur DCR", JOptionPane.ERROR_MESSAGE);
-//			return;
-//		}
-//		
-//		String[] tabDCR = model.getMainDelivery().getDCR().split(",");
-//		String DCRMax = "0";
-//		try{
-//			for (int i = 0; i<tabDCR.length;i++){
-//				if(Integer.parseInt(DCRMax)<Integer.parseInt(tabDCR[i])){
-//					DCRMax = tabDCR[i];
-//				}
-//				if(tabDCR[i].length() != 4){
-//					@SuppressWarnings("unused")
-//					int k = 1/0;
-//				}
-//			}
-//		}catch(Exception e){
-//			JOptionPane.showMessageDialog(null, "Vérifier que : \r\n- la/les DCR sont des nombres\r\n- elle(s) comporte(nt) quatre chiffres\r\n- il n'y a pas d'espace\r\n- le séparateur est bien une virgule(,)", "Erreur DCR", JOptionPane.ERROR_MESSAGE);
-//			return;
-//		}	
-//		
-//		String path = LoadFile.loadFrame(model.getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
-//		if(path == null){return;}
-//		FileOGC OGC = new FileOGC(path);
-//		model.getMainDelivery().setPathOGC(path);
-//		
-//		//Message d'erreur
-//		if(!OGC.getName().endsWith(DCRMax + ".OGC")){
-//			JOptionPane.showMessageDialog(null, "La DCR la plus grande ne correspond pas avec la DCR du fichier OGC.", "Erreur de fichier OGC", JOptionPane.ERROR_MESSAGE);
-//			return;
-//		}
-//		
-//		ArrayList<String> listePlancheOGC = new ArrayList<String> ();
-//		for(int i=0; i<tabDCR.length;i++){
-//			listePlancheOGC.add(tabDCR[i]);
-//			listePlancheOGC.addAll(OGC.extractOgcPlank(tabDCR[i], model.getMainDelivery().getTargetString()));
-//		}
-//		
-//		String DCR = new String();
-//		////Dossier du fichier OGC
-//		File directory = OGC.getParentFile();
-//		File[] subfiles = directory.listFiles();
-//		FileToCheck PDF;
-//		ArrayList<FileToCheck> listePlanchePDF = new ArrayList<FileToCheck>();
-//		ArrayList<String> listePlancheErrOGC = new ArrayList<String> ();
-//		
-//		for(int i = 0 ; i < subfiles.length; i++){
-//			if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("PDF")){
-//				PDF = new FileToCheck(this, subfiles[i].getPath());
-//				
-//				listePlanchePDF.add(PDF);
-//				boolean erreur = true;
-//				
-//				for(int j=0; j < listePlancheOGC.size();j++){
-//					if(listePlancheOGC.get(j).length()==4){
-//						do{
-//							DCR = listePlancheOGC.get(j);
-//							j++;
-//						}while(listePlancheOGC.get(j).length()==4);
-//					}
-//					if(listePlancheOGC.get(j).substring(listePlancheOGC.get(j).indexOf(".")+1, listePlancheOGC.get(j).length()).toUpperCase().contains("PDF")){
-//						if(listePlancheOGC.get(j).contentEquals(PDF.getName())){
-//							PDF.isPresent();
-//							PDF.setDCR(DCR);
-//							j =listePlancheOGC.size();
-//						}
-//						else if(PDF.getException() && listePlancheOGC.get(j).contentEquals(PDF.getTheoreticalName())){
-//							PDF.setDCR(DCR);
-//							PDF.setMessage(1);
-//							j =listePlancheOGC.size();
-//						}
-//						else if(PDF.getName().substring(0,10).compareTo(listePlancheOGC.get(j).substring(0,10)) == 0){
-//							if(Integer.parseInt(PDF.getName().substring(14, 16)) != Integer.parseInt(listePlancheOGC.get(j).substring(14, 16))
-//									||Integer.parseInt(PDF.getName().substring(11, 13)) != Integer.parseInt(listePlancheOGC.get(j).substring(11, 13))){
-//								PDF.setMessage(2);
-//							}
-//							PDF.setDCR("ND");
-//							erreur = false;
-//						}
-//						else if(erreur){
-//							PDF.setDCR("ND");
-//							PDF.setMessage(0);
-//						}
-//					}
-//				}
-//			}
-//		}
-//		
-//		//Calcul des fichier présents dans l'OGC
-//		for(int i=0 ; i < listePlancheOGC.size(); i++){
-//			boolean exclusion = false;
-//			for(int j=0 ; j < listePlanchePDF.size(); j++){
-//				
-//				if(listePlancheOGC.get(i).contentEquals(listePlanchePDF.get(j).getName())
-//						||listePlancheOGC.get(i).contentEquals(listePlanchePDF.get(j).getTheoreticalName())){
-//					exclusion = true;
-//				}
-//			}
-//			if (!exclusion){
-//				listePlancheErrOGC.add(listePlancheOGC.get(i));
-//			}
-//		}		
-//		
-//		DCR = new String();
-//		ArrayList<String[]> tabArray = new ArrayList<String[]>();
-//		for (int i = 0; i< listePlancheErrOGC .size(); i++){
-//			if (listePlancheErrOGC.get(i).length()==4){
-//				DCR = listePlancheErrOGC.get(i);
-//			}
-//			else{
-//				String[] s = {DCR,	"",	listePlancheErrOGC.get(i),"KO",	"Planche non présente dans le dossier source"};
-//				tabArray.add(s);
-//			}
-//		}
-//		
-//		for (int i = 0; i< listePlanchePDF .size(); i++){
-//			if (listePlanchePDF.get(i).getPresent()){
-//				String[] s = {listePlanchePDF.get(i).getDCR(), listePlanchePDF.get(i).getName(),	listePlanchePDF.get(i).getName(), "OK",""};
-//				tabArray.add(s);
-//			}
-//			else {
-//				String[] s = {listePlanchePDF.get(i).getDCR(), listePlanchePDF.get(i).getName(),	"", "KO", listePlanchePDF.get(i).getMessage()};
-//				tabArray.add(s);
-//			}
-//		}
-//		
-//		model.getMainDelivery().setDataStep2(tabArray);
 	}
 	
 	public void moveFile(File file) {
@@ -406,13 +270,14 @@ public class ControllerFrame implements IFrameController{
 				}
 			}
 		}
-		JOptionPane.showMessageDialog(null,
+		new DialogTest().showDialog(GestLangue.getLocalizedText(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel())),
 				"Suppression des entêtes terminée.\nLes fichiers modifiés ont été placés dans le dossier :\n" 
-				+ ogc.getParentFile().getPath() 
-				+ File.separator 
-				+ model.getMainDelivery().getName()
-				+ "."  
-				, "PubliSA", JOptionPane.INFORMATION_MESSAGE);
+						+ ogc.getParentFile().getPath() 
+						+ File.separator 
+						+ model.getMainDelivery().getName()
+						+ ".",
+				DialogTest.INFORMATION_OPERATION,
+				DialogTest.INFORMATION_ICON);
 	}
 	
 	private void deleteFileHeader(File file, String stringToFind){

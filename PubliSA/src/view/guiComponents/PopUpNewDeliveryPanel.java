@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
@@ -16,6 +15,7 @@ import javax.swing.SwingConstants;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
+import test.DialogTest;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -138,10 +138,10 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 		if(ae.getSource() == btnCreate){
 			
 			if(!rdbtnThales.isSelected() && !rdbtnUbik.isSelected()){
-				JOptionPane.showMessageDialog(null, 
+				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
-						GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
-						JOptionPane.ERROR_MESSAGE);
+						DialogTest.ERROR_OPERATION,
+						DialogTest.ERROR_ICON);
 				return;
 			}
 			

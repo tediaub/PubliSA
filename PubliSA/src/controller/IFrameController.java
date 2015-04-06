@@ -15,5 +15,7 @@ public interface IFrameController {
 	void setFrameLocation(int x, int y);
 
 	Point getMouseOnFrame(int xOnScreen, int yOnScreen);
+	
+	void save();
 
 }

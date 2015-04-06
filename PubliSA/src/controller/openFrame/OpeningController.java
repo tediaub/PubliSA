@@ -7,7 +7,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 import langue.GestLangue;
@@ -15,6 +14,7 @@ import langue.IHM;
 import model.Delivery;
 import model.Model;
 import model.saveLoad.XmlLoader;
+import test.DialogTest;
 import view.guiComponents.frameOpening.OpeningFrame;
 import controller.ControllerFrame;
 import controller.IFrameController;
@@ -51,10 +51,10 @@ public class OpeningController implements IFrameController {
 	
 	public void createUser(String name){
 		if(name.isEmpty()){
-			JOptionPane.showMessageDialog(null, 
+			new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-					JOptionPane.ERROR_MESSAGE);
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return;
 		}
 		
@@ -64,20 +64,20 @@ public class OpeningController implements IFrameController {
 	
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
-			JOptionPane.showMessageDialog(null, 
+			new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-					JOptionPane.ERROR_MESSAGE);
+					DialogTest.ERROR_OPERATION,
+					DialogTest.ERROR_ICON);
 			return;
 		}
 
 		for (int i = 0; i < model.getDeliveries().size(); i++) {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
-				JOptionPane.showMessageDialog(null, 
+				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
-						GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-						JOptionPane.ERROR_MESSAGE);
+						DialogTest.ERROR_OPERATION,
+						DialogTest.ERROR_ICON);
 				return;
 			}
 			
@@ -155,5 +155,10 @@ public class OpeningController implements IFrameController {
 	
 	public XmlLoader getXml(){
 		return xml;
+	}
+
+	@Override
+	public void save() {
+		
 	}
 }
