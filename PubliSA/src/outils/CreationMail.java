@@ -39,7 +39,6 @@ public class CreationMail {
 	 * @param livraison int
 	 */
 	public CreationMail(Model model){
-		erreur = false;
 		
 		switch(model.getMainDelivery().getActualStep()){
 		case Delivery.STEP1 : 

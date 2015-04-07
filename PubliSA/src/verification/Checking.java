@@ -39,56 +39,61 @@ public class Checking {
 		
 		int target = control.getModel().getMainDelivery().getTarget();
 		
-		getOgc();
-		FileOGC OGC = new FileOGC(path);
-		getListOgc(OGC);
-		
-		String DCR = new String();
-		////Dossier du fichier OGC
-		File directory = OGC.getParentFile();
-		File[] subfiles = directory.listFiles();
-		
-		for(int i = 0 ; i < subfiles.length; i++){
-			if(target == Delivery.UBIK){
-				if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("PDF")){
-					FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
-					listePlancheCheck.add(file);
-					checkFile(file, DCR);
-				}
-			}else if(target == Delivery.THALES){
-				if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("ASC")){
-					FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
-					listePlancheCheck.add(file);
-					checkFile(file, DCR);
-				}
-				if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("SCH")){
-					FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
-					listePlancheCheck.add(file);
-					checkFile(file, DCR);
+		try {
+			getOgc();
+			FileOGC OGC = new FileOGC(path);
+			getListOgc(OGC);
+			
+			String DCR = new String();
+			////Dossier du fichier OGC
+			File directory = OGC.getParentFile();
+			File[] subfiles = directory.listFiles();
+			
+			
+			for(int i = 0 ; i < subfiles.length; i++){
+				if(target == Delivery.UBIK){
+					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("PDF")){
+						FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
+						listePlancheCheck.add(file);
+						checkFile(file, DCR);
+					}
+				}else if(target == Delivery.THALES){
+					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("ASC")){
+						FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
+						listePlancheCheck.add(file);
+						checkFile(file, DCR);
+					}
+					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("SCH")){
+						FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
+						listePlancheCheck.add(file);
+						checkFile(file, DCR);
+					}
 				}
 			}
-		}
-		
-		//Calcul des fichier présents dans l'OGC
-		for(int i=0 ; i < listePlancheOGC.size(); i++){
-			boolean exclusion = false;
-			String plOgc = listePlancheOGC.get(i);
-			if(checkOgc(listePlancheCheck, plOgc) == true)exclusion = true;
-			if (!exclusion){
-				listePlancheErrOGC.add(listePlancheOGC.get(i));
+			
+			//Calcul des fichier présents dans l'OGC
+			for(int i=0 ; i < listePlancheOGC.size(); i++){
+				boolean exclusion = false;
+				String plOgc = listePlancheOGC.get(i);
+				if(checkOgc(listePlancheCheck, plOgc) == true)exclusion = true;
+				if (!exclusion){
+					listePlancheErrOGC.add(listePlancheOGC.get(i));
+				}
 			}
+		} catch (Exception e) {
+			return null;
 		}
 		
 		return getResultData();		
 	}
 	
-	private void getOgc(){
+	private void getOgc()throws Exception{
 		if(control.getModel().getMainDelivery().getDCR().isEmpty()){
 			new DialogTest().showDialog("Erreur DCR",
 					"Aucune DCR n'a été rentrée.",
 					DialogTest.ERROR_OPERATION,
 					DialogTest.ERROR_ICON);
-			return;
+			throw new Exception();
 		}
 		
 		tabDCR = control.getModel().getMainDelivery().getDCR().split(",");
@@ -108,23 +113,23 @@ public class Checking {
 					"<html>Vérifier que :<br>- la/les DCR sont des nombres<br>- elle(s) comporte(nt) quatre chiffres<br>- il n'y a pas d'espace<br>- le séparateur est bien une virgule(,)</html",
 					DialogTest.ERROR_OPERATION,
 					DialogTest.ERROR_ICON);
-			return;
+			throw new Exception();
 		}	
 		
 		path = LoadFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
-		if(path == null){return;}
+		if(path == null){throw new Exception();}
 
 		control.getModel().getMainDelivery().setPathOGC(path);
 	}
 	
-	private void getListOgc(FileOGC OGC){
+	private void getListOgc(FileOGC OGC) throws Exception{
 		//Message d'erreur
 		if(!OGC.getName().endsWith(DCRMax + ".OGC")){
 			new DialogTest().showDialog("Erreur de fichier OGC",
-					"La DCR la plus grande ne correspond pas avec la DCR du fichier OGC.",
+					"<html>La DCR la plus grande ne correspond pas avec<br>la DCR du fichier OGC.</html>",
 					DialogTest.ERROR_OPERATION,
 					DialogTest.ERROR_ICON);
-			return;
+			throw new Exception();
 		}
 		
 		for(int i=0; i<tabDCR.length;i++){

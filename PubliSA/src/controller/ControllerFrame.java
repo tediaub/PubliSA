@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -237,11 +238,17 @@ public class ControllerFrame implements IFrameController{
 	}
 	
 	public void checkingOnUbik(){
-		model.getMainDelivery().setDataStep4(new Checking(this).checkingOnUbik());
+		ArrayList<String[]> array = new Checking(this).checkingOnUbik();
+		if(array != null){
+			model.getMainDelivery().setDataStep4(array);
+		}
 	}	
 	
 	public void checkingFromAkka(){
-		model.getMainDelivery().setDataStep2(new Checking(this).checkingFromAkka());
+		ArrayList<String[]> array = new Checking(this).checkingFromAkka();
+		if(array != null){
+			model.getMainDelivery().setDataStep2(array);
+		}
 	}
 	
 	public void moveFile(File file) {

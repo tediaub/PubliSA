@@ -9,18 +9,25 @@ public class Mail implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String adressee;
+	private String mailName;
+	
+	private String recipient;
 	private String object;
 	private String message;
 	
-	public Mail(String adressee, String object, String message) {
-		this.adressee = adressee;
+	public Mail(String mailName, String recipient, String object, String message) {
+		this.mailName = mailName;
+		this.recipient = recipient;
 		this.object = object;
 		this.message = message;
 	}
 	
+	public String getName(){
+		return mailName;
+	}
+	
 	public String getRecipient(){
-		return adressee;
+		return recipient;
 	}
 	
 	public String getObject(){
@@ -31,8 +38,8 @@ public class Mail implements Serializable {
 		return message;
 	}
 	
-	public void setRecipient(String adressee){
-		this.adressee = adressee;
+	public void setRecipient(String recipient){
+		this.recipient = recipient;
 	}
 	
 	public void setObject(String object){

@@ -3,6 +3,9 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import langue.GestLangue;
+import langue.IHM;
+
 public class User implements Serializable{
 	
 	/**
@@ -25,15 +28,38 @@ public class User implements Serializable{
 		this.name = name;
 		this.model = model;
 		
-		//createBasicMail();
+		createBasicMail();
 	}
 	
-//	private void createBasicMail() {
-//		mails.add(new Mail(, object, message));
-//		mails.add(new Mail(adressee, object, message));
-//		mails.add(new Mail(adressee, object, message));
-//		mails.add(new Mail(adressee, object, message));
-//	}
+	public void createBasicMail() {
+		addMail("AKKA pour liv. Ubik",
+				GestLangue.getLocalizedText(IHM.AKKA_UBIK_RECIPIENT.getLabel()),
+				GestLangue.getLocalizedText(IHM.AKKA_UBIK_OBJECT.getLabel()),
+				GestLangue.getLocalizedText(IHM.AKKA_UBIK_MESSAGE.getLabel()));
+		
+		addMail("AKKA pour liv. Thales",
+				GestLangue.getLocalizedText(IHM.AKKA_THALES_RECIPIENT.getLabel()),
+				GestLangue.getLocalizedText(IHM.AKKA_THALES_OBJECT.getLabel()),
+				GestLangue.getLocalizedText(IHM.AKKA_THALES_MESSAGE.getLabel()));
+		
+		addMail("SOPRA",
+				GestLangue.getLocalizedText(IHM.SOPRA_RECIPIENT.getLabel()),
+				GestLangue.getLocalizedText(IHM.SOPRA_OBJECT.getLabel()),
+				GestLangue.getLocalizedText(IHM.SOPRA_MESSAGE.getLabel()));
+		
+		addMail("THALES",
+				GestLangue.getLocalizedText(IHM.THALES_RECIPIENT.getLabel()),
+				GestLangue.getLocalizedText(IHM.THALES_OBJECT.getLabel()),
+				GestLangue.getLocalizedText(IHM.THALES_MESSAGE.getLabel()));
+	}
+	
+	public void addMail(String name, String recipient, String object, String message){
+		mails.add(new Mail(name, recipient, object, message));
+	}
+	
+	public ArrayList<Mail> getMails(){
+		return mails;
+	}
 
 	public String getName(){
 		return name;

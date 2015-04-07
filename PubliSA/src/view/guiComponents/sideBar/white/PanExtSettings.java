@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import test.PanelMail;
 import view.guiComponents.TabbedPaneUI;
 import view.guiComponents.frame.PanButtonFrame;
 
@@ -67,6 +68,11 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 		tabbedPane.setBorder(null);
 		tabbedPane.setUI(new TabbedPaneUI());
 		
+		for (int i = 0; i < control.getModel().getUser().getMails().size(); i++) {
+			tabbedPane.addTab(control.getModel().getUser().getMails().get(i).getName(),
+					new PanelMail(control, i));
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBorder(null);
@@ -81,6 +87,7 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setBorder(null);
 		tabbedPane.addTab("New tab", null, panel_2, null);
+		
 		add(tabbedPane, "2, 4, 3, 1, fill, fill");
 	}
 
