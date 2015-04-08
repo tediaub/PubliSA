@@ -9,21 +9,27 @@ public class Mail implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String mailName;
+	private String title;
+	private String shortTitle;
 	
 	private String recipient;
 	private String object;
 	private String message;
 	
-	public Mail(String mailName, String recipient, String object, String message) {
-		this.mailName = mailName;
+	public Mail(String shortTitle, String title, String recipient, String object, String message) {
+		this.title = title;
+		this.shortTitle = shortTitle;
 		this.recipient = recipient;
 		this.object = object;
 		this.message = message;
 	}
 	
-	public String getName(){
-		return mailName;
+	public String getTitle(){
+		return title;
+	}
+	
+	public String getShortTitle(){
+		return shortTitle;
 	}
 	
 	public String getRecipient(){

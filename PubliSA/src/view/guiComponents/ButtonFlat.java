@@ -11,6 +11,7 @@ import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.plaf.synth.SynthButtonUI;
 import javax.swing.text.View;
@@ -70,7 +71,7 @@ public class ButtonFlat extends JButton {
 		    String text = layout(b, g.getFontMetrics(getFont()), b.getWidth(), b.getHeight());
 		    
 		    clearTextShiftOffset();
-
+		    
 		    if(model.isPressed() && pressedBackground != null){
 		    	paintFocus(g, b, viewRect, textRect, iconRect);
 		    }else if(model.isRollover() && rollOverBackground != null){
@@ -88,11 +89,12 @@ public class ButtonFlat extends JButton {
 		        if (v != null) {
 		            v.paint(g, textRect);
 		        } else {
+		        	
 		            paintText(g, b, textRect, text);
 		        }
 		    }
 		}
-
+		
 		private void paintRolloverButton(Graphics g, AbstractButton b) {
 			g.setColor(rollOverBackground);
 			g.fillRect(0, 0, b.getSize().width, b.getSize().height);

@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.frame.PanButtonFrame;
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 @SuppressWarnings("serial")
 public class PanelOpen extends JPanel implements MouseListener, MouseMotionListener{

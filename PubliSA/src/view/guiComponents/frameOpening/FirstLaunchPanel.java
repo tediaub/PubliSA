@@ -24,7 +24,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 public class FirstLaunchPanel extends JPanel implements ActionListener {
 	

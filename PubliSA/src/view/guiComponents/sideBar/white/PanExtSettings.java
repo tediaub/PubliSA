@@ -10,11 +10,11 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
-import test.PanelMail;
-import view.guiComponents.TabbedPaneUI;
+import view.guiComponents.TabbedPaneFlat;
 import view.guiComponents.frame.PanButtonFrame;
+import view.panel.PanelDetail;
+import view.panel.PanelMail;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -30,7 +30,6 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 	
 	private PanButtonFrame panel;
 	private JButton btnBack;
-	private JTabbedPane tabbedPane;
 
 	public PanExtSettings(ControllerFrame control) {
 		this.control = control;
@@ -56,37 +55,22 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 		
 		btnBack = new JButton("Options");
 		btnBack.setIconTextGap(20);
-		btnBack.setFont(new Font("Dotum", Font.PLAIN, 30));
-		btnBack.setForeground(new Color(100, 100, 100));
+		btnBack.setFont(new Font("Arial", Font.PLAIN, 30));
+		btnBack.setForeground(new Color(0, 119, 175));
 		btnBack.setIcon(new ImageIcon(PanExtSettings.class.getResource("/iconeSideBarWhite/backBlue.png")));
+		btnBack.setRolloverIcon(new ImageIcon(PanExtSettings.class.getResource("/iconeSideBarWhite/backBlueHover.png")));
 		btnBack.setContentAreaFilled(false);
 		btnBack.addActionListener(this);
 		add(btnBack, "2, 2");
 		
-		tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
-		tabbedPane.setBackground(Color.WHITE);
-		tabbedPane.setBorder(null);
-		tabbedPane.setUI(new TabbedPaneUI());
-		
+		TabbedPaneFlat tabbedPane = new TabbedPaneFlat();
+		tabbedPane.addTab("Profil", null);
 		for (int i = 0; i < control.getModel().getUser().getMails().size(); i++) {
-			tabbedPane.addTab(control.getModel().getUser().getMails().get(i).getName(),
-					new PanelMail(control, i));
+			tabbedPane.addTab(control.getModel().getUser().getMails().get(i).getShortTitle(),
+					new PanelMail(control, control.getModel().getUser().getMails().get(i)), false);
 		}
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBorder(null);
-		tabbedPane.addTab("New tab", null, panel, null);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBorder(null);
-		tabbedPane.addTab("New tab", null, panel_1, null);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setBorder(null);
-		tabbedPane.addTab("New tab", null, panel_2, null);
+		PanelDetail panDetail = new PanelDetail();
+		tabbedPane.addTab(panDetail.getName(), panDetail);
 		
 		add(tabbedPane, "2, 4, 3, 1, fill, fill");
 	}

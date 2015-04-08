@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 import javax.swing.JPanel;
 

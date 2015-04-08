@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
-import test.DialogTest;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -138,10 +137,10 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 		if(ae.getSource() == btnCreate){
 			
 			if(!rdbtnThales.isSelected() && !rdbtnUbik.isSelected()){
-				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
+				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
-						DialogTest.ERROR_OPERATION,
-						DialogTest.ERROR_ICON);
+						DialogFlat.ERROR_OPERATION,
+						DialogFlat.ERROR_ICON);
 				return;
 			}
 			

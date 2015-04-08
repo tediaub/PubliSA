@@ -3,7 +3,6 @@ package view.guiComponents;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
@@ -17,6 +16,8 @@ import javax.swing.text.View;
 
 public class TabbedPaneUI extends BasicTabbedPaneUI {
 
+	private int space = 15;
+	
 	@Override
 	protected void paintContentBorderBottomEdge(Graphics g, int tabPlacement,
 			int selectedIndex, int x, int y, int w, int h) {
@@ -37,15 +38,10 @@ public class TabbedPaneUI extends BasicTabbedPaneUI {
 	@Override
 	protected void paintContentBorderLeftEdge(Graphics g, int tabPlacement,
 			int selectedIndex, int x, int y, int w, int h) {
-		// TODO Auto-generated method stub
-		g.setColor(Color.gray);
+		g.setColor(new Color(220,220,220));
 		Graphics2D g2 = (Graphics2D) g;
-		
-        GradientPaint blackToGray = new GradientPaint(0, h/2, Color.LIGHT_GRAY, 0, -h/8, new Color(255, 255, 255), true);
-        g2.setPaint(blackToGray);
+
         g2.fill(new Rectangle2D.Double(x+1, y, 1, h));
-        
-		//g2.fillRect(x, y, 2, h);
 	}
 	
 	@Override
@@ -69,9 +65,16 @@ public class TabbedPaneUI extends BasicTabbedPaneUI {
 		
 		layoutLabel(tabPlacement, metrics, tabIndex, title, icon,
                 tabRect, iconRect, textRect, isSelected);
-		     
-		super.paintText(g, tabPlacement, new Font("Dialog", Font.PLAIN, 12), getFontMetrics(), tabIndex, tabPane.getTitleAt(tabIndex), textRect,isSelected);
-    }
+		
+		Font f = new Font("Arial", Font.BOLD, 12);
+		if(tabPane instanceof TabbedPaneFlat){
+			if(!((TabbedPaneFlat) tabPane).getLevel(tabIndex)){
+				textRect.setLocation(textRect.x + space, textRect.y);
+				f = new Font("Arial", Font.PLAIN, 12); 
+			}			
+		}
+		super.paintText(g, tabPlacement, f, getFontMetrics(), tabIndex, tabPane.getTitleAt(tabIndex), textRect,isSelected);
+	}
 	
 	@Override
 	protected void paintTabBackground(Graphics g, int tabPlacement,
@@ -97,11 +100,16 @@ public class TabbedPaneUI extends BasicTabbedPaneUI {
 		View v = getTextViewForTab(tabIndex);
 		if (v != null)
 		  width += v.getPreferredSpan(View.X_AXIS);
-		else
-		  {
+		else{
 		    String label = tabPane.getTitleAt(tabIndex);
 		    width += metrics.stringWidth(label);
-		  }
+		}
+		
+		if(tabPane instanceof TabbedPaneFlat){
+			if(!((TabbedPaneFlat) tabPane).getLevel(tabIndex)){
+				width = width + space;
+			}			
+		}
 		
 		if(width < 100){
 			width = 150;

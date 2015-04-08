@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import outils.CreationMail;
 import view.guiComponents.ButtonFlat;
 import view.panel.PanelAttached;
 import view.panel.PanelComputer;
@@ -67,7 +66,14 @@ public class PanelStep3 extends JPanel implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnCreate){
+			try {
+				control.createMail();
+				control.changeStep();
+			} catch (Exception e1) {
+				return;
+			}
+		}
 	}
 }

@@ -16,8 +16,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import test.DialogTest;
-import controller.openFrame.OpeningController;
+import view.guiComponents.DialogFlat;
+import controller.OpeningController;
 
 public class XmlLoader{
 	   
@@ -36,10 +36,10 @@ public class XmlLoader{
 	  	   	racine = document.getRootElement();
 	    }
 	    catch(Exception e){
-	    	new DialogTest().showDialog("Fichier XML",
+	    	new DialogFlat().showDialog("Fichier XML",
 					"Erreur fichier XML",
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 	    	return;
 	    }
 	}

@@ -10,7 +10,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import view.guiComponents.frameOpening.OpeningFrame;
 import model.Model;
 import model.saveLoad.Serialization;
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 /**
  * 

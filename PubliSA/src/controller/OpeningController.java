@@ -1,4 +1,4 @@
-package controller.openFrame;
+package controller;
 
 import java.awt.Color;
 import java.awt.Frame;
@@ -14,10 +14,8 @@ import langue.IHM;
 import model.Delivery;
 import model.Model;
 import model.saveLoad.XmlLoader;
-import test.DialogTest;
+import view.guiComponents.DialogFlat;
 import view.guiComponents.frameOpening.OpeningFrame;
-import controller.ControllerFrame;
-import controller.IFrameController;
 
 public class OpeningController implements IFrameController {
 
@@ -51,10 +49,10 @@ public class OpeningController implements IFrameController {
 	
 	public void createUser(String name){
 		if(name.isEmpty()){
-			new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+			new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			return;
 		}
 		
@@ -64,20 +62,20 @@ public class OpeningController implements IFrameController {
 	
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
-			new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+			new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			return;
 		}
 
 		for (int i = 0; i < model.getDeliveries().size(); i++) {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
-				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
-						DialogTest.ERROR_OPERATION,
-						DialogTest.ERROR_ICON);
+						DialogFlat.ERROR_OPERATION,
+						DialogFlat.ERROR_ICON);
 				return;
 			}
 			
@@ -109,6 +107,17 @@ public class OpeningController implements IFrameController {
 	
 	public void closeFrame(){
 		frame.dispose();
+	}
+	
+	public void closeAll(){
+		int option = new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.QUITTER.getLabel()),
+				GestLangue.getLocalizedText(IHM.MES_QUITTER.getLabel()),
+				DialogFlat.ASK_OPERATION,
+				DialogFlat.INFORMATION_ICON);
+		
+		if(option == DialogFlat.VALIDATE){
+			closeFrame();
+		}
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package controller;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -12,11 +13,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,11 +30,12 @@ import javax.swing.border.LineBorder;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
+import model.Mail;
 import model.Model;
 import model.files.FileOGC;
 import model.saveLoad.Serialization;
-import test.DialogTest;
 import verification.Checking;
+import view.guiComponents.DialogFlat;
 import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.MainFrame;
 import view.guiComponents.frame.PanFrame;
@@ -49,7 +55,6 @@ public class ControllerFrame implements IFrameController{
 	private PanTransparent pTransWhite;
 	private PanExtSettings pExtWhite;
 	
-	private PanTree pTree;
 	private LabelResize lblResize;
 	
 	private SideBar sideBarBlue;
@@ -82,7 +87,7 @@ public class ControllerFrame implements IFrameController{
 		DeliveryTree tree = new DeliveryTree(this);
 		tree.setOpaque(false);
 		lblResize = new LabelResize(this);
-		pTree = new PanTree(tree, lblResize);
+		PanTree pTree = new PanTree(tree, lblResize);
 		container.add(pTree, BorderLayout.EAST);
 		
 		model.addObserver(tree);
@@ -160,6 +165,24 @@ public class ControllerFrame implements IFrameController{
 		frame.dispose();
 	}
 	
+	@Override
+	public void closeAll() {
+		int option = new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.QUITTER.getLabel()),
+				GestLangue.getLocalizedText(IHM.MES_QUITTER.getLabel()),
+				DialogFlat.CLOSE_OPERATION,
+				DialogFlat.INFORMATION_ICON);
+
+		switch (option) {
+		case DialogFlat.SAVE_AND_CLOSE:
+			save();
+		case DialogFlat.VALIDATE:
+			closeFrame();
+			break;
+		default:
+			break;
+		}
+	}
+	
 	public void resizeFrame(int x, int y){
 		int l = 0, xF = 0, h = 0, yF = 0;
 		if(x <= frame.getX()){
@@ -180,26 +203,35 @@ public class ControllerFrame implements IFrameController{
 	}
 
 	public void save(){
-		new Serialization();
 		Serialization.saveModel(model);
 	}
-
+	
+	public void changeStep(){
+		int step = model.getMainDelivery().getActualStep() + 1;
+		if((step == Delivery.STEP3 &&model.getMainDelivery().getTarget() == Delivery.THALES)
+				||(step == Delivery.STEP4 && model.getMainDelivery().getTarget() == Delivery.UBIK)){
+			
+		}else{
+			model.getMainDelivery().setActualStep(model.getMainDelivery().getActualStep() + 1);
+		}
+	}
+	
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
-			new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+			new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			return;
 		}
 
 		for (int i = 0; i < model.getDeliveries().size(); i++) {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
-				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
+				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
-						DialogTest.ERROR_OPERATION,
-						DialogTest.ERROR_ICON);
+						DialogFlat.ERROR_OPERATION,
+						DialogFlat.ERROR_ICON);
 				return;
 			}
 			
@@ -222,12 +254,12 @@ public class ControllerFrame implements IFrameController{
 		int option = JOptionPane.NO_OPTION;
 
 		if(d != null && d!= model.getMainDelivery()){
-			option = new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel()),
+			option = new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel()),
 					GestLangue.getLocalizedText(IHM.CHANGE_LIV.getLabel()),
-					DialogTest.ASK_OPERATION,
-					DialogTest.INFORMATION_ICON);
+					DialogFlat.ASK_OPERATION,
+					DialogFlat.INFORMATION_ICON);
 			
-			if(option == DialogTest.VALIDATE){
+			if(option == DialogFlat.VALIDATE){
 				model.changeMainDelivery(getDelivery(name));
 			}
 		}
@@ -277,14 +309,14 @@ public class ControllerFrame implements IFrameController{
 				}
 			}
 		}
-		new DialogTest().showDialog(GestLangue.getLocalizedText(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel())),
+		new DialogFlat().showDialog(GestLangue.getLocalizedText(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel())),
 				"Suppression des entêtes terminée.\nLes fichiers modifiés ont été placés dans le dossier :\n" 
 						+ ogc.getParentFile().getPath() 
 						+ File.separator 
 						+ model.getMainDelivery().getName()
 						+ ".",
-				DialogTest.INFORMATION_OPERATION,
-				DialogTest.INFORMATION_ICON);
+				DialogFlat.INFORMATION_OPERATION,
+				DialogFlat.INFORMATION_ICON);
 	}
 	
 	private void deleteFileHeader(File file, String stringToFind){
@@ -302,7 +334,9 @@ public class ControllerFrame implements IFrameController{
 			int j = nomFichier.lastIndexOf('.');
 			nomFichier = nomFichier.substring(0, j + 4);
 	
-			OutputStream ops = new FileOutputStream(new File(file.getParentFile().getPath() + File.separator + model.getMainDelivery().getName() + File.separator + nomFichier+ ".txt")); 
+			OutputStream ops = new FileOutputStream(new File(file.getParentFile().getPath() 
+					+ File.separator + model.getMainDelivery().getName() 
+					+ File.separator + nomFichier+ ".txt")); 
 			OutputStreamWriter opsr = new OutputStreamWriter(ops);
 			BufferedWriter bw = new BufferedWriter(opsr);
 			
@@ -332,5 +366,136 @@ public class ControllerFrame implements IFrameController{
 		catch (Exception e){
 			System.err.println(e.toString());
 		}
+	}
+
+	public void setMail(Mail mail, String recipient, String object, String message) {		
+		mail.setRecipient(recipient);
+		mail.setObject(object);
+		mail.setMessage(message);
+	}
+	
+	public String getHighDcr(String[] tabDcr) throws Exception{
+		String DCRMax = "0";
+		try{
+			for (int i = 0; i<tabDcr.length;i++){
+				if(Integer.parseInt(DCRMax)<Integer.parseInt(tabDcr[i])){
+					DCRMax = tabDcr[i];
+				}
+				if(tabDcr[i].length() != 4){
+					@SuppressWarnings("unused")
+					int k = 1/0;
+				}
+			}
+		}catch(Exception e){
+			new DialogFlat().showDialog("Erreur DCR",
+					"<html>Vérifier que :<br>- la/les DCR sont des nombres<br>- elle(s) comporte(nt) quatre chiffres<br>"
+					+ "- il n'y a pas d'espace<br>- le séparateur est bien une virgule(,)</html",
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
+			throw new Exception();
+		}
+		return DCRMax;
+	}
+	
+	public void createMail() throws Exception{
+		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
+			if(model.getMainDelivery().getActualStep() == Delivery.STEP1){
+				createMail(model.getUser().getMails().get(0), this);
+			}else if(model.getMainDelivery().getActualStep() == Delivery.STEP3){
+				createMail(model.getUser().getMails().get(2), this);
+			}
+		}else if(model.getMainDelivery().getTarget() == Delivery.THALES){
+			if(model.getMainDelivery().getActualStep() == Delivery.STEP1){
+				createMail(model.getUser().getMails().get(1), this);
+			}else if(model.getMainDelivery().getActualStep() == Delivery.STEP3){
+				createMail(model.getUser().getMails().get(3), this);
+			}
+		}
+	}
+	
+	public static void createMail(Mail mail, ControllerFrame control) throws Exception{
+		
+		String dcr = control.getModel().getMainDelivery().getDCR();
+		String computer = control.getModel().getMainDelivery().getComputer()+ " " + control.getModel().getMainDelivery().getStandard();
+		
+		String[] tabDcr = dcr.split(",");
+		if(dcr.isEmpty()){
+			new DialogFlat().showDialog("Erreur DCR",
+					"Aucune DCR n'a été rentrée.",
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
+			
+			throw new Exception();
+		}
+		
+		String DCRMax = control.getHighDcr(tabDcr);
+		
+		String recipient = mail.getRecipient();
+		String object = mail.getObject();
+		String message = mail.getMessage();
+		
+		String toAdd = new String(" " + DCRMax);
+	    StringTokenizer s = new StringTokenizer(message,"#");
+	    message = "";
+	    while (s.hasMoreTokens()) {
+	       if(s.countTokens()!= 1){
+	    	   message = message + s.nextToken() + toAdd;
+	       }
+	       else{
+	          message = message + s.nextToken();
+	       }
+	    }
+	    
+	    ///////////////////////////
+	    for (int i =0; i<tabDcr.length;i++){
+			if (i != 0){toAdd = toAdd + ", " + tabDcr[i];}
+			else{toAdd = "MOD " + tabDcr[i];}
+		}
+	    
+	    s = new StringTokenizer(message,"*");
+	    message = "";
+	    while (s.hasMoreTokens()) {
+	       if(s.countTokens()!= 1){
+	    	   message = message + s.nextToken() + toAdd;
+	       }
+	       else{
+	    	   message = message + s.nextToken();
+	       }
+	    }
+	    
+	    ////////////////////////
+	    for (int i =0; i<tabDcr.length;i++){
+			if (i != 0){toAdd = toAdd + ", " + tabDcr[i];}
+			else{toAdd = "MOD " + tabDcr[i];}
+		}
+	    toAdd = toAdd + " (standard : " + computer +")"; 
+	    s = new StringTokenizer(message,"@");
+	    message = "";
+	    while (s.hasMoreTokens()) {
+	       if(s.countTokens()!= 1){
+	    	   message = message + s.nextToken() + toAdd;
+	       }
+	       else{
+	    	   message = message + s.nextToken();
+	       }
+	    }
+	    
+	    for (int i =0; i<tabDcr.length;i++){
+			if (i != 0){toAdd = toAdd + ", " + tabDcr[i];}
+			else{toAdd = " MOD " + tabDcr[i];}
+		}
+	    
+	    object = object + toAdd + " (standard : " + computer+")";
+	    if(Desktop.isDesktopSupported()){		
+	    	if(Desktop.getDesktop().isSupported(Desktop.Action.MAIL)){
+	    		try {
+					 Desktop.getDesktop().mail(new URI("mailto", recipient + "?subject=" + object +"&body=" + message, null));
+				 } catch (IOException e1) {
+					 e1.printStackTrace();
+				 } catch (URISyntaxException e1) {
+					 e1.printStackTrace();
+				 }
+	    	}
+	    }
 	}
 }

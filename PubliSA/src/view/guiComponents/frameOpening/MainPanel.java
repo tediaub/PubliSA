@@ -18,7 +18,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel implements ActionListener{

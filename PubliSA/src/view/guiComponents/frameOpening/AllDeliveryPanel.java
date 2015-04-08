@@ -23,7 +23,7 @@ import view.guiComponents.frame.PanButtonFrame;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableAllDelivery;
 import view.guiComponents.table.TableFlat;
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 @SuppressWarnings("serial")
 public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMotionListener, ActionListener{

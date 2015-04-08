@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
 import langue.GestLangue;
 import langue.IHM;
 import model.Delivery;
-import test.DialogTest;
 import view.guiComponents.ButtonFlat;
+import view.guiComponents.DialogFlat;
 import view.guiComponents.RadioButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
@@ -25,7 +25,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.openFrame.OpeningController;
+import controller.OpeningController;
 
 @SuppressWarnings("serial")
 public class NewDeliveryPanel extends JPanel implements ActionListener {
@@ -154,10 +154,10 @@ public class NewDeliveryPanel extends JPanel implements ActionListener {
 		else if(ae.getSource() == btnCreate){
 			
 			if(!rdbtnThales.isSelected() && !rdbtnUbik.isSelected()){
-				new DialogTest().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
+				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
 						GestLangue.getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
-						DialogTest.ERROR_OPERATION,
-						DialogTest.ERROR_ICON);
+						DialogFlat.ERROR_OPERATION,
+						DialogFlat.ERROR_ICON);
 				return;
 			}
 			

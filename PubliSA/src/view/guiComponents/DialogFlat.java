@@ -1,4 +1,4 @@
-package test;
+package view.guiComponents;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,15 +20,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import view.guiComponents.ButtonFlat;
-
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 @SuppressWarnings("serial")
-public class DialogTest extends JDialog implements MouseListener, MouseMotionListener, ActionListener{
+public class DialogFlat extends JDialog implements MouseListener, MouseMotionListener, ActionListener{
 
 	//Icon
 	public static String INFORMATION_ICON = "/iconeDialog/info.png";
@@ -61,7 +59,7 @@ public class DialogTest extends JDialog implements MouseListener, MouseMotionLis
 		setTitle(title);
 		
 		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),1));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DialogTest.class.getResource("/logo/logoPubliSA4.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DialogFlat.class.getResource("/logo/logoPubliSA4.png")));
 		setUndecorated(true);
 		
 		setSize(400, 190);
@@ -147,7 +145,7 @@ public class DialogTest extends JDialog implements MouseListener, MouseMotionLis
 				FormFactory.UNRELATED_GAP_ROWSPEC,}));
 		
 		JLabel lblIcon = new JLabel();
-		if(!icon.isEmpty())lblIcon.setIcon(new ImageIcon(DialogTest.class.getResource(icon)));
+		if(!icon.isEmpty())lblIcon.setIcon(new ImageIcon(DialogFlat.class.getResource(icon)));
 		panelMain.add(lblIcon, "2, 2");
 		
 		JLabel lblMessage = new JLabel(message);

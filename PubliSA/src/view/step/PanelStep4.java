@@ -1,7 +1,14 @@
 package view.step;
 
+import java.awt.Color;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import view.guiComponents.ButtonFlat;
 import view.panel.PanelCheckStep4;
 import view.panel.PanelOgcAndCsv;
 
@@ -13,23 +20,44 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelStep4 extends JPanel {
+public class PanelStep4 extends JPanel implements ActionListener {
+
+	private ButtonFlat btnValidate;
 
 	public PanelStep4(ControllerFrame control) {
 		setOpaque(false);
 		setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("default:grow"),},
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("25px")},
 			new RowSpec[] {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.NARROW_LINE_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
 		
 		PanelOgcAndCsv panel = new PanelOgcAndCsv(control);
-		add(panel, "1, 1, fill, fill");
+		add(panel, "1, 1, 2, 1, fill, fill");
 		
 		PanelCheckStep4 panel_1 = new PanelCheckStep4(control);
-		add(panel_1, "1, 3, fill, fill");
+		add(panel_1, "1, 3, 2, 1, fill, fill");
+		
+		btnValidate = new ButtonFlat("Fin");
+		btnValidate.setIcon(new ImageIcon(PanelStep4.class.getResource("/iconeStep2/validate.png")));
+		btnValidate.addActionListener(this);
+		btnValidate.setRolloverBackground(new Color(53, 117, 48));
+		btnValidate.setBackground(new Color(78, 170, 70));
+		btnValidate.setForeground(Color.WHITE);
+		btnValidate.setMargin(new Insets(2, 4, 2, 4));
+		btnValidate.setIconTextGap(15);
+		add(btnValidate, "1, 5, right, center");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

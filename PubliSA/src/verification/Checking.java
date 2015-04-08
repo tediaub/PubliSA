@@ -9,7 +9,7 @@ import model.Delivery;
 import model.files.FichierCSV;
 import model.files.FileOGC;
 import model.files.FileToCheck;
-import test.DialogTest;
+import view.guiComponents.DialogFlat;
 import controller.ControllerFrame;
 
 public class Checking {
@@ -89,32 +89,15 @@ public class Checking {
 	
 	private void getOgc()throws Exception{
 		if(control.getModel().getMainDelivery().getDCR().isEmpty()){
-			new DialogTest().showDialog("Erreur DCR",
+			new DialogFlat().showDialog("Erreur DCR",
 					"Aucune DCR n'a été rentrée.",
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			throw new Exception();
 		}
 		
 		tabDCR = control.getModel().getMainDelivery().getDCR().split(",");
-		DCRMax = "0";
-		try{
-			for (int i = 0; i<tabDCR.length;i++){
-				if(Integer.parseInt(DCRMax)<Integer.parseInt(tabDCR[i])){
-					DCRMax = tabDCR[i];
-				}
-				if(tabDCR[i].length() != 4){
-					@SuppressWarnings("unused")
-					int k = 1/0;
-				}
-			}
-		}catch(Exception e){
-			new DialogTest().showDialog("Erreur DCR",
-					"<html>Vérifier que :<br>- la/les DCR sont des nombres<br>- elle(s) comporte(nt) quatre chiffres<br>- il n'y a pas d'espace<br>- le séparateur est bien une virgule(,)</html",
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
-			throw new Exception();
-		}	
+		DCRMax = control.getHighDcr(tabDCR);
 		
 		path = LoadFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
 		if(path == null){throw new Exception();}
@@ -125,10 +108,10 @@ public class Checking {
 	private void getListOgc(FileOGC OGC) throws Exception{
 		//Message d'erreur
 		if(!OGC.getName().endsWith(DCRMax + ".OGC")){
-			new DialogTest().showDialog("Erreur de fichier OGC",
+			new DialogFlat().showDialog("Erreur de fichier OGC",
 					"<html>La DCR la plus grande ne correspond pas avec<br>la DCR du fichier OGC.</html>",
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			throw new Exception();
 		}
 		
@@ -217,17 +200,17 @@ public class Checking {
 		pathCSV = control.getModel().getMainDelivery().getPathCSV();
 		
 		if(pathOGC==null || pathCSV == null){
-			new DialogTest().showDialog("Erreur chargement fichier",
+			new DialogFlat().showDialog("Erreur chargement fichier",
 					"Veuillez entrer un fichier OGC et CSV",
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			return null;
 		}
 		if(pathOGC.isEmpty() || pathCSV.isEmpty()){
-			new DialogTest().showDialog("Erreur chargement fichier",
+			new DialogFlat().showDialog("Erreur chargement fichier",
 					"Veuillez entrer un fichier OGC et CSV",
-					DialogTest.ERROR_OPERATION,
-					DialogTest.ERROR_ICON);
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
 			return null;
 		}
 		
@@ -252,10 +235,10 @@ public class Checking {
 
 		
 		if(hCSV.size() == 0 && hOGC.size() == 0){
-			new DialogTest().showDialog( "Vérification terminée",
+			new DialogFlat().showDialog( "Vérification terminée",
 					"Aucune erreur",
-					DialogTest.INFORMATION_OPERATION,
-					DialogTest.INFORMATION_ICON);
+					DialogFlat.INFORMATION_OPERATION,
+					DialogFlat.INFORMATION_ICON);
 			return null;
 		}
 		

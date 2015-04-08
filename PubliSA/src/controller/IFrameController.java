@@ -10,6 +10,8 @@ public interface IFrameController {
 
 	void closeFrame();
 	
+	void closeAll();
+	
 	void resizeFrame(int x, int y);
 
 	void setFrameLocation(int x, int y);
