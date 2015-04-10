@@ -9,9 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import langue.GestLangue;
-import langue.IHM;
-import view.guiComponents.DialogFlat;
 import controller.IFrameController;
 
 @SuppressWarnings("serial")
@@ -32,6 +29,7 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 		btnIconified = new JButton();
 		btnIconified.setFocusable(false);
 		btnIconified.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/reduced/minusB.png")));
+		btnIconified.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/reduced/minusB.png")));
 		btnIconified.setContentAreaFilled(false);
 		btnIconified.addActionListener(this);
 		btnIconified.setPreferredSize(new Dimension(20, 20));
@@ -41,6 +39,7 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 		btnMaximized = new JButton();
 		btnMaximized.setFocusable(false);
 		btnMaximized.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/maximized/resizeB.png")));
+		btnMaximized.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/maximized/resizeB.png")));
 		btnMaximized.setContentAreaFilled(false);
 		btnMaximized.addActionListener(this);
 		btnMaximized.setPreferredSize(new Dimension(20, 20));
@@ -50,6 +49,7 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 		btnClose = new JButton();
 		btnClose.setFocusable(false);
 		btnClose.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/closed/CrossB.png")));
+		btnClose.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/closed/CrossB.png")));
 		btnClose.setContentAreaFilled(false);
 		btnClose.addActionListener(this);
 		btnClose.setPreferredSize(new Dimension(20, 20));

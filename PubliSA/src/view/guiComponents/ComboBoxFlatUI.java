@@ -24,10 +24,9 @@ import view.guiComponents.scrollBar.ButtonScrollBar;
 
 public class ComboBoxFlatUI extends BasicComboBoxUI {
 
-	private Color background = new Color(230,230,230);
-	private Color listRollOverBackgroung = new Color(0,119,175);
-	private Color buttonRollOverBackgroung = new Color(166,166,166);
-	private Color buttonPressedBackgroung = new Color(96,96,96);
+	private Color background = new Color(240,240,240);
+	private Color listRollOverBackgroung = new Color(0,63,113);
+	private Color buttonPressedBackgroung = new Color(0,119,175);
 	
 	protected JButton createArrowButton() {
 		ButtonScrollBar button = new ButtonScrollBar(SwingConstants.SOUTH, background, listRollOverBackgroung, buttonPressedBackgroung);

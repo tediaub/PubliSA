@@ -18,7 +18,7 @@ public class TableFlat extends JTable {
 
 		for (int i = 0; i < getColumnCount(); i++) {
 			TableColumn tc = getColumnModel().getColumn(i);
-			tc.setHeaderRenderer(new MyTableHeaderRenderer());
+			tc.setHeaderRenderer(new FlatTableHeaderRenderer());
 		}
 	}
 	

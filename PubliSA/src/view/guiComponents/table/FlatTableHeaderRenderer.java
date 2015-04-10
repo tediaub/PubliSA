@@ -7,28 +7,28 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
-import javax.swing.table.TableCellRenderer;
+
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 @SuppressWarnings("serial")
-public class MyTableHeaderRenderer extends JLabel implements TableCellRenderer {
+public class FlatTableHeaderRenderer extends DefaultTableCellHeaderRenderer implements MouseListener {
 	  
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 	      boolean hasFocus, int rowIndex, int vColIndex) {
 		
-	    setText(value.toString());
+		setText(value.toString());
 	    setOpaque(true);
 	    setHorizontalAlignment(CENTER);
 	    
 	    setBorder(new HeaderTableBorder(new Color(211, 211, 211)));
 	    
-	    
-	    	
 	    setBackground(Color.WHITE);
 	    setForeground(Color.BLACK);
 	    
@@ -77,6 +77,35 @@ public class MyTableHeaderRenderer extends JLabel implements TableCellRenderer {
 	            g2d.setColor(oldColor);
 	        }
 	    }
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		System.out.println("test");		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

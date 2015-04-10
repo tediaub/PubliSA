@@ -132,7 +132,8 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 				RowSpec.decode("default:grow"),}));
 		
 		JLabel lblSelect = new JLabel("Sélectionnez un utilisateur :");
-		lblNew.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblSelect.setForeground(Color.WHITE);
+		lblSelect.setFont(new Font("Arial", Font.PLAIN, 15));
 		combo.add(lblSelect, "1, 2");
 		
 		cbSelect = new JComboBox<String>();
@@ -151,6 +152,7 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 		btnCreate.addActionListener(this);
 		btnCreate.setForeground(Color.BLACK);
 		btnCreate.setBackground(Color.WHITE);
+		btnCreate.setRolloverBackground(new Color(200,200,200));
 		add(btnCreate, "3, 9, fill, fill");
 	}
 

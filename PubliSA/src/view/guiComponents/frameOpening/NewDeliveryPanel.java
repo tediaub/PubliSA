@@ -131,6 +131,7 @@ public class NewDeliveryPanel extends JPanel implements ActionListener {
 		btnCreate.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCreate.addActionListener(this);
 		btnCreate.setBackground(Color.WHITE);
+		btnCreate.setRolloverBackground(new Color(200,200,200));
 		btnCreate.setForeground(Color.BLACK);
 		btnCreate.setText("Cr\u00E9er");
 		add(btnCreate, "4, 19, right, default");
