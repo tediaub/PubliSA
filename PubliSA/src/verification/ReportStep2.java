@@ -21,11 +21,10 @@ import jxl.write.WriteException;
 import langue.GestLangue;
 import langue.IHM;
 import loading.FilterXLS;
-import loading.SauvegardeRapport;
-import view.guiComponents.table.TableEtape2;
-import etape.Etape2;
+import loading.LoadSaveFile;
+import controller.ControllerFrame;
 
-public class CreationRapportEtape2 {
+public class ReportStep2 {
 	
 	//Classeur Excel
 	private WritableWorkbook workbook;
@@ -50,16 +49,15 @@ public class CreationRapportEtape2 {
 	private WritableFont arial10orange = new WritableFont(WritableFont.ARIAL, 10,WritableFont.BOLD, true, UnderlineStyle.NO_UNDERLINE,Colour.LIGHT_ORANGE, ScriptStyle.NORMAL_SCRIPT); 
 	private WritableCellFormat arial10oFormat = new WritableCellFormat(arial10orange);
 	
-	public CreationRapportEtape2() throws WriteException{
-		SauvegardeRapport sr = new SauvegardeRapport();
-		File fichier = sr.SauvegardeRap(new FilterXLS());
-		
-		if (fichier.equals(null)){
+	public ReportStep2(ControllerFrame control, String[] columns) throws WriteException{
+		String path = LoadSaveFile.saveFrame(control.getModel().getMainDelivery().getPathReport(), "Sauvegarder", new FilterXLS(), "xls");
+		control.getModel().getMainDelivery().setPathReport(path);
+		if (path == null){
 			return;
 		}
 		
 		try {
-			workbook = Workbook.createWorkbook(fichier);
+			workbook = Workbook.createWorkbook(new File(path));
 			
 			sheet = workbook.createSheet("Analyse vérification", 0);
 			
@@ -90,52 +88,44 @@ public class CreationRapportEtape2 {
 			
 			// Nom du fichier
 			Label fich = new Label(1, 4, "Fichier OGC : ", arial10gFormat);
-			Label fichier_nom = new Label(2, 4, Etape2.getOGC());
+			Label fichier_nom = new Label(2, 4, control.getModel().getMainDelivery().getPathOGC());
 			sheet.addCell(fich);
 			sheet.addCell(fichier_nom);
 			sheet.mergeCells(2, 4, 5, 4);
 			
 			// Numéro de DCR
 			Label DCR = new Label(1, 5, "Numéro(s) de DCR : ", arial10gFormat);
-			Label DCR_aff = new Label(2, 5, Etape2.getDCR());
+			Label DCR_aff = new Label(2, 5, control.getModel().getMainDelivery().getDCR());
 			sheet.addCell(DCR);
 			sheet.addCell(DCR_aff);
 			//*******************************//
 			
 			//*****Données*******//
 			sheet.mergeCells(1, 8, 2, 8);
-			int k = 0;
-			
+						
 			// Entêtes
-			for (int i = 0; i<TableEtape2.getTable().getColumnCount()+1; i++){
-				if(i==2){i = 3;}
-				Label col = new Label(i, 8, TableEtape2.getTable().getColumnName(k), arial12format);
+			for (int i = 0; i < columns.length; i++){
+				Label col = new Label(i, 8, columns[i], arial12format);
 				sheet.addCell(col);
-				k++;
 			}
 			
-			//Corps des données
-			for (int i = 0; i<TableEtape2.getTable().getRowCount(); i++){
+			for (int i = 0; i < control.getModel().getMainDelivery().getDataStep2().size(); i++){
 				sheet.mergeCells(1, i+9, 2, i+9);
-				k = 0;
-				for (int j = 0; j<TableEtape2.getTable().getColumnCount()+1; j++){
-					if(j==2) {j = 3;}
-					Label cell = new Label(j, i + 9, TableEtape2.getTable().getValueAt(i, k).toString(), arial10okFormat);
+				String s = control.getModel().getMainDelivery().getDataStep2().get(i)[control.getModel().getMainDelivery().getDataStep2().get(i).length];
+				WritableCellFormat wf;
+				if(s.contains(GestLangue.getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
+					wf = arial10oFormat;
+				}
+				else if(!s.isEmpty()){
+					wf = arial10rFormat;
+				}
+				else{
+					wf = arial10okFormat;
+				}
+				
+				for (int j = 0; j < control.getModel().getMainDelivery().getDataStep2().get(i).length; j++) {
+					Label cell = new Label(j, i + 9, control.getModel().getMainDelivery().getDataStep2().get(i)[j], wf);
 					sheet.addCell(cell);
-					if(j==5 && !cell.getContents().isEmpty()){
-						for(int colonne = 0; colonne<6; colonne ++){
-							if(colonne==2) {colonne = 3;}
-							if(cell.getContents().contains(GestLangue.getInstance().getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
-								Label cell2 = new Label(colonne, i + 9, sheet.getCell(colonne, i+9).getContents(), arial10oFormat);
-								sheet.addCell(cell2);
-							}else{
-								Label cell2 = new Label(colonne, i + 9, sheet.getCell(colonne, i+9).getContents(), arial10rFormat);
-								sheet.addCell(cell2);
-							}
-							
-						}
-					}
-					k++;
 				}
 			}
 			
@@ -151,7 +141,7 @@ public class CreationRapportEtape2 {
 			workbook.write();
 			workbook.close();
 			
-		} catch (IOException e) {
+		}catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

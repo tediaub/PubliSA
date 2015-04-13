@@ -43,7 +43,7 @@ import outils.Lanceur;
 import outils.SupprEntete;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
-import verification.CreationRapportEtape2;
+import verification.ReportStep2;
 import verification.CreationRapportEtape4;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -487,7 +487,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		if (e.getSource() == compteRendu){
 			if(Delivery.getEtape() == 2){
 				try {
-					new CreationRapportEtape2();
+					new ReportStep2();
 				} catch (WriteException e1) {
 					e1.printStackTrace();
 				}

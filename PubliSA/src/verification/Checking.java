@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import loading.FilterOGC;
-import loading.LoadFile;
+import loading.LoadSaveFile;
 import model.Delivery;
 import model.files.FichierCSV;
 import model.files.FileOGC;
@@ -99,7 +99,7 @@ public class Checking {
 		tabDCR = control.getModel().getMainDelivery().getDCR().split(",");
 		DCRMax = control.getHighDcr(tabDCR);
 		
-		path = LoadFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
+		path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
 		if(path == null){throw new Exception();}
 
 		control.getModel().getMainDelivery().setPathOGC(path);

@@ -38,7 +38,7 @@ import langue.GestLangue;
 import langue.IHM;
 import loading.FilterDOC;
 import loading.FilterEXE;
-import loading.LoadFile;
+import loading.LoadSaveFile;
 import model.Delivery;
 import model.User;
 import model.saveLoad.XmlLoader;
@@ -715,13 +715,13 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btParcourirEXE){
 			try{
-				adresseExe = new LoadFile("Adresse").ChargementFich(adresseExe, new FilterEXE());
+				adresseExe = new LoadSaveFile("Adresse").ChargementFich(adresseExe, new FilterEXE());
 				if(!adresseExe.equals(null)){lblPathEXE.setText(adresseExe);}
 			}catch(Exception e1){}
 		}
 		if (e.getSource() == btParcourirDOC){
 			try{
-				adresseWord = new LoadFile("Adresse").ChargementFich(adresseWord, new FilterDOC());
+				adresseWord = new LoadSaveFile("Adresse").ChargementFich(adresseWord, new FilterDOC());
 				if(!adresseWord.equals(null)){lblPathDOC.setText(adresseWord);}
 			}catch(Exception e1){}
 		}

@@ -14,7 +14,7 @@ import javax.swing.JTextPane;
 import javax.swing.plaf.basic.BasicTextPaneUI;
 
 import loading.FilterPubliSaXml;
-import loading.LoadFile;
+import loading.LoadSaveFile;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.ComboBoxFlatUI;
 import view.guiComponents.TextFieldFlat;
@@ -159,7 +159,7 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource() == btnLoad){
-			String path = LoadFile.loadFrame(null, "Ouvrir PubliSA.xml", new FilterPubliSaXml());
+			String path = LoadSaveFile.loadFrame(null, "Ouvrir PubliSA.xml", new FilterPubliSaXml());
 
 			if(path != null){
 				control.createXml(path);

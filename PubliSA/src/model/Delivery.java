@@ -34,6 +34,7 @@ public class Delivery implements Serializable{
 	
 	private String pathOGC = null;
 	private String pathCSV = null;
+	private String pathReport = null;
 	
 	private ArrayList<String[]> dataStep2 = new ArrayList<String[]>();
 	private ArrayList<String[]> dataStep4 = new ArrayList<String[]>();
@@ -144,6 +145,15 @@ public class Delivery implements Serializable{
 	
 	public void setPathCSV(String CSV){
 		pathCSV = CSV;
+		model.notice();
+	}
+	
+	public String getPathReport(){
+		return pathReport;
+	}
+	
+	public void setPathReport(String report){
+		pathReport = report;
 		model.notice();
 	}
 	

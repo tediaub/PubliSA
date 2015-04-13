@@ -17,7 +17,7 @@ import com.jgoodies.forms.layout.RowSpec;
 public class ButtonFlatPopUp extends ButtonFlat implements ActionListener{
 
 	private JPopupMenu popupMenu;
-	private panNew panelPopUp;
+	private panPopUp panelPopUp;
 	
 	private int marginHigh = 10;
 	private int midArrow = 20;
@@ -37,12 +37,12 @@ public class ButtonFlatPopUp extends ButtonFlat implements ActionListener{
 		popupMenu.setOpaque(false);
 		popupMenu.setBorderPainted(false);
 		
-		panelPopUp = new panNew();
+		panelPopUp = new panPopUp();
 		panelPopUp.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),},
 			new RowSpec[] {
 				RowSpec.decode(marginHigh + "px"),
-				RowSpec.decode("default:grow"),}));		
+				RowSpec.decode("default:grow"),}));
 		popupMenu.add(panelPopUp);
 	}
 	
@@ -71,15 +71,23 @@ public class ButtonFlatPopUp extends ButtonFlat implements ActionListener{
 		popupMenu.show(this, 0, getHeight() - 5);
 	}
 	
-	private class panNew extends JPanel {		
+	private class panPopUp extends JPanel {		
 		@Override
 		protected void paintComponent(Graphics g) {
-			g.setColor(Color.WHITE);
+			g.setColor(new Color(220,220,220));
 			g.fillRect(0, marginHigh, getWidth(), getHeight() - marginHigh);
 			
 			int mid = midArrow;
-			for(int i = 0; i < marginHigh; i++)      {
+			for(int i = 0; i < marginHigh; i++){
 	            g.drawLine(mid-i, i, mid+i, i);
+	        }
+			
+			g.setColor(Color.WHITE);
+			g.fillRect(1, marginHigh + 1, getWidth() - 2, getHeight() - marginHigh - 2);
+			
+			mid = midArrow - 1;
+			for(int i = 0; i < marginHigh; i++){
+	            g.drawLine(mid-i, i + 1, mid+i, i + 1);
 	        }
 		}
 	}

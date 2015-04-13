@@ -11,7 +11,7 @@ import langue.GestLangue;
 import langue.IHM;
 import loading.FilterCSV;
 import loading.FilterOGC;
-import loading.LoadFile;
+import loading.LoadSaveFile;
 import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
@@ -117,11 +117,11 @@ public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnCSV){
-			String path = LoadFile.loadFrame(control.getModel().getMainDelivery().getPathCSV(), "Ouvrir fichier CSV", new FilterCSV());
+			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathCSV(), "Ouvrir fichier CSV", new FilterCSV());
 			if(path == null){return;}
 			control.getModel().getMainDelivery().setPathCSV(path);
 		}else if(e.getSource() == btnOGC){
-			String path = LoadFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
+			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
 			if(path == null){return;}
 			control.getModel().getMainDelivery().setPathOGC(path);
 		}else if(e.getSource() == btnChecking){

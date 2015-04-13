@@ -15,7 +15,6 @@ public class Serialization {
 
 	static String path = System.getProperty("user.dir")+File.separator;
 	
-	@SuppressWarnings("resource")
 	public static Model loadModel(){
 		Model model = null;
 		try {
