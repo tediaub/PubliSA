@@ -17,14 +17,13 @@ import javax.swing.table.DefaultTableModel;
 
 import jxl.write.WriteException;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Model;
-import verification.ReportStep2;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.table.TableCellRenderer;
 import view.guiComponents.table.TableFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -32,6 +31,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.ControllerFrame;
+import controller.checking.Report;
 
 @SuppressWarnings("serial")
 public class PanelCheckStep2 extends PanelObserver implements ActionListener {
@@ -43,11 +43,11 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 	private JMenuItem iDeleteHeader;
 	private JMenuItem iDocX;
 	
-	private static String[] columns = {GestLangue.getLocalizedText(IHM.DCR.getLabel()),
-		GestLangue.getLocalizedText(IHM.COL_NOM_PLANCHE.getLabel()),
-		GestLangue.getLocalizedText(IHM.COL_NOM_SOMMAIRE.getLabel()),
-		GestLangue.getLocalizedText(IHM.OK_KO.getLabel()),
-		GestLangue.getLocalizedText(IHM.COMMENTAIRES.getLabel())};
+	private static String[] columns = {LanguageSelector.getLocalizedText(ELabelUI.DCR.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.COL_NOM_PLANCHE.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.COL_NOM_SOMMAIRE.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.OK_KO.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.COMMENTAIRES.getLabel())};
 
 	public PanelCheckStep2(ControllerFrame control) {
 		super(control);
@@ -69,7 +69,7 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 				FormFactory.UNRELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		JLabel lblName = new JLabel(GestLangue.getLocalizedText(IHM.RESULTAT_VERIF.getLabel()));
+		JLabel lblName = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.RESULTAT_VERIF.getLabel()));
 		lblName.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblName.setForeground(new Color(0, 119, 175));
 		add(lblName, "2, 2, 2, 1");
@@ -87,7 +87,7 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		
 		popupMenu = new JPopupMenu();
 		popupMenu.setUI(new PopUpFlat());
-		iReport = new JMenuItem("Compte rendu");
+		iReport = new JMenuItem(LanguageSelector.getLocalizedText(ELabelUI.BT_COMPTE_RENDU.getLabel()));
 		iReport.addActionListener(this);
 		iDeleteHeader = new JMenuItem("suppr. Entete");
 		iDeleteHeader.addActionListener(this);
@@ -129,7 +129,7 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		}
 		else if(e.getSource() == iReport){
 			try {
-				new ReportStep2(control, columns);
+				new Report(control, columns);
 			} catch (WriteException e1) {
 				e1.printStackTrace();
 			}

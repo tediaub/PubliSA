@@ -41,7 +41,7 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		
-		setBackground(new Color(0, 119, 175));
+		setBackground(control.getModel().getUser().getColors().getMainColor());
 		setLayout(null);
 		
 		PanButtonFrame panButtonFrame = new PanButtonFrame(control);
@@ -53,8 +53,8 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 		
 		btnBack = new ButtonFlat("Liste des livraisons");
 		btnBack.addActionListener(this);
-		btnBack.setRolloverBackground(new Color(0, 63, 113));
-		btnBack.setBackground(new Color(0, 119, 175));
+		btnBack.setRolloverBackground(control.getModel().getUser().getColors().getSecondColor());
+		btnBack.setBackground(control.getModel().getUser().getColors().getMainColor());
 		btnBack.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBack.setIconTextGap(15);
 		btnBack.setFont(new Font("Arial", Font.PLAIN, 27));

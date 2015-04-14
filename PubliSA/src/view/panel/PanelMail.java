@@ -16,14 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.LayerUI;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Mail;
 import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 import view.guiComponents.layer.MailRecipientLayerUI;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -79,7 +79,7 @@ public class PanelMail extends PanelObserver implements ActionListener, KeyListe
 		lblTitle.setForeground(new Color(0, 119, 175));
 		add(lblTitle, "2, 1, 2, 1, right, fill");
 		
-		JLabel lblRecipient = new JLabel(GestLangue.getLocalizedText(IHM.CORRESPONDANT.getLabel()));
+		JLabel lblRecipient = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.CORRESPONDANT.getLabel()));
 		lblRecipient.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblRecipient.setForeground(new Color(0, 119, 175));
 		add(lblRecipient, "2, 3, 2, 1");
@@ -93,7 +93,7 @@ public class PanelMail extends PanelObserver implements ActionListener, KeyListe
 		tfRecipient.setColumns(10);
 		add(new JLayer<JTextField>(tfRecipient, layerUI), "3, 6, fill, default");
 		
-		JLabel lblObject = new JLabel(GestLangue.getLocalizedText(IHM.OBJET.getLabel()));
+		JLabel lblObject = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.OBJET.getLabel()));
 		lblObject.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblObject.setForeground(new Color(0, 119, 175));
 		add(lblObject, "2, 8, 2, 1");
@@ -106,7 +106,7 @@ public class PanelMail extends PanelObserver implements ActionListener, KeyListe
 		tfObject.setColumns(10);
 		add(tfObject, "3, 11, fill, default");
 		
-		JLabel lblMessage = new JLabel(GestLangue.getLocalizedText(IHM.MESSAGE.getLabel()));
+		JLabel lblMessage = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.MESSAGE.getLabel()));
 		lblMessage.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblMessage.setForeground(new Color(0, 119, 175));
 		add(lblMessage, "2, 13, 2, 1");
@@ -117,7 +117,7 @@ public class PanelMail extends PanelObserver implements ActionListener, KeyListe
 		JLabel affMarqueurs = new JLabel();
 		add(affMarqueurs, "3, 15");
 		affMarqueurs.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		affMarqueurs.setText(GestLangue.getLocalizedText(IHM.MARQUEURS.getLabel()));
+		affMarqueurs.setText(LanguageSelector.getLocalizedText(ELabelUI.MARQUEURS.getLabel()));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(new Color(192, 192, 192), 2));

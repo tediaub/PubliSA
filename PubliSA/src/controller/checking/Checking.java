@@ -1,16 +1,16 @@
-package verification;
+package controller.checking;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import loading.FilterOGC;
-import loading.LoadSaveFile;
 import model.Delivery;
 import model.files.FichierCSV;
 import model.files.FileOGC;
 import model.files.FileToCheck;
 import view.guiComponents.DialogFlat;
 import controller.ControllerFrame;
+import controller.loading.FilterOGC;
+import controller.loading.LoadSaveFile;
 
 public class Checking {
 

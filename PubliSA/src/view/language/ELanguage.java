@@ -1,4 +1,4 @@
-package langue;
+package view.language;
 
 import java.util.Locale;
 
@@ -8,7 +8,7 @@ import java.util.Locale;
  *
  */
 
-public enum Langue {
+public enum ELanguage {
 	ANGLAIS("ANGLAIS",new Locale("en")),
 	FRANCAIS("FRANCAIS",new Locale("fr"));
 
@@ -16,7 +16,7 @@ public enum Langue {
 	protected Locale locale;
 
 	/** Constructeur */
-	Langue(String pLabel,Locale locale) {
+	ELanguage(String pLabel,Locale locale) {
 		this.label = pLabel;
 		this.locale=locale;
 	}

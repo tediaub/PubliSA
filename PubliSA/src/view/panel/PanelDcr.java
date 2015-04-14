@@ -10,12 +10,12 @@ import javax.swing.JLayer;
 import javax.swing.JTextField;
 import javax.swing.plaf.LayerUI;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Model;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 import view.guiComponents.layer.DcrLayerUI;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -49,7 +49,7 @@ public class PanelDcr extends PanelObserver implements KeyListener{
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblNewLabel = new JLabel(GestLangue.getLocalizedText(IHM.DCR.getLabel()));
+		JLabel lblNewLabel = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.DCR.getLabel()));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblNewLabel.setForeground(new Color(0, 119, 175));
 		add(lblNewLabel, "2, 2, 2, 1");
@@ -57,7 +57,7 @@ public class PanelDcr extends PanelObserver implements KeyListener{
 		SeparatorFlat separator = new SeparatorFlat();
 		add(separator, "2, 4, 3, 1, fill, fill");
 		
-		JLabel lblNewLabel_1 = new JLabel(GestLangue.getLocalizedText(IHM.TEXTE_DCR.getLabel()));
+		JLabel lblNewLabel_1 = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.TEXTE_DCR.getLabel()));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 13));
 		add(lblNewLabel_1, "3, 6");
 		

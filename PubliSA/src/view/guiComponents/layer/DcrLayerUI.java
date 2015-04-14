@@ -12,12 +12,14 @@ import javax.swing.JLayer;
 import javax.swing.JTextField;
 import javax.swing.plaf.LayerUI;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 
 @SuppressWarnings("serial")
 public class DcrLayerUI extends LayerUI<JTextField> {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void paint (Graphics g, JComponent c) {
 		super.paint (g, c);
@@ -58,7 +60,7 @@ public class DcrLayerUI extends LayerUI<JTextField> {
 		int h = c.getHeight();
 		g2.setColor(new Color(140, 140, 140));
 		g2.setFont(new Font("Dialog", Font.PLAIN, 12));
-		g2.drawString(GestLangue.getLocalizedText(IHM.ENTRE_DCR.getLabel()), 5, h - 10);
+		g2.drawString(LanguageSelector.getLocalizedText(ELabelUI.ENTRE_DCR.getLabel()), 5, h - 10);
 	}
 
 	private void drawCheck(Graphics g, JComponent c) {

@@ -3,13 +3,15 @@ package view.panel;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Delivery;
 import model.Model;
+import view.guiComponents.SeparatorFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -17,11 +19,6 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.ControllerFrame;
-
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-
-import view.guiComponents.SeparatorFlat;
 
 @SuppressWarnings("serial")
 public class PanelAttached extends PanelObserver {
@@ -50,12 +47,12 @@ public class PanelAttached extends PanelObserver {
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("7mm"),}));
 		
-		JLabel lblName = new JLabel(GestLangue.getLocalizedText(IHM.A_JOINDRE.getLabel()));
+		JLabel lblName = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.A_JOINDRE.getLabel()));
 		lblName.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblName.setForeground(new Color(0, 119, 175));
 		add(lblName, "2, 2, 4, 1");
 		
-		JLabel lblAprsLaCration = new JLabel(GestLangue.getLocalizedText(IHM.APRES_MAIL.getLabel()));
+		JLabel lblAprsLaCration = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.APRES_MAIL.getLabel()));
 		lblAprsLaCration.setFont(new Font("Arial", Font.BOLD, 12));
 		add(lblAprsLaCration, "5, 5");
 		
@@ -77,10 +74,10 @@ public class PanelAttached extends PanelObserver {
 	@Override
 	protected void update(Model model) {
 		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
-			textInfo.setText(GestLangue.getLocalizedText(IHM.A_JOINDRE_UBIK.getLabel()));
+			textInfo.setText(LanguageSelector.getLocalizedText(ELabelUI.A_JOINDRE_UBIK.getLabel()));
 		}
 		else if(model.getMainDelivery().getTarget() == Delivery.THALES){
-			textInfo.setText(GestLangue.getLocalizedText(IHM.A_JOINDRE_THALES.getLabel()));
+			textInfo.setText(LanguageSelector.getLocalizedText(ELabelUI.A_JOINDRE_THALES.getLabel()));
 		}
 	}
 

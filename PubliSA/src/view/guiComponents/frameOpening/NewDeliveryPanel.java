@@ -11,14 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Delivery;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.DialogFlat;
 import view.guiComponents.RadioButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -155,8 +155,8 @@ public class NewDeliveryPanel extends JPanel implements ActionListener {
 		else if(ae.getSource() == btnCreate){
 			
 			if(!rdbtnThales.isSelected() && !rdbtnUbik.isSelected()){
-				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
-						GestLangue.getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
+				new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_TYPE.getLabel()),
+						LanguageSelector.getLocalizedText(ELabelUI.MES_TYPE_LIV.getLabel()),
 						DialogFlat.ERROR_OPERATION,
 						DialogFlat.ERROR_ICON);
 				return;

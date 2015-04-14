@@ -1,4 +1,4 @@
-package langue;
+package view.language;
 
 import java.util.ResourceBundle;
 
@@ -8,13 +8,13 @@ import java.util.ResourceBundle;
  *
  */
 
-public class GestLangue  {
+public class LanguageSelector  {
 	
 	private final static String DICTIONNAIRES ="PubliSA";
 
 		
 	// La locale utilisée (la langue actuellement utilisée)
-	private static Langue currentLanguage=Langue.FRANCAIS;
+	private static ELanguage currentLanguage=ELanguage.FRANCAIS;
 
 	// Ressource locale
 	private static ResourceBundle messages = ResourceBundle.getBundle(
@@ -31,9 +31,9 @@ public class GestLangue  {
 	
 	/**
 	 * Cette fonction sert à changer de langue
-	 * @param Langue la nouvelle langue
+	 * @param ELanguage la nouvelle langue
 	 **/
-	public static void setLangue(Langue langue)
+	public static void setLangue(ELanguage langue)
 	{
 		currentLanguage=langue;
 		
@@ -45,7 +45,7 @@ public class GestLangue  {
 	 *Retourne la langue actuelle
 	 *@return la langue actuelle
 	 **/
-	public static Langue getCurrentLanguage()
+	public static ELanguage getCurrentLanguage()
 	{
 		return currentLanguage;
 	}

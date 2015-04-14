@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 import model.Delivery;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -137,8 +138,8 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 		if(ae.getSource() == btnCreate){
 			
 			if(!rdbtnThales.isSelected() && !rdbtnUbik.isSelected()){
-				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_TYPE.getLabel()),
-						GestLangue.getLocalizedText(IHM.MES_TYPE_LIV.getLabel()),
+				new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_TYPE.getLabel()),
+						LanguageSelector.getLocalizedText(ELabelUI.MES_TYPE_LIV.getLabel()),
 						DialogFlat.ERROR_OPERATION,
 						DialogFlat.ERROR_ICON);
 				return;

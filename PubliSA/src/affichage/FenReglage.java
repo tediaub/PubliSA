@@ -34,11 +34,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import langue.GestLangue;
-import langue.IHM;
-import loading.FilterDOC;
-import loading.FilterEXE;
-import loading.LoadSaveFile;
 import model.Delivery;
 import model.User;
 import model.saveLoad.XmlLoader;
@@ -48,11 +43,17 @@ import org.jdom.Element;
 
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+
+import controller.loading.FilterDOC;
+import controller.loading.FilterEXE;
+import controller.loading.LoadSaveFile;
 
 import etape.Etape0;
 
@@ -170,7 +171,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FenAPropos.class.getResource("/image/logo/logo_secondaire.png")));
 		setResizable(false);
-		setTitle(GestLangue.getInstance().getLocalizedText(IHM.REGLAGES.getLabel()));
+		setTitle(LanguageSelector.getInstance().getLocalizedText(ELabelUI.REGLAGES.getLabel()));
 		setSize(570, 526);
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -187,11 +188,11 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		pButton.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		//getContentPane().add(pButton, BorderLayout.SOUTH);
 		
-		okButton = new JButton(GestLangue.getInstance().getLocalizedText(IHM.OK.getLabel()));
+		okButton = new JButton(LanguageSelector.getInstance().getLocalizedText(ELabelUI.OK.getLabel()));
 		okButton.addActionListener(this);
 		pButton.add(okButton);
 	
-		cancelButton = new JButton(GestLangue.getInstance().getLocalizedText(IHM.ANNULER.getLabel()));
+		cancelButton = new JButton(LanguageSelector.getInstance().getLocalizedText(ELabelUI.ANNULER.getLabel()));
 		cancelButton.addActionListener(this);
 		pButton.add(cancelButton);
 		
@@ -208,24 +209,24 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		//Création du panel qui contient la comboBox pour le choix du message
 		pComboBox = new JPanel();
 		pComboBox.setBackground(Color.WHITE);
-		tabbedPane.addTab(GestLangue.getInstance().getLocalizedText(IHM.EMAIL.getLabel()), null, pComboBox, null);
+		tabbedPane.addTab(LanguageSelector.getInstance().getLocalizedText(ELabelUI.EMAIL.getLabel()), null, pComboBox, null);
 		pComboBox.setLayout(null);
 		
 		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setModel(new DefaultComboBoxModel<String>(
 				new String[] {
 						" ",
-						GestLangue.getInstance().getLocalizedText(IHM.MAIL_AKKA_U.getLabel()),
-						GestLangue.getInstance().getLocalizedText(IHM.MAIL_AKKA_T.getLabel()),
-						GestLangue.getInstance().getLocalizedText(IHM.MAIL_SOPRA.getLabel()),
-						GestLangue.getInstance().getLocalizedText(IHM.MAIL_THALES.getLabel())}));
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_AKKA_U.getLabel()),
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_AKKA_T.getLabel()),
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_SOPRA.getLabel()),
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_THALES.getLabel())}));
 		
 		comboBox_1.addItemListener(this);
 		comboBox_1.setBackground(Color.WHITE);
 		comboBox_1.setBounds(269, 12, 270, 25);
 		pComboBox.add(comboBox_1);
 		
-		lblSelectionMail = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.SELECT_PARAM_MAIL.getLabel()));
+		lblSelectionMail = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.SELECT_PARAM_MAIL.getLabel()));
 		lblSelectionMail.setBounds(12, 16, 259, 16);
 		pComboBox.add(lblSelectionMail);
 		
@@ -252,17 +253,17 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		pGestUti.setLayout(null);
 		pGestUti.setBorder(new EmptyBorder(5, 5, 5, 5));
 		pGestUti.setBackground(Color.WHITE);
-		tabbedPane.addTab(GestLangue.getInstance().getLocalizedText(IHM.GEST_UTI.getLabel()), null, pGestUti, null);
+		tabbedPane.addTab(LanguageSelector.getInstance().getLocalizedText(ELabelUI.GEST_UTI.getLabel()), null, pGestUti, null);
 		
 		//Création panel Gestion des Utilisateurs
 		pUti = new JPanel();
 		pUti.setLayout(null);
-		pUti.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.GEST_UTI.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pUti.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.GEST_UTI.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pUti.setBackground(Color.WHITE);
 		pUti.setBounds(12, 12, 539, 134);
 		pGestUti.add(pUti);
 		
-		JLabel lblChoisirLutilisateurPrincipal = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.UTI_UNIQUE.getLabel()));
+		JLabel lblChoisirLutilisateurPrincipal = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.UTI_UNIQUE.getLabel()));
 		lblChoisirLutilisateurPrincipal.setBounds(37, 77, 220, 16);
 		pUti.add(lblChoisirLutilisateurPrincipal);
 		
@@ -277,37 +278,37 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		cbFirstUti.setBounds(248, 73, 258, 25);
 		pUti.add(cbFirstUti);
 		
-		ckbMode = new JCheckBox(GestLangue.getInstance().getLocalizedText(IHM.MODE_MULTI_UTI.getLabel()));
+		ckbMode = new JCheckBox(LanguageSelector.getInstance().getLocalizedText(ELabelUI.MODE_MULTI_UTI.getLabel()));
 		ckbMode.setSelected(XmlLoader.getModeUTI());
 		ckbMode.addActionListener(this);
 		ckbMode.setBackground(Color.WHITE);
 		ckbMode.setBounds(37, 39, 199, 24);
 		pUti.add(ckbMode);
 		
-		JLabel lblNewLabel_2 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.MODE_MULTI_UTI_DESACTIV.getLabel()));
+		JLabel lblNewLabel_2 = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.MODE_MULTI_UTI_DESACTIV.getLabel()));
 		lblNewLabel_2.setBounds(37, 96, 282, 16);
 		pUti.add(lblNewLabel_2);
 		
 		//Création panel Gestion des Livraisons
 		pLiv = new JPanel();
 		pLiv.setLayout(null);
-		pLiv.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.GEST_LIV.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pLiv.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.GEST_LIV.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pLiv.setBackground(Color.WHITE);
 		pLiv.setBounds(12, 156, 539, 126);
 		pGestUti.add(pLiv);
 		
-		ckbLivraison = new JCheckBox(GestLangue.getInstance().getLocalizedText(IHM.SUPPR_LIV_END.getLabel()));
+		ckbLivraison = new JCheckBox(LanguageSelector.getInstance().getLocalizedText(ELabelUI.SUPPR_LIV_END.getLabel()));
 		ckbLivraison.setSelected(User.getGestLiv());
 		ckbLivraison.setBackground(Color.WHITE);
 		ckbLivraison.setBounds(37, 32, 295, 24);
 		pLiv.add(ckbLivraison);
 		
-		supprAllLiv = new JButton(GestLangue.getInstance().getLocalizedText(IHM.SUPPRIMER.getLabel()));
+		supprAllLiv = new JButton(LanguageSelector.getInstance().getLocalizedText(ELabelUI.SUPPRIMER.getLabel()));
 		supprAllLiv.setBounds(376, 79, 112, 26);
 		supprAllLiv.addActionListener(this);
 		pLiv.add(supprAllLiv);
 		
-		JLabel lblNewLabel = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.SUPPR_ALL_LIV.getLabel()));
+		JLabel lblNewLabel = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.SUPPR_ALL_LIV.getLabel()));
 		lblNewLabel.setBounds(37, 84, 327, 16);
 		pLiv.add(lblNewLabel);
 		
@@ -315,18 +316,18 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		//Création panel de l'onglet
 		JPanel pFichExt = new JPanel();
 		pFichExt.setBackground(Color.WHITE);
-		tabbedPane.addTab(GestLangue.getInstance().getLocalizedText(IHM.FICH_EXT.getLabel()), null, pFichExt, null);
+		tabbedPane.addTab(LanguageSelector.getInstance().getLocalizedText(ELabelUI.FICH_EXT.getLabel()), null, pFichExt, null);
 		pFichExt.setLayout(null);
 		
 		//Création panel où l'utilisateur détermine le chemin du fichier FileCheck MD5
 		pFileCheck = new JPanel();
 		pFileCheck.setBackground(Color.WHITE);
-		pFileCheck.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.REPERTOIRE_FILECHECK.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pFileCheck.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.REPERTOIRE_FILECHECK.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pFileCheck.setBounds(12, 140, 541, 116);
 		pFichExt.add(pFileCheck);
 		pFileCheck.setLayout(null);
 		
-		btParcourirEXE = new JButton(GestLangue.getInstance().getLocalizedText(IHM.PARCOURIR.getLabel()));
+		btParcourirEXE = new JButton(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PARCOURIR.getLabel()));
 		btParcourirEXE.setBounds(437, 68, 98, 26);
 		btParcourirEXE.addActionListener(this);
 		pFileCheck.add(btParcourirEXE);
@@ -335,23 +336,23 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		lblPathEXE.setBounds(25, 68, 409, 26);
 		pFileCheck.add(lblPathEXE);
 		
-		JLabel lblVeuillezIndiquerLe_1 = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.PATH_FILECHECK.getLabel()));
+		JLabel lblVeuillezIndiquerLe_1 = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PATH_FILECHECK.getLabel()));
 		lblVeuillezIndiquerLe_1.setBounds(25, 50, 311, 16);
 		pFileCheck.add(lblVeuillezIndiquerLe_1);
 		
-		JLabel lblPourThalesUn = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.INFO_FILECHECK.getLabel()));
+		JLabel lblPourThalesUn = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.INFO_FILECHECK.getLabel()));
 		lblPourThalesUn.setBounds(25, 22, 388, 16);
 		pFileCheck.add(lblPourThalesUn);
 		
 		//Création panel où l'utilisateur détermine le chemin du fichier EYDT
 		pEYDT = new JPanel();
 		pEYDT.setBackground(Color.WHITE);
-		pEYDT.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.REPERTOIRE_EYDT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pEYDT.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.REPERTOIRE_EYDT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pEYDT.setBounds(12, 12, 541, 116);
 		pFichExt.add(pEYDT);
 		pEYDT.setLayout(null);
 		
-		btParcourirDOC = new JButton(GestLangue.getInstance().getLocalizedText(IHM.PARCOURIR.getLabel()));
+		btParcourirDOC = new JButton(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PARCOURIR.getLabel()));
 		btParcourirDOC.setBounds(437, 68, 98, 26);
 		btParcourirDOC.addActionListener(this);
 		pEYDT.add(btParcourirDOC);
@@ -360,11 +361,11 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		lblPathDOC.setBounds(25, 68, 409, 26);
 		pEYDT.add(lblPathDOC);
 		
-		JLabel lblPourUneLivraison = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.INFO_EYDT.getLabel()));
+		JLabel lblPourUneLivraison = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.INFO_EYDT.getLabel()));
 		lblPourUneLivraison.setBounds(25, 22, 388, 16);
 		pEYDT.add(lblPourUneLivraison);
 		
-		JLabel lblVeuillezIndiquerLe = new JLabel(GestLangue.getInstance().getLocalizedText(IHM.PATH_EYDT.getLabel()));
+		JLabel lblVeuillezIndiquerLe = new JLabel(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PATH_EYDT.getLabel()));
 		lblVeuillezIndiquerLe.setBounds(25, 50, 311, 16);
 		pEYDT.add(lblVeuillezIndiquerLe);		
 		
@@ -372,13 +373,13 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		//Création panel de l'onglet
 		JPanel pPerso = new JPanel();
 		pPerso.setBackground(Color.WHITE);
-		tabbedPane.addTab(GestLangue.getInstance().getLocalizedText(IHM.PERSO.getLabel()), null, pPerso, null);
+		tabbedPane.addTab(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PERSO.getLabel()), null, pPerso, null);
 		pPerso.setLayout(null);
 		
 		//Création panel où l'utilisateur détermine le chemin du fichier FileCheck MD5
 		JPanel pCouleur = new JPanel();
 		pCouleur.setBackground(Color.WHITE);
-		pCouleur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.CHOIX_COULEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pCouleur.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.CHOIX_COULEUR.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pCouleur.setBounds(12, 12, 541, 158);
 		pPerso.add(pCouleur);
 		pCouleur.setLayout(null);
@@ -423,12 +424,12 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		////
 		JPanel pImage = new JPanel();
 		pImage.setBackground(Color.WHITE);
-		pImage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.CHOIX_FOND.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pImage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.CHOIX_FOND.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pImage.setBounds(12, 182, 541, 60);
 		pPerso.add(pImage);
 		pImage.setLayout(null);
 		
-		btFond = new JButton(GestLangue.getInstance().getLocalizedText(IHM.PARCOURIR.getLabel()));
+		btFond = new JButton(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PARCOURIR.getLabel()));
 		btFond.setBounds(390, 20, 135, 26);
 		btFond.addActionListener(this);
 		pImage.add(btFond);
@@ -467,7 +468,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pCorrespondant = new JPanel();
 		pCorrespondant.setLayout(null);
-		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pCorrespondant.setBackground(Color.WHITE);
 		pCorrespondant.setBounds(12, 0, 541, 51);
 		pMailAkkaU.add(pCorrespondant);
@@ -479,7 +480,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pObjet = new JPanel();
 		pObjet.setLayout(null);
-		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pObjet.setBackground(Color.WHITE);
 		pObjet.setBounds(12, 54, 541, 51);
 		pMailAkkaU.add(pObjet);
@@ -490,7 +491,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		pMessage = new JPanel();
 		pMessage.setLayout(null);
-		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pMessage.setBackground(Color.WHITE);
 		pMessage.setBounds(12, 104, 541, 270);
 		pMailAkkaU.add(pMessage);
@@ -505,7 +506,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		JEditorPane affMarqueurs = new JEditorPane();
 		affMarqueurs.setForeground(UIManager.getColor("textHighlight"));
 		affMarqueurs.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		affMarqueurs.setText(GestLangue.getInstance().getLocalizedText(IHM.MARQUEURS.getLabel()));
+		affMarqueurs.setText(LanguageSelector.getInstance().getLocalizedText(ELabelUI.MARQUEURS.getLabel()));
 		affMarqueurs.setBounds(12, 17, 523, 72);
 		pMessage.add(affMarqueurs);
 	}
@@ -520,7 +521,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pCorrespondant = new JPanel();
 		pCorrespondant.setLayout(null);
-		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pCorrespondant.setBackground(Color.WHITE);
 		pCorrespondant.setBounds(12, 0, 541, 51);
 		pMailAkkaT.add(pCorrespondant);
@@ -532,7 +533,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pObjet = new JPanel();
 		pObjet.setLayout(null);
-		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pObjet.setBackground(Color.WHITE);
 		pObjet.setBounds(12, 54, 541, 51);
 		pMailAkkaT.add(pObjet);
@@ -543,7 +544,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		pMessage = new JPanel();
 		pMessage.setLayout(null);
-		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pMessage.setBackground(Color.WHITE);
 		pMessage.setBounds(12, 104, 541, 270);
 		pMailAkkaT.add(pMessage);
@@ -558,7 +559,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		JEditorPane affMarqueurs = new JEditorPane();
 		affMarqueurs.setForeground(UIManager.getColor("textHighlight"));
 		affMarqueurs.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		affMarqueurs.setText(GestLangue.getInstance().getLocalizedText(IHM.MARQUEURS.getLabel()));
+		affMarqueurs.setText(LanguageSelector.getInstance().getLocalizedText(ELabelUI.MARQUEURS.getLabel()));
 		affMarqueurs.setBounds(12, 17, 523, 72);
 		pMessage.add(affMarqueurs);
 	}
@@ -573,7 +574,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pCorrespondant = new JPanel();
 		pCorrespondant.setLayout(null);
-		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pCorrespondant.setBackground(Color.WHITE);
 		pCorrespondant.setBounds(12, 0, 541, 51);
 		pMailSopra.add(pCorrespondant);
@@ -585,7 +586,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pObjet = new JPanel();
 		pObjet.setLayout(null);
-		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pObjet.setBackground(Color.WHITE);
 		pObjet.setBounds(12, 54, 541, 51);
 		pMailSopra.add(pObjet);
@@ -596,7 +597,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		pMessage = new JPanel();
 		pMessage.setLayout(null);
-		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pMessage.setBackground(Color.WHITE);
 		pMessage.setBounds(12, 104, 541, 270);
 		pMailSopra.add(pMessage);
@@ -611,7 +612,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		JEditorPane affMarqueurs = new JEditorPane();
 		affMarqueurs.setForeground(UIManager.getColor("textHighlight"));
 		affMarqueurs.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		affMarqueurs.setText(GestLangue.getInstance().getLocalizedText(IHM.MARQUEURS.getLabel()));
+		affMarqueurs.setText(LanguageSelector.getInstance().getLocalizedText(ELabelUI.MARQUEURS.getLabel()));
 		affMarqueurs.setBounds(12, 17, 523, 72);
 		pMessage.add(affMarqueurs);
 	}
@@ -626,7 +627,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pCorrespondant = new JPanel();
 		pCorrespondant.setLayout(null);
-		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pCorrespondant.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.CORRESPONDANT.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pCorrespondant.setBackground(Color.WHITE);
 		pCorrespondant.setBounds(12, 0, 541, 51);
 		pMailThales.add(pCorrespondant);
@@ -638,7 +639,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		JPanel pObjet = new JPanel();
 		pObjet.setLayout(null);
-		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pObjet.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.OBJET.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pObjet.setBackground(Color.WHITE);
 		pObjet.setBounds(12, 54, 541, 51);
 		pMailThales.add(pObjet);
@@ -649,7 +650,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		pMessage = new JPanel();
 		pMessage.setLayout(null);
-		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), GestLangue.getInstance().getLocalizedText(IHM.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		pMessage.setBorder(new TitledBorder(new LineBorder(Etape0.couleur[0]), LanguageSelector.getInstance().getLocalizedText(ELabelUI.MESSAGE.getLabel()), TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		pMessage.setBackground(Color.WHITE);
 		pMessage.setBounds(12, 104, 541, 270);
 		pMailThales.add(pMessage);
@@ -664,7 +665,7 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		JEditorPane affMarqueurs = new JEditorPane();
 		affMarqueurs.setForeground(UIManager.getColor("textHighlight"));
 		affMarqueurs.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		affMarqueurs.setText(GestLangue.getInstance().getLocalizedText(IHM.MARQUEURS.getLabel()));
+		affMarqueurs.setText(LanguageSelector.getInstance().getLocalizedText(ELabelUI.MARQUEURS.getLabel()));
 		affMarqueurs.setBounds(12, 17, 523, 72);
 		pMessage.add(affMarqueurs);
 	}
@@ -677,22 +678,22 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getSource() == comboBox_1){
-			if(e.getItem() == GestLangue.getInstance().getLocalizedText(IHM.MAIL_AKKA_U.getLabel())){
+			if(e.getItem() == LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_AKKA_U.getLabel())){
 				cards.setVisible(true);
 				CardLayout cl = (CardLayout) cards.getLayout();
 		        cl.show(cards, AkkaU);
 			}
-			if(e.getItem() == GestLangue.getInstance().getLocalizedText(IHM.MAIL_AKKA_T.getLabel())){
+			if(e.getItem() == LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_AKKA_T.getLabel())){
 				cards.setVisible(true);
 				CardLayout cl = (CardLayout) cards.getLayout();
 		        cl.show(cards, AkkaT);	
 			}
-			if(e.getItem() == GestLangue.getInstance().getLocalizedText(IHM.MAIL_SOPRA.getLabel())){
+			if(e.getItem() == LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_SOPRA.getLabel())){
 				cards.setVisible(true);
 				CardLayout cl = (CardLayout) cards.getLayout();
 		        cl.show(cards, Sopra);
 			}
-			if(e.getItem() == GestLangue.getInstance().getLocalizedText(IHM.MAIL_THALES.getLabel())){
+			if(e.getItem() == LanguageSelector.getInstance().getLocalizedText(ELabelUI.MAIL_THALES.getLabel())){
 				cards.setVisible(true);
 				CardLayout cl = (CardLayout) cards.getLayout();
 		        cl.show(cards, Thales);
@@ -728,8 +729,8 @@ public class FenReglage extends JDialog implements ItemListener, ActionListener{
 		
 		if (e.getSource() == supprAllLiv){
 			int option = JOptionPane.showConfirmDialog(null, 
-					GestLangue.getInstance().getLocalizedText(IHM.MES_SUPPR_ALL_LIV.getLabel()),
-					GestLangue.getInstance().getLocalizedText(IHM.NOM_APPLI.getLabel()),
+					LanguageSelector.getInstance().getLocalizedText(ELabelUI.MES_SUPPR_ALL_LIV.getLabel()),
+					LanguageSelector.getInstance().getLocalizedText(ELabelUI.NOM_APPLI.getLabel()),
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 			

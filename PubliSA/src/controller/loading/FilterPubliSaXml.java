@@ -1,4 +1,4 @@
-package loading;
+package controller.loading;
 
 import java.io.File;
 

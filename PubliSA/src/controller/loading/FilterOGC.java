@@ -1,4 +1,4 @@
-package loading;
+package controller.loading;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 
-public class FilterXLS extends FileFilter {
+public class FilterOGC extends FileFilter {
 
 	/** 
 	 * indique les fichiers dont l'extension sera 
@@ -28,13 +28,16 @@ public class FilterXLS extends FileFilter {
 	
 		if (i > 0 && i < nomFichier.length() - 1) {
 			String extension = nomFichier.substring(i+1).toLowerCase();
+			nomFichier = nomFichier.substring(0,i);
 
-			if(extension.equals("xls")){
+			if(extension.equals("ogc")){
 				return true;
 			}
 			
-			if(extension.equals("xlsx")){
-				return true;
+			if(extension.contains(";")){
+				if(extension.substring(0, extension.indexOf(";")).contentEquals("ogc")){
+					return true;
+				}
 			}
 		}
 		return false;
@@ -45,6 +48,10 @@ public class FilterXLS extends FileFilter {
 	 * méthode servant a décrire le filtre de fichier 
 	 */ 
 	public String getDescription() {
-	return "Document Excel (*.XLS, *.XLSX)";
+		return "Fichier sommaire des planches (*.OGC, *.OGC;1)";
 	}
+
+	
+
+
 }

@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.plaf.basic.BasicTextPaneUI;
 
-import loading.FilterPubliSaXml;
-import loading.LoadSaveFile;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.ComboBoxFlatUI;
 import view.guiComponents.TextFieldFlat;
@@ -25,7 +23,10 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.OpeningController;
+import controller.loading.FilterPubliSaXml;
+import controller.loading.LoadSaveFile;
 
+@SuppressWarnings("serial")
 public class FirstLaunchPanel extends JPanel implements ActionListener {
 	
 	private boolean isLoaded = false;
@@ -138,7 +139,8 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 		
 		cbSelect = new JComboBox<String>();
 		cbSelect.setBackground(Color.WHITE);
-		cbSelect.setUI(new ComboBoxFlatUI());
+		cbSelect.setUI(new ComboBoxFlatUI(control.getModel().getUser().getColors().getSecondColor(),
+				control.getModel().getUser().getColors().getMainColor()));
 		combo.add(cbSelect, "1, 4, fill, default");
 		
 		cards = new JPanel();

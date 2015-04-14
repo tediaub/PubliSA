@@ -2,8 +2,9 @@ package model.files;
 
 import java.io.File;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 
 
 /**
@@ -87,11 +88,11 @@ public class FichierPDF extends File{
 				
 	        }catch(NumberFormatException e){
 	        	theoreticalName = "L" + book + "C" + chapter + "P" + plank + "V" + variant + "I" + issue + ".PDF";
-				originalErrorMessage = GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + theoreticalName;
+				originalErrorMessage = LanguageSelector.getLocalizedText(ELabelUI.MES_ERR_ORIGINAL1.getLabel()) + message + " " + LanguageSelector.getLocalizedText(ELabelUI.MES_ERR_ORIGINAL2.getLabel()) + " " + theoreticalName;
 				return;
 	        }
 			theoreticalName = "L" + book + "C" + chapter + "P" + plank + "V" + variant + "I" + issue + ".PDF";
-			originalErrorMessage = GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL1.getLabel()) + message + " " + GestLangue.getLocalizedText(IHM.MES_ERR_ORIGINAL2.getLabel()) + " " + theoreticalName;
+			originalErrorMessage = LanguageSelector.getLocalizedText(ELabelUI.MES_ERR_ORIGINAL1.getLabel()) + message + " " + LanguageSelector.getLocalizedText(ELabelUI.MES_ERR_ORIGINAL2.getLabel()) + " " + theoreticalName;
 		
 		}
 	}
@@ -200,13 +201,13 @@ public class FichierPDF extends File{
 	 */
 	public void setMessage(int indice){
 		if (indice == 0){
-			errorMessage = GestLangue.getLocalizedText(IHM.MES_ERR0.getLabel());
+			errorMessage = LanguageSelector.getLocalizedText(ELabelUI.MES_ERR0.getLabel());
 		}
 		if (indice == 1){
-			errorMessage = GestLangue.getLocalizedText(IHM.MES_ERR1.getLabel()) + originalErrorMessage;
+			errorMessage = LanguageSelector.getLocalizedText(ELabelUI.MES_ERR1.getLabel()) + originalErrorMessage;
 		}
 		if (indice == 2){
-			errorMessage = GestLangue.getLocalizedText(IHM.MES_ERR2.getLabel());
+			errorMessage = LanguageSelector.getLocalizedText(ELabelUI.MES_ERR2.getLabel());
 		}
 	}
 	

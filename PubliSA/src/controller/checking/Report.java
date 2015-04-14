@@ -1,8 +1,9 @@
-package verification;
+package controller.checking;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import jxl.Workbook;
@@ -18,13 +19,15 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import langue.GestLangue;
-import langue.IHM;
-import loading.FilterXLS;
-import loading.LoadSaveFile;
+import model.Delivery;
+import view.guiComponents.DialogFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 import controller.ControllerFrame;
+import controller.loading.FilterXLS;
+import controller.loading.LoadSaveFile;
 
-public class ReportStep2 {
+public class Report {
 	
 	//Classeur Excel
 	private WritableWorkbook workbook;
@@ -49,14 +52,25 @@ public class ReportStep2 {
 	private WritableFont arial10orange = new WritableFont(WritableFont.ARIAL, 10,WritableFont.BOLD, true, UnderlineStyle.NO_UNDERLINE,Colour.LIGHT_ORANGE, ScriptStyle.NORMAL_SCRIPT); 
 	private WritableCellFormat arial10oFormat = new WritableCellFormat(arial10orange);
 	
-	public ReportStep2(ControllerFrame control, String[] columns) throws WriteException{
-		String path = LoadSaveFile.saveFrame(control.getModel().getMainDelivery().getPathReport(), "Sauvegarder", new FilterXLS(), "xls");
+	private ControllerFrame control;
+	private String[] columns;
+	private String path;
+	
+	public Report(ControllerFrame control, String[] columns) throws WriteException{
+		this.control = control;
+		this.columns = columns;
+		
+		path = LoadSaveFile.saveFrame(control.getModel().getMainDelivery().getPathReport(), "Sauvegarder", new FilterXLS(), "xls");
 		control.getModel().getMainDelivery().setPathReport(path);
 		if (path == null){
 			return;
 		}
 		
-		try {
+		processing();			
+	}
+	
+	private void processing(){
+		try{
 			workbook = Workbook.createWorkbook(new File(path));
 			
 			sheet = workbook.createSheet("Analyse vérification", 0);
@@ -71,11 +85,35 @@ public class ReportStep2 {
 			arial10okFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 			arial10oFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 			
-			//****Information générales*****//
-			// Titre
-			Label infos = new Label(0, 0, "Vérification des fichiers AKKA pour UBIK", arial20format); 
-			sheet.addCell(infos);
-			sheet.mergeCells(0, 0, 5, 0);
+			if(control.getModel().getMainDelivery().getActualStep() == Delivery.STEP2){
+				sheet.setColumnView(0,6);
+				sheet.setColumnView(1,30);
+				sheet.setColumnView(2,30);
+				sheet.setColumnView(3,9);
+				sheet.setColumnView(4,82);
+				
+				//****Information générales*****//
+				// Titre
+				Label infos = new Label(0, 0, "Vérification des fichiers AKKA", arial20format); 
+				sheet.addCell(infos);
+				sheet.mergeCells(0, 0, 5, 0);
+			}else if(control.getModel().getMainDelivery().getActualStep() == Delivery.STEP4){
+				sheet.setColumnView(0,30);
+				sheet.setColumnView(1,30);
+				sheet.setColumnView(2,50);
+				
+				//****Information générales*****//
+				// Titre
+				Label infos = new Label(0, 0, "Vérification des fichiers sur UBIK", arial20format); 
+				sheet.addCell(infos);
+				sheet.mergeCells(0, 0, 4, 0);
+				
+				// Nom du fichier CSV
+				Label CSV = new Label(1, 5, "Fichier CSV : ", arial10gFormat);
+				Label CSV_aff = new Label(2, 5, control.getModel().getMainDelivery().getPathCSV());
+				sheet.addCell(CSV);
+				sheet.addCell(CSV_aff);
+			}
 			
 			// Date de l'analyse
 			Date date_actuelle = new Date(); 
@@ -86,7 +124,7 @@ public class ReportStep2 {
 			sheet.addCell(date);
 			sheet.addCell(date_valeur);
 			
-			// Nom du fichier
+			// Nom du fichier OGC
 			Label fich = new Label(1, 4, "Fichier OGC : ", arial10gFormat);
 			Label fichier_nom = new Label(2, 4, control.getModel().getMainDelivery().getPathOGC());
 			sheet.addCell(fich);
@@ -94,26 +132,30 @@ public class ReportStep2 {
 			sheet.mergeCells(2, 4, 5, 4);
 			
 			// Numéro de DCR
-			Label DCR = new Label(1, 5, "Numéro(s) de DCR : ", arial10gFormat);
-			Label DCR_aff = new Label(2, 5, control.getModel().getMainDelivery().getDCR());
+			Label DCR = new Label(1, 6, "Numéro(s) de DCR : ", arial10gFormat);
+			Label DCR_aff = new Label(2, 6, control.getModel().getMainDelivery().getDCR());
 			sheet.addCell(DCR);
 			sheet.addCell(DCR_aff);
 			//*******************************//
 			
 			//*****Données*******//
-			sheet.mergeCells(1, 8, 2, 8);
-						
+			ArrayList<String[]> array = new ArrayList<String[]>();
+			if(control.getModel().getMainDelivery().getActualStep() == Delivery.STEP2){
+				 array = control.getModel().getMainDelivery().getDataStep2();
+			}else if(control.getModel().getMainDelivery().getActualStep() == Delivery.STEP4){
+				 array = control.getModel().getMainDelivery().getDataStep4();
+			}
+			
 			// Entêtes
 			for (int i = 0; i < columns.length; i++){
 				Label col = new Label(i, 8, columns[i], arial12format);
 				sheet.addCell(col);
 			}
 			
-			for (int i = 0; i < control.getModel().getMainDelivery().getDataStep2().size(); i++){
-				sheet.mergeCells(1, i+9, 2, i+9);
-				String s = control.getModel().getMainDelivery().getDataStep2().get(i)[control.getModel().getMainDelivery().getDataStep2().get(i).length];
+			for (int i = 0; i < array.size(); i++){
+				String s = array.get(i)[array.get(i).length-1];
 				WritableCellFormat wf;
-				if(s.contains(GestLangue.getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
+				if(s.contains(LanguageSelector.getLocalizedText(ELabelUI.INDICATEUR_ERR.getLabel()))){
 					wf = arial10oFormat;
 				}
 				else if(!s.isEmpty()){
@@ -123,25 +165,26 @@ public class ReportStep2 {
 					wf = arial10okFormat;
 				}
 				
-				for (int j = 0; j < control.getModel().getMainDelivery().getDataStep2().get(i).length; j++) {
-					Label cell = new Label(j, i + 9, control.getModel().getMainDelivery().getDataStep2().get(i)[j], wf);
+				for (int j = 0; j < array.get(i).length; j++) {
+					Label cell = new Label(j, i + 9, array.get(i)[j], wf);
 					sheet.addCell(cell);
 				}
 			}
-			
-			sheet.setColumnView(0,6);
-			sheet.setColumnView(1,20);
-			sheet.setColumnView(2,10);
-			sheet.setColumnView(3,30);
-			sheet.setColumnView(4,9);
-			sheet.setColumnView(5,82);
 			
 			sheet.getSettings().setShowGridLines(false);
 			
 			workbook.write();
 			workbook.close();
-			
 		}catch (IOException e) {
+			int option = new DialogFlat().showDialog("Erreur fichier XLS",
+					"<html>Le fichier sélectionné est utilisé par un autre programme.<br>Veuillez le fermer pour continuer.</html>",
+					DialogFlat.INFORMATION_OPERATION,
+					DialogFlat.WARNING_ICON);
+			
+			if(option == DialogFlat.VALIDATE){
+				processing();
+			}
+		} catch (WriteException e) {
 			e.printStackTrace();
 		}
 	}

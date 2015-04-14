@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JTabbedPane;
 
+@SuppressWarnings("serial")
 public class TabbedPaneFlat extends JTabbedPane {
 
 	ArrayList<Boolean> tabLevel = new ArrayList<Boolean>();

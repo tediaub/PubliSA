@@ -11,7 +11,6 @@ import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.plaf.synth.SynthButtonUI;
 import javax.swing.text.View;
