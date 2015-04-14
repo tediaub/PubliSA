@@ -1,4 +1,4 @@
-package view.guiComponents;
+package view.guiComponents.ui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +13,8 @@ import javax.swing.Icon;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.text.View;
+
+import view.guiComponents.TabbedPaneFlat;
 
 public class TabbedPaneUI extends BasicTabbedPaneUI {
 

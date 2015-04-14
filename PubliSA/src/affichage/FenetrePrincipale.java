@@ -32,9 +32,6 @@ import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
 
 import jxl.write.WriteException;
-import langue.GestLangue;
-import langue.IHM;
-import langue.Langue;
 import model.Delivery;
 import model.User;
 import model.saveLoad.XmlLoader;
@@ -43,12 +40,16 @@ import outils.Lanceur;
 import outils.SupprEntete;
 import tutoriel.TutoPanel;
 import tutoriel.Tutoriel;
-import verification.ReportStep2;
-import verification.CreationRapportEtape4;
+import view.language.ELabelUI;
+import view.language.ELanguage;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+
+import controller.checking.CreationRapportEtape4;
+import controller.checking.Report;
 
 import etape.Etape0;
 import etape.Etape1;
@@ -151,20 +152,20 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 	
 	public FenetrePrincipale() {
 		
-		langueFR = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_FR.getLabel()));
-		langueEN = new JCheckBoxMenuItem(GestLangue.getInstance().getLocalizedText(IHM.L_EN.getLabel()));
+		langueFR = new JCheckBoxMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.L_FR.getLabel()));
+		langueEN = new JCheckBoxMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.L_EN.getLabel()));
 		
-		if(XmlLoader.getLangue().contentEquals(Langue.FRANCAIS.toString())){
-			GestLangue.getInstance().setLangue(Langue.FRANCAIS);
+		if(XmlLoader.getLangue().contentEquals(ELanguage.FRANCAIS.toString())){
+			LanguageSelector.getInstance().setLangue(ELanguage.FRANCAIS);
 			langueFR.setState(true);
 		}
 		else{
-			GestLangue.getInstance().setLangue(Langue.ANGLAIS);
+			LanguageSelector.getInstance().setLangue(ELanguage.ANGLAIS);
 			langueEN.setState(true);
 		}		
 		
 		//Création de la fenetre
-		this.setTitle(GestLangue.getInstance().getLocalizedText(IHM.ENTETE_FENETRE.getLabel()));
+		this.setTitle(LanguageSelector.getInstance().getLocalizedText(ELabelUI.ENTETE_FENETRE.getLabel()));
 		addWindowListener(this);
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FenAPropos.class.getResource("/image/logo/logo_secondaire.png")));
@@ -181,38 +182,38 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		//Création des objets du menu		
 		horizontalStrut_2 = Box.createHorizontalStrut(5);
 		
-		fichier = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.FICHIER.getLabel()));
+		fichier = new JMenu(LanguageSelector.getInstance().getLocalizedText(ELabelUI.FICHIER.getLabel()));
 		fichier.setFont(new Font("SansSerif", Font.BOLD, 12));
-		nouveau = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.NOUVEAU.getLabel()));
+		nouveau = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.NOUVEAU.getLabel()));
 		nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
-		enregistrer = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.ENREGISTRER.getLabel()));
+		enregistrer = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.ENREGISTRER.getLabel()));
 		enregistrer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK));
 		separator = new JSeparator();
-		quitter = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.QUITTER.getLabel()));
+		quitter = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER.getLabel()));
 
-		reglage = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.REGLAGES.getLabel()));
+		reglage = new JMenu(LanguageSelector.getInstance().getLocalizedText(ELabelUI.REGLAGES.getLabel()));
 		reglage.setFont(new Font("SansSerif", Font.BOLD, 12));
-		regEmail = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.REG_EMAIL.getLabel()));
+		regEmail = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.REG_EMAIL.getLabel()));
 		separator_1 = new JSeparator();
-		gestUti = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.GEST_UTI.getLabel()));
-		fichExt = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.FICH_EXT.getLabel()));
-		perso = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.PERSO.getLabel()));
+		gestUti = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.GEST_UTI.getLabel()));
+		fichExt = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.FICH_EXT.getLabel()));
+		perso = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.PERSO.getLabel()));
 
-		outils = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.OUTILS.getLabel()));
+		outils = new JMenu(LanguageSelector.getInstance().getLocalizedText(ELabelUI.OUTILS.getLabel()));
 		outils.setFont(new Font("SansSerif", Font.BOLD, 12));
-		launchFichDOC = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.EYDT.getLabel()));
-		launchFichEXE= new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.EXE.getLabel()));
+		launchFichDOC = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.EYDT.getLabel()));
+		launchFichEXE= new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.EXE.getLabel()));
 		separator_3 = new JSeparator();
-		compteRendu = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.COMPTE_RENDU.getLabel()));
+		compteRendu = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.COMPTE_RENDU.getLabel()));
 		separator_4 = new JSeparator();
-		supprEntete = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.SUPPR_ENTETE.getLabel()));
+		supprEntete = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.SUPPR_ENTETE.getLabel()));
 		
-		aide = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.AIDE.getLabel()));
+		aide = new JMenu(LanguageSelector.getInstance().getLocalizedText(ELabelUI.AIDE.getLabel()));
 		aide.setFont(new Font("SansSerif", Font.BOLD, 12));
-		tutoriel = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.TUTORIEL.getLabel()));
-		langue = new JMenu(GestLangue.getInstance().getLocalizedText(IHM.LANGUE.getLabel()));
+		tutoriel = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.TUTORIEL.getLabel()));
+		langue = new JMenu(LanguageSelector.getInstance().getLocalizedText(ELabelUI.LANGUE.getLabel()));
 		separator_2 = new JSeparator();
-		aPropos = new JMenuItem(GestLangue.getInstance().getLocalizedText(IHM.ABOUT.getLabel()));
+		aPropos = new JMenuItem(LanguageSelector.getInstance().getLocalizedText(ELabelUI.ABOUT.getLabel()));
 				
 		//Ajout des objets au menu
 		
@@ -454,8 +455,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		//Menu "Quitter"
 		if (e.getSource() == quitter){
 			int option = JOptionPane.showConfirmDialog(null, 
-					GestLangue.getInstance().getLocalizedText(IHM.MES_QUITTER.getLabel()), 
-					GestLangue.getInstance().getLocalizedText(IHM.QUITTER.getLabel()), 
+					LanguageSelector.getInstance().getLocalizedText(ELabelUI.MES_QUITTER.getLabel()), 
+					LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER.getLabel()), 
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			
 			if(option == JOptionPane.YES_OPTION){
@@ -487,7 +488,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		if (e.getSource() == compteRendu){
 			if(Delivery.getEtape() == 2){
 				try {
-					new ReportStep2();
+					new Report();
 				} catch (WriteException e1) {
 					e1.printStackTrace();
 				}
@@ -522,13 +523,13 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 		}
 		
 		if (e.getSource()==(langueFR)) {
-			if (!GestLangue.getInstance().getCurrentLanguage().equals(Langue.FRANCAIS)) {
-				XmlLoader.setLangue(Langue.FRANCAIS.toString());
+			if (!LanguageSelector.getInstance().getCurrentLanguage().equals(ELanguage.FRANCAIS)) {
+				XmlLoader.setLangue(ELanguage.FRANCAIS.toString());
 				langueFR.setState(true);
-				GestLangue.getInstance().setLangue(Langue.FRANCAIS);
+				LanguageSelector.getInstance().setLangue(ELanguage.FRANCAIS);
 				int option = JOptionPane.showConfirmDialog(null, 
-						GestLangue.getInstance().getLocalizedText(IHM.QUITTER_LANGUE.getLabel()), 
-						GestLangue.getInstance().getLocalizedText(IHM.QUITTER.getLabel()), 
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER_LANGUE.getLabel()), 
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER.getLabel()), 
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				
 				if(option == JOptionPane.YES_OPTION){
@@ -536,13 +537,13 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 				}
 			}
 		} else if (e.getSource().equals(langueEN)) {
-			if (!GestLangue.getInstance().getCurrentLanguage().equals(Langue.ANGLAIS)) {
-				XmlLoader.setLangue(Langue.ANGLAIS.toString());
+			if (!LanguageSelector.getInstance().getCurrentLanguage().equals(ELanguage.ANGLAIS)) {
+				XmlLoader.setLangue(ELanguage.ANGLAIS.toString());
 				langueEN.setState(true);
-				GestLangue.getInstance().setLangue(Langue.ANGLAIS);
+				LanguageSelector.getInstance().setLangue(ELanguage.ANGLAIS);
 				int option = JOptionPane.showConfirmDialog(null, 
-						GestLangue.getInstance().getLocalizedText(IHM.QUITTER_LANGUE.getLabel()), 
-						GestLangue.getInstance().getLocalizedText(IHM.QUITTER.getLabel()), 
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER_LANGUE.getLabel()), 
+						LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER.getLabel()), 
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				
 				if(option == JOptionPane.YES_OPTION){
@@ -567,8 +568,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener, WindowL
 	public void windowClosing(WindowEvent arg0) {
 	
 		int option = JOptionPane.showConfirmDialog(null, 
-				GestLangue.getInstance().getLocalizedText(IHM.MES_QUITTER.getLabel()), 
-				GestLangue.getInstance().getLocalizedText(IHM.QUITTER.getLabel()), 
+				LanguageSelector.getInstance().getLocalizedText(ELabelUI.MES_QUITTER.getLabel()), 
+				LanguageSelector.getInstance().getLocalizedText(ELabelUI.QUITTER.getLabel()), 
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		
 		if(option == JOptionPane.YES_OPTION){

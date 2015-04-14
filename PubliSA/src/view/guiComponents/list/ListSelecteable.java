@@ -10,8 +10,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 import model.Delivery;
 import model.Model;
 import controller.ControllerFrame;
@@ -46,15 +47,15 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 		
 		if(model.getMainDelivery() != null){
 			if(model.getMainDelivery().getTarget() == Delivery.UBIK){
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE1_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE2_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE3_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE4_UBIK.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE1_UBIK.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE2_UBIK.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE3_UBIK.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE4_UBIK.getLabel()));
 			}
 			else{
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE1_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE2_UBIK.getLabel()));
-				listModel.addElement(GestLangue.getLocalizedText(IHM.TEXT_FLECHE3_THALES.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE1_UBIK.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE2_UBIK.getLabel()));
+				listModel.addElement(LanguageSelector.getLocalizedText(ELabelUI.TEXT_FLECHE3_THALES.getLabel()));
 			}
 		}
 		

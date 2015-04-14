@@ -1,4 +1,4 @@
-package loading;
+package controller.loading;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 
-public class FilterEXE extends FileFilter {
+public class FilterXLS extends FileFilter {
 
 	/** 
 	 * indique les fichiers dont l'extension sera 
@@ -28,8 +28,12 @@ public class FilterEXE extends FileFilter {
 	
 		if (i > 0 && i < nomFichier.length() - 1) {
 			String extension = nomFichier.substring(i+1).toLowerCase();
+
+			if(extension.equals("xls")){
+				return true;
+			}
 			
-			if(extension.equals("exe")){
+			if(extension.equals("xlsx")){
 				return true;
 			}
 		}
@@ -41,10 +45,6 @@ public class FilterEXE extends FileFilter {
 	 * méthode servant a décrire le filtre de fichier 
 	 */ 
 	public String getDescription() {
-	return "Exécutable (*.EXE)";
+	return "Document Excel (*.XLS, *.XLSX)";
 	}
-
-	
-
-
 }

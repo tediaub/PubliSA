@@ -1,7 +1,6 @@
 package view.guiComponents;
 
 import java.awt.CardLayout;
-import java.awt.Toolkit;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

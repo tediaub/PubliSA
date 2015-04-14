@@ -1,6 +1,5 @@
 package view.guiComponents.layer;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -12,12 +11,14 @@ import javax.swing.JLayer;
 import javax.swing.JTextField;
 import javax.swing.plaf.LayerUI;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 
 @SuppressWarnings("serial")
 public class MailRecipientLayerUI extends LayerUI<JTextField> {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void paint (Graphics g, JComponent c) {
 		super.paint (g, c);
@@ -43,6 +44,6 @@ public class MailRecipientLayerUI extends LayerUI<JTextField> {
 		int h = c.getHeight();
 		g2.setColor(new Color(140, 140, 140));
 		g2.setFont(new Font("Arial", Font.PLAIN, 12));
-		g2.drawString(GestLangue.getLocalizedText(IHM.MAIL_CORRESPONDANT_INDICATION.getLabel()), 5, h - 10);
+		g2.drawString(LanguageSelector.getLocalizedText(ELabelUI.MAIL_CORRESPONDANT_INDICATION.getLabel()), 5, h - 10);
 	}
 }

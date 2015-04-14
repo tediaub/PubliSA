@@ -9,13 +9,13 @@ import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Delivery;
 import model.Model;
 import model.saveLoad.XmlLoader;
 import view.guiComponents.DialogFlat;
 import view.guiComponents.frameOpening.OpeningFrame;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 public class OpeningController implements IFrameController {
 
@@ -49,8 +49,8 @@ public class OpeningController implements IFrameController {
 	
 	public void createUser(String name){
 		if(name.isEmpty()){
-			new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+			new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_NOM.getLabel()),
+					LanguageSelector.getLocalizedText(ELabelUI.MES_NOM_LIV.getLabel()),
 					DialogFlat.ERROR_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return;
@@ -62,8 +62,8 @@ public class OpeningController implements IFrameController {
 	
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
-			new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+			new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_NOM.getLabel()),
+					LanguageSelector.getLocalizedText(ELabelUI.MES_NOM_LIV.getLabel()),
 					DialogFlat.ERROR_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return;
@@ -72,8 +72,8 @@ public class OpeningController implements IFrameController {
 		for (int i = 0; i < model.getDeliveries().size(); i++) {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
-				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
+				new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_NOM.getLabel()),
+						LanguageSelector.getLocalizedText(ELabelUI.MES_NOM_IDENTIQUE_LIV.getLabel()),
 						DialogFlat.ERROR_OPERATION,
 						DialogFlat.ERROR_ICON);
 				return;
@@ -110,8 +110,8 @@ public class OpeningController implements IFrameController {
 	}
 	
 	public void closeAll(){
-		int option = new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.QUITTER.getLabel()),
-				GestLangue.getLocalizedText(IHM.MES_QUITTER.getLabel()),
+		int option = new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.QUITTER.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.MES_QUITTER.getLabel()),
 				DialogFlat.ASK_OPERATION,
 				DialogFlat.INFORMATION_ICON);
 		

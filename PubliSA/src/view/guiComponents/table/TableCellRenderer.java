@@ -8,8 +8,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 import model.Delivery;
 import controller.ControllerFrame;
 
@@ -38,7 +39,7 @@ public class TableCellRenderer extends DefaultTableCellRenderer {
 				isSelected, hasFocus, row, column);
 		
 		TableModel model = table.getModel();
-		if(model.getValueAt(row, nbCol).toString().contains(GestLangue.getLocalizedText(IHM.INDICATEUR_ERR.getLabel()))){
+		if(model.getValueAt(row, nbCol).toString().contains(LanguageSelector.getLocalizedText(ELabelUI.INDICATEUR_ERR.getLabel()))){
 			cell.setForeground(new Color(255, 153, 0));
 			cell.setFont(new Font("SansSerif", Font.BOLD, 12));
 		}

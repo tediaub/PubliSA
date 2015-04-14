@@ -17,14 +17,14 @@ import javax.swing.table.DefaultTableModel;
 
 import jxl.write.WriteException;
 
-import langue.GestLangue;
-import langue.IHM;
+import model.Delivery;
 import model.Model;
-import verification.ReportStep2;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.table.TableCellRenderer;
 import view.guiComponents.table.TableFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -32,6 +32,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.ControllerFrame;
+import controller.checking.Report;
 
 @SuppressWarnings("serial")
 public class PanelCheckStep2 extends PanelObserver implements ActionListener {
@@ -42,12 +43,14 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 	private JMenuItem iReport;
 	private JMenuItem iDeleteHeader;
 	private JMenuItem iDocX;
+	private JLabel lblNbFileSummary;
+	private JLabel lblNbFileFolder;
 	
-	private static String[] columns = {GestLangue.getLocalizedText(IHM.DCR.getLabel()),
-		GestLangue.getLocalizedText(IHM.COL_NOM_PLANCHE.getLabel()),
-		GestLangue.getLocalizedText(IHM.COL_NOM_SOMMAIRE.getLabel()),
-		GestLangue.getLocalizedText(IHM.OK_KO.getLabel()),
-		GestLangue.getLocalizedText(IHM.COMMENTAIRES.getLabel())};
+	private static String[] columns = {LanguageSelector.getLocalizedText(ELabelUI.DCR.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.COL_NOM_PLANCHE.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.COL_NOM_SOMMAIRE.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.OK_KO.getLabel()),
+		LanguageSelector.getLocalizedText(ELabelUI.COMMENTAIRES.getLabel())};
 
 	public PanelCheckStep2(ControllerFrame control) {
 		super(control);
@@ -66,10 +69,12 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 				RowSpec.decode("2px"),
 				FormFactory.UNRELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.UNRELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		JLabel lblName = new JLabel(GestLangue.getLocalizedText(IHM.RESULTAT_VERIF.getLabel()));
+		JLabel lblName = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.RESULTAT_VERIF.getLabel()));
 		lblName.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblName.setForeground(new Color(0, 119, 175));
 		add(lblName, "2, 2, 2, 1");
@@ -77,23 +82,29 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		SeparatorFlat separator = new SeparatorFlat();
 		add(separator, "2, 4, 4, 1, fill, fill");
 		
+		lblNbFileSummary = new JLabel();
+		add(lblNbFileSummary, "3, 6");
+		
+		lblNbFileFolder = new JLabel();
+		add(lblNbFileFolder, "3, 8");
+		
 		btnOptions = new ButtonFlat();
 		btnOptions.addActionListener(this);
-		btnOptions.setBackground(new Color(255, 255, 255));
-		btnOptions.setRolloverBackground(new Color(240, 240, 240));
+		btnOptions.setBackground(new Color(240, 240, 240));
+		btnOptions.setRolloverBackground(new Color(220, 220, 220));
 		btnOptions.setForeground(Color.WHITE);
 		btnOptions.setIcon(new ImageIcon(PanelCheckStep2.class.getResource("/iconeStep2/other.png")));
-		add(btnOptions, "4, 6");
+		add(btnOptions, "4, 6, 1, 3");
 		
-		popupMenu = new JPopupMenu();
-		popupMenu.setUI(new PopUpFlat());
-		iReport = new JMenuItem("Compte rendu");
+		iReport = new JMenuItem(LanguageSelector.getLocalizedText(ELabelUI.BT_COMPTE_RENDU.getLabel()));
 		iReport.addActionListener(this);
 		iDeleteHeader = new JMenuItem("suppr. Entete");
 		iDeleteHeader.addActionListener(this);
 		iDocX = new JMenuItem("doc machin");
 		iDocX.addActionListener(this);
 		
+		popupMenu = new JPopupMenu();
+		popupMenu.setUI(new PopUpFlat());
 		popupMenu.add(iReport);
 		popupMenu.add(iDeleteHeader);
 		popupMenu.add(iDocX);
@@ -104,8 +115,9 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		table.setWidth(2, 270);
 		table.setWidth(4, 500);
 		table.setDefaultRenderer(Object.class, new TableCellRenderer(control));
+		
 		scrollPane.setViewportView(table);
-		add(scrollPane, "2, 8, 3, 1, fill, fill");
+		add(scrollPane, "2, 10, 3, 1, fill, fill");
 		
 		update(control.getModel());
 	}
@@ -120,6 +132,18 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		}catch(NullPointerException e){
 			
 		}
+		
+		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
+			lblNbFileSummary.setText("Nombre de fichiers .PDF de la DCR dans le sommaire : " 
+					+ model.getMainDelivery().getNbFileSummary());
+			lblNbFileFolder.setText("Nombre de fichiers .PDF dans le dossier cible : "
+					+ model.getMainDelivery().getNbFileFolder());
+		}else if(model.getMainDelivery().getTarget() == Delivery.THALES){
+			lblNbFileSummary.setText("Nombre de fichiers .ASC et .SCH de la DCR dans le sommaire : "
+					+ model.getMainDelivery().getNbFileSummary());
+			lblNbFileFolder.setText("Nombre de fichiers .ASC et .SCH dans le dossier cible : "
+					+ model.getMainDelivery().getNbFileFolder());
+		}
 	}
 
 	@Override
@@ -129,7 +153,7 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		}
 		else if(e.getSource() == iReport){
 			try {
-				new ReportStep2(control, columns);
+				new Report(control, columns);
 			} catch (WriteException e1) {
 				e1.printStackTrace();
 			}
@@ -148,5 +172,7 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
     		g.setColor(new Color(220,220,220));
     		g.drawRect(0, 0, c.getWidth()-1, c.getHeight()-1);
     	}
+    	
+    	
     }
 }

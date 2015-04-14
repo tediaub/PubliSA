@@ -1,4 +1,4 @@
-package loading;
+package controller.loading;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 
-public class FilterCSV extends FileFilter {
+public class FilterDOC extends FileFilter {
 
 	/** 
 	 * indique les fichiers dont l'extension sera 
@@ -29,7 +29,11 @@ public class FilterCSV extends FileFilter {
 		if (i > 0 && i < nomFichier.length() - 1) {
 			String extension = nomFichier.substring(i+1).toLowerCase();
 
-			if(extension.equals("csv")){
+			if(extension.equals("doc")){
+				return true;
+			}
+			
+			if(extension.equals("docx")){
 				return true;
 			}
 		}
@@ -41,7 +45,7 @@ public class FilterCSV extends FileFilter {
 	 * méthode servant a décrire le filtre de fichier 
 	 */ 
 	public String getDescription() {
-	return "Classeur Excel (*.CSV)";
+	return "Document Word (*.DOC, *.DOCX)";
 	}
 
 	

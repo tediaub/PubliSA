@@ -1,16 +1,16 @@
-package verification;
+package controller.checking;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import loading.FilterOGC;
-import loading.LoadSaveFile;
 import model.Delivery;
 import model.files.FichierCSV;
 import model.files.FileOGC;
 import model.files.FileToCheck;
 import view.guiComponents.DialogFlat;
 import controller.ControllerFrame;
+import controller.loading.FilterOGC;
+import controller.loading.LoadSaveFile;
 
 public class Checking {
 
@@ -70,6 +70,9 @@ public class Checking {
 					}
 				}
 			}
+			
+			control.getModel().getMainDelivery().setNbFileFolder(listePlancheCheck.size());
+			control.getModel().getMainDelivery().setNbFileSummary(listePlancheOGC.size());
 			
 			//Calcul des fichier présents dans l'OGC
 			for(int i=0 ; i < listePlancheOGC.size(); i++){

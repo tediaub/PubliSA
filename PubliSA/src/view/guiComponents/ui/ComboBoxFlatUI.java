@@ -1,4 +1,4 @@
-package view.guiComponents;
+package view.guiComponents.ui;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -27,7 +27,7 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
 	private Color background = new Color(240,240,240);
 	private Color listRollOverBackgroung = new Color(0,63,113);
 	private Color buttonPressedBackgroung = new Color(0,119,175);
-	
+
 	protected JButton createArrowButton() {
 		ButtonScrollBar button = new ButtonScrollBar(SwingConstants.SOUTH, background, listRollOverBackgroung, buttonPressedBackgroung);
         button.setName("ComboBox.arrowButton");
@@ -44,7 +44,8 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
     /**
      * Paints the currently selected item.
      */
-    public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
+    @SuppressWarnings("unchecked")
+	public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
         ListCellRenderer renderer = comboBox.getRenderer();
         Component c;
 
@@ -108,9 +109,11 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
         return new PopUpFlat( comboBox );
     }
     
-    class PopUpFlat extends BasicComboPopup{
+    @SuppressWarnings("serial")
+	class PopUpFlat extends BasicComboPopup{
     	    	
-    	public PopUpFlat(JComboBox combo) {
+    	@SuppressWarnings("unchecked")
+		public PopUpFlat(JComboBox combo) {
 			super(combo);
 			setUI(new BasicPopupMenuUI());
 		}
@@ -129,7 +132,8 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
             setFocusable( false );
         }
         
-        protected void configureList() {
+        @SuppressWarnings("unchecked")
+		protected void configureList() {
             list.setFont( comboBox.getFont() );
             list.setForeground( Color.BLACK );
             list.setBackground( background );

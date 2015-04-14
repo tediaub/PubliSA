@@ -13,11 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.plaf.basic.BasicTextPaneUI;
 
-import loading.FilterPubliSaXml;
-import loading.LoadSaveFile;
 import view.guiComponents.ButtonFlat;
-import view.guiComponents.ComboBoxFlatUI;
 import view.guiComponents.TextFieldFlat;
+import view.guiComponents.ui.ComboBoxFlatUI;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -25,7 +23,10 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.OpeningController;
+import controller.loading.FilterPubliSaXml;
+import controller.loading.LoadSaveFile;
 
+@SuppressWarnings("serial")
 public class FirstLaunchPanel extends JPanel implements ActionListener {
 	
 	private boolean isLoaded = false;

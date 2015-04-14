@@ -13,6 +13,8 @@ import view.panel.PanelCheckStep2;
 import view.panel.PanelDcr;
 import view.panel.PanelOgc;
 
+import affichage.test;
+
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -67,6 +69,7 @@ public class PanelStep2 extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnValidate){
 			control.changeStep();
+			new test();
 		}
 	}
 }

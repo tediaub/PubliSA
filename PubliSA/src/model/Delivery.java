@@ -12,6 +12,9 @@ public class Delivery implements Serializable{
 
 	private String name;
 	
+	private int nbFileSummary;
+	private int nbFileFolder;
+	
 	private int target;
 	public static final int UBIK = 0;
 	public static final int THALES = 1;
@@ -173,5 +176,21 @@ public class Delivery implements Serializable{
 	public void setDataStep4(ArrayList<String[]> data){
 		dataStep4 = data;
 		model.notice();
+	}
+	
+	public void setNbFileSummary(int data){
+		nbFileSummary = data;
+	}
+	
+	public void setNbFileFolder(int data){
+		nbFileFolder = data;
+	}
+	
+	public int getNbFileSummary(){
+		return nbFileSummary;
+	}
+	
+	public int getNbFileFolder(){
+		return nbFileFolder;
 	}
 }

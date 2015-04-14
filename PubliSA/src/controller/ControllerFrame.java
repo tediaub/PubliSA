@@ -27,14 +27,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
-import langue.GestLangue;
-import langue.IHM;
+import controller.checking.Checking;
+
 import model.Delivery;
 import model.Mail;
 import model.Model;
 import model.files.FileOGC;
 import model.saveLoad.Serialization;
-import verification.Checking;
 import view.guiComponents.DialogFlat;
 import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.MainFrame;
@@ -46,6 +45,8 @@ import view.guiComponents.sideBar.blue.PanExtend;
 import view.guiComponents.sideBar.white.PanExtSettings;
 import view.guiComponents.tree.DeliveryTree;
 import view.guiComponents.tree.PanTree;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 public class ControllerFrame implements IFrameController{
 
@@ -167,8 +168,8 @@ public class ControllerFrame implements IFrameController{
 	
 	@Override
 	public void closeAll() {
-		int option = new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.QUITTER.getLabel()),
-				GestLangue.getLocalizedText(IHM.MES_QUITTER.getLabel()),
+		int option = new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.QUITTER.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.MES_QUITTER.getLabel()),
 				DialogFlat.CLOSE_OPERATION,
 				DialogFlat.INFORMATION_ICON);
 
@@ -218,8 +219,8 @@ public class ControllerFrame implements IFrameController{
 	
 	public void createDelivery(String name, int target){
 		if(name.isEmpty()){
-			new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-					GestLangue.getLocalizedText(IHM.MES_NOM_LIV.getLabel()),
+			new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_NOM.getLabel()),
+					LanguageSelector.getLocalizedText(ELabelUI.MES_NOM_LIV.getLabel()),
 					DialogFlat.ERROR_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return;
@@ -228,8 +229,8 @@ public class ControllerFrame implements IFrameController{
 		for (int i = 0; i < model.getDeliveries().size(); i++) {
 			String deliveryName = model.getDeliveries().get(i).getName();
 			if(deliveryName.equals(name)){
-				new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.ERREUR_NOM.getLabel()),
-						GestLangue.getLocalizedText(IHM.MES_NOM_IDENTIQUE_LIV.getLabel()),
+				new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.ERREUR_NOM.getLabel()),
+						LanguageSelector.getLocalizedText(ELabelUI.MES_NOM_IDENTIQUE_LIV.getLabel()),
 						DialogFlat.ERROR_OPERATION,
 						DialogFlat.ERROR_ICON);
 				return;
@@ -254,8 +255,8 @@ public class ControllerFrame implements IFrameController{
 		int option = JOptionPane.NO_OPTION;
 
 		if(d != null && d!= model.getMainDelivery()){
-			option = new DialogFlat().showDialog(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel()),
-					GestLangue.getLocalizedText(IHM.CHANGE_LIV.getLabel()),
+			option = new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.NOM_APPLI.getLabel()),
+					LanguageSelector.getLocalizedText(ELabelUI.CHANGE_LIV.getLabel()),
 					DialogFlat.ASK_OPERATION,
 					DialogFlat.INFORMATION_ICON);
 			
@@ -309,7 +310,7 @@ public class ControllerFrame implements IFrameController{
 				}
 			}
 		}
-		new DialogFlat().showDialog(GestLangue.getLocalizedText(GestLangue.getLocalizedText(IHM.NOM_APPLI.getLabel())),
+		new DialogFlat().showDialog(LanguageSelector.getLocalizedText(LanguageSelector.getLocalizedText(ELabelUI.NOM_APPLI.getLabel())),
 				"Suppression des entêtes terminée.\nLes fichiers modifiés ont été placés dans le dossier :\n" 
 						+ ogc.getParentFile().getPath() 
 						+ File.separator 

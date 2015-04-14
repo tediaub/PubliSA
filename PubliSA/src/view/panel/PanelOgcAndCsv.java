@@ -7,14 +7,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
-import langue.GestLangue;
-import langue.IHM;
-import loading.FilterCSV;
-import loading.FilterOGC;
-import loading.LoadSaveFile;
 import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -22,6 +19,9 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.ControllerFrame;
+import controller.loading.FilterCSV;
+import controller.loading.FilterOGC;
+import controller.loading.LoadSaveFile;
 
 @SuppressWarnings("serial")
 public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
@@ -68,7 +68,7 @@ public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
 		SeparatorFlat separatorFlat = new SeparatorFlat();
 		add(separatorFlat, "2, 4, 5, 1");
 		
-		JLabel lblOGC = new JLabel(GestLangue.getLocalizedText(IHM.OUVRIR_OGC_ETAPE4.getLabel()));
+		JLabel lblOGC = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.OUVRIR_OGC_ETAPE4.getLabel()));
   		lblOGC.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblOGC, "3, 6");
 		
@@ -83,7 +83,7 @@ public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
 		btnOGC.setBackground(new Color(240, 240, 240));
 		add(btnOGC, "5, 6, 1, 3, default, center");
 		
-		JLabel lblCSV = new JLabel(GestLangue.getLocalizedText(IHM.OUVRIR_CSV.getLabel()));
+		JLabel lblCSV = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.OUVRIR_CSV.getLabel()));
 		lblCSV.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblCSV, "3, 10");
 		

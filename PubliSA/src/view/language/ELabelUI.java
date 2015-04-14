@@ -1,4 +1,4 @@
-package langue;
+package view.language;
 
 /**
  * Ensemble des expressions utilises par l'IHM
@@ -6,7 +6,7 @@ package langue;
  *
  */
 
-public enum IHM {
+public enum ELabelUI {
 
 	NOM_APPLI("NOM_APPLI"),
 	ENTETE_FENETRE("ENTETE_FENETRE"),
@@ -215,7 +215,7 @@ public enum IHM {
 	protected String label;
 
 	/** Constructeur */
-	IHM(String pLabel) {
+	ELabelUI(String pLabel) {
 		this.label = pLabel;
 	}
 

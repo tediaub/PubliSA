@@ -8,11 +8,8 @@ import javax.swing.JFrame;
 
 import controller.OpeningController;
 
-import javax.swing.JPanel;
-
+@SuppressWarnings("serial")
 public class OpeningFrame extends JFrame {
-
-	private OpeningController control;
 
 	private PanelOpen panelMainFirstNew;
 	private AllDeliveryPanel panelAll;
@@ -22,9 +19,7 @@ public class OpeningFrame extends JFrame {
 	public static String PANEL_NEW_DELIVERY = "pNewDelivery";
 	public static String PANEL_ALL_DELIVERY = "pAllDelivery";
 	
-	public OpeningFrame(OpeningController control){
-		this.control = control;
-		
+	public OpeningFrame(OpeningController control){		
 		setTitle("PubliSA");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(OpeningFrame.class.getResource("/logo/logoPubliSA4.png")));
 		setUndecorated(true);

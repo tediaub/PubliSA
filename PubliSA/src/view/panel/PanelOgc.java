@@ -8,11 +8,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
-import langue.GestLangue;
-import langue.IHM;
 import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -55,15 +55,15 @@ public class PanelOgc extends PanelObserver implements ActionListener {
 		SeparatorFlat separator = new SeparatorFlat();
 		add(separator, "2, 4, 4, 1, fill, fill");
 		
-		JLabel lblNewLabel_1 = new JLabel(GestLangue.getLocalizedText(IHM.FICHIER_DEZIPPER.getLabel()));
+		JLabel lblNewLabel_1 = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.FICHIER_DEZIPPER.getLabel()));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		add(lblNewLabel_1, "3, 6");
 		
-		JLabel lblNewLabel_3 = new JLabel(GestLangue.getLocalizedText(IHM.OUVRIR_OGC.getLabel()));
+		JLabel lblNewLabel_3 = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.OUVRIR_OGC.getLabel()));
 		lblNewLabel_3.setFont(new Font("Dialog", Font.PLAIN, 12));
 		add(lblNewLabel_3, "3, 8");
 		
-		btnFolder = new ButtonFlat(GestLangue.getLocalizedText(IHM.PARCOURIR_VERIFIER.getLabel()));
+		btnFolder = new ButtonFlat(LanguageSelector.getLocalizedText(ELabelUI.PARCOURIR_VERIFIER.getLabel()));
 		btnFolder.addActionListener(this);
 		btnFolder.setRolloverBackground(new Color(0, 92, 136));
 		btnFolder.setBackground(new Color(0, 119, 175));

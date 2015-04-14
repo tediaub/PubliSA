@@ -3,8 +3,9 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import langue.GestLangue;
-import langue.IHM;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
+
 
 public class User implements Serializable{
 	
@@ -33,28 +34,28 @@ public class User implements Serializable{
 	
 	public void createBasicMail() {
 		addMail("AKKA pour Ubik",
-				GestLangue.getLocalizedText(IHM.MAIL_AKKA_U.getLabel()),
-				GestLangue.getLocalizedText(IHM.AKKA_UBIK_RECIPIENT.getLabel()),
-				GestLangue.getLocalizedText(IHM.AKKA_UBIK_OBJECT.getLabel()),
-				GestLangue.getLocalizedText(IHM.AKKA_UBIK_MESSAGE.getLabel()));
+				LanguageSelector.getLocalizedText(ELabelUI.MAIL_AKKA_U.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.AKKA_UBIK_RECIPIENT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.AKKA_UBIK_OBJECT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.AKKA_UBIK_MESSAGE.getLabel()));
 		
 		addMail("AKKA pour Thales",
-				GestLangue.getLocalizedText(IHM.MAIL_AKKA_T.getLabel()),
-				GestLangue.getLocalizedText(IHM.AKKA_THALES_RECIPIENT.getLabel()),
-				GestLangue.getLocalizedText(IHM.AKKA_THALES_OBJECT.getLabel()),
-				GestLangue.getLocalizedText(IHM.AKKA_THALES_MESSAGE.getLabel()));
+				LanguageSelector.getLocalizedText(ELabelUI.MAIL_AKKA_T.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.AKKA_THALES_RECIPIENT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.AKKA_THALES_OBJECT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.AKKA_THALES_MESSAGE.getLabel()));
 		
 		addMail("SOPRA",
-				GestLangue.getLocalizedText(IHM.MAIL_SOPRA.getLabel()),
-				GestLangue.getLocalizedText(IHM.SOPRA_RECIPIENT.getLabel()),
-				GestLangue.getLocalizedText(IHM.SOPRA_OBJECT.getLabel()),
-				GestLangue.getLocalizedText(IHM.SOPRA_MESSAGE.getLabel()));
+				LanguageSelector.getLocalizedText(ELabelUI.MAIL_SOPRA.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.SOPRA_RECIPIENT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.SOPRA_OBJECT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.SOPRA_MESSAGE.getLabel()));
 		
 		addMail("THALES",
-				GestLangue.getLocalizedText(IHM.MAIL_THALES.getLabel()),
-				GestLangue.getLocalizedText(IHM.THALES_RECIPIENT.getLabel()),
-				GestLangue.getLocalizedText(IHM.THALES_OBJECT.getLabel()),
-				GestLangue.getLocalizedText(IHM.THALES_MESSAGE.getLabel()));
+				LanguageSelector.getLocalizedText(ELabelUI.MAIL_THALES.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.THALES_RECIPIENT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.THALES_OBJECT.getLabel()),
+				LanguageSelector.getLocalizedText(ELabelUI.THALES_MESSAGE.getLabel()));
 	}
 	
 	public void addMail(String shortName, String name, String recipient, String object, String message){
