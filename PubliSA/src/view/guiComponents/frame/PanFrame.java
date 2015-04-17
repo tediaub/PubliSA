@@ -35,6 +35,8 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 	private JLabel lblDelivery;
 	private JLabel lblLogo;
 
+	private boolean isMaximized;
+
 	/**
 	 * Create the panel.
 	 */
@@ -76,6 +78,9 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 	}
 
 	public void mouseDragged(MouseEvent e) {
+		if(isMaximized == true){
+			isMaximized = control.maximizedFrame();
+		}
 		int x = e.getXOnScreen() - pointMouse.x;
 		int y = e.getYOnScreen() - pointMouse.y;
 		control.setFrameLocation(x, y);
@@ -88,7 +93,7 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 
 	public void mouseClicked(MouseEvent e) {
 		if(e.getClickCount() == 2){
-			control.maximizedFrame();
+			isMaximized = control.maximizedFrame();
 		}
 	}
 

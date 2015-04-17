@@ -41,9 +41,8 @@ public class PanelStep3 extends JPanel implements ActionListener{
 				FormFactory.NARROW_LINE_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.NARROW_LINE_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),
-				RowSpec.decode("30px"),
 				FormFactory.DEFAULT_ROWSPEC,
+				RowSpec.decode("default:grow"),
 				FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
 		
 		PanelDcr panel = new PanelDcr(control);
@@ -62,7 +61,7 @@ public class PanelStep3 extends JPanel implements ActionListener{
 		btnCreate.setForeground(Color.WHITE);
 		btnCreate.setMargin(new Insets(2, 4, 2, 4));
 		btnCreate.setIconTextGap(15);
-		add(btnCreate, "1, 7, right, center");
+		add(btnCreate, "1, 6, right, top");
 	}
 
 	@Override

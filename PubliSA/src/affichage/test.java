@@ -85,7 +85,7 @@ public class test extends JDialog implements MouseListener, MouseMotionListener,
 		lblTitle.setForeground(Color.WHITE);
 		panelHigh.add(lblTitle, "2, 1, 2, 1, left, center");
 		
-		JLabel lblNewLabel = new JLabel("Veuillez exeuter ces t\u00E2ches :");
+		JLabel lblNewLabel = new JLabel("Veuillez executer ces t\u00E2ches :");
 		getContentPane().add(lblNewLabel, "2, 3");
 		
 		ButtonFlat btnDeleteHeader = new ButtonFlat("Supprimer les Ent\u00EAtes");
@@ -165,9 +165,8 @@ public class test extends JDialog implements MouseListener, MouseMotionListener,
 	}
 
 	@Override
-	public void maximizedFrame() {
-		// TODO Auto-generated method stub
-		
+	public boolean maximizedFrame() {
+		return false;
 	}
 
 	@Override

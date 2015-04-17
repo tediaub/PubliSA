@@ -1,8 +1,6 @@
 package controller;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Desktop;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
@@ -27,44 +25,20 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
-import controller.checking.Checking;
-
 import model.Delivery;
 import model.Mail;
 import model.Model;
 import model.files.FileOGC;
 import model.saveLoad.Serialization;
 import view.guiComponents.DialogFlat;
-import view.guiComponents.frame.LabelResize;
 import view.guiComponents.frame.MainFrame;
-import view.guiComponents.frame.PanFrame;
-import view.guiComponents.sideBar.PanTransparent;
-import view.guiComponents.sideBar.SideBar;
-import view.guiComponents.sideBar.blue.PanCollapse;
-import view.guiComponents.sideBar.blue.PanExtend;
-import view.guiComponents.sideBar.white.PanExtSettings;
-import view.guiComponents.tree.DeliveryTree;
-import view.guiComponents.tree.PanTree;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
+import controller.checking.Checking;
 
 public class ControllerFrame implements IFrameController{
 
-	private MainFrame frame;
-	
-	private SideBar sideBarWhite;
-	private PanTransparent pTransWhite;
-	private PanExtSettings pExtWhite;
-	
-	private LabelResize lblResize;
-	
-	private SideBar sideBarBlue;
-	private PanExtend pExtBlue;
-	private PanCollapse pCollBlue;
-	private PanTransparent pTransBlue;
-
-	private PanFrame pFrame;
-
+	private MainFrame frame;	
 	private Model model;
 	
 	public ControllerFrame(Model model){
@@ -84,55 +58,20 @@ public class ControllerFrame implements IFrameController{
 		frame.setVisible(b);
 	}
 	
-	public void createTree(Container container){
-		DeliveryTree tree = new DeliveryTree(this);
-		tree.setOpaque(false);
-		lblResize = new LabelResize(this);
-		PanTree pTree = new PanTree(tree, lblResize);
-		container.add(pTree, BorderLayout.EAST);
-		
-		model.addObserver(tree);
-	}
-	
-	public void createHighFrame(Container container){
-		pFrame = new PanFrame(this);
-		container.add(pFrame, BorderLayout.NORTH);
-		
-		model.addObserver(pFrame);
-	}
-	
-	public SideBar createSideBarWhite(Container container){
-		pExtWhite = new PanExtSettings(this);
-		pTransWhite = new PanTransparent(this);
-		sideBarWhite = new SideBar(SideBar.RIGHTtoLEFT, 900, pExtWhite, pTransWhite);
-		container.add(sideBarWhite);
-		return sideBarWhite;
-	}
-	
-	public SideBar createSideBarBlue(Container container){
-		pExtBlue = new PanExtend(this);
-		pCollBlue = new PanCollapse(this);
-		pTransBlue = new PanTransparent(this);
-		sideBarBlue = new SideBar(SideBar.LEFTtoRIGHT, 50, 200, pExtBlue, pCollBlue, pTransBlue);
-		container.add(sideBarBlue);
-
-		return sideBarBlue;
-	}
-	
 	public void extSideBarWhite(){
-		sideBarWhite.extendSideBar();
+		frame.extSideBarWhite();
 	}
 	
 	public void colSideBarWhite(){
-		sideBarWhite.collapseSideBar();
+		frame.colSideBarWhite();
 	}
 	
 	public void extSideBarBlue(){
-		sideBarBlue.extendSideBar();
+		frame.extSideBarBlue();
 	}
 	
 	public void colSideBarBlue(){
-		sideBarBlue.collapseSideBar();
+		frame.colSideBarBlue();
 	}
 	
 	public Point getMouseOnFrame(int xMouse, int yMouse){
@@ -149,16 +88,18 @@ public class ControllerFrame implements IFrameController{
 		frame.setExtendedState(Frame.ICONIFIED);
 	}
 	
-	public void maximizedFrame(){
+	public boolean maximizedFrame(){
 		Rectangle usableBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		frame.setMaximizedBounds(new Rectangle(0, 0, usableBounds.width, usableBounds.height));
 		frame.setExtendedState((frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH ? JFrame.NORMAL : JFrame.MAXIMIZED_BOTH);
 		if(frame.getExtendedState() == Frame.MAXIMIZED_BOTH){
 			frame.getRootPane().setBorder(null);
-			lblResize.setVisible(false);
+			frame.setResizable(false);
+			return true;
 		}else{
 			frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40)));
-			lblResize.setVisible(true);
+			frame.setResizable(true);
+			return false;
 		}
 	}
 	
@@ -491,9 +432,9 @@ public class ControllerFrame implements IFrameController{
 	    	if(Desktop.getDesktop().isSupported(Desktop.Action.MAIL)){
 	    		try {
 					 Desktop.getDesktop().mail(new URI("mailto", recipient + "?subject=" + object +"&body=" + message, null));
-				 } catch (IOException e1) {
+				 } catch (IOException e1){
 					 e1.printStackTrace();
-				 } catch (URISyntaxException e1) {
+				 } catch (URISyntaxException e1){
 					 e1.printStackTrace();
 				 }
 	    	}

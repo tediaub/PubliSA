@@ -19,12 +19,11 @@ import view.language.LanguageSelector;
 @SuppressWarnings("serial")
 public class DcrLayerUI extends LayerUI<JTextField> {
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void paint (Graphics g, JComponent c) {
 		super.paint (g, c);
  
-		JLayer jlayer = (JLayer)c;
+		JLayer<?> jlayer = (JLayer<?>)c;
 		JTextField ftf = (JTextField)jlayer.getView();
    
 		String text = ftf.getText();

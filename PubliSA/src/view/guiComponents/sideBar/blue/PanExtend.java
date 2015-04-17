@@ -156,8 +156,8 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		if(e.getSource() == btnExtend){
 			control.colSideBarBlue();
 		}else if(e.getSource() == btnSettings){
-			control.colSideBarBlue();
 			control.extSideBarWhite();
+			control.colSideBarBlue();
 		}else if(e.getSource() == btnSave){
 			control.save();
 			panSave.processEnd();

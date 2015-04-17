@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import view.guiComponents.TabbedPaneFlat;
 import view.guiComponents.frame.PanButtonFrame;
-import view.panel.PanelDetail;
+import view.panel.PanelAbout;
 import view.panel.PanelMail;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -69,7 +69,7 @@ public class PanExtSettings extends JPanel implements ActionListener, MouseMotio
 			tabbedPane.addTab(control.getModel().getUser().getMails().get(i).getShortTitle(),
 					new PanelMail(control, control.getModel().getUser().getMails().get(i)), false);
 		}
-		PanelDetail panDetail = new PanelDetail();
+		PanelAbout panDetail = new PanelAbout();
 		tabbedPane.addTab(panDetail.getName(), panDetail);
 		
 		add(tabbedPane, "2, 4, 3, 1, fill, fill");

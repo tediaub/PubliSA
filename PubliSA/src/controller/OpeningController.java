@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
 import model.Delivery;
+import model.Mail;
 import model.Model;
 import model.saveLoad.XmlLoader;
 import view.guiComponents.DialogFlat;
@@ -94,14 +95,16 @@ public class OpeningController implements IFrameController {
 		frame.setExtendedState(Frame.ICONIFIED);
 	}
 	
-	public void maximizedFrame(){
+	public boolean maximizedFrame(){
 		Rectangle usableBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		frame.setMaximizedBounds(new Rectangle(0, 0, usableBounds.width, usableBounds.height));
 		frame.setExtendedState((frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH ? JFrame.NORMAL : JFrame.MAXIMIZED_BOTH);
 		if(frame.getExtendedState() == Frame.MAXIMIZED_BOTH){
 			frame.getRootPane().setBorder(null);
+			return true;
 		}else{
 			frame.getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),2));
+			return false;
 		}
 	}
 	
@@ -169,5 +172,11 @@ public class OpeningController implements IFrameController {
 	@Override
 	public void save() {
 		
+	}
+	
+	public void setMail(Mail mail, String recipient, String object, String message) {		
+		mail.setRecipient(recipient);
+		mail.setObject(object);
+		mail.setMessage(message);
 	}
 }

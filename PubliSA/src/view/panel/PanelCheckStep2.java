@@ -21,6 +21,7 @@ import model.Delivery;
 import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableCellRenderer;
 import view.guiComponents.table.TableFlat;
 import view.language.ELabelUI;
@@ -35,7 +36,7 @@ import controller.ControllerFrame;
 import controller.checking.Report;
 
 @SuppressWarnings("serial")
-public class PanelCheckStep2 extends PanelObserver implements ActionListener {
+public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements ActionListener {
 	
 	private TableFlat table;
 	private ButtonFlat btnOptions;
@@ -116,6 +117,8 @@ public class PanelCheckStep2 extends PanelObserver implements ActionListener {
 		table.setWidth(4, 500);
 		table.setDefaultRenderer(Object.class, new TableCellRenderer(control));
 		
+		scrollPane.getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.setViewportView(table);
 		add(scrollPane, "2, 10, 3, 1, fill, fill");
 		

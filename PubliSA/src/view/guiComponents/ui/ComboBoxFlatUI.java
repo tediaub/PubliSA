@@ -46,7 +46,8 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
      */
     @SuppressWarnings("unchecked")
 	public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
-        ListCellRenderer renderer = comboBox.getRenderer();
+        @SuppressWarnings("rawtypes")
+		ListCellRenderer renderer = comboBox.getRenderer();
         Component c;
 
         if ( hasFocus && !isPopupVisible(comboBox) ) {
@@ -112,8 +113,7 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
     @SuppressWarnings("serial")
 	class PopUpFlat extends BasicComboPopup{
     	    	
-    	@SuppressWarnings("unchecked")
-		public PopUpFlat(JComboBox combo) {
+    	public PopUpFlat(JComboBox combo) {
 			super(combo);
 			setUI(new BasicPopupMenuUI());
 		}

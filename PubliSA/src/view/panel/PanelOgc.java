@@ -22,7 +22,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelOgc extends PanelObserver implements ActionListener {
+public class PanelOgc extends PanelObserver<ControllerFrame> implements ActionListener {
 
 	private ButtonFlat btnFolder;
 

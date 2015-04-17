@@ -14,7 +14,13 @@ import javax.swing.border.LineBorder;
 
 import model.Delivery;
 import model.Model;
+import view.guiComponents.sideBar.PanTransparent;
 import view.guiComponents.sideBar.SideBar;
+import view.guiComponents.sideBar.blue.PanCollapse;
+import view.guiComponents.sideBar.blue.PanExtend;
+import view.guiComponents.sideBar.white.PanExtSettings;
+import view.guiComponents.tree.DeliveryTree;
+import view.guiComponents.tree.PanTree;
 import view.step.PanelStep1;
 import view.step.PanelStep2;
 import view.step.PanelStep3;
@@ -25,6 +31,9 @@ import controller.ControllerFrame;
 public class MainFrame extends JFrame implements Observer{
 	
 	private JPanel cards;
+	private SideBar sideBarBlue;
+	private SideBar sideBarWhite;
+	private LabelResize lblResize;
 	
 	public MainFrame(ControllerFrame control) {		
 		setSize(1005, 650);
@@ -38,15 +47,37 @@ public class MainFrame extends JFrame implements Observer{
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ControllerFrame.class.getResource("/logo/logoPubliSA4.png")));
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setMinimumSize(new Dimension(1005, 150));
+		setMinimumSize(new Dimension(905, 530));
 		
-		SideBar sideBarWhite = control.createSideBarWhite(getContentPane());
-		SideBar sideBarBlue = control.createSideBarBlue(sideBarWhite.getContainerPane());
+		//SideBar White
+		PanExtSettings pExtWhite = new PanExtSettings(control);
+		PanTransparent pTransWhite = new PanTransparent(control);
+		sideBarWhite = new SideBar(SideBar.RIGHTtoLEFT, 900, pExtWhite, pTransWhite);
+		getContentPane().add(sideBarWhite);
+		
+		//SideBar Blue
+		PanExtend pExtBlue = new PanExtend(control);
+		PanCollapse pCollBlue = new PanCollapse(control);
+		PanTransparent pTransBlue = new PanTransparent(control);
+		sideBarBlue = new SideBar(SideBar.LEFTtoRIGHT, 50, 200, pExtBlue, pCollBlue, pTransBlue);
+		sideBarWhite.getContainerPane().add(sideBarBlue);
 		sideBarBlue.getContainerPane().setLayout(new BorderLayout(0, 0));
 		sideBarBlue.getContainerPane().setBackground(Color.WHITE);
-		control.createHighFrame(sideBarBlue.getContainerPane());
-		control.createTree(sideBarBlue.getContainerPane());
 		
+		//PanHighFrame
+		PanFrame pFrame = new PanFrame(control);
+		sideBarBlue.getContainerPane().add(pFrame, BorderLayout.NORTH);
+		control.getModel().addObserver(pFrame);
+		
+		//PanTree
+		DeliveryTree tree = new DeliveryTree(control);
+		tree.setOpaque(false);
+		lblResize = new LabelResize(control);
+		PanTree pTree = new PanTree(tree, lblResize);
+		sideBarBlue.getContainerPane().add(pTree, BorderLayout.EAST);
+		control.getModel().addObserver(tree);
+		
+		//PanCenter
 		cards = new JPanel(new CardLayout());
 		cards.setOpaque(false);
 		PanelStep1 panStep1 = new PanelStep1(control);
@@ -76,5 +107,27 @@ public class MainFrame extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg1) {
 		update((Model) o);
+	}
+	
+	public void extSideBarWhite(){
+		sideBarWhite.extendSideBar();
+	}
+	
+	public void colSideBarWhite(){
+		sideBarWhite.collapseSideBar();
+	}
+	
+	public void extSideBarBlue(){
+		sideBarBlue.extendSideBar();
+	}
+	
+	public void colSideBarBlue(){
+		sideBarBlue.collapseSideBar();
+	}
+	
+	@Override
+	public void setResizable(boolean resizable) {
+		super.setResizable(resizable);
+		lblResize.setVisible(resizable);
 	}
 }

@@ -14,6 +14,7 @@ import jxl.write.WriteException;
 import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableCellRenderer;
 import view.guiComponents.table.TableFlat;
 import view.language.ELabelUI;
@@ -28,7 +29,7 @@ import controller.ControllerFrame;
 import controller.checking.Report;
 
 @SuppressWarnings("serial")
-public class PanelCheckStep4 extends PanelObserver implements ActionListener {
+public class PanelCheckStep4 extends PanelObserver<ControllerFrame> implements ActionListener {
 
 	private TableFlat table;
 
@@ -76,6 +77,9 @@ public class PanelCheckStep4 extends PanelObserver implements ActionListener {
 		JScrollPane scrollPane = new JScrollPane();
 		table = new TableFlat(new DefaultTableModel(columns, 0));
 		table.setDefaultRenderer(Object.class, new TableCellRenderer((ControllerFrame)null));
+		
+		scrollPane.getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.setViewportView(table);
 		add(scrollPane, "2, 8, 2, 1, fill, fill");		
 	}

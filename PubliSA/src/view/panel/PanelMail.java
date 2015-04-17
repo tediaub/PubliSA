@@ -33,7 +33,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelMail extends PanelObserver implements ActionListener, KeyListener {
+public class PanelMail extends PanelObserver<ControllerFrame> implements ActionListener, KeyListener {
 	private JEditorPane taMessage;
 	private TextFieldFlat tfRecipient;
 	private TextFieldFlat tfObject;

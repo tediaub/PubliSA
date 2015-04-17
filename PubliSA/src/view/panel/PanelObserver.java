@@ -5,17 +5,17 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import controller.ControllerFrame;
 import model.Model;
+import controller.IFrameController;
 
 @SuppressWarnings("serial")
-public abstract class PanelObserver extends JPanel implements Observer {
+public abstract class PanelObserver<T> extends JPanel implements Observer {
 	
-	protected ControllerFrame control;
+	protected T control;
 	
-	public PanelObserver(ControllerFrame control){
+	public PanelObserver(T control){
 		this.control = control;
-		control.getModel().addObserver(this);
+		((IFrameController) control).getModel().addObserver(this);
 	}
 	
 	protected abstract void update(Model model);

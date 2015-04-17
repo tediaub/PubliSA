@@ -2,11 +2,13 @@ package controller;
 
 import java.awt.Point;
 
+import model.Model;
+
 public interface IFrameController {
 
 	void iconifiedFrame();
 
-	void maximizedFrame();
+	boolean maximizedFrame();
 
 	void closeFrame();
 	
@@ -19,5 +21,7 @@ public interface IFrameController {
 	Point getMouseOnFrame(int xOnScreen, int yOnScreen);
 	
 	void save();
+	
+	Model getModel();
 
 }

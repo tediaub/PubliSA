@@ -19,11 +19,11 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 @SuppressWarnings("serial")
-public class PanelDetail extends JPanel {
+public class PanelAbout extends JPanel {
 
 	String name = LanguageSelector.getLocalizedText(ELabelUI.DETAIL.getLabel());
 	
-	public PanelDetail(){
+	public PanelAbout(){
 		setOpaque(false);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -67,7 +67,7 @@ public class PanelDetail extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel();
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(PanelDetail.class.getResource("/logo/logoPubliSA4.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(PanelAbout.class.getResource("/logo/logoPubliSA4.png")));
 		add(lblNewLabel_1, "4, 6, 1, 7");
 		
 		JLabel lblNewLabel_3 = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.VERSION.getLabel()));
@@ -100,7 +100,7 @@ public class PanelDetail extends JPanel {
 		textPane.setEditable(false);
 		textPane.setContentType("text/html");
 		textPane.setText(
-			"<html>" + 
+			"<html>" +
 				"<style type=\"text/css\">"+
 			    	"body {background-color:#FFFFFF;font-family:Arial; font-size:11pt;}" +
 	        		".tr1 {background-color:#EEEEEE}" +

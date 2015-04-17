@@ -18,15 +18,17 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import model.Delivery;
+import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.frame.PanButtonFrame;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableAllDelivery;
 import view.guiComponents.table.TableFlat;
+import view.panel.PanelObserver;
 import controller.OpeningController;
 
 @SuppressWarnings("serial")
-public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMotionListener, ActionListener{
+public class AllDeliveryPanel extends PanelObserver<OpeningController> implements MouseListener, MouseMotionListener, ActionListener{
 
 	private OpeningController control;
 	private Point pointMouse;
@@ -35,6 +37,8 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 	private JScrollPane scrollPane;
 	
 	public AllDeliveryPanel(OpeningController control){
+		super(control);
+		
 		setSize(new Dimension(700, 400));
 		this.control = control;
 		
@@ -71,40 +75,9 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 		add(scrollPane);
 		
 		table = new TableAllDelivery(new DefaultTableModel(new Object[]{"Nom", "DCR", "Destinataire", "Etape"}, 0), control);
-		
-		for (int i = 0; i < control.getModel().getDeliveries().size(); i++) {
-			String[] s = new String[4];
-			s[0] = control.getModel().getDeliveries().get(i).getName();
-			s[1] = control.getModel().getDeliveries().get(i).getDCR();
-			
-			if(control.getModel().getDeliveries().get(i).getTarget() == Delivery.UBIK){
-				s[2] = "UBIK";
-			}else{
-				s[2] = "THALES";
-			}
-			
-			switch (control.getModel().getDeliveries().get(i).getHighestStep()) {
-			case Delivery.STEP1:
-				s[3] = "Etape1";
-				break;
-			case Delivery.STEP2:
-				s[3] = "Etape2";
-				break;
-			case Delivery.STEP3:
-				s[3] = "Etape3";
-				break;
-			case Delivery.STEP4:
-				s[3] = "Etape4";
-				break;
-
-			default:
-				break;
-			}
-			
-			table.addRow(s);
-		}
-		
 		scrollPane.setViewportView(table);
+		
+		update(control.getModel());
 	}
 	
 
@@ -154,6 +127,43 @@ public class AllDeliveryPanel extends JPanel implements MouseListener, MouseMoti
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnBack){
 			control.setViewPanel(OpeningFrame.PANEL_MAIN);
+		}
+	}
+
+
+	@Override
+	protected void update(Model model) {
+		table.clearTable();
+		for(int i = 0; i < control.getModel().getDeliveries().size(); i++) {
+			String[] s = new String[4];
+			s[0] = control.getModel().getDeliveries().get(i).getName();
+			s[1] = control.getModel().getDeliveries().get(i).getDCR();
+			
+			if(control.getModel().getDeliveries().get(i).getTarget() == Delivery.UBIK){
+				s[2] = "UBIK";
+			}else{
+				s[2] = "THALES";
+			}
+			
+			switch (control.getModel().getDeliveries().get(i).getHighestStep()) {
+			case Delivery.STEP1:
+				s[3] = "Etape1";
+				break;
+			case Delivery.STEP2:
+				s[3] = "Etape2";
+				break;
+			case Delivery.STEP3:
+				s[3] = "Etape3";
+				break;
+			case Delivery.STEP4:
+				s[3] = "Etape4";
+				break;
+
+			default:
+				break;
+			}
+			
+			table.addRow(s);
 		}
 	}
 }

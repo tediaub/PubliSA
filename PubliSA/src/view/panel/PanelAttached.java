@@ -21,7 +21,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelAttached extends PanelObserver {
+public class PanelAttached extends PanelObserver<ControllerFrame> {
 
 	private JLabel textInfo;
 

@@ -24,7 +24,7 @@ import controller.loading.FilterOGC;
 import controller.loading.LoadSaveFile;
 
 @SuppressWarnings("serial")
-public class PanelOgcAndCsv extends PanelObserver implements ActionListener{
+public class PanelOgcAndCsv extends PanelObserver<ControllerFrame> implements ActionListener{
 
 	private JLabel lblPathOGC;
 	private JLabel lblPathCSV;

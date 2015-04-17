@@ -25,7 +25,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelDcr extends PanelObserver implements KeyListener{
+public class PanelDcr extends PanelObserver<ControllerFrame> implements KeyListener{
 	
 	private TextFieldFlat textField;
 

@@ -28,7 +28,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelComputer extends PanelObserver implements KeyListener, ActionListener {
+public class PanelComputer extends PanelObserver<ControllerFrame> implements KeyListener, ActionListener {
 	
 	private RadioButtonFlat ckbSec;
 	private RadioButtonFlat ckbElac;

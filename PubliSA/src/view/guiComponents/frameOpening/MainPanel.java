@@ -8,10 +8,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import model.Model;
 import view.guiComponents.ButtonFlat;
+import view.panel.PanelObserver;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -21,7 +22,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.OpeningController;
 
 @SuppressWarnings("serial")
-public class MainPanel extends JPanel implements ActionListener{
+public class MainPanel extends PanelObserver<OpeningController> implements ActionListener{
 
 	private JLabel lblWelcome;
 	private ButtonFlat btnOpenDelivery;
@@ -34,6 +35,8 @@ public class MainPanel extends JPanel implements ActionListener{
 	 * Create the application.
 	 */
 	public MainPanel(OpeningController control) {
+		super(control);
+
 		setBounds(new Rectangle(0, 0, 340, 340));
 		setOpaque(false);
 		this.control = control;		
@@ -76,9 +79,6 @@ public class MainPanel extends JPanel implements ActionListener{
 		btnOpenDelivery.setIconTextGap(20);
 		btnOpenDelivery.setHorizontalAlignment(SwingConstants.LEFT);
 		btnOpenDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/iconeBegining/timer.png")));
-		if(control.getModel().getMainDelivery() == null){
-			btnOpenDelivery.setEnabled(false);
-		}
 		add(btnOpenDelivery, "2, 7, fill, fill");
 		
 		btnOtherDelivery = new ButtonFlat("Voir toutes les livraisons");
@@ -89,15 +89,14 @@ public class MainPanel extends JPanel implements ActionListener{
 		btnOtherDelivery.setIconTextGap(20);
 		btnOtherDelivery.setHorizontalAlignment(SwingConstants.LEFT);
 		btnOtherDelivery.setFont(new Font("Dialog", Font.PLAIN, 18));
-		if(control.getModel().getDeliveries().size() == 0){
-			btnOtherDelivery.setEnabled(false);
-		}
 		add(btnOtherDelivery, "2, 9, fill, fill");
 		
 		lblWelcome = new JLabel("Bienvenue");
 		lblWelcome.setFont(new Font("Arial", Font.PLAIN, 30));
 		lblWelcome.setForeground(Color.white);
 		add(lblWelcome, "2, 1, fill, fill");
+		
+		update(control.getModel());
 		
 		setVisible(true);
 	}
@@ -110,6 +109,20 @@ public class MainPanel extends JPanel implements ActionListener{
 			control.openDelivery();
 		}else if(ae.getSource() == btnOtherDelivery){
 			control.setViewPanel(OpeningFrame.PANEL_ALL_DELIVERY);
+		}
+	}
+
+	@Override
+	protected void update(Model model) {
+		if(control.getModel().getMainDelivery() == null){
+			btnOpenDelivery.setEnabled(false);
+		}else{
+			btnOpenDelivery.setEnabled(true);
+		}
+		if(control.getModel().getDeliveries().size() == 0){
+			btnOtherDelivery.setEnabled(false);
+		}else{
+			btnOtherDelivery.setEnabled(true);
 		}
 	}
 }
