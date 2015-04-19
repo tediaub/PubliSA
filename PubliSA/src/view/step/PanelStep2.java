@@ -13,7 +13,7 @@ import view.panel.PanelCheckStep2;
 import view.panel.PanelDcr;
 import view.panel.PanelOgc;
 
-import affichage.test;
+import affichage.DialogDocHeader;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -69,7 +69,7 @@ public class PanelStep2 extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnValidate){
 			control.changeStep();
-			new test();
+			new DialogDocHeader();
 		}
 	}
 }

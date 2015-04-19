@@ -104,7 +104,7 @@ public class ControllerFrame implements IFrameController{
 	}
 	
 	public void closeFrame(){
-		frame.dispose();
+		System.exit(0);
 	}
 	
 	@Override
@@ -439,5 +439,9 @@ public class ControllerFrame implements IFrameController{
 				 }
 	    	}
 	    }
+	}
+
+	public void deleteDelivery(Delivery delivery) {
+		model.getDeliveries().remove(delivery);	
 	}
 }

@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import model.Model;
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.frame.PanButtonFrame;
 
@@ -27,17 +28,17 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.IFrameController;
 
 @SuppressWarnings("serial")
-public class test extends JDialog implements MouseListener, MouseMotionListener, ActionListener, IFrameController {
+public class DialogDocHeader extends JDialog implements MouseListener, MouseMotionListener, ActionListener, IFrameController {
 
 	private Point pointMouse;
 	/**
 	 * Create the application.
 	 */
-	public test() {
+	public DialogDocHeader() {
 		setModal(true);
 		
 		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),1));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(test.class.getResource("/logo/logoPubliSA4.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DialogDocHeader.class.getResource("/logo/logoPubliSA4.png")));
 		setUndecorated(true);
 		
 		setSize(400, 240);
@@ -171,7 +172,6 @@ public class test extends JDialog implements MouseListener, MouseMotionListener,
 
 	@Override
 	public void closeFrame() {
-		System.out.println("test");
 		this.dispose();
 	}
 
@@ -201,5 +201,11 @@ public class test extends JDialog implements MouseListener, MouseMotionListener,
 	@Override
 	public void save() {
 		
+	}
+
+	@Override
+	public Model getModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

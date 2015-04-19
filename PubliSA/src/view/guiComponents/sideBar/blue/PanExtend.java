@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 import view.guiComponents.ButtonFlat;
 import view.guiComponents.ButtonFlatPopUp;
-import view.guiComponents.PopUpNewDeliveryPanel;
+import view.guiComponents.PanelPopUpNewDelivery;
 import view.guiComponents.SaveProgress;
 import view.guiComponents.ariane.Ariane;
 import view.guiComponents.list.ListSelecteable;
@@ -99,7 +99,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		pButtonUp.add(btnSave);
 		
 		btnNew = new ButtonFlatPopUp("Nouveau");
-		btnNew.setPopUpPanel(new PopUpNewDeliveryPanel(control, btnNew.getPopUp()));
+		btnNew.setPopUpPanel(new PanelPopUpNewDelivery(control, btnNew.getPopUp()));
 		btnNew.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnNew.setMargin(new Insets(2, 2, 2, 2));
 		btnNew.setIconTextGap(1);

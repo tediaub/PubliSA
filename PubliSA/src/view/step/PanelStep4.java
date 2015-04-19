@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import view.guiComponents.ButtonFlat;
+import view.guiComponents.DialogNew;
 import view.panel.PanelCheckStep4;
 import view.panel.PanelOgcAndCsv;
 
@@ -23,8 +24,12 @@ import controller.ControllerFrame;
 public class PanelStep4 extends JPanel implements ActionListener {
 
 	private ButtonFlat btnValidate;
+	
+	private ControllerFrame control;
 
 	public PanelStep4(ControllerFrame control) {
+		this.control = control;
+		
 		setOpaque(false);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("default:grow"),
@@ -55,9 +60,13 @@ public class PanelStep4 extends JPanel implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnValidate){
+			if(control.getModel().getUser().getDeleteFinishDelivery()){
+				control.deleteDelivery(control.getModel().getMainDelivery());
+			}
+			new DialogNew(control);
+		}		
 	}
 
 }

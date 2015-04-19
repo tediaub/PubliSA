@@ -25,7 +25,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
+public class PanelPopUpNewDelivery extends JPanel implements ActionListener {
 
 	private RadioButtonFlat rdbtnThales;
 	private RadioButtonFlat rdbtnUbik;
@@ -39,7 +39,7 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 	/**
 	 * Create the 
 	 */
-	public PopUpNewDeliveryPanel(ControllerFrame control, JPopupMenu popUp) {
+	public PanelPopUpNewDelivery(ControllerFrame control, JPopupMenu popUp) {
 		this.control = control;
 		this.popUp = popUp;
 		
@@ -104,9 +104,9 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 		add(lblNewLabel_1, "3, 14, 2, 1");
 		
 		rdbtnUbik = new RadioButtonFlat("UBIK");
-		rdbtnUbik.setSelectedIcon(new ImageIcon(PopUpNewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
-		rdbtnUbik.setIcon(new ImageIcon(PopUpNewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
-		rdbtnUbik.setRolloverIcon(new ImageIcon(PopUpNewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
+		rdbtnUbik.setSelectedIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
+		rdbtnUbik.setIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
+		rdbtnUbik.setRolloverIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
 		rdbtnUbik.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnUbik.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnUbik.setForeground(Color.BLACK);
@@ -114,9 +114,9 @@ public class PopUpNewDeliveryPanel extends JPanel implements ActionListener {
 		add(rdbtnUbik, "3, 16");
 		
 		rdbtnThales = new RadioButtonFlat("THALES");
-		rdbtnThales.setIcon(new ImageIcon(PopUpNewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
-		rdbtnThales.setRolloverIcon(new ImageIcon(PopUpNewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
-		rdbtnThales.setSelectedIcon(new ImageIcon(PopUpNewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
+		rdbtnThales.setIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
+		rdbtnThales.setRolloverIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
+		rdbtnThales.setSelectedIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
 		rdbtnThales.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnThales.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnThales.setForeground(Color.BLACK);

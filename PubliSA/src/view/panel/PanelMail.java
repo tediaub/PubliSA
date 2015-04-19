@@ -22,6 +22,7 @@ import view.guiComponents.ButtonFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 import view.guiComponents.layer.MailRecipientLayerUI;
+import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
 
@@ -120,6 +121,8 @@ public class PanelMail extends PanelObserver<ControllerFrame> implements ActionL
 		affMarqueurs.setText(LanguageSelector.getLocalizedText(ELabelUI.MARQUEURS.getLabel()));
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.setBorder(new LineBorder(new Color(192, 192, 192), 2));
 		add(scrollPane, "3, 17, fill, fill");
 		taMessage  = new JEditorPane();
