@@ -66,21 +66,11 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 		if (e.getValueIsAdjusting() == false) {
 			Delivery d = control.getModel().getMainDelivery();
 			if(d != null){
-				switch (getSelectedIndex()) {
-				case Delivery.STEP1:
+				if(getSelectedIndex()>=0 && getSelectedIndex() <= d.getHighestStep()){
 					d.setActualStep(getSelectedIndex());
-					break;
-				case Delivery.STEP2:
-					d.setActualStep(getSelectedIndex());
-					break;
-				case Delivery.STEP3:
-					d.setActualStep(getSelectedIndex());
-					break;
-				case Delivery.STEP4:
-					d.setActualStep(getSelectedIndex());
-					break;	
-				default:
-					break;
+				}
+				else{
+					return;
 				}
 			}
 			control.colSideBarBlue();

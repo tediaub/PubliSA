@@ -81,7 +81,6 @@ public class PanelOgc extends PanelObserver<ControllerFrame> implements ActionLi
 
 	@Override
 	protected void update(Model model) {
-		// TODO Auto-generated method stub
 		
 	}
 }

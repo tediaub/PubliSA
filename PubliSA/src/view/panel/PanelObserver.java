@@ -15,7 +15,7 @@ public abstract class PanelObserver<T> extends JPanel implements Observer {
 	
 	public PanelObserver(T control){
 		this.control = control;
-		((IFrameController) control).getModel().addObserver(this);
+		//((IFrameController) control).getModel().addObserver(this);
 	}
 	
 	protected abstract void update(Model model);

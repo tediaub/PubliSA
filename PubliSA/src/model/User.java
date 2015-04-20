@@ -33,25 +33,25 @@ public class User implements Serializable{
 	}
 	
 	public void createBasicMail() {
-		addMail("AKKA pour Ubik",
+		addMail("Email AKKA pour Ubik",
 				LanguageSelector.getLocalizedText(ELabelUI.MAIL_AKKA_U.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.AKKA_UBIK_RECIPIENT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.AKKA_UBIK_OBJECT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.AKKA_UBIK_MESSAGE.getLabel()));
 		
-		addMail("AKKA pour Thales",
+		addMail("Email AKKA pour Thales",
 				LanguageSelector.getLocalizedText(ELabelUI.MAIL_AKKA_T.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.AKKA_THALES_RECIPIENT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.AKKA_THALES_OBJECT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.AKKA_THALES_MESSAGE.getLabel()));
 		
-		addMail("SOPRA",
+		addMail("Email SOPRA",
 				LanguageSelector.getLocalizedText(ELabelUI.MAIL_SOPRA.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.SOPRA_RECIPIENT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.SOPRA_OBJECT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.SOPRA_MESSAGE.getLabel()));
 		
-		addMail("THALES",
+		addMail("Email THALES",
 				LanguageSelector.getLocalizedText(ELabelUI.MAIL_THALES.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.THALES_RECIPIENT.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.THALES_OBJECT.getLabel()),

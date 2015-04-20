@@ -18,8 +18,9 @@ public class FileOGC extends File {
 	 * Constructor for FichierOGC.
 	 * @param adresse String
 	 */
-	public FileOGC(String path) {
-		super(changeExt(path));
+	public FileOGC(String path){
+		super(path);
+		changeExt(path);
 	}
 	
 	/**
@@ -101,9 +102,10 @@ public class FileOGC extends File {
 	 * Method changeExt.
 	 * @return String
 	 */
-	public static String changeExt(String path){		
+	public String changeExt(String path){		
 	    if (path.substring(path.lastIndexOf(".")+1, path.length()).contains(";")){
 	    	path = path.substring(0, path.lastIndexOf(";"));
+	    	renameTo(new File(path));
 	    }
 	    return (path);
 	}

@@ -16,25 +16,34 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import model.Model;
+import model.Delivery;
+
 import view.guiComponents.ButtonFlat;
-import view.guiComponents.frame.PanButtonFrame;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controller.IFrameController;
+import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class DialogDocHeader extends JDialog implements MouseListener, MouseMotionListener, ActionListener, IFrameController {
+public class DialogDocHeader extends JDialog implements MouseListener, MouseMotionListener, ActionListener {
 
 	private Point pointMouse;
+	private ButtonFlat btnDeleteHeader;
+	private ButtonFlat btnOpenForm;
+	private ControllerFrame control;
+	private ButtonFlat btnSkip;
+	private ButtonFlat btnFileCheck;
 	/**
 	 * Create the application.
 	 */
-	public DialogDocHeader() {
+	public DialogDocHeader(ControllerFrame control) {
+		this.control = control;
+			
+		if(check())return;
+
 		setModal(true);
 		
 		getRootPane().setBorder(new LineBorder(new Color(0,0,0,40),1));
@@ -76,11 +85,6 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 			new RowSpec[] {
 				RowSpec.decode("50px"),}));
 		
-		PanButtonFrame panButtonFrame = new PanButtonFrame(this);
-		panButtonFrame.setIconifiedVisible(false);
-		panButtonFrame.setMaximizedVisible(false);
-		panelHigh.add(panButtonFrame, "3, 1, fill, fill");
-		
 		JLabel lblTitle = new JLabel("Avant de passer \u00E0 l'\u00E9tape suivante");
 		lblTitle.setFont(new Font("Arial", Font.BOLD, 16));
 		lblTitle.setForeground(Color.WHITE);
@@ -89,30 +93,102 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 		JLabel lblNewLabel = new JLabel("Veuillez executer ces t\u00E2ches :");
 		getContentPane().add(lblNewLabel, "2, 3");
 		
-		ButtonFlat btnDeleteHeader = new ButtonFlat("Supprimer les Ent\u00EAtes");
+		btnDeleteHeader = new ButtonFlat("Supprimer les Ent\u00EAtes");
+		btnDeleteHeader.addActionListener(this);
 		btnDeleteHeader.setForeground(Color.WHITE);
 		btnDeleteHeader.setRolloverBackground(new Color(0, 92, 136));
 		btnDeleteHeader.setBackground(new Color(0, 119, 175));
 		getContentPane().add(btnDeleteHeader, "2, 5");
 		
-		ButtonFlat btnOpenForm = new ButtonFlat("Ouvrir le formulaire EYDT");
+		btnFileCheck = new ButtonFlat("Ouvrir le logiciel FileCheck MD5");
+		btnFileCheck.addActionListener(this);
+		btnFileCheck.setForeground(Color.WHITE);
+		btnFileCheck.setRolloverBackground(new Color(0, 92, 136));
+		btnFileCheck.setBackground(new Color(0, 119, 175));
+		getContentPane().add(btnFileCheck, "2, 5");
+		
+		btnOpenForm = new ButtonFlat("Ouvrir le formulaire EYDT");
+		btnOpenForm.addActionListener(this);
 		btnOpenForm.setForeground(Color.WHITE);
 		btnOpenForm.setRolloverBackground(new Color(0, 92, 136));
 		btnOpenForm.setBackground(new Color(0, 119, 175));
-		getContentPane().add(btnOpenForm, "2, 7");		
+		getContentPane().add(btnOpenForm, "2, 7");
 		
-		ButtonFlat btnSkip = new ButtonFlat("Passer");
+		btnSkip = new ButtonFlat("Passer");
+		btnSkip.addActionListener(this);
 		btnSkip.setRolloverBackground(new Color(220, 220, 220));
 		btnSkip.setBackground(new Color(240, 240, 240));
 		getContentPane().add(btnSkip, "2, 9, right, bottom");
+		
+		if(control.getModel().getMainDelivery().getTarget() == Delivery.UBIK){
+			btnFileCheck.setVisible(false);
+			
+			if(!control.getModel().getMainDelivery().isHasOpenDocWord())btnOpenForm.setVisible(true);
+			if(!control.getModel().getMainDelivery().isHasDeleteHeader())btnDeleteHeader.setVisible(true);
+		}else if(control.getModel().getMainDelivery().getTarget() == Delivery.THALES){
+			btnFileCheck.setVisible(true);
+			btnOpenForm.setVisible(false);
+			btnDeleteHeader.setVisible(false);
+		}
+		
+		if(!control.getModel().getMainDelivery().isHasOpenDocWord()){
+			btnOpenForm.setVisible(true);
+		}else{
+			btnOpenForm.setVisible(false);
+		}
+		
+		if(!control.getModel().getMainDelivery().isHasOpenDocExe()){
+			btnFileCheck.setVisible(true);
+		}else{
+			btnFileCheck.setVisible(false);
+		}
+		
+		if(!control.getModel().getMainDelivery().isHasOpenDocWord()){
+			btnDeleteHeader.setVisible(true);
+		}else{
+			btnDeleteHeader.setVisible(false);
+		}
 		
 		setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getSource() == btnSkip){
+			dispose();
+		}else if(e.getSource() == btnOpenForm){
+			if(!control.openWord())return;
+			if(check())dispose();
+			btnOpenForm.setRolloverBackground(new Color(220, 220, 220));
+			btnOpenForm.setBackground(new Color(240, 240, 240));
+			btnOpenForm.setForeground(Color.BLACK);
+		}else if(e.getSource() == btnDeleteHeader){
+			if(!control.deleteHeader())return;
+			if(check())dispose();
+			btnDeleteHeader.setRolloverBackground(new Color(220, 220, 220));
+			btnDeleteHeader.setBackground(new Color(240, 240, 240));
+			btnDeleteHeader.setForeground(Color.BLACK);
+		}else if(e.getSource() == btnFileCheck){
+			if(!control.openExe())return;
+			if(check())dispose();
+			btnFileCheck.setRolloverBackground(new Color(220, 220, 220));
+			btnFileCheck.setBackground(new Color(240, 240, 240));
+			btnFileCheck.setForeground(Color.BLACK);
+		}
+	}
+	
+	public boolean check(){
+		if(control.getModel().getMainDelivery().getTarget() == Delivery.UBIK){
+			if(control.getModel().getMainDelivery().isHasDeleteHeader()
+					&& control.getModel().getMainDelivery().isHasOpenDocWord()){
+				return true;
+			}
+		}else if(control.getModel().getMainDelivery().getTarget() == Delivery.THALES){
+			if(control.getModel().getMainDelivery().isHasOpenDocExe()){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -157,55 +233,5 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void iconifiedFrame() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean maximizedFrame() {
-		return false;
-	}
-
-	@Override
-	public void closeFrame() {
-		this.dispose();
-	}
-
-	@Override
-	public void closeAll() {
-		this.dispose();
-	}
-
-	@Override
-	public void resizeFrame(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setFrameLocation(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Point getMouseOnFrame(int xOnScreen, int yOnScreen) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void save() {
-		
-	}
-
-	@Override
-	public Model getModel() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

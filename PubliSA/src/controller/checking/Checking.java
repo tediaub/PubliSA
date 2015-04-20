@@ -72,7 +72,7 @@ public class Checking {
 			}
 			
 			control.getModel().getMainDelivery().setNbFileFolder(listePlancheCheck.size());
-			control.getModel().getMainDelivery().setNbFileSummary(listePlancheOGC.size());
+			control.getModel().getMainDelivery().setNbFileSummary(listePlancheOGC.size()-tabDCR.length);
 			
 			//Calcul des fichier présents dans l'OGC
 			for(int i=0 ; i < listePlancheOGC.size(); i++){

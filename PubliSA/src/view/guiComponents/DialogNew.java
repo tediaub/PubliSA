@@ -46,6 +46,7 @@ public class DialogNew extends JDialog implements MouseListener, MouseMotionList
 	public DialogNew(ControllerFrame control) {
 		this.control = control;
 		
+		setModal(true);
 		setUndecorated(true);
 		setSize(450, 317);
 		

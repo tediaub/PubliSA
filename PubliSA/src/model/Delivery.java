@@ -42,6 +42,10 @@ public class Delivery implements Serializable{
 	private ArrayList<String[]> dataStep2 = new ArrayList<String[]>();
 	private ArrayList<String[]> dataStep4 = new ArrayList<String[]>();
 	
+	private boolean hasOpenDocExe = false;
+	private boolean hasOpenDocWord = false;
+	private boolean hasDeleteHeader = false;
+	
 	private Model model;
 	
 	public Delivery(String name, int target, Model model){
@@ -192,5 +196,29 @@ public class Delivery implements Serializable{
 	
 	public int getNbFileFolder(){
 		return nbFileFolder;
+	}
+	
+	public void setHasOpenDocExe(boolean hasOpenDocExe) {
+		this.hasOpenDocExe = hasOpenDocExe;
+	}
+
+	public boolean isHasOpenDocExe() {
+		return hasOpenDocExe;
+	}
+
+	public void setHasOpenDocWord(boolean hasOpenDocWord) {
+		this.hasOpenDocWord = hasOpenDocWord;
+	}
+
+	public boolean isHasOpenDocWord() {
+		return hasOpenDocWord;
+	}
+
+	public void setHasDeleteHeader(boolean hasDeleteHeader) {
+		this.hasDeleteHeader = hasDeleteHeader;
+	}
+
+	public boolean isHasDeleteHeader() {
+		return hasDeleteHeader;
 	}
 }

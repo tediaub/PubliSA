@@ -24,4 +24,5 @@ public interface IFrameController {
 	
 	Model getModel();
 
+	void openDelivery(String obj);
 }

@@ -43,9 +43,10 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 	private JPopupMenu popupMenu;
 	private JMenuItem iReport;
 	private JMenuItem iDeleteHeader;
-	private JMenuItem iDocX;
+	private JMenuItem iDocWord;
 	private JLabel lblNbFileSummary;
 	private JLabel lblNbFileFolder;
+	private JMenuItem iDocExe;
 	
 	private static String[] columns = {LanguageSelector.getLocalizedText(ELabelUI.DCR.getLabel()),
 		LanguageSelector.getLocalizedText(ELabelUI.COL_NOM_PLANCHE.getLabel()),
@@ -99,16 +100,19 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 		
 		iReport = new JMenuItem(LanguageSelector.getLocalizedText(ELabelUI.BT_COMPTE_RENDU.getLabel()));
 		iReport.addActionListener(this);
-		iDeleteHeader = new JMenuItem("suppr. Entete");
+		iDeleteHeader = new JMenuItem("Supprimer les en-têtes");
 		iDeleteHeader.addActionListener(this);
-		iDocX = new JMenuItem("doc machin");
-		iDocX.addActionListener(this);
+		iDocWord = new JMenuItem("Ouvrir le fichier EYDT");
+		iDocWord.addActionListener(this);
+		iDocExe = new JMenuItem("Ouvrir le logiciel FileCheck MD5");
+		iDocExe.addActionListener(this);
 		
 		popupMenu = new JPopupMenu();
 		popupMenu.setUI(new PopUpFlat());
 		popupMenu.add(iReport);
 		popupMenu.add(iDeleteHeader);
-		popupMenu.add(iDocX);
+		popupMenu.add(iDocWord);
+		popupMenu.add(iDocExe);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		table = new TableFlat(new DefaultTableModel(columns, 0));
@@ -141,11 +145,19 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 					+ model.getMainDelivery().getNbFileSummary());
 			lblNbFileFolder.setText("Nombre de fichiers .PDF dans le dossier cible : "
 					+ model.getMainDelivery().getNbFileFolder());
+			
+			iDocExe.setVisible(false);
+			iDocWord.setVisible(true);
+			iDeleteHeader.setVisible(true);
 		}else if(model.getMainDelivery().getTarget() == Delivery.THALES){
 			lblNbFileSummary.setText("Nombre de fichiers .ASC et .SCH de la DCR dans le sommaire : "
 					+ model.getMainDelivery().getNbFileSummary());
 			lblNbFileFolder.setText("Nombre de fichiers .ASC et .SCH dans le dossier cible : "
 					+ model.getMainDelivery().getNbFileFolder());
+			
+			iDocExe.setVisible(true);
+			iDocWord.setVisible(false);
+			iDeleteHeader.setVisible(false);
 		}
 	}
 
@@ -160,6 +172,12 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 			} catch (WriteException e1) {
 				e1.printStackTrace();
 			}
+		}else if(e.getSource() == iDeleteHeader){
+			control.deleteHeader();
+		}else if(e.getSource() == iDocWord){
+			control.openWord();
+		}else if(e.getSource() == iDocExe){
+			control.openExe();
 		}
 	}
 	

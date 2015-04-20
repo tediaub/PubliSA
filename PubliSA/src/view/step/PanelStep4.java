@@ -62,6 +62,7 @@ public class PanelStep4 extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnValidate){
+			System.out.println(control.getModel().getUser().getDeleteFinishDelivery());
 			if(control.getModel().getUser().getDeleteFinishDelivery()){
 				control.deleteDelivery(control.getModel().getMainDelivery());
 			}

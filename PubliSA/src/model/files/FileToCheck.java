@@ -33,6 +33,7 @@ public class FileToCheck extends File{
 	
 	public FileToCheck(ControllerFrame control, String path) {
 		super(path);
+		changeExt();
 		
 		this.control = control;
 		this.path = path;
@@ -242,5 +243,23 @@ public class FileToCheck extends File{
 	 */
 	public void setDCR(String DCR){
 		this.DCR = DCR;
+	}
+	
+	/**
+	 * Method changeExt.
+	 * @return String
+	 */
+	public String changeExt(){
+		String path = getPath();
+	    if (path.substring(path.lastIndexOf(".")+1, path.length()).contains(";")){
+	    	path = path.substring(0, path.lastIndexOf(";"));
+	    	renameTo(new File(path));
+	    }
+	    
+	    path = path.substring(0, path.lastIndexOf(".")+1)
+	    	+ path.substring(path.lastIndexOf(".")+1, path.length()).toUpperCase();
+	    
+	    renameTo(new File(path));
+	    return (path);
 	}
 }

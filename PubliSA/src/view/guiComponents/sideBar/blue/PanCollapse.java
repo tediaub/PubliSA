@@ -26,7 +26,7 @@ public class PanCollapse extends JPanel implements ActionListener {
 
 	private ControllerFrame controller;
 
-	private ButtonFlat btnSettings;
+	private ButtonFlat btnUser;
 
 	private Ariane pAriane;
 	/**
@@ -57,21 +57,21 @@ public class PanCollapse extends JPanel implements ActionListener {
 		btnCollapse.addActionListener(this);
 		add(btnCollapse, "1, 2");
 		
-		btnSettings = new ButtonFlat();
-		btnSettings.setPreferredSize(new Dimension(90, 60));
-		btnSettings.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/gear.png")));
-		btnSettings.setFocusPainted(false);
-		btnSettings.setRolloverBackground(new Color(0, 63, 113));
-		btnSettings.setOpaque(false);
-		btnSettings.addActionListener(this);
-		add(btnSettings, "1, 6");
+		btnUser = new ButtonFlat();
+		btnUser.setPreferredSize(new Dimension(90, 60));
+		btnUser.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/user.png")));
+		btnUser.setFocusPainted(false);
+		btnUser.setRolloverBackground(new Color(0, 63, 113));
+		btnUser.setOpaque(false);
+		btnUser.addActionListener(this);
+		add(btnUser, "1, 6");
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnCollapse){
 			controller.extSideBarBlue();
-		}else if(e.getSource() == btnSettings){
-			controller.extSideBarWhite();
+		}else if(e.getSource() == btnUser){
+			controller.openSettings(0);
 		}
 	}
 }

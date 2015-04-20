@@ -73,7 +73,7 @@ public class PanelMail extends PanelObserver<ControllerFrame> implements ActionL
 				RowSpec.decode("default:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
+				FormFactory.RELATED_GAP_ROWSPEC,}));
 		
 		JLabel lblTitle = new JLabel(mail.getTitle());
 		lblTitle.setFont(new Font("Arial", Font.BOLD, 16));
@@ -175,6 +175,5 @@ public class PanelMail extends PanelObserver<ControllerFrame> implements ActionL
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 }

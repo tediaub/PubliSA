@@ -5,14 +5,15 @@ import java.awt.event.MouseListener;
 
 import javax.swing.table.DefaultTableModel;
 
+import controller.IFrameController;
 import controller.OpeningController;
 
 @SuppressWarnings("serial")
 public class TableAllDelivery extends TableFlat implements MouseListener{
 
-	private OpeningController control;
+	private IFrameController control;
 	
-	public TableAllDelivery(DefaultTableModel dm, OpeningController control) {
+	public TableAllDelivery(DefaultTableModel dm, IFrameController control) {
 		super(dm);
 		this.control = control;
 		addMouseListener(this);

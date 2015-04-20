@@ -68,8 +68,8 @@ public class PanelStep2 extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnValidate){
+			new DialogDocHeader(control);
 			control.changeStep();
-			new DialogDocHeader();
 		}
 	}
 }

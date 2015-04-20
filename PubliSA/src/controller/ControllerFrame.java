@@ -58,12 +58,12 @@ public class ControllerFrame implements IFrameController{
 		frame.setVisible(b);
 	}
 	
-	public void extSideBarWhite(){
-		frame.extSideBarWhite();
+	public void openSettings(int i){
+		frame.showSettings(i);
 	}
 	
-	public void colSideBarWhite(){
-		frame.colSideBarWhite();
+	public void closeSettings(){
+		frame.unShowSettings();
 	}
 	
 	public void extSideBarBlue(){
@@ -149,12 +149,13 @@ public class ControllerFrame implements IFrameController{
 	}
 	
 	public void changeStep(){
-		int step = model.getMainDelivery().getActualStep() + 1;
-		if((step == Delivery.STEP3 &&model.getMainDelivery().getTarget() == Delivery.THALES)
+		int step = model.getMainDelivery().getActualStep();
+		System.out.println(step);
+		if((step == Delivery.STEP3 && model.getMainDelivery().getTarget() == Delivery.THALES)
 				||(step == Delivery.STEP4 && model.getMainDelivery().getTarget() == Delivery.UBIK)){
 			
 		}else{
-			model.getMainDelivery().setActualStep(model.getMainDelivery().getActualStep() + 1);
+			model.getMainDelivery().setActualStep(step + 1);
 		}
 	}
 	
@@ -231,13 +232,22 @@ public class ControllerFrame implements IFrameController{
 		file.renameTo(new File(folder.getAbsolutePath() + File.separator + file.getName()));
 	}
 	
-	public void deleteHeader(FileOGC ogc){
+	public boolean deleteHeader(){
+		FileOGC ogc = null;
+		try{
+			ogc = new FileOGC(model.getMainDelivery().getPathOGC());
+		}catch(NullPointerException ex){
+			new DialogFlat().showDialog("Erreur OGC",
+					"Aucun fichier OGC n'a été chargé",
+					DialogFlat.ERROR_OPERATION, DialogFlat.ERROR_ICON);
+			return false;
+		}
 		File[] fileList = ogc.getParentFile().listFiles();
 		
 		for(int i = 0; i< fileList.length; i++){
 			String fileName = fileList[i].getName();
 			int j = fileName.lastIndexOf('.');
-		
+			
 			if (j > 0 && j < fileName.length() - 1) {
 				String extension = fileName.substring(j+1).toLowerCase();
 				extension = extension.substring(0, 3);
@@ -251,14 +261,17 @@ public class ControllerFrame implements IFrameController{
 				}
 			}
 		}
-		new DialogFlat().showDialog(LanguageSelector.getLocalizedText(LanguageSelector.getLocalizedText(ELabelUI.NOM_APPLI.getLabel())),
-				"Suppression des entêtes terminée.\nLes fichiers modifiés ont été placés dans le dossier :\n" 
+		new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.NOM_APPLI.getLabel()),
+				"<html>Suppression des entêtes terminée.<br>Les fichiers modifiés ont été placés dans le dossier :<br>" 
 						+ ogc.getParentFile().getPath() 
 						+ File.separator 
 						+ model.getMainDelivery().getName()
-						+ ".",
+						+ ".</html>",
 				DialogFlat.INFORMATION_OPERATION,
 				DialogFlat.INFORMATION_ICON);
+		
+		model.getMainDelivery().setHasDeleteHeader(true);
+		return true;
 	}
 	
 	private void deleteFileHeader(File file, String stringToFind){
@@ -443,5 +456,39 @@ public class ControllerFrame implements IFrameController{
 
 	public void deleteDelivery(Delivery delivery) {
 		model.getDeliveries().remove(delivery);	
+	}
+
+	public boolean openWord() {
+		if(model.getUser().getPathWord().isEmpty()){
+			new DialogFlat().showDialog("PubliSA", "Vous devez définir le répertoire du fichier.\r\nAllez dans Réglages -> Répertoire Fichier EYDT",
+					DialogFlat.INFORMATION_OPERATION,
+					DialogFlat.ERROR_ICON);
+			return false;
+		}
+		try {
+			Desktop.getDesktop().open(new File(model.getUser().getPathWord()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		model.getMainDelivery().setHasOpenDocWord(true);
+		return true;
+	}
+	
+	public boolean openExe() {
+		if(model.getUser().getPathExe().isEmpty()){
+			new DialogFlat().showDialog("PubliSA", "Vous devez définir le répertoire du fichier.\r\nAllez dans Réglages -> Répertoire logiciel FileCheck",
+					DialogFlat.INFORMATION_OPERATION,
+					DialogFlat.ERROR_ICON);
+			return false;
+		}
+		try {
+			Desktop.getDesktop().open(new File(model.getUser().getPathExe()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		model.getMainDelivery().setHasOpenDocExe(true);
+		return true;
 	}
 }

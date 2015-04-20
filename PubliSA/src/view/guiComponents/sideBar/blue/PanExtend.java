@@ -127,18 +127,6 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		pButtonDown.setOpaque(false);
 		add(pButtonDown, "1, 6, 2, 1, fill, fill");
 		
-		btnUser = new ButtonFlat("Profil");
-		btnUser.setPreferredSize(new Dimension(90, 60));
-		btnUser.setFont(new Font("Dotum", Font.PLAIN, 11));
-		btnUser.setForeground(Color.WHITE);
-		btnUser.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnUser.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnUser.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/user.png")));
-		btnUser.setRolloverBackground(new Color(0, 63, 113));
-		btnUser.setOpaque(false);
-		btnUser.addActionListener(this);
-		pButtonDown.add(btnUser);
-		
 		btnSettings = new ButtonFlat("Réglages");
 		btnSettings.setPreferredSize(new Dimension(90, 60));
 		btnSettings.setFont(new Font("Dotum", Font.PLAIN, 11));
@@ -150,13 +138,28 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnSettings.setOpaque(false);
 		btnSettings.addActionListener(this);
 		pButtonDown.add(btnSettings);
+		
+		btnUser = new ButtonFlat("Profil");
+		btnUser.setPreferredSize(new Dimension(90, 60));
+		btnUser.setFont(new Font("Dotum", Font.PLAIN, 11));
+		btnUser.setForeground(Color.WHITE);
+		btnUser.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnUser.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnUser.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/user.png")));
+		btnUser.setRolloverBackground(new Color(0, 63, 113));
+		btnUser.setOpaque(false);
+		btnUser.addActionListener(this);
+		pButtonDown.add(btnUser);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnExtend){
 			control.colSideBarBlue();
 		}else if(e.getSource() == btnSettings){
-			control.extSideBarWhite();
+			control.openSettings(5);
+			control.colSideBarBlue();
+		}else if(e.getSource() == btnUser){
+			control.openSettings(0);
 			control.colSideBarBlue();
 		}else if(e.getSource() == btnSave){
 			control.save();

@@ -22,7 +22,7 @@ public class PanTransparent extends JPanel implements MouseListener{
 
 	public void mouseClicked(MouseEvent arg0) {
 		controller.colSideBarBlue();
-		controller.colSideBarWhite();
+		controller.closeSettings();
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
