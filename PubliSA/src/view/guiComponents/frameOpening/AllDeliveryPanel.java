@@ -57,6 +57,7 @@ public class AllDeliveryPanel extends PanelObserver<OpeningController> implement
 		
 		btnBack = new ButtonFlat("Liste des livraisons");
 		btnBack.addActionListener(this);
+
 		btnBack.setRolloverBackground(new Color(0,63,113));
 		btnBack.setBackground(new Color(0,119,175));
 		btnBack.setHorizontalAlignment(SwingConstants.LEFT);

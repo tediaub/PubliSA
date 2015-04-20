@@ -23,6 +23,7 @@ import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 import view.guiComponents.layer.MailRecipientLayerUI;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
+
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
 

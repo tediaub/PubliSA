@@ -18,6 +18,7 @@ import view.language.LanguageSelector;
 @SuppressWarnings("serial")
 public class MailRecipientLayerUI extends LayerUI<JTextField> {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void paint (Graphics g, JComponent c) {
 		super.paint (g, c);

@@ -29,6 +29,7 @@ import controller.ControllerFrame;
 import controller.checking.Report;
 
 @SuppressWarnings("serial")
+
 public class PanelCheckStep4 extends PanelObserver<ControllerFrame> implements ActionListener {
 
 	private TableFlat table;
