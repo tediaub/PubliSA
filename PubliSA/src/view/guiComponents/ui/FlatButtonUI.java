@@ -14,7 +14,7 @@ import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.plaf.synth.SynthButtonUI;
 import javax.swing.text.View;
 
-import view.guiComponents.ButtonFlat;
+import view.guiComponents.buttons.ButtonFlat;
 
 public class FlatButtonUI extends SynthButtonUI{
 

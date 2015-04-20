@@ -7,7 +7,7 @@ import model.Delivery;
 import model.files.FichierCSV;
 import model.files.FileOGC;
 import model.files.FileToCheck;
-import view.guiComponents.DialogFlat;
+import view.frame.dialog.DialogFlat;
 import controller.ControllerFrame;
 import controller.loading.FilterOGC;
 import controller.loading.LoadSaveFile;

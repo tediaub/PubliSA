@@ -29,8 +29,8 @@ public class ButtonScrollBar extends JButton {
         this.rollOverBackground = rollOverBackground;
     }
     
-    public void paint(Graphics g) {
-        Color origColor;
+    public void paint(Graphics g) {        
+    	Color origColor;
         boolean isPressed, isRollOver;
         int w, h, size;
 
@@ -47,6 +47,9 @@ public class ButtonScrollBar extends JButton {
         }else if(isRollOver){
         	c = getBackground();
         	g.setColor(rollOverBackground);
+        }else if(!isEnabled()){
+        	c = new Color(200,200,200);
+        	g.setColor(getBackground());
         }else{
         	c = selectedBackgroud;
         	g.setColor(getBackground());

@@ -25,6 +25,9 @@ public class User implements Serializable{
 	
 	private ArrayList<Mail> mails = new ArrayList<Mail>();
 	
+	private int frameWidth = 1000;
+	private int frameHeight = 650;
+	
 	public User(String name, Model model){
 		this.name = name;
 		this.model = model;
@@ -100,5 +103,21 @@ public class User implements Serializable{
 	public void setDeleteFinishDelivery(boolean deleteFinishDelivery){
 		this.deleteFinishDelivery = deleteFinishDelivery;
 		model.notice();
+	}
+
+	public void setFrameWidth(int frameWidth) {
+		this.frameWidth = frameWidth;
+	}
+
+	public int getFrameWidth() {
+		return frameWidth;
+	}
+
+	public void setFrameHeight(int frameHeight) {
+		this.frameHeight = frameHeight;
+	}
+
+	public int getFrameHeight() {
+		return frameHeight;
 	}
 }

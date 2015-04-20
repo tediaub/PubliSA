@@ -7,7 +7,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import view.guiComponents.frameOpening.OpeningFrame;
+import view.frame.frameOpening.OpeningFrame;
 import model.Model;
 import model.saveLoad.Serialization;
 import controller.OpeningController;

@@ -20,7 +20,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import model.Delivery;
-import view.guiComponents.DialogFlat;
+import view.frame.dialog.DialogFlat;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
 import controller.ControllerFrame;

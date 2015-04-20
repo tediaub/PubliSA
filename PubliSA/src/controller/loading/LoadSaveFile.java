@@ -9,7 +9,7 @@ import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 
-import view.guiComponents.DialogFlat;
+import view.frame.dialog.DialogFlat;
 
 /**
  */

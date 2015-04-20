@@ -11,7 +11,7 @@ import org.jdom.Element;
 import org.jdom.filter.Filter;
 import org.jdom.input.SAXBuilder;
 
-import view.guiComponents.DialogFlat;
+import view.frame.dialog.DialogFlat;
 import controller.OpeningController;
 
 public class XmlLoader{

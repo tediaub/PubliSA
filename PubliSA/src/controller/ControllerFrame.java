@@ -30,8 +30,8 @@ import model.Mail;
 import model.Model;
 import model.files.FileOGC;
 import model.saveLoad.Serialization;
-import view.guiComponents.DialogFlat;
-import view.guiComponents.frame.MainFrame;
+import view.frame.dialog.DialogFlat;
+import view.frame.mainFrame.MainFrame;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
 import controller.checking.Checking;
@@ -142,6 +142,8 @@ public class ControllerFrame implements IFrameController{
 			yF = frame.getY();
 		}
 		frame.setBounds(xF, yF, l, h);
+		model.getUser().setFrameWidth(l);
+		model.getUser().setFrameHeight(h);
 	}
 
 	public void save(){

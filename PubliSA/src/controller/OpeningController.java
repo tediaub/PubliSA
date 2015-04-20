@@ -13,8 +13,8 @@ import model.Delivery;
 import model.Mail;
 import model.Model;
 import model.saveLoad.XmlLoader;
-import view.guiComponents.DialogFlat;
-import view.guiComponents.frameOpening.OpeningFrame;
+import view.frame.dialog.DialogFlat;
+import view.frame.frameOpening.OpeningFrame;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
 
