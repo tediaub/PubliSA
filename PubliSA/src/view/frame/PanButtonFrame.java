@@ -29,32 +29,32 @@ public class PanButtonFrame extends JPanel implements ActionListener {
 		
 		btnIconified = new JButton();
 		btnIconified.setFocusable(false);
-		btnIconified.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/reduced/minusB.png")));
-		btnIconified.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/reduced/minusB.png")));
+		btnIconified.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/reduced/minusB.png")));
+		btnIconified.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/reduced/minusB.png")));
 		btnIconified.setContentAreaFilled(false);
 		btnIconified.addActionListener(this);
 		btnIconified.setPreferredSize(new Dimension(20, 20));
-		btnIconified.setIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/reduced/minus.png")));
+		btnIconified.setIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/reduced/minus.png")));
 		add(btnIconified);
 		
 		btnMaximized = new JButton();
 		btnMaximized.setFocusable(false);
-		btnMaximized.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/maximized/resizeB.png")));
-		btnMaximized.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/maximized/resizeB.png")));
+		btnMaximized.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/maximized/resizeB.png")));
+		btnMaximized.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/maximized/resizeB.png")));
 		btnMaximized.setContentAreaFilled(false);
 		btnMaximized.addActionListener(this);
 		btnMaximized.setPreferredSize(new Dimension(20, 20));
-		btnMaximized.setIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/maximized/resize.png")));
+		btnMaximized.setIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/maximized/resize.png")));
 		add(btnMaximized);
 		
 		btnClose = new JButton();
 		btnClose.setFocusable(false);
-		btnClose.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/closed/CrossB.png")));
-		btnClose.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/closed/CrossB.png")));
+		btnClose.setRolloverIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/closed/CrossB.png")));
+		btnClose.setSelectedIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/closed/CrossB.png")));
 		btnClose.setContentAreaFilled(false);
 		btnClose.addActionListener(this);
 		btnClose.setPreferredSize(new Dimension(20, 20));
-		btnClose.setIcon(new ImageIcon(PanFrame.class.getResource("/iconeFrame/closed/Cross.png")));
+		btnClose.setIcon(new ImageIcon(PanFrame.class.getResource("/icons/frame/closed/Cross.png")));
 		add(btnClose);
 	}
 

@@ -65,7 +65,7 @@ public class MainPanel extends PanelObserver<OpeningController> implements Actio
 		btnNewDelivery.setRolloverBackground(new Color(220, 220, 220));
 		btnNewDelivery.setBackground(new Color(255, 255, 255));
 		btnNewDelivery.addActionListener(this);
-		btnNewDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/iconeBegining/addDocument.png")));
+		btnNewDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/icons/begining/addDocument.png")));
 		btnNewDelivery.setIconTextGap(20);
 		btnNewDelivery.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewDelivery.setFont(new Font("Dialog", Font.PLAIN, 18));
@@ -78,14 +78,14 @@ public class MainPanel extends PanelObserver<OpeningController> implements Actio
 		btnOpenDelivery.setFont(new Font("Dialog", Font.PLAIN, 18));
 		btnOpenDelivery.setIconTextGap(20);
 		btnOpenDelivery.setHorizontalAlignment(SwingConstants.LEFT);
-		btnOpenDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/iconeBegining/timer.png")));
+		btnOpenDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/icons/begining/timer.png")));
 		add(btnOpenDelivery, "2, 7, fill, fill");
 		
 		btnOtherDelivery = new ButtonFlat("Voir toutes les livraisons");
 		btnOtherDelivery.setRolloverBackground(new Color(220, 220, 220));
 		btnOtherDelivery.setBackground(new Color(255, 255, 255));
 		btnOtherDelivery.addActionListener(this);
-		btnOtherDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/iconeBegining/checking.png")));
+		btnOtherDelivery.setIcon(new ImageIcon(MainPanel.class.getResource("/icons/begining/checking.png")));
 		btnOtherDelivery.setIconTextGap(20);
 		btnOtherDelivery.setHorizontalAlignment(SwingConstants.LEFT);
 		btnOtherDelivery.setFont(new Font("Dialog", Font.PLAIN, 18));

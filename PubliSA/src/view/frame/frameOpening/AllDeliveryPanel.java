@@ -64,7 +64,7 @@ public class AllDeliveryPanel extends PanelObserver<OpeningController> implement
 		btnBack.setIconTextGap(15);
 		btnBack.setFont(new Font("Arial", Font.PLAIN, 27));
 		btnBack.setForeground(Color.WHITE);
-		btnBack.setIcon(new ImageIcon(AllDeliveryPanel.class.getResource("/iconeSideBarBlue/back.png")));
+		btnBack.setIcon(new ImageIcon(AllDeliveryPanel.class.getResource("/icons/sideBarBlue/back.png")));
 		btnBack.setBounds(20, 23, 294, 40);
 		add(btnBack);
 		

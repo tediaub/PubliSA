@@ -52,14 +52,14 @@ public class PanCollapse extends JPanel implements ActionListener {
 		
 		btnCollapse = new JButton();
 		btnCollapse.setContentAreaFilled(false);
-		btnCollapse.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/menu.png")));
+		btnCollapse.setIcon(new ImageIcon(PanCollapse.class.getResource("/icons/sideBarBlue/menu.png")));
 		btnCollapse.setFocusPainted(false);
 		btnCollapse.addActionListener(this);
 		add(btnCollapse, "1, 2");
 		
 		btnUser = new ButtonFlat();
 		btnUser.setPreferredSize(new Dimension(90, 60));
-		btnUser.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/user.png")));
+		btnUser.setIcon(new ImageIcon(PanCollapse.class.getResource("/icons/sideBarBlue/user.png")));
 		btnUser.setFocusPainted(false);
 		btnUser.setRolloverBackground(new Color(0, 63, 113));
 		btnUser.setOpaque(false);

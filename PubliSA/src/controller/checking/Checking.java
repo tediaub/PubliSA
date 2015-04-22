@@ -41,7 +41,7 @@ public class Checking {
 		
 		try {
 			getOgc();
-			FileOGC OGC = new FileOGC(path);
+			FileOGC OGC = new FileOGC(FileOGC.changeExt(path));
 			getListOgc(OGC);
 			
 			String DCR = new String();
@@ -53,18 +53,18 @@ public class Checking {
 			for(int i = 0 ; i < subfiles.length; i++){
 				if(target == Delivery.UBIK){
 					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("PDF")){
-						FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
+						FileToCheck file = new FileToCheck(FileToCheck.changeExt(subfiles[i].getPath()));
 						listePlancheCheck.add(file);
 						checkFile(file, DCR);
 					}
 				}else if(target == Delivery.THALES){
 					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("ASC")){
-						FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
+						FileToCheck file = new FileToCheck(FileToCheck.changeExt(subfiles[i].getPath()));
 						listePlancheCheck.add(file);
 						checkFile(file, DCR);
 					}
 					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("SCH")){
-						FileToCheck file = new FileToCheck(control, subfiles[i].getPath());
+						FileToCheck file = new FileToCheck(FileToCheck.changeExt(subfiles[i].getPath()));
 						listePlancheCheck.add(file);
 						checkFile(file, DCR);
 					}
@@ -137,6 +137,7 @@ public class Checking {
 			
 			if(listePlancheOGC.get(j).contentEquals(file.getName())){
 				file.isPresent();
+				control.moveFile(file);
 				file.setDCR(DCR);
 				j =listePlancheOGC.size();
 			}

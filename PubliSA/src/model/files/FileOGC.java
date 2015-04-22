@@ -20,7 +20,6 @@ public class FileOGC extends File {
 	 */
 	public FileOGC(String path){
 		super(path);
-		changeExt(path);
 	}
 	
 	/**
@@ -102,12 +101,19 @@ public class FileOGC extends File {
 	 * Method changeExt.
 	 * @return String
 	 */
-	public String changeExt(String path){		
-	    if (path.substring(path.lastIndexOf(".")+1, path.length()).contains(";")){
+	public static String changeExt(String path){
+		File f = new File(path);
+	    
+		if (path.substring(path.lastIndexOf(".")+1, path.length()).contains(";")){
 	    	path = path.substring(0, path.lastIndexOf(";"));
-	    	renameTo(new File(path));
 	    }
-	    return (path);
+	    
+	    path = path.substring(0, path.lastIndexOf(".")+1)
+		    	+ path.substring(path.lastIndexOf(".")+1, path.length()).toUpperCase();
+	    
+	    f.renameTo(new File(path));
+	    
+	    return path;
 	}
 	
 	/**
@@ -117,5 +123,4 @@ public class FileOGC extends File {
 	public String getDCR(){
 		return this.DCR;
 	}
-
 }

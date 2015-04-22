@@ -72,7 +72,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		
 		btnExtend = new JButton();
 		btnExtend.setContentAreaFilled(false);
-		btnExtend.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/back.png")));
+		btnExtend.setIcon(new ImageIcon(PanExtend.class.getResource("/icons/sideBarBlue/back.png")));
 		btnExtend.addActionListener(this);
 		
 		pButtonUp = new JPanel();
@@ -90,7 +90,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnSave.addActionListener(this);
 		btnSave.setMargin(new Insets(2, 2, 2, 2));
 		btnSave.setIconTextGap(1);
-		btnSave.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/save.png")));
+		btnSave.setIcon(new ImageIcon(PanExtend.class.getResource("/icons/sideBarBlue/save.png")));
 		btnSave.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnSave.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSave.setForeground(Color.WHITE);
@@ -103,7 +103,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnNew.setFont(new Font("Dotum", Font.PLAIN, 11));
 		btnNew.setMargin(new Insets(2, 2, 2, 2));
 		btnNew.setIconTextGap(1);
-		btnNew.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/new.png")));
+		btnNew.setIcon(new ImageIcon(PanExtend.class.getResource("/icons/sideBarBlue/new.png")));
 		btnNew.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnNew.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnNew.setForeground(Color.WHITE);
@@ -133,7 +133,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnSettings.setForeground(Color.WHITE);
 		btnSettings.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSettings.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnSettings.setIcon(new ImageIcon(PanCollapse.class.getResource("/iconeSideBarBlue/gear.png")));
+		btnSettings.setIcon(new ImageIcon(PanCollapse.class.getResource("/icons/sideBarBlue/gear.png")));
 		btnSettings.setRolloverBackground(new Color(0, 63, 113));
 		btnSettings.setOpaque(false);
 		btnSettings.addActionListener(this);
@@ -145,7 +145,7 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		btnUser.setForeground(Color.WHITE);
 		btnUser.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnUser.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnUser.setIcon(new ImageIcon(PanExtend.class.getResource("/iconeSideBarBlue/user.png")));
+		btnUser.setIcon(new ImageIcon(PanExtend.class.getResource("/icons/sideBarBlue/user.png")));
 		btnUser.setRolloverBackground(new Color(0, 63, 113));
 		btnUser.setOpaque(false);
 		btnUser.addActionListener(this);

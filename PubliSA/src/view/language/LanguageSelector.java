@@ -35,7 +35,7 @@ public class LanguageSelector  {
 	 **/
 	public static void setLangue(ELanguage langue)
 	{
-		currentLanguage=langue;
+		currentLanguage = langue;
 		
 		// Ressource locale
 		messages = ResourceBundle.getBundle(DICTIONNAIRES,currentLanguage.getLocale());

@@ -113,7 +113,7 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
     @SuppressWarnings("serial")
 	class PopUpFlat extends BasicComboPopup{
     	    	
-    	public PopUpFlat(JComboBox combo) {
+    	public PopUpFlat(JComboBox<?> combo) {
 			super(combo);
 			setUI(new BasicPopupMenuUI());
 		}

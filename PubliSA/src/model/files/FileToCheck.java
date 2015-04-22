@@ -5,8 +5,6 @@ import java.io.File;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
 
-import controller.ControllerFrame;
-
 @SuppressWarnings("serial")
 public class FileToCheck extends File{
 
@@ -29,13 +27,9 @@ public class FileToCheck extends File{
 	protected boolean isPresent;
 	protected boolean exception;
 	
-	private ControllerFrame control;
-	
-	public FileToCheck(ControllerFrame control, String path) {
+	public FileToCheck(String path) {
 		super(path);
-		changeExt();
 		
-		this.control = control;
 		this.path = path;
 		this.isPresent = false;
 		this.name = super.getName();
@@ -225,8 +219,6 @@ public class FileToCheck extends File{
 	
 	public void isPresent(){
 		isPresent = true;
-		
-		control.moveFile(this);
 	}
 	
 	/**
@@ -249,17 +241,18 @@ public class FileToCheck extends File{
 	 * Method changeExt.
 	 * @return String
 	 */
-	public String changeExt(){
-		String path = getPath();
+	public static String changeExt(String path){
+		File f = new File(path);
+		
 	    if (path.substring(path.lastIndexOf(".")+1, path.length()).contains(";")){
 	    	path = path.substring(0, path.lastIndexOf(";"));
-	    	renameTo(new File(path));
 	    }
 	    
 	    path = path.substring(0, path.lastIndexOf(".")+1)
 	    	+ path.substring(path.lastIndexOf(".")+1, path.length()).toUpperCase();
 	    
-	    renameTo(new File(path));
-	    return (path);
+	    f.renameTo(new File(path));
+	    
+	    return path;
 	}
 }

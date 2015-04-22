@@ -462,7 +462,7 @@ public class ControllerFrame implements IFrameController{
 
 	public boolean openWord() {
 		if(model.getUser().getPathWord().isEmpty()){
-			new DialogFlat().showDialog("PubliSA", "Vous devez définir le répertoire du fichier.\r\nAllez dans Réglages -> Répertoire Fichier EYDT",
+			new DialogFlat().showDialog("PubliSA", "<html>Vous devez définir le répertoire du fichier.<br>Allez dans Réglages -> Répertoire Fichier EYDT</html>",
 					DialogFlat.INFORMATION_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return false;
@@ -479,7 +479,7 @@ public class ControllerFrame implements IFrameController{
 	
 	public boolean openExe() {
 		if(model.getUser().getPathExe().isEmpty()){
-			new DialogFlat().showDialog("PubliSA", "Vous devez définir le répertoire du fichier.\r\nAllez dans Réglages -> Répertoire logiciel FileCheck",
+			new DialogFlat().showDialog("PubliSA", "<html>Vous devez définir le répertoire du fichier.<br>Allez dans Réglages -> Répertoire logiciel FileCheck</html>",
 					DialogFlat.INFORMATION_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return false;

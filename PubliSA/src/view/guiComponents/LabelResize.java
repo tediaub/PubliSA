@@ -18,7 +18,7 @@ public class LabelResize extends JLabel implements MouseMotionListener {
 		super();
 		this.control = control;
 		setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
-		setIcon(new ImageIcon(LabelResize.class.getResource("/iconeResize/SWicon.png")));
+		setIcon(new ImageIcon(LabelResize.class.getResource("/icons/resize/SWicon.png")));
 		addMouseMotionListener(this);
 	}
 

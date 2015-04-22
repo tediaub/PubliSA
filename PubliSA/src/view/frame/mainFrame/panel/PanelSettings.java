@@ -66,8 +66,8 @@ public class PanelSettings extends JPanel implements ActionListener, MouseMotion
 		btnBack.setIconTextGap(20);
 		btnBack.setFont(new Font("Arial", Font.PLAIN, 30));
 		btnBack.setForeground(new Color(0, 119, 175));
-		btnBack.setIcon(new ImageIcon(PanelSettings.class.getResource("/iconeSideBarWhite/backBlue.png")));
-		btnBack.setRolloverIcon(new ImageIcon(PanelSettings.class.getResource("/iconeSideBarWhite/backBlueHover.png")));
+		btnBack.setIcon(new ImageIcon(PanelSettings.class.getResource("/icons/settings/backBlue.png")));
+		btnBack.setRolloverIcon(new ImageIcon(PanelSettings.class.getResource("/icons/settings/backBlueHover.png")));
 		btnBack.setContentAreaFilled(false);
 		btnBack.addActionListener(this);
 		add(btnBack, "2, 2");
@@ -85,7 +85,7 @@ public class PanelSettings extends JPanel implements ActionListener, MouseMotion
 		add(tabbedPane, "2, 4, 3, 1, fill, fill");
 		
 		lblResize = new LabelResize(control);
-		lblResize.setIcon(new ImageIcon(PanelSettings.class.getResource("/iconeResize/SWicon.png")));
+		lblResize.setIcon(new ImageIcon(PanelSettings.class.getResource("/icons/resize/SWicon.png")));
 		add(lblResize, "4, 5, right, top");
 	}
 

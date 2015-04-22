@@ -65,7 +65,7 @@ public class PanelAttached extends PanelObserver<ControllerFrame> {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(PanelAttached.class.getResource("/iconeAttachment/attachment.png")));
+		lblNewLabel.setIcon(new ImageIcon(PanelAttached.class.getResource("/icons/attachment/attachment.png")));
 		add(lblNewLabel, "3, 5, 1, 3");
 		
 		update(control.getModel());

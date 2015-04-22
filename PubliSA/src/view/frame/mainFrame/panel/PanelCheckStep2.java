@@ -94,7 +94,7 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 		btnOptions.setBackground(new Color(240, 240, 240));
 		btnOptions.setRolloverBackground(new Color(220, 220, 220));
 		btnOptions.setForeground(Color.WHITE);
-		btnOptions.setIcon(new ImageIcon(PanelCheckStep2.class.getResource("/iconeStep2/other.png")));
+		btnOptions.setIcon(new ImageIcon(PanelCheckStep2.class.getResource("/icons/step/other.png")));
 		add(btnOptions, "4, 6, 1, 3");
 		
 		iReport = new JMenuItem(LanguageSelector.getLocalizedText(ELabelUI.BT_COMPTE_RENDU.getLabel()));

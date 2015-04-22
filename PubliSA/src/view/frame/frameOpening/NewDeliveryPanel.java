@@ -108,9 +108,9 @@ public class NewDeliveryPanel extends JPanel implements ActionListener {
 		add(lblNewLabel_1, "3, 15, 2, 1");
 		
 		rdbtnUbik = new RadioButtonFlat("UBIK");
-		rdbtnUbik.setSelectedIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonValidateOpen.png")));
-		rdbtnUbik.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormalOpen.png")));
-		rdbtnUbik.setRolloverIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
+		rdbtnUbik.setSelectedIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/radioButton/radioButtonValidateOpen.png")));
+		rdbtnUbik.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/radioButton/radioButtonNormalOpen.png")));
+		rdbtnUbik.setRolloverIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/radioButton/radioButtonNormal.png")));
 		rdbtnUbik.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnUbik.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnUbik.setForeground(Color.WHITE);
@@ -118,9 +118,9 @@ public class NewDeliveryPanel extends JPanel implements ActionListener {
 		add(rdbtnUbik, "3, 17");
 		
 		rdbtnThales = new RadioButtonFlat("THALES");
-		rdbtnThales.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormalOpen.png")));
-		rdbtnThales.setRolloverIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
-		rdbtnThales.setSelectedIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeRadioButton/radioButtonValidateOpen.png")));
+		rdbtnThales.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/radioButton/radioButtonNormalOpen.png")));
+		rdbtnThales.setRolloverIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/radioButton/radioButtonNormal.png")));
+		rdbtnThales.setSelectedIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/radioButton/radioButtonValidateOpen.png")));
 		rdbtnThales.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnThales.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnThales.setForeground(Color.WHITE);
@@ -138,7 +138,7 @@ public class NewDeliveryPanel extends JPanel implements ActionListener {
 		
 		btnBack = new ButtonFlat("Nouvelle livraison");
 		btnBack.addActionListener(this);
-		btnBack.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/iconeSideBarBlue/back.png")));
+		btnBack.setIcon(new ImageIcon(NewDeliveryPanel.class.getResource("/icons/sideBarBlue/back.png")));
 		btnBack.setRolloverBackground(new Color(0, 63, 113));
 		btnBack.setOpaque(false);
 		btnBack.setIconTextGap(10);

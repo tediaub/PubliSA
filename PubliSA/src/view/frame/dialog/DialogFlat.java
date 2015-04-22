@@ -31,9 +31,9 @@ import com.jgoodies.forms.layout.RowSpec;
 public class DialogFlat extends JDialog implements MouseListener, MouseMotionListener, ActionListener{
 
 	//Icon
-	public static String INFORMATION_ICON = "/iconeDialog/info.png";
-	public static String ERROR_ICON = "/iconeDialog/error.png";
-	public static String WARNING_ICON = "/iconeDialog/warning.png";
+	public static String INFORMATION_ICON = "/icons/dialog/info.png";
+	public static String ERROR_ICON = "/icons/dialog/error.png";
+	public static String WARNING_ICON = "/icons/dialog/warning.png";
 	
 	//Button
 	public static int CLOSE_OPERATION = 0;

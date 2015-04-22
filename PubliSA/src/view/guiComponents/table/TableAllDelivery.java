@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import javax.swing.table.DefaultTableModel;
 
 import controller.IFrameController;
-import controller.OpeningController;
 
 @SuppressWarnings("serial")
 public class TableAllDelivery extends TableFlat implements MouseListener{

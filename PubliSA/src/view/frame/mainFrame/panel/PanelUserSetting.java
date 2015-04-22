@@ -89,9 +89,9 @@ public class PanelUserSetting extends PanelObserver<ControllerFrame> implements 
 		chckbxDeleteDelivery = new JCheckBox(LanguageSelector.getLocalizedText(ELabelUI.SUPPR_LIV_END.getLabel()));
 		chckbxDeleteDelivery.addActionListener(this);
 		chckbxDeleteDelivery.setFont(new Font("Arial", Font.PLAIN, 11));
-		chckbxDeleteDelivery.setIcon(new ImageIcon(PanelUserSetting.class.getResource("/iconeCheckBox/ckbUnvalidate.png")));
-		chckbxDeleteDelivery.setRolloverIcon(new ImageIcon(PanelUserSetting.class.getResource("/iconeCheckBox/ckbHover.png")));
-		chckbxDeleteDelivery.setSelectedIcon(new ImageIcon(PanelUserSetting.class.getResource("/iconeCheckBox/ckbValidate.png")));
+		chckbxDeleteDelivery.setIcon(new ImageIcon(PanelUserSetting.class.getResource("/icons/checkBox/ckbUnvalidate.png")));
+		chckbxDeleteDelivery.setRolloverIcon(new ImageIcon(PanelUserSetting.class.getResource("/icons/checkBox/ckbHover.png")));
+		chckbxDeleteDelivery.setSelectedIcon(new ImageIcon(PanelUserSetting.class.getResource("/icons/checkBox/ckbValidate.png")));
 		chckbxDeleteDelivery.setIconTextGap(20);
 		add(chckbxDeleteDelivery, "4, 6, 3, 1");
 		

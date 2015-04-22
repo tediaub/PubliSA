@@ -54,7 +54,7 @@ public class PanelStep2 extends JPanel implements ActionListener {
 		add(panel_2, "1, 5, 2, 1, fill, fill");
 		
 		btnValidate = new ButtonFlat("Valider");
-		btnValidate.setIcon(new ImageIcon(PanelStep2.class.getResource("/iconeStep2/validate.png")));
+		btnValidate.setIcon(new ImageIcon(PanelStep2.class.getResource("/icons/step/validate.png")));
 		btnValidate.addActionListener(this);
 		btnValidate.setRolloverBackground(new Color(53, 117, 48));
 		btnValidate.setBackground(new Color(78, 170, 70));

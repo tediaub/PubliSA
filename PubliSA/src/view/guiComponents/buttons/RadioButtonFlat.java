@@ -11,9 +11,9 @@ public class RadioButtonFlat extends JRadioButton {
 	public RadioButtonFlat(String text) {
 		super(text);
 		
-		setSelectedIcon(new ImageIcon(RadioButtonFlat.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
-		setRolloverIcon(new ImageIcon(RadioButtonFlat.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
-		setIcon(new ImageIcon(RadioButtonFlat.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
+		setSelectedIcon(new ImageIcon(RadioButtonFlat.class.getResource("/icons/radioButton/radioButtonValidate.png")));
+		setRolloverIcon(new ImageIcon(RadioButtonFlat.class.getResource("/icons/radioButton/radioButtonHoover.png")));
+		setIcon(new ImageIcon(RadioButtonFlat.class.getResource("/icons/radioButton/radioButtonNormal.png")));
 		setFont(new Font("Dialog", Font.PLAIN, 13));
 		setOpaque(false);
 	}

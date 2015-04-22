@@ -142,9 +142,9 @@ public class DialogNew extends JDialog implements MouseListener, MouseMotionList
 		getContentPane().add(lblNewLabel_1, "3, 15, 2, 1");
 		
 		rdbtnUbik = new RadioButtonFlat("UBIK");
-		rdbtnUbik.setSelectedIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
-		rdbtnUbik.setIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
-		rdbtnUbik.setRolloverIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
+		rdbtnUbik.setSelectedIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/icons/radioButton/radioButtonValidate.png")));
+		rdbtnUbik.setIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/icons/radioButton/radioButtonNormal.png")));
+		rdbtnUbik.setRolloverIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/icons/radioButton/radioButtonHoover.png")));
 		rdbtnUbik.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnUbik.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnUbik.setForeground(Color.BLACK);
@@ -152,9 +152,9 @@ public class DialogNew extends JDialog implements MouseListener, MouseMotionList
 		getContentPane().add(rdbtnUbik, "3, 17");
 		
 		rdbtnThales = new RadioButtonFlat("THALES");
-		rdbtnThales.setIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonNormal.png")));
-		rdbtnThales.setRolloverIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonHoover.png")));
-		rdbtnThales.setSelectedIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/iconeRadioButton/radioButtonValidate.png")));
+		rdbtnThales.setIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/icons/radioButton/radioButtonNormal.png")));
+		rdbtnThales.setRolloverIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/icons/radioButton/radioButtonHoover.png")));
+		rdbtnThales.setSelectedIcon(new ImageIcon(PanelPopUpNewDelivery.class.getResource("/icons/radioButton/radioButtonValidate.png")));
 		rdbtnThales.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnThales.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnThales.setForeground(Color.BLACK);
