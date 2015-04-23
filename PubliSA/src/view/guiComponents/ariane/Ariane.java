@@ -50,7 +50,7 @@ public class Ariane extends JPanel implements MouseListener, Observer {
 		setData(control.getModel());
 	}
 	
-	@Override
+	
 	public void paint(Graphics g) {
 		super.paint(g);
 		
@@ -169,7 +169,7 @@ public class Ariane extends JPanel implements MouseListener, Observer {
 		}
 	}
 	
-	@Override
+	
 	public void mouseClicked(MouseEvent e) {
 		Delivery d = control.getModel().getMainDelivery();
 		if(d!= null){
@@ -197,22 +197,22 @@ public class Ariane extends JPanel implements MouseListener, Observer {
 		
 	}
 	
-	@Override
+	
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+	
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+	
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -299,7 +299,7 @@ public class Ariane extends JPanel implements MouseListener, Observer {
 		}
 	}
 	
-	@Override
+	
 	public void update(Observable arg0, Object arg1) {
 		Model model = (Model)arg0;
 		setData(model);

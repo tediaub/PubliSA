@@ -128,7 +128,7 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 		update(control.getModel());
 	}
 	
-	@Override
+	
 	protected void update(Model model) {
 		table.clearTable();
 		try{
@@ -160,7 +160,7 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 		}
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnOptions){
 			popupMenu.show(btnOptions, 0, btnOptions.getHeight());
@@ -182,7 +182,7 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 	
 	class PopUpFlat extends BasicPopupMenuUI{
     	
-    	@Override
+    	
     	public void paint(Graphics g, JComponent c) {
     		//background
     		g.setColor(new Color(255,255,255));

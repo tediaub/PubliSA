@@ -50,13 +50,13 @@ public class ButtonFlatPopUp extends ButtonFlat implements ActionListener{
 		return popupMenu;
 	}
 	
-	@Override
+	
 	public void setSize(int width, int height) {
 		super.setSize(width, height);
 		midArrow = width/2;
 	}
 	
-	@Override
+	
 	public void setBounds(int x, int y, int width, int height) {
 		super.setBounds(x, y, width, height);
 		midArrow = width/2;
@@ -66,13 +66,13 @@ public class ButtonFlatPopUp extends ButtonFlat implements ActionListener{
 		panelPopUp.add(panel, "1, 2, fill, fill");
 	}
 	
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		popupMenu.show(this, 0, getHeight() - 5);
 	}
 	
 	private class panPopUp extends JPanel {		
-		@Override
+		
 		protected void paintComponent(Graphics g) {
 			g.setColor(new Color(220,220,220));
 			g.fillRect(0, marginHigh, getWidth(), getHeight() - marginHigh);

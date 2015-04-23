@@ -108,13 +108,13 @@ public class PanelOgcAndCsv extends PanelObserver<ControllerFrame> implements Ac
 		update(control.getModel());
 	}
 
-	@Override
+	
 	protected void update(Model model) {
 		lblPathOGC.setText(model.getMainDelivery().getPathOGC());
 		lblPathCSV.setText(model.getMainDelivery().getPathCSV());
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnCSV){
 			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathCSV(), "Ouvrir fichier CSV", new FilterCSV());

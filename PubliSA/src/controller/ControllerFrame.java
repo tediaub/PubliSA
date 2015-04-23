@@ -107,7 +107,6 @@ public class ControllerFrame implements IFrameController{
 		System.exit(0);
 	}
 	
-	@Override
 	public void closeAll() {
 		int option = new DialogFlat().showDialog(LanguageSelector.getLocalizedText(ELabelUI.QUITTER.getLabel()),
 				LanguageSelector.getLocalizedText(ELabelUI.MES_QUITTER.getLabel()),

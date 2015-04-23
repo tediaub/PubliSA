@@ -158,7 +158,7 @@ public class DialogFlat extends JDialog implements MouseListener, MouseMotionLis
 		return back;
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnOK || e.getSource() == btnYes || e.getSource() == btnQuit){
 			back = VALIDATE;
@@ -174,44 +174,44 @@ public class DialogFlat extends JDialog implements MouseListener, MouseMotionLis
 		}
 	}
 
-	@Override
+	
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getXOnScreen() - pointMouse.x;
 		int y = e.getYOnScreen() - pointMouse.y;
 		setLocation(x,y);
 	}
 
-	@Override
+	
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseClicked(MouseEvent e) {
 		
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		int xOrigin = e.getXOnScreen()- getX();
 		int yOrigin = e.getYOnScreen()- getY();
 		pointMouse = new Point(xOrigin, yOrigin);
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		

@@ -85,7 +85,7 @@ public class PanelProfil extends PanelObserver<ControllerFrame> implements Actio
 		update(control.getModel());
 	}
 	
-	@Override
+	
 	protected void update(Model model) {
 		table.clearTable();
 		for(int i = 0; i < control.getModel().getDeliveries().size(); i++) {
@@ -121,7 +121,7 @@ public class PanelProfil extends PanelObserver<ControllerFrame> implements Actio
 		}
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		

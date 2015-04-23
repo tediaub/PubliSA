@@ -151,7 +151,6 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 		setVisible(true);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnSkip){
 			dispose();
@@ -190,45 +189,45 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 		return false;
 	}
 
-	@Override
+	
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		int xOrigin = e.getXOnScreen()- getX();
 		int yOrigin = e.getYOnScreen()- getY();
 		pointMouse = new Point(xOrigin, yOrigin);
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getXOnScreen() - pointMouse.x;
 		int y = e.getYOnScreen() - pointMouse.y;
 		setLocation(x,y);
 	}
 
-	@Override
+	
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		

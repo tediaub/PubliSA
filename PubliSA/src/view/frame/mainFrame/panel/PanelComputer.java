@@ -125,7 +125,7 @@ public class PanelComputer extends PanelObserver<ControllerFrame> implements Key
 		}
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == ckbSec){
 			control.getModel().getMainDelivery().setComputer(Delivery.SEC);
@@ -136,18 +136,18 @@ public class PanelComputer extends PanelObserver<ControllerFrame> implements Key
 		}
 	}
 
-	@Override
+	
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void keyReleased(KeyEvent e) {
 		control.getModel().getMainDelivery().setStandard(textField.getText());
 	}
 
-	@Override
+	
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		

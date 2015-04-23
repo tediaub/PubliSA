@@ -20,7 +20,7 @@ public abstract class PanelObserver<T> extends JPanel implements Observer {
 	
 	protected abstract void update(Model model);
 
-	@Override
+	
 	public void update(Observable o, Object arg) {
 		update((Model) o);
 	}		

@@ -108,7 +108,7 @@ public class MainFrame extends JFrame implements Observer{
 		}
 	}
 
-	@Override
+	
 	public void update(Observable o, Object arg1) {
 		update((Model) o);
 	}
@@ -132,7 +132,7 @@ public class MainFrame extends JFrame implements Observer{
 		sideBarBlue.collapseSideBar();
 	}
 	
-	@Override
+	
 	public void setResizable(boolean resizable) {
 		super.setResizable(resizable);
 		lblResize.setVisible(resizable);

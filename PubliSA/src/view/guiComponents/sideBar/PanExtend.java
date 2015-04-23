@@ -167,13 +167,13 @@ public class PanExtend extends JPanel implements ActionListener, MouseMotionList
 		}
 	}
 
-	@Override
+	
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		

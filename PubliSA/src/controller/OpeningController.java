@@ -123,12 +123,10 @@ public class OpeningController implements IFrameController {
 		}
 	}
 
-	@Override
 	public void resizeFrame(int x, int y) {
 		
 	}
 
-	@Override
 	public Point getMouseOnFrame(int xMouse, int yMouse){
 		int xOrigin = xMouse- frame.getX();
 		int yOrigin = yMouse- frame.getY();
@@ -169,7 +167,6 @@ public class OpeningController implements IFrameController {
 		return xml;
 	}
 
-	@Override
 	public void save() {
 		
 	}

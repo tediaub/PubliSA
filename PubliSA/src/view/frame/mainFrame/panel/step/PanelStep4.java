@@ -59,7 +59,7 @@ public class PanelStep4 extends JPanel implements ActionListener {
 		add(btnValidate, "1, 5, right, center");
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnValidate){
 			System.out.println(control.getModel().getUser().getDeleteFinishDelivery());

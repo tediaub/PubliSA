@@ -152,14 +152,14 @@ public class PanelUserSetting extends PanelObserver<ControllerFrame> implements 
 		update(control.getModel());
 	}
 
-	@Override
+	
 	protected void update(Model model) {
 		lblFileCheck.setText(model.getUser().getPathExe());
 		lblDocEYDT.setText(model.getUser().getPathWord());
 		chckbxDeleteDelivery.setSelected(model.getUser().getDeleteFinishDelivery());
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnFileCheck){
 			String path = LoadSaveFile.loadFrame(control.getModel().getUser().getPathExe(), "Chemin FileCheck", new FilterEXE());

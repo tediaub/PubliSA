@@ -82,49 +82,49 @@ public class AllDeliveryPanel extends PanelObserver<OpeningController> implement
 	}
 	
 
-	@Override
+	
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		pointMouse = control.getMouseOnFrame(e.getXOnScreen(), e.getYOnScreen());
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getXOnScreen() - pointMouse.x;
 		int y = e.getYOnScreen() - pointMouse.y;
 		control.setFrameLocation(x, y);
 	}
 
-	@Override
+	
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 	}
 
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnBack){
 			control.setViewPanel(OpeningFrame.PANEL_MAIN);
@@ -132,7 +132,7 @@ public class AllDeliveryPanel extends PanelObserver<OpeningController> implement
 	}
 
 
-	@Override
+	
 	protected void update(Model model) {
 		table.clearTable();
 		for(int i = 0; i < control.getModel().getDeliveries().size(); i++) {

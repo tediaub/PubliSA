@@ -101,7 +101,7 @@ public class PanelSettings extends JPanel implements ActionListener, MouseMotion
 		tabbedPane.setSelectedIndex(index);
 	}
 
-	@Override
+	
 	public void mouseDragged(MouseEvent e) {
 		if(isMaximized == true){
 			isMaximized = control.maximizedFrame();
@@ -111,37 +111,37 @@ public class PanelSettings extends JPanel implements ActionListener, MouseMotion
 		control.setFrameLocation(x, y);
 	}
 
-	@Override
+	
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseClicked(MouseEvent e) {
 		if(e.getClickCount() == 2){
 			isMaximized = control.maximizedFrame();
 		}
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		pointMouse = control.getMouseOnFrame(e.getXOnScreen(), e.getYOnScreen());
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		

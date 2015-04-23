@@ -18,7 +18,7 @@ public class TableAllDelivery extends TableFlat implements MouseListener{
 		addMouseListener(this);
 	}
 
-	@Override
+	
 	public void mouseClicked(MouseEvent e) {
 		if(e.getClickCount() == 2){
 			Object obj = getModel().getValueAt(getSelectedRow(), 0);
@@ -28,23 +28,23 @@ public class TableAllDelivery extends TableFlat implements MouseListener{
 		}
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}

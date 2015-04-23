@@ -77,7 +77,7 @@ public class ListSelecteable extends JList<String> implements ListSelectionListe
 	    }
 	}
 
-	@Override
+	
 	public void update(Observable o, Object arg) {
 		Model model = (Model)o;
 		setData(model);	

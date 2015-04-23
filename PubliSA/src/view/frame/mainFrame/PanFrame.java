@@ -115,7 +115,7 @@ public class PanFrame extends JPanel implements MouseListener, MouseMotionListen
 		
 	}
 
-	@Override
+	
 	public void update(Observable o, Object arg) {
 		Model model = (Model)o;
 		setDeliveryText(model);

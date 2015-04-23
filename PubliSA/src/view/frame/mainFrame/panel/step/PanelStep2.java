@@ -64,7 +64,7 @@ public class PanelStep2 extends JPanel implements ActionListener {
 		add(btnValidate, "1, 7, right, center");
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnValidate){
 			new DialogDocHeader(control);

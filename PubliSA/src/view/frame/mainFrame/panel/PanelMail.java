@@ -142,14 +142,14 @@ public class PanelMail extends PanelObserver<ControllerFrame> implements ActionL
 		update(control.getModel());
 	}
 
-	@Override
+	
 	protected void update(Model model) {
 		tfRecipient.setText(mail.getRecipient());
 		tfObject.setText(mail.getObject());
 		taMessage.setText(mail.getMessage());
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnSave){
 			control.setMail(mail,
@@ -161,18 +161,18 @@ public class PanelMail extends PanelObserver<ControllerFrame> implements ActionL
 		}
 	}
 
-	@Override
+	
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void keyReleased(KeyEvent arg0) {
 		btnSave.setEnabled(true);
 	}
 
-	@Override
+	
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 	}

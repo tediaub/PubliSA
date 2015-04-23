@@ -14,11 +14,10 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
-
-import sun.swing.table.DefaultTableCellHeaderRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
 
 @SuppressWarnings("serial")
-public class FlatTableHeaderRenderer extends DefaultTableCellHeaderRenderer implements MouseListener {
+public class FlatTableHeaderRenderer extends DefaultTableCellRenderer implements MouseListener {
 	  
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 	      boolean hasFocus, int rowIndex, int vColIndex) {
@@ -80,30 +79,25 @@ public class FlatTableHeaderRenderer extends DefaultTableCellHeaderRenderer impl
 		
 	}
 
-	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent e) {
 		System.out.println("test");		
 	}
 
-	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		

@@ -101,7 +101,7 @@ public class MainPanel extends PanelObserver<OpeningController> implements Actio
 		setVisible(true);
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == btnNewDelivery){
 			control.setViewPanel(OpeningFrame.PANEL_NEW_DELIVERY);
@@ -112,7 +112,7 @@ public class MainPanel extends PanelObserver<OpeningController> implements Actio
 		}
 	}
 
-	@Override
+	
 	protected void update(Model model) {
 		if(control.getModel().getMainDelivery() == null){
 			btnOpenDelivery.setEnabled(false);

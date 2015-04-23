@@ -84,7 +84,7 @@ public class PanelCheckStep4 extends PanelObserver<ControllerFrame> implements A
 		add(scrollPane, "2, 8, 2, 1, fill, fill");		
 	}
 	
-	@Override
+	
 	protected void update(Model model) {
 		table.clearTable();
 		try{
@@ -96,7 +96,7 @@ public class PanelCheckStep4 extends PanelObserver<ControllerFrame> implements A
 		}
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnReport){
 			try {

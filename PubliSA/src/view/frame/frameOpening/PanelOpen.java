@@ -81,43 +81,43 @@ public class PanelOpen extends JPanel implements MouseListener, MouseMotionListe
 	    cl.show(cards, panelString);
 	}
 
-	@Override
+	
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getXOnScreen() - pointMouse.x;
 		int y = e.getYOnScreen() - pointMouse.y;
 		control.setFrameLocation(x, y);
 	}
 
-	@Override
+	
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent e) {
 		pointMouse = control.getMouseOnFrame(e.getXOnScreen(), e.getYOnScreen());
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
