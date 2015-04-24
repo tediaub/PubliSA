@@ -26,6 +26,10 @@ public class Model extends Observable implements Serializable{
 		return user;
 	}
 	
+	public Delivery createDelivery(){
+		return createDelivery("", Delivery.UBIK); 
+	}
+	
 	public Delivery createDelivery(String deliveryName, int target){
 		Delivery delivery = new Delivery(deliveryName, target, this);
 		setMainDelivery(delivery);

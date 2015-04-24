@@ -178,7 +178,7 @@ public class FirstLaunchPanel extends JPanel implements ActionListener {
 		}
 		if(arg0.getSource() == btnCreate){
 			if(isLoaded){
-				control.getXml().loadUser(cbSelect.getSelectedItem().toString(), control);
+				control.loadUser(cbSelect.getSelectedItem().toString(), control);
 			}else{
 				control.createUser(tfNewUser.getText());
 			}
