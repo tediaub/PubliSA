@@ -10,11 +10,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
-
 import model.Delivery;
 import model.Model;
+import view.language.ELabelUI;
+import view.language.LanguageSelector;
 import controller.ControllerFrame;
 
 

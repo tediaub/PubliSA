@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 
 import model.Delivery;
 import model.Model;
-
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableAllDelivery;

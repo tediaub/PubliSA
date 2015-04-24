@@ -11,9 +11,6 @@ import org.jdom.Element;
 import org.jdom.filter.Filter;
 import org.jdom.input.SAXBuilder;
 
-import view.frame.dialog.DialogFlat;
-import controller.OpeningController;
-
 public class XmlLoader{
 	   
 	static org.jdom.Document document;
@@ -21,57 +18,48 @@ public class XmlLoader{
 	
 	static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
 	
-	public XmlLoader(String path){
+	public XmlLoader(String path)throws Exception{
 		
 		//On crée une instance de SAXBuilder
 	    SAXBuilder sxb = new SAXBuilder();
-	    try
-	    {
-	  	   	document = sxb.build(new File(path));
-	  	   	racine = document.getRootElement();
-	    }
-	    catch(Exception e){
-	    	new DialogFlat().showDialog("Fichier XML",
-					"Erreur fichier XML",
-					DialogFlat.ERROR_OPERATION,
-					DialogFlat.ERROR_ICON);
-	    	return;
-	    }
+  	   	document = sxb.build(new File(path));
+  	   	racine = document.getRootElement();
 	}
 	
-	public void loadUser(String user, OpeningController control){
-		control.createUser(user);
-		loadDeliveries(user, control);
-		loadMail(user, control);
-		loadParameters(user, control);
-	}
-	
-	private void loadMail(String user, OpeningController control) {
-		control.setMail(control.getModel().getUser().getMails().get(0),
-				racine.getChild(user).getChild("Mail").getChild("AKKA-Ubik").getChildText("Correspondant"),
+	public ArrayList<String[]> loadMails(String user){
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		array.add(new String[]{racine.getChild(user).getChild("Mail").getChild("AKKA-Ubik").getChildText("Correspondant"),
 				racine.getChild(user).getChild("Mail").getChild("AKKA-Ubik").getChildText("Objet"),
-				racine.getChild(user).getChild("Mail").getChild("AKKA-Ubik").getChildText("Message"));
-		control.setMail(control.getModel().getUser().getMails().get(1),
-				racine.getChild(user).getChild("Mail").getChild("AKKA-Thales").getChildText("Correspondant"),
+				racine.getChild(user).getChild("Mail").getChild("AKKA-Ubik").getChildText("Message")});
+		
+		array.add(new String[]{racine.getChild(user).getChild("Mail").getChild("AKKA-Thales").getChildText("Correspondant"),
 				racine.getChild(user).getChild("Mail").getChild("AKKA-Thales").getChildText("Objet"),
-				racine.getChild(user).getChild("Mail").getChild("AKKA-Thales").getChildText("Message"));
-		control.setMail(control.getModel().getUser().getMails().get(2),
-				racine.getChild(user).getChild("Mail").getChild("SOPRA").getChildText("Correspondant"),
+				racine.getChild(user).getChild("Mail").getChild("AKKA-Thales").getChildText("Message")});
+		
+		array.add(new String[]{racine.getChild(user).getChild("Mail").getChild("SOPRA").getChildText("Correspondant"),
 				racine.getChild(user).getChild("Mail").getChild("SOPRA").getChildText("Objet"),
-				racine.getChild(user).getChild("Mail").getChild("SOPRA").getChildText("Message"));
-		control.setMail(control.getModel().getUser().getMails().get(3),
-				racine.getChild(user).getChild("Mail").getChild("THALES").getChildText("Correspondant"),
+				racine.getChild(user).getChild("Mail").getChild("SOPRA").getChildText("Message")});
+		
+		array.add(new String[]{racine.getChild(user).getChild("Mail").getChild("THALES").getChildText("Correspondant"),
 				racine.getChild(user).getChild("Mail").getChild("THALES").getChildText("Objet"),
-				racine.getChild(user).getChild("Mail").getChild("THALES").getChildText("Message"));
+				racine.getChild(user).getChild("Mail").getChild("THALES").getChildText("Message")});
+		
+		return array;
 	}
 
-	private void loadParameters(String user, OpeningController control) {
-		control.getModel().getUser().setPathExe(racine.getChild(user).getChild("FichierExt").getChildText("FichierEXE"));
-		control.getModel().getUser().setPathWord(racine.getChild(user).getChild("FichierExt").getChildText("FichierDOC"));
-		control.getModel().getUser().setDeleteFinishDelivery(Boolean.parseBoolean(racine.getChild(user).getChildText("GestLiv")));
+	public String loadPathExe(String user) {
+		return racine.getChild(user).getChild("FichierExt").getChildText("FichierEXE");
+	}
+	
+	public String loadPathWord(String user) {
+		return racine.getChild(user).getChild("FichierExt").getChildText("FichierDOC");
+	}
+	
+	public boolean loadDeleteDelivery(String user) {
+		return Boolean.parseBoolean(racine.getChild(user).getChildText("GestLiv"));
 	}
 
-	private void loadDeliveries(String user, OpeningController control){
+	public void loadDeliveries(String user, Delivery del){
 		ArrayList<Element> array = getDeliveries(user);
 		for (int i = 0; i < array.size(); i++) {
 			String name = array.get(i).getChildText("Nom");
@@ -82,8 +70,8 @@ public class XmlLoader{
 			}else{
 				target = Delivery.UBIK;
 			}
-			
-			Delivery del = control.getModel().createDelivery(name, target);
+			del.setName(name);
+			del.setTarget(target);
 			
 			//STEP
 			int step = Integer.parseInt(array.get(i).getChildText("Etape"));

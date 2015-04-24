@@ -23,13 +23,7 @@ public class ScrollBarFlatUI extends BasicScrollBarUI{
         	g.setColor(new Color(205, 205, 205));
         }
 		
-		JScrollBar sb = (JScrollBar) c;
-		if(sb.getValue() == sb.getMinimum()){
-			decrButton.setEnabled(false);
-		}else{
-			decrButton.setEnabled(true);
-		}
-		
+		JScrollBar sb = (JScrollBar) c;		
 		if(sb.getOrientation() == JScrollBar.HORIZONTAL){			
 			g.translate(thumbBounds.x + 8, thumbBounds.y);
 			g.fillRect(0, 0, thumbBounds.width - 17, thumbBounds.height);

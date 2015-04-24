@@ -3,8 +3,9 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
+
 
 
 public class User implements Serializable{

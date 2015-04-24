@@ -5,6 +5,7 @@ import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
@@ -160,7 +161,14 @@ public class OpeningController implements IFrameController {
 	}
 	
 	public void createXml(String path){
-		xml = new XmlLoader(path);
+		try {
+			xml = new XmlLoader(path);
+		} catch (Exception e) {
+			new DialogFlat().showDialog("Fichier XML",
+					"Erreur fichier XML",
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
+		}
 	}
 	
 	public XmlLoader getXml(){
@@ -175,5 +183,19 @@ public class OpeningController implements IFrameController {
 		mail.setRecipient(recipient);
 		mail.setObject(object);
 		mail.setMessage(message);
+	}
+	
+	public void loadUser(String user, OpeningController control){
+		createUser(user);
+		xml.loadDeliveries(user, model.createDelivery());
+		
+		ArrayList<String[]> array = xml.loadMails(user);
+		for (int i = 0; i < array.size(); i++) {
+			setMail(model.getUser().getMails().get(3), array.get(i)[0], array.get(i)[1], array.get(i)[2]);
+		}
+		
+		model.getUser().setPathExe(xml.loadPathExe(user));
+		model.getUser().setPathWord(xml.loadPathWord(user));
+		model.getUser().setDeleteFinishDelivery(xml.loadDeleteDelivery(user));
 	}
 }

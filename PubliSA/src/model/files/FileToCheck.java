@@ -2,8 +2,8 @@ package model.files;
 
 import java.io.File;
 
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 
 @SuppressWarnings("serial")
 public class FileToCheck extends File{
