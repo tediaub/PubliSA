@@ -18,6 +18,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -446,7 +447,7 @@ public class ControllerFrame implements IFrameController{
 	    	if(Desktop.getDesktop().isSupported(Desktop.Action.MAIL)){
 	    		try {
 					 Desktop.getDesktop().mail(new URI("mailto", recipient + "?subject=" + object +"&body=" + message, null));
-				 } catch (IOException e1){
+	    		} catch (IOException e1){
 					 e1.printStackTrace();
 				 } catch (URISyntaxException e1){
 					 e1.printStackTrace();
@@ -469,7 +470,10 @@ public class ControllerFrame implements IFrameController{
 		try {
 			Desktop.getDesktop().open(new File(model.getUser().getPathWord()));
 		} catch (IOException e) {
-			e.printStackTrace();
+			new DialogFlat().showDialog("PubliSA", "<html>Un problème est survenue dans le chargement du fichier.<br>Vérifiez que :<br>  - le fichier existe<br>  - le fichier est sur un disque local</html>",
+					DialogFlat.INFORMATION_OPERATION,
+					DialogFlat.ERROR_ICON);
+			return false;
 		}
 		
 		model.getMainDelivery().setHasOpenDocWord(true);
