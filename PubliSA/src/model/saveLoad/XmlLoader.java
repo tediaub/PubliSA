@@ -11,6 +11,8 @@ import org.jdom.Element;
 import org.jdom.filter.Filter;
 import org.jdom.input.SAXBuilder;
 
+import view.frame.dialog.DialogFlat;
+
 public class XmlLoader{
 	   
 	static org.jdom.Document document;
@@ -18,12 +20,21 @@ public class XmlLoader{
 	
 	static String xml = System.getProperty("user.dir")+File.separator+ "PubliSA.xml";
 	
-	public XmlLoader(String path)throws Exception{
-		
+	public XmlLoader(String path){
 		//On crée une instance de SAXBuilder
 	    SAXBuilder sxb = new SAXBuilder();
-  	   	document = sxb.build(new File(path));
-  	   	racine = document.getRootElement();
+	    try
+	    {
+	  	   	document = sxb.build(new File(path));
+	  	   	racine = document.getRootElement();
+	    }
+	    catch(Exception e){
+	    	new DialogFlat().showDialog("Fichier XML",
+					"Erreur fichier XML",
+					DialogFlat.ERROR_OPERATION,
+					DialogFlat.ERROR_ICON);
+	    	return;
+	    }
 	}
 	
 	public ArrayList<String[]> loadMails(String user){
