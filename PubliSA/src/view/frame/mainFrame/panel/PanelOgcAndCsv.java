@@ -21,6 +21,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 import controller.loading.FilterCSV;
 import controller.loading.FilterOGC;
+import controller.loading.FilterOGCtxt;
 import controller.loading.LoadSaveFile;
 
 @SuppressWarnings("serial")
@@ -121,7 +122,7 @@ public class PanelOgcAndCsv extends PanelObserver<ControllerFrame> implements Ac
 			if(path == null){return;}
 			control.getModel().getMainDelivery().setPathCSV(path);
 		}else if(e.getSource() == btnOGC){
-			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGC());
+			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGCtxt());
 			if(path == null){return;}
 			control.getModel().getMainDelivery().setPathOGC(path);
 		}else if(e.getSource() == btnChecking){

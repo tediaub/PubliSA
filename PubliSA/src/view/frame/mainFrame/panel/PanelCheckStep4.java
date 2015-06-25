@@ -76,12 +76,14 @@ public class PanelCheckStep4 extends PanelObserver<ControllerFrame> implements A
 		
 		JScrollPane scrollPane = new JScrollPane();
 		table = new TableFlat(new DefaultTableModel(columns, 0));
-		table.setDefaultRenderer(Object.class, new TableCellRenderer((ControllerFrame)null));
+		table.setDefaultRenderer(Object.class, new TableCellRenderer(control));
 		
 		scrollPane.getHorizontalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.getVerticalScrollBar().setUI(new ScrollBarFlatUI());
 		scrollPane.setViewportView(table);
-		add(scrollPane, "2, 8, 2, 1, fill, fill");		
+		add(scrollPane, "2, 8, 2, 1, fill, fill");
+		
+		update(control.getModel());
 	}
 	
 	

@@ -34,10 +34,13 @@ public class FichierCSV extends File{
 				String[] tab;
 				String numeros = new String();
 				tab = ligne.split(";");
-				if(!tab[2].isEmpty()){
+				if(tab.length > 2 && !tab[2].isEmpty()){
 			        numeros = "L" + tab[2].trim();
-			        numeros = numeros.replace(".", "P");
-			        numeros = numeros.replaceFirst("P", "C");
+			        numeros = numeros.replace(".", "%");
+			        numeros = numeros.replaceFirst("%", "C");
+			        numeros = numeros.replaceFirst("%", "P");
+				}else{
+					break;
 				}
 
 		        if(tab[3].trim().length() == 1){

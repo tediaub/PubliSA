@@ -237,13 +237,12 @@ public class Checking {
 			}
 		}
 
-		
 		if(hCSV.size() == 0 && hOGC.size() == 0){
-			new DialogFlat().showDialog( "Vérification terminée",
+			new DialogFlat().showDialog("Vérification terminée",
 					"Aucune erreur",
 					DialogFlat.INFORMATION_OPERATION,
 					DialogFlat.INFORMATION_ICON);
-			return null;
+			return new ArrayList<>();
 		}
 		
 		ArrayList<String[]> tabArray = new ArrayList<String[]>();
