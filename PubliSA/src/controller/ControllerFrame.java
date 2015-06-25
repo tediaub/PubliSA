@@ -271,6 +271,9 @@ public class ControllerFrame implements IFrameController{
 				DialogFlat.INFORMATION_OPERATION,
 				DialogFlat.INFORMATION_ICON);
 		
+		model.getMainDelivery().setPathOGCtoTXT(ogc.getParentFile().getPath() 
+				+ File.separator + model.getMainDelivery().getName()
+				+ File.separator + ogc.getName() + ".txt");
 		model.getMainDelivery().setHasDeleteHeader(true);
 		return true;
 	}

@@ -200,19 +200,19 @@ public class Checking {
 	}
 	
 	public ArrayList<String[]> checkingOnUbik(){
-		pathOGC = control.getModel().getMainDelivery().getPathOGC();
+		pathOGC = control.getModel().getMainDelivery().getPathOGCtoTXT();
 		pathCSV = control.getModel().getMainDelivery().getPathCSV();
 		
-		if(pathOGC==null || pathCSV == null){
+		if(pathOGC==null || pathCSV == null || pathOGC.isEmpty() || pathCSV.isEmpty()){
 			new DialogFlat().showDialog("Erreur chargement fichier",
-					"Veuillez entrer un fichier OGC et CSV",
+					"Veuillez entrer les fichiers OGC et CSV",
 					DialogFlat.ERROR_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return null;
 		}
-		if(pathOGC.isEmpty() || pathCSV.isEmpty()){
+		if(!new File(pathOGC).exists() || !new File(pathCSV).exists()){
 			new DialogFlat().showDialog("Erreur chargement fichier",
-					"Veuillez entrer un fichier OGC et CSV",
+					"Les fichier OGC et/ou CSV n'existe pas",
 					DialogFlat.ERROR_OPERATION,
 					DialogFlat.ERROR_ICON);
 			return null;

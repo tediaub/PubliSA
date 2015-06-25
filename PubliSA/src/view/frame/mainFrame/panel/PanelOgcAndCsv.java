@@ -20,7 +20,6 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import controller.ControllerFrame;
 import controller.loading.FilterCSV;
-import controller.loading.FilterOGC;
 import controller.loading.FilterOGCtxt;
 import controller.loading.LoadSaveFile;
 
@@ -111,7 +110,7 @@ public class PanelOgcAndCsv extends PanelObserver<ControllerFrame> implements Ac
 
 	
 	protected void update(Model model) {
-		lblPathOGC.setText(model.getMainDelivery().getPathOGC());
+		lblPathOGC.setText(model.getMainDelivery().getPathOGCtoTXT());
 		lblPathCSV.setText(model.getMainDelivery().getPathCSV());
 	}
 
@@ -122,9 +121,9 @@ public class PanelOgcAndCsv extends PanelObserver<ControllerFrame> implements Ac
 			if(path == null){return;}
 			control.getModel().getMainDelivery().setPathCSV(path);
 		}else if(e.getSource() == btnOGC){
-			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathOGC(), "Ouvrir fichier OGC", new FilterOGCtxt());
+			String path = LoadSaveFile.loadFrame(control.getModel().getMainDelivery().getPathOGCtoTXT(), "Ouvrir fichier OGC", new FilterOGCtxt());
 			if(path == null){return;}
-			control.getModel().getMainDelivery().setPathOGC(path);
+			control.getModel().getMainDelivery().setPathOGCtoTXT(path);
 		}else if(e.getSource() == btnChecking){
 			control.checkingOnUbik();
 		}

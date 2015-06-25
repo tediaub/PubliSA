@@ -36,6 +36,7 @@ public class Delivery implements Serializable{
 	private String standard = "";
 	
 	private String pathOGC = null;
+	private String pathOGCtoTXT = null;
 	private String pathCSV = null;
 	private String pathReport = null;
 	
@@ -220,5 +221,14 @@ public class Delivery implements Serializable{
 
 	public boolean isHasDeleteHeader() {
 		return hasDeleteHeader;
+	}
+
+	public String getPathOGCtoTXT() {
+		return pathOGCtoTXT;
+	}
+
+	public void setPathOGCtoTXT(String pathOGCtoTXT) {
+		this.pathOGCtoTXT = pathOGCtoTXT;
+		model.notice();
 	}
 }
