@@ -347,7 +347,7 @@ public class ControllerFrame implements IFrameController{
 			}
 		}catch(Exception e){
 			new DialogFlat().showDialog("Erreur DCR",
-					"<html>Vérifier que :<br>- la/les DCR sont des nombres<br>- elle(s) comporte(nt) quatre chiffres<br>"
+					"<html>Vérifiez que :<br>- la/les DCR sont des nombres<br>- elle(s) comporte(nt) quatre chiffres<br>"
 					+ "- il n'y a pas d'espace<br>- le séparateur est bien une virgule(,)</html",
 					DialogFlat.ERROR_OPERATION,
 					DialogFlat.ERROR_ICON);
