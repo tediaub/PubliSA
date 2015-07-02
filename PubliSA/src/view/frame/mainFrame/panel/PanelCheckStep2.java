@@ -18,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
 import jxl.write.WriteException;
 import model.Delivery;
 import model.Model;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.buttons.ButtonFlat;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableCellRenderer;
 import view.guiComponents.table.TableFlat;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -99,7 +99,7 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 		
 		iReport = new JMenuItem(LanguageSelector.getLocalizedText(ELabelUI.BT_COMPTE_RENDU.getLabel()));
 		iReport.addActionListener(this);
-		iDeleteHeader = new JMenuItem("Supprimer les en-têtes");
+		iDeleteHeader = new JMenuItem(LanguageSelector.getLocalizedText(ELabelUI.SUPPR_ENTETE.getLabel()));
 		iDeleteHeader.addActionListener(this);
 		iDocWord = new JMenuItem("Ouvrir le fichier EYDT");
 		iDocWord.addActionListener(this);
@@ -140,18 +140,18 @@ public class PanelCheckStep2 extends PanelObserver<ControllerFrame> implements A
 		}
 		
 		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
-			lblNbFileSummary.setText("Nombre de fichiers .PDF de la DCR dans le sommaire : " 
+			lblNbFileSummary.setText(LanguageSelector.getLocalizedText(ELabelUI.NB_POS.getLabel()) 
 					+ model.getMainDelivery().getNbFileSummary());
-			lblNbFileFolder.setText("Nombre de fichiers .PDF dans le dossier cible : "
+			lblNbFileFolder.setText(LanguageSelector.getLocalizedText(ELabelUI.NB_POS_SOURCE.getLabel())
 					+ model.getMainDelivery().getNbFileFolder());
 			
 			iDocExe.setVisible(false);
 			iDocWord.setVisible(true);
 			iDeleteHeader.setVisible(true);
 		}else if(model.getMainDelivery().getTarget() == Delivery.THALES){
-			lblNbFileSummary.setText("Nombre de fichiers .ASC et .SCH de la DCR dans le sommaire : "
+			lblNbFileSummary.setText(LanguageSelector.getLocalizedText(ELabelUI.NB_ASC.getLabel())
 					+ model.getMainDelivery().getNbFileSummary());
-			lblNbFileFolder.setText("Nombre de fichiers .ASC et .SCH dans le dossier cible : "
+			lblNbFileFolder.setText(LanguageSelector.getLocalizedText(ELabelUI.NB_ASC_SOURCE.getLabel())
 					+ model.getMainDelivery().getNbFileFolder());
 			
 			iDocExe.setVisible(true);

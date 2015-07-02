@@ -12,8 +12,8 @@ import javax.swing.event.ListSelectionListener;
 
 import model.Delivery;
 import model.Model;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import controller.ControllerFrame;
 
 

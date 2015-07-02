@@ -12,8 +12,8 @@ import javax.swing.JLayer;
 import javax.swing.JTextField;
 import javax.swing.plaf.LayerUI;
 
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 
 
 @SuppressWarnings("serial")

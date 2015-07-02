@@ -13,11 +13,11 @@ import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 
 import model.Delivery;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import view.frame.dialog.DialogFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;

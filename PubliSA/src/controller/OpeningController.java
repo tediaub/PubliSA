@@ -13,11 +13,11 @@ import javax.swing.border.LineBorder;
 import model.Delivery;
 import model.Mail;
 import model.Model;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import model.saveLoad.XmlLoader;
 import view.frame.dialog.DialogFlat;
 import view.frame.frameOpening.OpeningFrame;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
 
 public class OpeningController implements IFrameController {
 

@@ -122,29 +122,12 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 		if(control.getModel().getMainDelivery().getTarget() == Delivery.UBIK){
 			btnFileCheck.setVisible(false);
 			
-			if(!control.getModel().getMainDelivery().isHasOpenDocWord())btnOpenForm.setVisible(true);
-			if(!control.getModel().getMainDelivery().isHasDeleteHeader())btnDeleteHeader.setVisible(true);
+			if(control.getModel().getMainDelivery().isHasOpenDocWord())btnOpenForm.setVisible(false);
+			if(control.getModel().getMainDelivery().isHasDeleteHeader())btnDeleteHeader.setVisible(false);
 		}else if(control.getModel().getMainDelivery().getTarget() == Delivery.THALES){
-			btnFileCheck.setVisible(true);
+			if(control.getModel().getMainDelivery().isHasOpenDocExe())btnFileCheck.setVisible(false);
+			
 			btnOpenForm.setVisible(false);
-			btnDeleteHeader.setVisible(false);
-		}
-		
-		if(!control.getModel().getMainDelivery().isHasOpenDocWord()){
-			btnOpenForm.setVisible(true);
-		}else{
-			btnOpenForm.setVisible(false);
-		}
-		
-		if(!control.getModel().getMainDelivery().isHasOpenDocExe()){
-			btnFileCheck.setVisible(true);
-		}else{
-			btnFileCheck.setVisible(false);
-		}
-		
-		if(!control.getModel().getMainDelivery().isHasOpenDocWord()){
-			btnDeleteHeader.setVisible(true);
-		}else{
 			btnDeleteHeader.setVisible(false);
 		}
 		

@@ -63,11 +63,6 @@ public class Checking {
 						listePlancheCheck.add(file);
 						checkFile(file, DCR);
 					}
-					if(subfiles[i].getName().substring(subfiles[i].getName().indexOf(".")+1, subfiles[i].getName().length()).toUpperCase().contains("SCH")){
-						FileToCheck file = new FileToCheck(FileToCheck.changeExt(subfiles[i].getPath()));
-						listePlancheCheck.add(file);
-						checkFile(file, DCR);
-					}
 				}
 			}
 			

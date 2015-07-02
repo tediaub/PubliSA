@@ -9,8 +9,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
 import model.Delivery;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import controller.ControllerFrame;
 
 	

@@ -10,10 +10,10 @@ import javax.swing.JLabel;
 
 import model.Delivery;
 import model.Model;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.buttons.ButtonFlat;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -94,7 +94,7 @@ public class PanelOgc extends PanelObserver<ControllerFrame> implements ActionLi
 		if(model.getMainDelivery().getTarget() == Delivery.UBIK){
 			lblPositionFiles.setText(LanguageSelector.getLocalizedText(ELabelUI.POSITION_POS.getLabel()));
 		}else if(model.getMainDelivery().getTarget() == Delivery.THALES){
-			lblPositionFiles.setText(LanguageSelector.getLocalizedText(ELabelUI.POSITION_ASC_SCH.getLabel()));
+			lblPositionFiles.setText(LanguageSelector.getLocalizedText(ELabelUI.POSITION_ASC.getLabel()));
 		}
 				
 	}

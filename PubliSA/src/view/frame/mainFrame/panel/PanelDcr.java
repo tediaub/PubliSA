@@ -11,11 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.plaf.LayerUI;
 
 import model.Model;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.TextFieldFlat;
 import view.guiComponents.layer.DcrLayerUI;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;

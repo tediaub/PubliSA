@@ -11,13 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 import jxl.write.WriteException;
 import model.Model;
+import model.language.ELabelUI;
+import model.language.LanguageSelector;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.buttons.ButtonFlat;
 import view.guiComponents.scrollBar.ScrollBarFlatUI;
 import view.guiComponents.table.TableCellRenderer;
 import view.guiComponents.table.TableFlat;
-import view.language.ELabelUI;
-import view.language.LanguageSelector;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;

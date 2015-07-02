@@ -44,7 +44,6 @@ public class FileOGC extends File {
 					}
 					if(cible.contentEquals("Thales")){
 						plankOGC.add(numbers + ".ASC");
-						plankOGC.add(numbers + ".SCH");
 					}
 				}
 			}
