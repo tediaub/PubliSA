@@ -31,6 +31,7 @@ import model.Model;
 import model.files.FileOGC;
 import model.saveLoad.Serialization;
 import view.frame.dialog.DialogFlat;
+import view.frame.frameOpening.OpeningFrame;
 import view.frame.mainFrame.MainFrame;
 import view.language.ELabelUI;
 import view.language.LanguageSelector;
@@ -459,7 +460,14 @@ public class ControllerFrame implements IFrameController{
 	}
 
 	public void deleteDelivery(Delivery delivery) {
-		model.getDeliveries().remove(delivery);	
+		if(delivery != null && delivery!= model.getMainDelivery()){
+			model.deleteDelivery(delivery);	
+		}
+		else{
+			new DialogFlat().showDialog("PubliSA", "<html>Cette livraison est ouverte. <br>Veuillez changez de livraison avant de supprimer</html>",
+					DialogFlat.INFORMATION_OPERATION,
+					DialogFlat.INFORMATION_ICON);
+		}
 	}
 
 	public boolean openWord() {
@@ -497,5 +505,14 @@ public class ControllerFrame implements IFrameController{
 		
 		model.getMainDelivery().setHasOpenDocExe(true);
 		return true;
+	}
+	
+	public void deleteAllDeliveries(){
+		model.clear();
+		
+		frame.dispose();
+		
+		OpeningController control = new OpeningController(model);
+		control.createOpeningFrame(OpeningFrame.PANEL_MAIN);
 	}
 }

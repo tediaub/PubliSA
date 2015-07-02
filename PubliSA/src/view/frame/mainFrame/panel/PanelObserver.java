@@ -9,13 +9,13 @@ import model.Model;
 import controller.IFrameController;
 
 @SuppressWarnings("serial")
-public abstract class PanelObserver<T> extends JPanel implements Observer {
+public abstract class PanelObserver<T extends IFrameController> extends JPanel implements Observer {
 	
 	protected T control;
 	
 	public PanelObserver(T control){
 		this.control = control;
-		((IFrameController) control).getModel().addObserver(this);
+		control.getModel().addObserver(this);
 	}
 	
 	protected abstract void update(Model model);

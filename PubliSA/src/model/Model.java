@@ -75,4 +75,14 @@ public class Model extends Observable implements Serializable{
 		setChanged();
 		notifyObservers();
 	}
+
+	public void clear() {
+		deliveries.clear();
+		mainDelivery = null;
+	}
+
+	public void deleteDelivery(Delivery delivery) {
+		deliveries.remove(delivery);
+		notice();
+	}
 }
