@@ -14,8 +14,10 @@ import javax.swing.table.DefaultTableModel;
 
 import model.Delivery;
 import model.Model;
+
 import model.language.ELabelUI;
 import model.language.LanguageSelector;
+
 import view.frame.dialog.DialogFlat;
 import view.guiComponents.SeparatorFlat;
 import view.guiComponents.buttons.ButtonFlat;
@@ -30,7 +32,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.ControllerFrame;
 
 @SuppressWarnings("serial")
-public class PanelProfil extends PanelObserver<ControllerFrame> implements ActionListener {//JPanel implements ActionListener{
+public class PanelProfil extends PanelObserver<ControllerFrame> implements ActionListener {
 
 	String name = LanguageSelector.getLocalizedText(ELabelUI.REGLAGES.getLabel());
 	private TableAllDelivery table;
