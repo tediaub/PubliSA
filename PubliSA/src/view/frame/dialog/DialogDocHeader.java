@@ -190,7 +190,6 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 		
 	}
 
-	
 	public void mousePressed(MouseEvent e) {
 		int xOrigin = e.getXOnScreen()- getX();
 		int yOrigin = e.getYOnScreen()- getY();
@@ -203,14 +202,12 @@ public class DialogDocHeader extends JDialog implements MouseListener, MouseMoti
 		
 	}
 
-	
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getXOnScreen() - pointMouse.x;
 		int y = e.getYOnScreen() - pointMouse.y;
 		setLocation(x,y);
 	}
 
-	
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		

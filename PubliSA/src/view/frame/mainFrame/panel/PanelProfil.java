@@ -163,16 +163,17 @@ public class PanelProfil extends PanelObserver<ControllerFrame> implements Actio
 
 	
 	public void actionPerformed(ActionEvent e) {
-		if(table.getSelectedRowCount() == 1){
-			if(e.getSource() == btnOpen){
+		
+		if(e.getSource() == btnOpen){
+			if(table.getSelectedRowCount() == 1){
 				Object obj = table.getModel().getValueAt(table.getSelectedRow(), 0);
 				if(obj instanceof String){
 					control.openDelivery((String) obj);
 				}
 			}
-			
-			else if(e.getSource() == btnDelete){
-				Object obj = table.getModel().getValueAt(table.getSelectedRow(), 0);
+		}else if(e.getSource() == btnDelete){
+			for (Integer row : table.getSelectedRows()) {
+				Object obj = table.getModel().getValueAt(row, 0);
 				if(obj instanceof String){
 					int out = new DialogFlat().showDialog("PubliSA", "<html>Voulez vous supprimer cette livraison :<br>" + obj + ".</html>",
 							DialogFlat.ASK_OPERATION,
@@ -181,9 +182,7 @@ public class PanelProfil extends PanelObserver<ControllerFrame> implements Actio
 					if(out == DialogFlat.VALIDATE)control.deleteDelivery(control.getDelivery((String) obj));
 				}
 			}
-		}
-		
-		if(e.getSource() == btnDeleteAll){
+		}else if(e.getSource() == btnDeleteAll){
 			int out = new DialogFlat().showDialog("PubliSA", "Voulez vous supprimer toutes les livraisons.",
 					DialogFlat.ASK_OPERATION,
 					DialogFlat.INFORMATION_ICON);
