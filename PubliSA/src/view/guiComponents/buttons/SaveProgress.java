@@ -18,18 +18,23 @@ public class SaveProgress extends JPanel {
 		setOpaque(false);
 		setLayout(new CardLayout(5, 5));
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setIndeterminate(true);
-		add(progressBar, "name_4338683676047242");
+		JLabel lblDone = new JLabel("Sauvegarde terminée");
+		lblDone.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblDone, "lblDone");
 		
-		JLabel lblNewLabel = new JLabel("Sauvegarde terminée");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewLabel, "name_4338705196839778");
+		JLabel lblError = new JLabel("Erreur lors de la sauvegarde");
+		lblError.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblError, "lblError");
 
 	}
 	
 	public void processEnd(){
 		CardLayout cl = (CardLayout)(getLayout());
-	    cl.show(this, "name_4338705196839778");
+	    cl.show(this, "lblDone");
+	}
+	
+	public void processError(){
+		CardLayout cl = (CardLayout)(getLayout());
+	    cl.show(this, "lblError");
 	}
 }

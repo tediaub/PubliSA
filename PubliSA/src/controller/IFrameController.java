@@ -20,7 +20,7 @@ public interface IFrameController {
 
 	Point getMouseOnFrame(int xOnScreen, int yOnScreen);
 	
-	void save();
+	boolean save();
 	
 	Model getModel();
 

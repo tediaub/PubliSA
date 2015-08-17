@@ -79,7 +79,7 @@ public class PanelAbout extends JPanel {
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewLabel_4, "6, 8");
 		
-		JLabel lblNewLabel_5 = new JLabel("Derni\u00E8re mise \u00E0 jour : " + LanguageSelector.getLocalizedText(ELabelUI.MISE_JOUR.getLabel()));
+		JLabel lblNewLabel_5 = new JLabel(LanguageSelector.getLocalizedText(ELabelUI.MISE_JOUR.getLabel()));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewLabel_5, "6, 10");
 		

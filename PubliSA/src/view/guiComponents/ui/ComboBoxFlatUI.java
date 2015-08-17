@@ -44,7 +44,7 @@ public class ComboBoxFlatUI extends BasicComboBoxUI {
     /**
      * Paints the currently selected item.
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
 		ListCellRenderer renderer = comboBox.getRenderer();
         Component c;

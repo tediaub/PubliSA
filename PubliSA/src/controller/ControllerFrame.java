@@ -31,10 +31,10 @@ import model.Model;
 import model.files.FileOGC;
 import model.language.ELabelUI;
 import model.language.LanguageSelector;
-import model.saveLoad.Serialization;
 import view.frame.dialog.DialogFlat;
 import view.frame.frameOpening.OpeningFrame;
 import view.frame.mainFrame.MainFrame;
+import view.guiComponents.buttons.SaveProgress;
 import controller.checking.Checking;
 
 public class ControllerFrame implements IFrameController{
@@ -146,13 +146,19 @@ public class ControllerFrame implements IFrameController{
 		model.getUser().setFrameHeight(h);
 	}
 
-	public void save(){
-		Serialization.saveModel(model);
+	public void save(SaveProgress progress){
+		boolean b = save();
+		if(b)progress.processEnd();
+		else progress.processError();
+	}
+	
+	public boolean save(){
+		return model.save();
 	}
 	
 	public void changeStep(){
 		int step = model.getMainDelivery().getActualStep();
-		System.out.println(step);
+		
 		if((step == Delivery.STEP3 && model.getMainDelivery().getTarget() == Delivery.THALES)
 				||(step == Delivery.STEP4 && model.getMainDelivery().getTarget() == Delivery.UBIK)){
 			

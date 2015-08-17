@@ -175,8 +175,8 @@ public class OpeningController implements IFrameController {
 		return xml;
 	}
 
-	public void save() {
-		
+	public boolean save(){
+		return true;
 	}
 	
 	public void setMail(Mail mail, String recipient, String object, String message) {		

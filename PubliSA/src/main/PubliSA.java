@@ -1,14 +1,12 @@
 package main;
 
 import java.awt.EventQueue;
-import java.io.File;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import model.Model;
-import model.saveLoad.Serialization;
 import view.frame.frameOpening.OpeningFrame;
 import controller.OpeningController;
 
@@ -45,14 +43,10 @@ public class PubliSA {
 				}
 				
 				String panelOpen;
-				Model model = null;
-				if(new File("data").exists()){
-					model = Serialization.loadModel();
-					panelOpen = OpeningFrame.PANEL_MAIN;
-				}else{
-					model = new Model();
-					panelOpen = OpeningFrame.PANEL_FIRST_LAUNCH;
-				}
+				Model model = Model.create();
+				
+				if(model.getUser() == null)panelOpen = OpeningFrame.PANEL_FIRST_LAUNCH;
+				else panelOpen = OpeningFrame.PANEL_MAIN;
 				
 				OpeningController control = new OpeningController(model);
 				control.createOpeningFrame(panelOpen);

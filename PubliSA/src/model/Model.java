@@ -1,8 +1,13 @@
 package model;
 
+import java.io.File;
 import java.io.Serializable;
+import java.io.ObjectInputStream.GetField;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Observable;
+
+import model.saveLoad.Serialization;
 
 public class Model extends Observable implements Serializable{
 	
@@ -84,5 +89,28 @@ public class Model extends Observable implements Serializable{
 	public void deleteDelivery(Delivery delivery) {
 		deliveries.remove(delivery);
 		notice();
+	}
+
+	public static Model create() {
+		File datafile = getDataFile();
+		if(datafile != null && datafile.exists()){
+			return Serialization.loadModel(datafile);
+		}
+		return new Model();
+	}
+	
+	public boolean save(){
+		File datafile = getDataFile();
+		if(datafile != null && datafile.exists()){
+			return Serialization.saveModel(this, getDataFile());
+		}
+		return false;
+	}
+	
+	private static File getDataFile(){
+		if(new File("data").exists()){
+			return new File("data");
+		}
+		return null;
 	}
 }

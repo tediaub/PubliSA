@@ -15,11 +15,11 @@ public class Serialization {
 
 	static String path = System.getProperty("user.dir")+File.separator;
 	
-	public static Model loadModel(){
+	public static Model loadModel(File dataFile){
 		Model model = null;
 		try {
-			FileInputStream file = new FileInputStream("data");
-			model = (Model)new ObjectInputStream(file).readObject();
+			FileInputStream file = new FileInputStream(dataFile);
+			model = (Model)extracted(file).readObject();
 			
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -32,18 +32,23 @@ public class Serialization {
 		}
 		return model;
 	}
+
+	private static ObjectInputStream extracted(FileInputStream file)
+			throws IOException {
+		return new ObjectInputStream(file);
+	}
 	
-	public static void saveModel(Model model){
+	public static boolean saveModel(Model model, File dataFile){
 		ObjectOutputStream out = null;
-		
+		Boolean b = true;
 		try {
-			FileOutputStream fichier = new FileOutputStream("data");
+			FileOutputStream fichier = new FileOutputStream(dataFile);
 			out = new ObjectOutputStream(fichier);
 			
 			out.writeObject(model);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			b = false;
 			e.printStackTrace();
 		}finally {
 			try {
@@ -55,5 +60,6 @@ public class Serialization {
 					ex.printStackTrace();
 			}
 		}
+		return b;
 	}
 }
