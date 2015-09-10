@@ -2,8 +2,6 @@ package model;
 
 import java.io.File;
 import java.io.Serializable;
-import java.io.ObjectInputStream.GetField;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Observable;
 

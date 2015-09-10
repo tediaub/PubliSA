@@ -4,7 +4,6 @@ import java.awt.CardLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
