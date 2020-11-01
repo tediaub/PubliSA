@@ -1,0 +1,65 @@
+/*ED430 version "V410" "RT430" */ 
+node NN270592() 
+   returns (
+   K_ISIS /*! oid "win_4C3/2F8A/2BD4/5D24D28E/39F3" : */ : real ; 
+   I_ISIS /*! oid "win_4C5/2F8A/2BD4/5D24D28E/F73" : */ : real)
+   /*! oid "win_5/37C4/2C4C/5D24D270/6447" : graphical */ ;
+var
+_L1 /*! oid "win_4C9/2F8A/2BD4/5D24D291/3DD6" : */ : real ;
+
+   -- notes "Note_1"{CARTOU_BACT = " BISIS_POSITION"}
+
+   -- notes "Note_2"{CARTOU_FCSC = "  IFCC"}
+
+   -- notes "Note_3"{CARTOU_LIVRE = " Book: ANGLES"}
+
+   -- notes "Note_4"{CARTOU_REFERENCE = " Ref: XXX"}
+
+   -- notes "Note_5"{CARTOU_MODIF = " DCR: 2705;"}
+
+   -- notes "Note_6"{CARTOU_TITRE = " "}
+
+   -- notes "Note_7"{CARTOU_CHAPITRE = " Chapter: ALPHA"}
+
+   -- notes "Note_9"{CARTOU_PLANCHE = " Sheet: 07"}
+
+   -- notes "Note_10"{CARTOU_INFO = ""}
+
+   -- notes "Note_11"{CARTOU_TYPNE = " M"}
+
+   -- notes "Note_12"{CARTOU_ISSUE = " Issue: 05"}
+
+   -- notes "Note_13"{CARTOU_VARIANTE = " Var: 01"}
+
+   -- notes "Note_14"{CARTOU_NOEUD = " N211007"}
+
+   -- notes "Note_15"{CARTOU_AUTEUR = " Author: to72138"}
+
+   -- notes "Note_16"{CARTOU_OFFIC = " Date: 2019/10/36"}
+
+   -- notes "Note_17"{CARTOU_VSCADE = " SCADE: 5.1.1o"}
+
+   -- notes "Note_18"{CARTOU_CYCLE = "C3"}
+
+let equa eq_NN270592[ , ]
+    K_ISIS = _L1
+   /*! oid "win_4C6/2F8A/2BD4/5D24D28F/3A0" : 
+       (513.0 , 141.0) (25.0 , 10.0) : 
+       (364.0 , 140.0) : 1 : (394.0 , 146.0) (453.0 , 146.0) (453.0 , 146.0) (513.0 , 146.0)  : */ ;
+    I_ISIS = _L1
+   /*! oid "win_4C7/2F8A/2BD4/5D24D28F/2993" : 
+       (513.0 , 172.0) (25.0 , 10.0) : 
+       (364.0 , 140.0) : 1 : (394.0 , 146.0) (453.0 , 146.0) (453.0 , 177.0) (513.0 , 177.0)  : */ ;
+    _L1 = 0.0
+   /*! oid "win_4C8/2F8A/2BD4/5D24D291/2324" : 
+       (364.0 , 140.0) (30.0 , 13.0) : */ ;
+tel /*! oid "win_6/37C4/2C4C/5D24D270/2409" : "" true : 100*/
+/*SCED  "DefaultPageFormat" : "1" , 
+"PageSize" : "" , 
+"Landscape" : "true" , 
+"PageZoom" : "100"
+*/ ;
+
+/*  End of blocks of node :  NN270592 */ 
+
+

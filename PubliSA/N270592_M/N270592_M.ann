@@ -1,0 +1,1072 @@
+Notes-Types { Esterel-Technologies }  DEFINITIONS ::=
+BEGIN
+    CARTOU_BACT ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 70 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_BACT TEXT
+            {
+            	 NT_EDITABLE T ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " " }
+    } } }
+
+    CARTOU_FCSC ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 5 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 30 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_FCSC TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE "  IFCC" }
+    } } }
+
+    CARTOU_LIVRE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 50 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_LIVRE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Book:" }
+    } } }
+
+    CARTOU_REFERENCE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 70 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_REFERENCE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Ref:" }
+    } } }
+
+    CARTOU_MODIF ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 90 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_MODIF TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " DCR: 0000;" }
+    } } }
+
+    CARTOU_TITRE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 450 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 160 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 30 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_TITRE TEXT
+            {
+            	 NT_EDITABLE T ,
+            	 NT_MANDATORY T ,
+            	 NT_DEFAULT_VALUE " " }
+    } } }
+
+    CARTOU_CHAPITRE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 160 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 50 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_CHAPITRE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Chapter:" }
+    } } }
+
+    CARTOU_CHECKSUM ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 160 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 90 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            CARTOU_CHECKSUM TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE "" }
+    } } }
+
+    CARTOU_PLANCHE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 200 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 310 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 50 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_PLANCHE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Sheet:" }
+    } } }
+
+    CARTOU_INFO ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 200 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 310 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 70 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_INFO ENUM
+            {
+            	 NT_EDITABLE T ,
+            	 NT_MANDATORY T ,
+            	 NT_ENUM_VALUES {" A", " B", " C"},
+            	 NT_DEFAULT_VALUE "" }
+    } } }
+
+    CARTOU_TYPNE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 200 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 310 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 90 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_TYPNE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE "" }
+    } } }
+
+    CARTOU_ISSUE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 100 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 510 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 50 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_ISSUE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Issue: 99" }
+    } } }
+
+    CARTOU_VARIANTE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 100 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 510 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 70 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_VARIANTE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Var: 99" }
+    } } }
+
+    CARTOU_NOEUD ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 610 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 30 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_NOEUD TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE "" }
+    } } }
+
+    CARTOU_AUTEUR ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 610 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 50 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_AUTEUR TEXT
+            {
+            	 NT_EDITABLE T ,
+            	 NT_MANDATORY T ,
+            	 NT_DEFAULT_VALUE "  Author:" }
+    } } }
+
+    CARTOU_OFFIC ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 610 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 70 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_OFFIC TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE " Date: 0000/00/00" }
+    } } }
+
+    CARTOU_VSCADE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 150 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 610 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 90 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_VSCADE TEXT
+            {
+            	 NT_EDITABLE F ,
+            	 NT_MANDATORY F ,
+            	 NT_DEFAULT_VALUE "  SCADE :" }
+    } } }
+
+    CARTOU_CYCLE ::= SEQUENCE OF { SEQUENCE {
+    annot_object OID,
+    name STRING,
+        note_graphical_information {
+            NT_INCRUSTABLE BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_PERMANENT BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_LOCATION STRING
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE "RELATIVE" },
+            NT_MODIFY BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            NT_FONT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 3 },
+            NT_FRAME BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE F },
+            NT_FRAME_WIDTH INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 50 },
+            NT_FRAME_HEIGHT INTEGER
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 20 },
+            NT_POS_X REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 690 },
+            NT_POS_Y REAL
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE 10 }
+        },
+        information {
+            to_c BOOLEAN
+            {
+            	 NT_DISPLAYABLE F ,
+            	 NT_DEFAULT_VALUE T },
+            CARTOU_CYCLE ENUM
+            {
+            	 NT_EDITABLE T ,
+            	 NT_MANDATORY T ,
+            	 NT_ENUM_VALUES {" ", "C0", "C1", "C2", "C3", "C4", "C5", "F1", "F2"},
+            	 NT_DEFAULT_VALUE " " }
+    } } }
+
+END
+
+Notes-Values { Esterel-Technologies }  DEFINITIONS ::=
+BEGIN
+    CARTOU_BACT ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_1",F , F , "RELATIVE" , T , 3 , F , 70 , 20 , 10.000000 , 10.000000 , T , " BISIS_POSITION" }}
+    CARTOU_FCSC ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_2",F , F , "RELATIVE" , T , 5 , F , 150 , 20 , 10.000000 , 30.000000 , T , "  IFCC" }}
+    CARTOU_LIVRE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_3",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 10.000000 , 50.000000 , T , " Book: ANGLES" }}
+    CARTOU_REFERENCE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_4",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 10.000000 , 70.000000 , T , " Ref: XXX" }}
+    CARTOU_MODIF ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_5",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 10.000000 , 90.000000 , T , " DCR: 0000;" }}
+    CARTOU_TITRE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_6",F , F , "RELATIVE" , T , 3 , F , 450 , 20 , 160.000000 , 30.000000 , T , " " }}
+    CARTOU_CHAPITRE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_7",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 160.000000 , 50.000000 , T , " Chapter: ALPHA" }}
+    CARTOU_CHECKSUM ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_8",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 160.000000 , 90.000000 , F , " 394005921" }}
+    CARTOU_PLANCHE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_9",F , F , "RELATIVE" , T , 3 , F , 200 , 20 , 310.000000 , 50.000000 , T , " Sheet: 07" }}
+    CARTOU_INFO ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_10",F , F , "RELATIVE" , T , 3 , F , 200 , 20 , 310.000000 , 70.000000 , T , "" }}
+    CARTOU_TYPNE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_11",F , F , "RELATIVE" , T , 3 , F , 200 , 20 , 310.000000 , 90.000000 , T , " M" }}
+    CARTOU_ISSUE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_12",F , F , "RELATIVE" , T , 3 , F , 100 , 20 , 510.000000 , 50.000000 , T , " Issue: 05" }}
+    CARTOU_VARIANTE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_13",F , F , "RELATIVE" , T , 3 , F , 100 , 20 , 510.000000 , 70.000000 , T , " Var: 01" }}
+    CARTOU_NOEUD ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_14",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 610.000000 , 30.000000 , T , " N211007" }}
+    CARTOU_AUTEUR ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_15",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 610.000000 , 50.000000 , T , " Author: to72138" }}
+    CARTOU_OFFIC ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_16",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 610.000000 , 70.000000 , T , " Date: 2019/10/30" }}
+    CARTOU_VSCADE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_17",F , F , "RELATIVE" , T , 3 , F , 150 , 20 , 610.000000 , 90.000000 , T , " SCADE: 5.1.1o" }}
+    CARTOU_CYCLE ::= {
+        {"win_6/37C4/2C4C/5D24D270/2409", "Note_18",F , F , "RELATIVE" , T , 3 , F , 50 , 20 , 690.000000 , 10.000000 , T , "C3" }}
+END
+

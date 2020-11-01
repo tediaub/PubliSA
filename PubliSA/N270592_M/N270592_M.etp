@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Project id="1" oid_count="32" defaultConfiguration="8">
+	<props>
+		<Prop id="3" name="@SCADE:OCCBASEFILE">
+			<value>$(FORGES_OCC_FILE)</value>
+		</Prop>
+		<Prop id="4" name="@SCADE:NOTEFILE">
+			<value>$(FORGES_PRODUCT_DIRECTORY)\Settings\Scade\Bib_IFCC\BIB_IFCC_NOTES.aty</value>
+		</Prop>
+		<Prop id="10" name="@SCADE:OCCBASE">
+			<value>36</value>
+		</Prop>
+		<Prop id="11" name="@SCADE:VERIFYTYPE">
+			<value>0</value>
+		</Prop>
+		<Prop id="12" name="@SCADE:SAVENOTESASCOMMENTS">
+			<value>t</value>
+		</Prop>
+		<Prop id="13" name="@SCADE:CHECKED">
+			<value>false</value>
+		</Prop>
+		<Prop id="14" name="@SCADE:GRAPHICAL_BLOCK_FORMAT">
+			<value>A4</value>
+			<value>1</value>
+			<value>100</value>
+		</Prop>
+		<Prop id="15" name="@SCADE:SAVEVERSION">
+			<value>V400</value>
+		</Prop>
+		<Prop id="16" name="@SCADE:SEMFILE">
+			<value>scade.err</value>
+		</Prop>
+		<Prop id="17" name="@ESTUDIO_COMPILATION:language">
+			<value>Esterel V7</value>
+		</Prop>
+		<Prop id="18" name="@ESTUDIO_COMPILATION:prefix">
+			<value>N270592_M</value>
+		</Prop>
+		<Prop id="19" name="@GENERATOR:CONST">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="20" name="@GENERATOR:BITWISE">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="21" name="@GENERATOR:NO_COPY_MEM">
+			<value>false</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="22" name="@GENERATOR:SPLIT">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="23" name="@GENERATOR:TARGET_DIR">
+			<value>$(NodeName)_$(CG)/$(Configuration)</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="24" name="@GENERATOR:KEEP_NAMED_VARS">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="25" name="@GENERATOR:LOC_CTX">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="26" name="@SIMULATOR:DEBUG">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="27" name="@GENERATOR:GENERATOR">
+			<value>C QUAL51</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="28" name="@GENERATOR:ROOTNODE">
+			<value>NN270592</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="29" name="@SIMULATOR:COMPILER">
+			<value>GNU C</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="30" name="@GENERATOR:TYPE_CHECK_AS_31">
+			<value>true</value>
+			<configuration>9</configuration>
+		</Prop>
+		<Prop id="31" name="@REPORTER:SCRIPT">
+			<value>$env(ENV_VARIABLE_FORGES_SCADE_PLUGIN)\scripts\Reporter\ForgesReport.tcl</value>
+			<configuration>8</configuration>
+		</Prop>
+		<Prop id="32" name="@REPORTER:FORMAT">
+			<value>rtf</value>
+			<configuration>8</configuration>
+		</Prop>
+	</props>
+	<roots>
+		<Folder id="2" name="SCADE Library">
+			<elements>
+				<FileRef id="6" persistAs="$(FORGES_PRODUCT_DIRECTORY)\Settings\Scade\Bib_IFCC\BIB_IFCC.etp"/>
+			</elements>
+		</Folder>
+		<FileRef id="5" persistAs="$(FORGES_PRODUCT_DIRECTORY)\Settings\Scade\Edition.tot"/>
+		<FileRef id="7" persistAs="N270592_M.saofd"/>
+	</roots>
+	<configurations>
+		<Configuration id="8" name="Forges Reporter"/>
+		<Configuration id="9" name="Simulation"/>
+	</configurations>
+</Project>
